@@ -1,0 +1,119 @@
+<hr />
+
+<p>layout: post
+title: Tecniche di mapping della cache
+date: 2019-11-28 1:1:01
+tag: &ldquo;&rdquo;
+cover: &ldquo;https://www.researchgate.net/profile/Yue_Chen57/publication/318083055/figure/fig2/AS:521341691285504@1501308953366/2-way-set-associative-cache-8-cache-lines-in-4-sets-Each-cache-line-is-16-bytes.png&rdquo;
+section: &ldquo;Architettura degli elaboratori&rdquo;</p>
+
+<h2>author: Diego Stafa</h2>
+
+<h2>Tecniche di mappatura</h2>
+
+<p>la mappatura di una cache può essere implementata in 3 diversi modi:
+* associazione diretta
+* associazione completa
+* associazione ad N vie</p>
+
+<h3>Cache ad associazione diretta</h3>
+
+<ul>
+<li>si suddivide la memoria in blocchi (es. un blocco = 16 parole)</li>
+<li>si suddividono i blocchi in porzioni di blocchi (es. una porzione = 128 blocchi)</li>
+<li>la dimensione della porzione <strong>DEFINISCE</strong> il numero di linee della cache (es. se la porzione è di 128 blocchi allora la cache avrà 128 linee)</li>
+<li>presa una porzione, ogni blocco all'interno della porzione è <strong>univocamente</strong> mappato da <strong>una</strong> linea di Cache.</li>
+</ul>
+
+
+<h4>esempio</h4>
+
+<ul>
+<li>blocco &ndash;> 16 parole</li>
+<li>porzione &ndash;> 128 blocchi &ndash;> 128 linee di cache</li>
+</ul>
+
+
+<p>mappatura:
+* porzione dati 1
+ 1. blocco 1 &ndash;> linea 1
+ 2. blocco 2 &ndash;> linea 2
+ 3. blocco 3 &ndash;> linea 3
+ 4. blocco 128 &ndash;> linea 128
+* porzione dati 2
+ 1. blocco 1 &ndash;> linea 1
+ 2. blocco 2 &ndash;> linea 2
+ 3. blocco 3 &ndash;> linea 3
+ 4. blocco 128 &ndash;> linea 128</p>
+
+<p>&hellip;e così via.</p>
+
+<p>NB: tenere a mente ciò non impone che bisogni mappare solo i blocchi di porzione 1 o 2 tutti insieme, ci possono benissimo essere in cache blocchi diversi di porzioni diverse.</p>
+
+<p><strong>considerazioni</strong>
+si nota che un blocco può essere mappato solo in una specifica linea, ciò implica che due blocchi N di porzioni diverse non possono contemporaneamente in cache.</p>
+
+<h4><strong>Ricerca di una parola in cache</strong></h4>
+
+<p>un indirizzo di ram con cache ad associazione diretta si scompone in:
+* tag &ndash;> numero di porzione
+* blocco &ndash;> numero di blocco all'interno della porzione
+* word &ndash;> numero di parola all'interno del blocco</p>
+
+<p>di seguito gli step che la cache esegue per inviare una parola alla cpu:</p>
+
+<ol>
+<li>usa il campo blocco per trovare la linea di cache associata.</li>
+<li>usa il campo tag per verificare che il blocco salvato nella linea trovata abbia lo stesso numero di porzione</li>
+<li>usa il campo word per inviare la parola della posizione richiesta</li>
+</ol>
+
+
+<h3>Cache ad associazione completa</h3>
+
+<p>la cache non divide più la memoria in porzioni, ma solo blocchi.
+il numero di linee della cache non dipende più dalla ram.
+di base ogni blocco può essere mappato in una qualsiasi linea della cache.</p>
+
+<h4><strong>Ricerca</strong></h4>
+
+<p>in pratica la cache controlla in parallelo tutte le linee per verificare la presenza di un blocco</p>
+
+<p>NB: non avviene per magia, si costruisce hardware apposito nella cache, infatti questa tecnica costa tantissimo da implementare.</p>
+
+<h3>Cache ad associazione ad N vie</h3>
+
+<ul>
+<li>la ram anche qui viene divisa solo in blocchi.</li>
+<li>la cache viene divisa in set</li>
+<li>ogni set contiene N linee (l'N è dell'N vie del nome)</li>
+<li>ogni blocco in ram appartiene può essere mappato solo in un set specifico</li>
+</ul>
+
+
+<p>di base è l'unione tra associazione diretta e completa:
+* associazione diretta &ndash;> i blocchi possono essere mappati solo nelle linee di uno specifico set.
+* asssociazione completa &ndash;> per individuare un blocco dentro un set si cerca tra tutte le linee in parallelo confrontando i tag</p>
+
+<h4><strong>Ricerca</strong></h4>
+
+<ol>
+<li>trova il set specificato nell'indirizzo</li>
+<li>in parallelo controlla tutti i tag in quel set</li>
+<li>se trova il tag corrispondente invia la parola di posizione indicata nel campo word.</li>
+</ol>
+
+
+<h2>confronto tra le diverse tecniche</h2>
+
+<p><strong>cache ad associazione diretta</strong>
+* pro &ndash;> semplice e poco costosa
+* contro &ndash;> mappatura inefficente e numero di linee dipende dalla dimensione delle porzioni</p>
+
+<p><strong>cache ad associazione completa</strong>
+* pro &ndash;> mappatura efficente al massimo e veloce
+* contro &ndash;> costa troppo</p>
+
+<p><strong>cache ad associazione a N vie</strong>
+* pro &ndash;> è un compromesso di velocità e mappatura ed è scalabile (numero di linee per set variabile)
+* contro &ndash;> nessuno</p>

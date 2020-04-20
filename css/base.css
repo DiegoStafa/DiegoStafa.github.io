@@ -1,0 +1,28 @@
+html, body, h1, h2, h3, h4, h5, h6,
+ p, blockquote, pre, hr, dl, dd, ol,
+  ul, li figure, div, section {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: roboto mono, droid sans mono;
+  font-size: 16px;
+  font-weight: 400;
+  background-color: #0e2838;
+  color: white;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

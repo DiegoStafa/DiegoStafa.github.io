@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/sidebar.css">
+    <link rel="stylesheet" href="/css/header.css">
+
+    <!-- js -->
+    <script src="/js/sidebar.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+</head>
+
+<body>
+
+    <div id="mySidebar" class="sidebar">
+        <div class="sidebar-close" onclick="closeSidebar()">chiudi</div>
+
+        <div class="sidebar-content">
+
+            <div class="sidebar-section" onclick="toggle(this)">Algebra</div>
+            <ul>
+                <li>
+                    <a href="/2020/01/20/ciscrisc.html">CISC vs RISC</a>
+                    <span> - 20-01-2020</span>
+                </li>
+            </ul>
+
+            <div class="sidebar-section" onclick="toggle(this)">Analisi 1</div>
+            <ul>
+                <li>
+                    <a href="/2020/01/20/ciscrisc.html">CISC vs RISC</a>
+                    <span> - 20-01-2020</span>
+                </li>
+            </ul>
+
+            <div class="sidebar-section" onclick="toggle(this)">Architettura degli elaboratori</div>
+            <ul>
+                <li>
+                    <a href="/2020/01/20/ciscrisc.html">CISC vs RISC</a>
+                </li>
+                <li>
+                    <a href="/2020/01/19/microprogrammazione.html">Unità di controllo</a>
+                </li>
+                <li>
+                    <a href="/2020/01/18/aritmetica-binaria.html">Aritmetica di un calcolatore</a>
+                </li>
+            </ul>
+
+            <div class="sidebar-section" onclick="toggle(this)">Logica</div>
+            <ul>
+                <li>
+                    <a href="/2020/01/20/ciscrisc.html">CISC vs RISC</a>
+                    <span> - 20-01-2020</span>
+                </li>
+            </ul>
+
+            <div class="sidebar-section" onclick="toggle(this)">Programmazione 1</div>
+            <ul>
+                <li>
+                    <a href="/2020/01/20/ciscrisc.html">CISC vs RISC</a>
+                    <span> - 20-01-2020</span>
+                </li>
+            </ul>
+
+            <div class="sidebar-section" onclick="toggle(this)">Sistemi operativi 1</div>
+            <ul>
+                <li>
+                    <a href="/2020/01/20/ciscrisc.html">CISC vs RISC</a>
+                    <span> - 20-01-2020</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="header-title">
+            <a href="/" rel="author">Diego++</a>
+        </div>
+        <nav class="navbar">
+            <a href="/about/">About</a>
+            <a href="/Projects/">Projects</a>
+            <a id="showSidebar" onclick="openSidebar()">Appunti</a>
+        </nav>
+    </header>
+</body>
+
+</html>

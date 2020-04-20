@@ -1,0 +1,70 @@
+<hr />
+
+<p>layout: post
+title: Virtualizzazione della cpu
+date: 2020-01-22 1:1:01
+tag:
+cover: &ldquo;https://media.geeksforgeeks.org/wp-content/uploads/cache.png&rdquo;
+section: &ldquo;Sistemi Operativi&rdquo;</p>
+
+<h2>author: Diego Stafa</h2>
+
+<h3>virtualizzazione della cpu</h3>
+
+<p>si ottiene con la tecnica del time-sharing/multiprogrammazione, l'illusione di avere molti processi in esecuzione contemporaneamente è di base l'alternarsi di diversi processi molto velocemente (per l'utente)</p>
+
+<h3>processi</h3>
+
+<p>l'unità di lavoro della cpu è il processo, una struttura creata dall'os per creare questa astrazione, di base un processo è un programma in esecuzione che assume diversi stati nel corso del tempo</p>
+
+<p>un processo può essere rimosso dalla cpu mantenendo comunque il suo stato di esecuzione, che non è altro che l'insieme di tutti i registri e valori in un determinato istante.</p>
+
+<p>context switch &ndash;> operazione software che consiste nel salvare tutti i registri della cpu in memoria di un processo e caricarne altri di un altro processo</p>
+
+<h3>virtualizzazione</h3>
+
+<p>la virtualizzazione della cpu è gestita principalmente da 2 programmi:
+* sheduler
+* dispatcher</p>
+
+<h3>scheduler</h3>
+
+<p>lo scheduler si occupa di 3 funzioni
+* long term scheduling
+* mid term scheduling
+* short term schedulin</p>
+
+<p><strong>long term scheduling</strong> &ndash;> definisce quali processi sono ammessi nella coda dei processi, ciò è stabilito dall'hardware della macchina, si occupa quindi di stabilire il numero massimo di processi parallelizzabili e cose del genere</p>
+
+<p><strong>mid term scheduling</strong> &ndash;> di base si occupa di stabilire quali del processi in memoria possono essere swappati in memoria secondaria per fare spazio</p>
+
+<p><strong>short term scheduling</strong> &ndash;> determina quale processo eseguire in un lista di processi pronti in base ad una policy</p>
+
+<p>le policy dello scheduler stabiliscono delle regole per selezionare quale processo mandare in esecuzione, ce ne sono diverse:</p>
+
+<ul>
+<li>non preemptive</li>
+<li>FIFO &ndash;> seleziona il primo processo richiedente e lo esegue a terminazione</li>
+<li><p>SJF &ndash;> seleziona il processo più corto e lo esegue a terminazione</p></li>
+<li><p>preemptives</p></li>
+<li>SRTF &ndash;> seleziona il processo più corto, sostituibile dall'os da un processo più corto</li>
+<li>RR &ndash;> utilizza lo schema FIFO assegnando un tempo di esecuzione fisso ad ogni processo</li>
+<li>MLFQ &ndash;> come il RR solo che si hanno più code di processi in attesa di diversa priorità</li>
+<li>a lotteria &ndash;> si esegue il processo con il biglietto vincente</li>
+</ul>
+
+
+<h3>dispatcher</h3>
+
+<p>programma che si occupa di effettuare lo scambio tra processi salvando gli opportuni registri e caricando gli altri.</p>
+
+<h3>stato di esecuzione di un processo</h3>
+
+<ul>
+<li>created &ndash;> long term scheduling</li>
+<li>ready &ndash;> short term scheduling</li>
+<li>running &ndash;> la cpu esegue il codice</li>
+<li>blocked &ndash;> il processo viene rimosso dalla cpu poichè ha inviato una syscall bloccante (attesa di I/O)</li>
+<li>terminated</li>
+</ul>
+

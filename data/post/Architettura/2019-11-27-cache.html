@@ -1,0 +1,117 @@
+<hr />
+
+<p>layout: post
+title: Cache
+date: 2019-12-1 1:1:01
+tag: hardware
+cover: &ldquo;https://media.geeksforgeeks.org/wp-content/uploads/cache.png&rdquo;
+section: &ldquo;Architettura degli elaboratori&rdquo;</p>
+
+<h2>author: Diego Stafa</h2>
+
+<p>La cache è una memoria a semiconduttore utilizzata per implementare il concetto di gerarchia di memoria.</p>
+
+<h3>Idea di base</h3>
+
+<p>Di base lo scopo della cache è quello di migliorare il trasferimento di dati tra cpu (veloce) e ram (lenta), la cache infatti essendo una memoria piuttosto veloce (è di tipo sram) riesce ad interfacciarsi sia con la cpu che con la ram.
+Si cerca di evitare il più possibile che la cpu comunichi con la ram, quindi
+di base la cache contiene una copia di una porzione di dati della ram.</p>
+
+<p>NB: per porzione di dati si intende sia il dato che il loro indirizzo di ram, questa azione è chiamata mappatura di dati da ram a cache.</p>
+
+<h3>Mappatura</h3>
+
+<p>l'argomento della mappatura viene affrontato in un altro post, per ora ti basti sapere che la cache salva sia i dati che i loro indirizzi di ram in modo tale da sapere sempre quali dati siano in cache e quali no</p>
+
+<h3>Implementazione fisica</h3>
+
+<p>la cache è collegata fisicamente sia alla CPU sia alla RAM.
+la cpu e la ram sono anch'esse collegate tra loro ma si cerca di evitare che comunichino.</p>
+
+<ul>
+<li><strong>ram to cache</strong> &ndash;> la ram invia alla cache BLOCCHI di dati.</li>
+<li><strong>cache to cpu</strong> &ndash;> la cache invia alla cpu PAROLE di dati.</li>
+</ul>
+
+
+<p><strong>blocco</strong> &ndash;> unità di lavoro della ram, rappresenta un blocco di parole.
+<strong>parola</strong> &ndash;> unità di lavoro della cpu, rappresenta 1 oppure 2 byte (dipende da computer a computer).</p>
+
+<h3>Struttura interna della Cache</h3>
+
+<ul>
+<li>la cache suddivide la sua memoria per linee di dati.</li>
+<li>una linea equivale ad un blocco di ram.</li>
+<li>il numero di linee che la cache contiene è molto inferiore al numero di blocchi di una ram.</li>
+<li>i blocchi di ram vengono salvati quindi nelle linee della cache.</li>
+<li>per inviare una parola alla CPU si usa la parola di posizione specificata nel campo WORD dell'indirizzo emesso dalla CPU (l'argomento della suddivisione in campi dell'indirizzo di ram viene trattato in un altro post).</li>
+</ul>
+
+
+<h3>Operazioni di Read e Write</h3>
+
+<p>NB: concetto fondamentale
+* la cpu <strong>non</strong> vede la cache, si comporta come se questa non ci fosse.</p>
+
+<p><strong>Read</strong></p>
+
+<p>la cpu richiede l'invio di un dato:</p>
+
+<ol>
+<li>Cpu invia in uscita l'indirizzo (di ram) del dato che necessita.</li>
+<li>La cache riceve questo indirizzo.</li>
+<li>Controlla se contiene il dato mappato con quell'indirizzo.</li>
+<li>Se lo contiene lo invia alla cpu.</li>
+<li>Se non lo contiene si fa inviare il dato dalla ram e poi lo invia alla cpu.</li>
+</ol>
+
+
+<p><strong>Write</strong></p>
+
+<p>NB: non implica che il dato debba essere salvato in ram.</p>
+
+<p>NB: salvare un dato bisogna specificare l'indirizzo in cui questo deve essere salvato.</p>
+
+<ol>
+<li>Cpu invia in uscita il dato da salvare e l'indirizzo che identifica la locazione di memoria in cui salvarlo.</li>
+<li>la cache riceve questo indirizzo.</li>
+<li>controlla se ha mappato l'indirizzo.</li>
+<li>se lo contiene scrive il dato della cpu in quell'indirizzo mappato.</li>
+<li>se non lo contiene mappa quell'indirizzo (aka si fa mandare il dato dalla ram) e sovrascrive il contenuto.</li>
+<li>setta il <strong>dirty bit</strong> a 1.</li>
+</ol>
+
+
+<p>NB: dirty bit viene spiegato più avanti, di base comunque è solo un bit associato ad ogni indirizzo mappato.</p>
+
+<h3>Consistenza dei dati</h3>
+
+<p>Il problema che la write va a creare è che il dato non è necessariamente scritto in ram, ma viene scritto solo in cache.
+Si ha quindi che:
+1. la cache (che dovrebbe contenere i dati della ram), contiene invece dati diversi.
+2. non si sa quali dati siano diversi.</p>
+
+<p><strong>soluzione 1)</strong>
+di base ad ogni indirizzo mappato si associa un dirty bit che fornisce informazioni sulla consistenza dei dati.
+* dirty bit = 0 &ndash;> il dato della cache è uguale a quello in ram
+* dirty bit = 1 &ndash;> il dato in cache è stato modificato</p>
+
+<p><strong>soluzione 2)</strong>
+di base si deve decidere come aggiornare i dati della ram con quelli della cache.
+si hanno 2 politiche di scrittura:
+* write through &ndash;> se un dirty bit viene settato a 1 si scrive subito il dato anche in ram (crea traffico nei bus)
+* write back &ndash;> se un dirty bit viene settato a 1 non si fa nulla, si scrive in ram solo se la cache deve rimuovere l'indirizzo mappato</p>
+
+<h4><strong>confronto tra le due politiche</strong></h4>
+
+<p><strong>write through</strong></p>
+
+<ul>
+<li>pro: sicuro al 100% che i dati in ram non saranno MAI diversi da quelli in cache</li>
+<li>contro: se si pensa ad un loop che sovrascrive sempre lo stesso dato si fanno tantissimi accessi in ram che rallentano le prestazioni e creano traffico</li>
+</ul>
+
+
+<p><strong>write back</strong>
+* pro: risolve il problema del loop, infatti con il write back si va a scrivere solo il dato quando questo sta per essere rimosso
+* contro: crea periodi di incosistenza che possono generare errori</p>

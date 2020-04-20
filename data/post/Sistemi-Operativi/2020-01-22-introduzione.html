@@ -1,0 +1,82 @@
+<hr />
+
+<p>layout: post
+title: Introduzione ai sistemi Operativi
+date: 2020-01-22 1:1:01
+tag:
+cover: &ldquo;https://media.geeksforgeeks.org/wp-content/uploads/cache.png&rdquo;
+section: &ldquo;Sistemi Operativi&rdquo;</p>
+
+<h2>author: Diego Stafa</h2>
+
+<h2>cenni storici</h2>
+
+<p>di base i computer calcolavano e basta (batch system)</p>
+
+<p>programmi &ndash;> batch &ndash;> schede perforate</p>
+
+<p>operazioni di input/output venivano fatte a parte, non simultaneamente all'esecuzione di un programma</p>
+
+<p>spooling &ndash;> possibilitò di eseguire IO simultaneamente all'esecuzione di un programma</p>
+
+<h2>sistemi operativi</h2>
+
+<p>sistema operativo &ndash;> nasce con i nuovi linguaggi di programmazione, astrazione dell'assembler, cioè elimina i particolari di microprogrammazione al programmatore</p>
+
+<p>il sistema operativo risiede
+* completamente in ROM &ndash;> in sistemi industriali/dedicati
+* completamente in HDD + bootstrap loader in ROM &ndash;> all'avvio il bootstrap loader carica il SO dall'HDD in RAM</p>
+
+<h2>Processi</h2>
+
+<p>processo &ndash;> programma in esecuzione</p>
+
+<p>definiti come:
+* insieme di stati (ready, waiting &hellip;)
+* insieme di azioni (read, write &hellip;)</p>
+
+<p>divisione per privilegi:
+* processi utente
+* processi SO</p>
+
+<p>possono anche essere divisi in:
+* cpu bound &ndash;> se la loro esecuzione è principalente in cpu
+* I/O bound &ndash;> se la loro esecuzione presenta molte operazioni di I/O</p>
+
+<h2>Kernel</h2>
+
+<p>il kernel di base è un programma che deve
+* monitorare lo stato dei processi
+* fare lo scheduling
+* gestire gli eventi (interrupt, altri eventi &hellip;)
+* offrire un sistema di communicazione tra processi</p>
+
+<p>per gestire i processi si fa uso della proccess table, un processo è definito dal suo process control block, che ne definisce, lo stato, l'id, il process status word &hellip;</p>
+
+<p>il rilascio della cpu da parte di un processo può essere implementato in 2 modi:
+* scambio cooperativo &ndash;> il processo decide quando lasciare la risorsa
+* scambio a prerilascio &ndash;> il sistema operativo di occupa di implementare una politica di scheduling</p>
+
+<p><strong>Scheduler</strong> &ndash;> programma che ordina una lista di processi in stato di ready secondo una determinata politica, definisce quindi il periodo di esecuzione dei processi</p>
+
+<p><strong>Dispatcher</strong> &ndash;> programma che si occupa dello scambio di 2 processi, contiene quindi le operazioni per effettuare il context switch e altra roba</p>
+
+<h2>Risorse</h2>
+
+<p>una risorsa è qualsiasi cosa hardware e software necessaria ad un processo per una qualsiasi cosa tra:
+* creazione
+* esecuzione
+* terminazione</p>
+
+<p>le risorse possono essere
+* durabili/consumabili
+* divisibili &ndash;> definisce quanti accessi simultanei la risorsa consente
+* molteplici &ndash;> definisce quante istanze della risorsa sono disponibili</p>
+
+<p>la più importante e indispensabile risorsa di ogni processo è la cpu, questa può essere vista come una normale cpu dal lato fisico (senza astrazioni), oppure come una macchina virtuale dal lato logico.</p>
+
+<p>la memoria è un'altra particolare risorsa che
+* in scrittura &ndash;> accesso indivisibile
+* in lettura &ndash;> accesso multiplo</p>
+
+<p>l'accesso logico di una risorsa presenta un'interfaccia uniforme, quello fisico necessita del bios relativo</p>
