@@ -1,0 +1,36 @@
+.post-wrapper{
+    display: flex;
+    flex-direction: column;
+    padding: 0 8%;
+    transition: 0.2s ease;
+}
+
+.post-info {
+    border-radius:10px;
+    background-color:#091a25;
+    color:#eff0f1;
+    margin:2% 0;
+    list-style:none;
+    padding:10px;
+}
+
+.post-info > li{
+    line-height:1.5;
+}
+
+.post{
+    font-size:15px;
+    line-height:1.5;
+    background-color:white;
+    color:#0c0e13;
+
+    padding:0 15px;
+    border-radius:10px;
+
+}
+
+@media only screen and (max-width: 600px) {
+    .post-wrapper{
+        padding:0;
+        }
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info">
+            <li>
+                Title:
+            </li>
+            <li>
+                Author: Diego Stafa
+            </li>
+            <li>
+                Date:
+            </li>
+        </ul>
+        <div class="post"><p>Il linguaggio macchina è l'insieme delle istruzione che la cpu può eseguire, un'istruzione è una sequenza di bit che compie una delle seguenti azioni:</p>
+
+<ul>
+<li>elaborazione dati &ndash;> add, sub, rtl &hellip;</li>
+<li>salvataggio dati &ndash;> store</li>
+<li>trasferimento dati I/O &ndash;> read, write</li>
+<li>controllo del flusso di esecuzione &ndash;> jump, jmpz &hellip;</li>
+</ul>
+
+
+<p>un istruzione ideale richiederebbe i campi per:
+* codice operativo &ndash;> identiica il tipo di istruzione
+* operando risultato
+* tutti gli operandi per l'istruzione
+* indirizzo per l'istruzione successiva</p>
+
+<p>ciò però è molto dispendioso, perciò solitamente si hanno solo codice operativo (necessario), operando 1 e operando 2 (alle volte anche operando 3)</p>
+
+<h3>istruzioni con 0 operandi</h3>
+
+<p>sono istruzioni che utilizzano il concetto di pila, perciò non necessitano di registri che contengano gli operandi (tranne per la pila ovviamente)</p>
+
+<p>un operazione che utilizza 2 operandi utilizza quelli in cima alla pila, esegue l'operazione e salva il risultato in cima (dopo aver rimosso i 2 operandi usati)</p>
+
+<h3>istruzioni con 1 operando</h3>
+
+<p>sono istruzioni che utilizzano un registro implicito, l'accumulatore, come operando risultato, ogni operazione viene eseguita con il contenuto dell'accumulatore e l'operando indicato e salvato sull'accumulatore.</p>
+
+<p>istruzioni con pochi operandi:
+* pro &ndash;> sono semplici, la cpu lavora meno
+* contro &ndash;> per eseguire complesse sono necessarie molte istruzioni</p>
+
+<h2><strong>linguaggio Assembly</strong></h2>
+
+<p>di base è un linguaggio simbolico che mappa ogni codice operativo (in bit) in un codice mnemonico umano, necessita di un assemblatore che traduca il linguaggio mnemonico in macchina per la cpu.</p>
+
+<h3>Indirizzamento degli operandi</h3>
+
+<ul>
+<li>immediato &ndash;> l'operando è parte dell'istruzione</li>
+<li>diretto &ndash;> l'operando è nell'indirizzo specificato nell'istruzione</li>
+<li>indiretto &ndash;> viene specificato l'indirizzo (in memoria) dell'indirizzo (in memoria) che contiene l'operando</li>
+<li>a registro &ndash;> si specifica il nome del registro</li>
+<li>a registro indiretto &ndash;> viene specificato l'indirizzo (nel registro) dell'indirizzo (in memoria) che contiene l'operando</li>
+<li>a spiazzamento &ndash;> metà campo indica un indirizzo, l'altra metà è un offset da sommare</li>
+<li>relativo &ndash;> si somma il valore del campo a program counter</li>
+</ul>
+
+</div>
+</div>
+</body>
+
+</html>

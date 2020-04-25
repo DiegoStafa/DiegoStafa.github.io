@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info">
+            <li>
+                Title:
+            </li>
+            <li>
+                Author: Diego Stafa
+            </li>
+            <li>
+                Date:
+            </li>
+        </ul>
+        <div class="post"><h3><strong>successione convergente a 0</strong></h3>
+
+<p>una successione si dice convergente a 0 se:
+* <strong>lim a<sub>n</sub> -> 0</strong></p>
+
+<p>cioè:</p>
+
+<ul>
+<li>∀ epsilon > 0  ∃  n<sub>0</sub> : ∀ n ≥ n<sub>0</sub>  si ha che  |a<sub>n</sub>| ≤ epsilon</li>
+</ul>
+
+
+<p>si legge: per ogni epsilon maggiore di 0, esiste un n<sub>0</sub> tale per cui: per ogni n maggiore o uguale a n<sub>0</sub> si ha che il valore assoluto della successione è minore di epsilon</p>
+
+<p><br></p>
+
+<h3><strong>successione divergente a + infinito</strong></h3>
+
+<p>una successione si dice divergente a + infinito se:</p>
+
+<ul>
+<li><strong>lim a<sub>n</sub> -> +inf</strong></li>
+</ul>
+
+
+<p>cioè:</p>
+
+<ul>
+<li>∀ M > 0  ∃  n<sub>0</sub> : ∀ n ≥ n<sub>0</sub>  si ha che  a<sub>n</sub> ≥ M</li>
+</ul>
+
+
+<p>si legge: per ogni &rsquo;M' maggiore di 0, esiste un n<sub>0</sub> tale per cui: per ogni n maggiore o uguale a n<sub>0</sub> si ha che la successione è maggiore di &rsquo;M'</p>
+
+<p><br></p>
+
+<h3><strong>successione convergente a L</strong></h3>
+
+<p>una successione si dice convergente a L se:</p>
+
+<ul>
+<li><strong>lim a<sub>n</sub> - L -> 0</strong></li>
+</ul>
+
+
+<p>cioè:</p>
+
+<ul>
+<li>∀ epsilon > 0  ∃  n<sub>0</sub> : ∀ n ≥ n<sub>0</sub>  si ha che  |a<sub>n</sub> - L| ≤ epsilon</li>
+</ul>
+
+
+<p>e si indica con <strong>lim a<sub>n</sub> -> L</strong></p>
+
+<p>si legge: per ogni epsilon maggiore di 0, esiste un n<sub>0</sub> tale per cui: per ogni n maggiore o uguale a n<sub>0</sub> si ha che il valore assoluto della successione meno &lsquo;L&rsquo; è minore di epsilon
+<br></p>
+
+<h4><strong>proprietà successioni convergenti/divergenti (1)</strong></h4>
+
+<p><strong>ipotesi</strong>:
+* lim a<sub>n</sub> -> +inf</p>
+
+<p><strong>tesi</strong>:
+* lim 1/(a<sub>n</sub>) -> 0</p>
+
+<p><br></p>
+
+<h4><strong>proprietà successioni convergenti/divergenti (2)</strong></h4>
+
+<p><strong>ipotesi</strong>:
+* lim a<sub>n</sub> -> 0</p>
+
+<p><strong>tesi</strong>:
+* lim |(a<sub>n</sub>| -> 0</p>
+
+<p><br></p>
+
+<h4><strong>proprietà successioni convergenti/divergenti (3)</strong></h4>
+
+<p><strong>ipotesi</strong>:
+* lim -a<sub>n</sub> -> +inf</p>
+
+<p><strong>tesi</strong>:
+* lim  a<sub>n</sub> -> -inf</p>
+
+<p><br></p>
+
+<h4><strong>proprietà successioni convergenti/divergenti (4)</strong></h4>
+
+<p><strong>ipotesi</strong>:
+* |a<sub>n</sub>| ≤ M
+* lim b<sub>n</sub> -> 0</p>
+
+<p><strong>tesi</strong>:
+* lim  a<sub>n</sub> * b<sub>n</sub> -> 0</p>
+
+<p><br></p>
+
+<h4><strong>Aritmetica dei limiti</strong></h4>
+
+<p><strong>ipotesi</strong>:
+* lim a<sub>n</sub> -> A
+* lim b<sub>n</sub> -> B</p>
+
+<p><strong>tesi</strong>:
+* lim  a<sub>n</sub> + b<sub>n</sub> -> A + B
+* lim  a<sub>n</sub> - b<sub>n</sub> -> A - B
+* lim  a<sub>n</sub> * b<sub>n</sub> -> A * B
+* lim  a<sub>n</sub> / b<sub>n</sub> -> A / B</p>
+
+<p><br></p>
+
+<h4><strong>Criterio del rapporto</strong></h4>
+
+<p><strong>ipotesi</strong>:
+* a<sub>n</sub> ≥ 0
+* lim a<sub>n+1</sub> / a<sub>n</sub>  -> L</p>
+
+<p><strong>tesi</strong>:
+* se L > 1 allora lim a<sub>n</sub> -> +inf
+* se L &lt; 1 allora lim a<sub>n</sub> -> 0
+* L = 1 non da informazioni</p>
+</div>
+</div>
+</body>
+
+</html>
