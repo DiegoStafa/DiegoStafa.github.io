@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info">
+            <li>
+                Title: Introduzione ai tipi
+            </li>
+            <li>
+                Author: Diego Stafa
+            </li>
+            <li>
+                Date: 28 Aprile 2020
+            </li>
+        </ul>
+        <div class="post">
+            <h3 id="tipi">tipi</h3>
+            <ul>
+                <li>predefiniti</li>
+                <li>compound</li>
+            </ul>
+            <h4 id="predefiniti">predefiniti</h4>
+            <p>sono i tipi base definiti dal linguaggio.
+                specificano spazio in memoria occupato e operazioni eseguibili su di essi.
+                si dividono in:</p>
+            <ul>
+                <li>interi<ul>
+                        <li>bool --&gt; 1 byte</li>
+                        <li>char --&gt; 1 byte </li>
+                        <li>int --&gt; 4 byte</li>
+                    </ul>
+                </li>
+                <li>reali<ul>
+                        <li>float --&gt; 4 byte</li>
+                        <li>double --&gt; 8 byte</li>
+                    </ul>
+                </li>
+                <li>void</li>
+            </ul>
+            <p><strong>interi</strong></p>
+            <p>sono rappresentati in complemento a 2, diversi operatori sono sovraccaricati per attribuire un
+                significato diverso per ciascuno, i char corrispondono ai 255 caratteri dello standard ASCII.</p>
+            <p><strong>reali</strong></p>
+            <p>sono rappresentati in virgola mobile, rispettivamente a singola e doppia precisione.</p>
+            <p><strong>void</strong></p>
+            <p>non sono rappresentati, in quanto il void specifica l&#39;assenza di dato, non è possibile creare
+                variabili void.</p>
+            <h4 id="compounds">compounds</h4>
+            <p>di base tipi creati da altri tipi</p>
+            <ul>
+                <li>puntatore --&gt; rappresenta un indirizzo di memoria</li>
+                <li>riferimento --&gt; rappresenta una variabile già esistente</li>
+                <li>funzione --&gt; prappresenta una funzione</li>
+                <li>array --&gt; rappresenta un insieme omogeneo di elementi</li>
+                <li>struttura --&gt; rappresenta un insieme eterogeneo di elementi (pubblici di default)</li>
+                <li>classe --&gt; rappresenta un insieme eterogeneo di elementi (privati di default)</li>
+                <li>union --&gt; è una classe che contiene un unico elemento a runtime</li>
+            </ul>
+            <p><strong>puntatori</strong></p>
+            <p>di base sono variabile che contengono l&#39;indirizzo di un altro oggetto</p>
+            <ul>
+                <li>operatore &amp; --&gt; ritorna l&#39;indirizzo di un oggetto in memoria</li>
+                <li>operatore * --&gt; accede all&#39;indirizzo che contiene il puntatore
+                    (dereferenziazione/indirettezza)</li>
+            </ul>
+            <p>essendo una variabile ogni punatore può modificare il suo contenuto, attraverso un&#39;assegnazione
+                oppure con l&#39;aritmetica dei puntatori.</p>
+            <p><strong>aritmetica dei puntaori</strong></p>
+            <p>di base un operazione del tipo</p>
+            <ul>
+                <li>indirizzo + intero</li>
+            </ul>
+            <p>viene risolta in: </p>
+            <ul>
+                <li>indirizzo + intero*sizeof(T)</li>
+            </ul>
+            <p>dove T corrisponde al tipo puntato dall&#39;indirizzo.</p>
+            <p><strong>riferimenti</strong></p>
+            <p>sono solo nomi alternativi a variabili esistenti, passare una variabile per riferimento in verita
+                significa condividere una variabile con la funzione chimata e non passare nulla. </p>
+            <p>nb: in verità i riferimenti sono implementati attraverso puntatori, ma la logica di funzionamento è
+                quella sopra, e trattarli come puntatori è sbagliato.</p>
+            <p><strong>funzioni</strong></p>
+            <p>il tipo funzione, da nome, rappresenta il tipo di una funzione, indicato come: T (t1, t2, t3 ...), cioè
+                il tipo di ritorno più i tipi dei parametri formali, il tipo di una funzione è utile per implementare i
+                puntatori a funzione, il puntatore ha tipo T (*)(t1, t2, t3 ...).
+                sta cosa permette di definire una variabile che funge da funzione, oppure di passare callbacks.</p>
+            <p>nb: callbacks sono funzioni passate ad altre funzioni come parametro.</p>
+            <p><strong>array</strong></p>
+            <p>il tipo array specifica un insieme di n elementi dello stesso tipo, indicato come T [n], determina quindi
+                una zona contigua di memoria di n*sizeof(T) byte, l&#39;array è un tipo speciale in quanto, in ogni
+                espressione decade in un puntatore a T, tranne in 3 casi:</p>
+            <ul>
+                <li>quando si utlizza l&#39;operatore &amp;</li>
+                <li>quando l&#39;array è argomento della funzione sizeof()</li>
+                <li>quando l&#39;array è un string literal, aka una stringa definita nel codice sorgente</li>
+            </ul>
+            <p>tipi struttura, classe e unione sono trattati in altri post.</p>
+
+        </div>
+    </div>
+</body>
+
+</html>

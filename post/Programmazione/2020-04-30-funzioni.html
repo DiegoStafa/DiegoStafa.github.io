@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info">
+            <li>
+                Title: Introduzione alle funzioni
+            </li>
+            <li>
+                Author: Diego Stafa
+            </li>
+            <li>
+                Date: 30 Aprile 2020
+            </li>
+        </ul>
+        <div class="post">
+            <p><strong>funzioni</strong></p>
+            <p>sono blocchi di codice richiamabili nel programma attraverso un identificativo, una funzione è definita
+                da 3 parti:</p>
+            <ul>
+                <li>tipo di ritorno</li>
+                <li>nome</li>
+                <li>parametri formali/parametri attuali</li>
+            </ul>
+            <p>i parametri formali definiscono ciò che la funzione si aspetta.
+                i parametri attuali sono i valori/variabili passati durante la chiamata.</p>
+            <p>il passagio dei parametri può avvenire in 3 modalità:</p>
+            <ul>
+                <li>per valore (modalità di default)</li>
+                <li>per riferimento</li>
+                <li>per puntatore</li>
+            </ul>
+            <p><strong>per valore</strong></p>
+            <p>la funzione dichiara la variabile la inizializza con l&#39;R valore del paramentro attuale</p>
+            <p><strong>per riferimento</strong></p>
+            <p>la funzione non dichiara nulla, viene creato un alias del parametro attuale con il nome del parametro
+                formale.</p>
+            <p><strong>per puntatore</strong></p>
+            <p>uguale al passaggio per valore, ma essendo un puntatore le modifiche persistono all&#39;uscita della
+                funzione</p>
+            <p><strong>valori di ritorno</strong></p>
+            <p>di base una funzione può ritornare:</p>
+            <ul>
+                <li>un l value</li>
+                <li>un r value</li>
+            </ul>
+            <p>per ritornare un l value è necessario indicare un reference type come tipo di ritorno, ritornare un r
+                value significa non ritornare un l value, cioè basta che non ci sia la &#39;&amp;&#39; nel tipo.</p>
+            <p>di base si può ritornare un l value solo se questo è stato definito globalmente o nel chiamante,
+                altrimenti, se definito allìinterno della funzione, siccome lo scope delle variabile termina al termine
+                della funzione, si rischia di ritornare una dangling reference.</p>
+            <p>ritornare un l value permette di utilizzare la funzione come variabile</p>
+            <p><strong>firma della funzione</strong></p>
+            <p>ogni funzione è identificata da 2 parti, il nome e i parametri formali, queste 2 cose insieme prendono il
+                nome di firma della funzione.</p>
+            <p><strong>overloading delle funzioni</strong></p>
+            <p>consiste nel creare più funzioni con lo stesso nome ma parametri formali diversi, consente di avere un
+                certa generalità nel programma.</p>
+            <p>quando il compilatore si imbatte nella chiamata di una funzione sovraccaricata chiamerà la funzione che
+                più si avvicina ai parametri attuali utilizzati, utilizzando la tabella delle promozioni dei tipi.</p>
+        </div>
+    </div>
+</body>
+
+</html>
