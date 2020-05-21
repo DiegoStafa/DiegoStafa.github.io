@@ -11,39 +11,65 @@ si dice che a congruo b modulo n se n \| (a-b)
 
 nb: a è congruo a b mod n, sse a/n e b/n hanno stesso resto
 
-**classi di confruenza**
+**risoluzione di una congruenza lineare**
 
-dato un numero a e un modulo n, si definisce classe di congruenza \[a\]<sub>n</sub> come insieme di tutti gli interi congrui ad a mod n.
+tutte le soluzioni di una congruenza lineare, se ci sono, sono del tipo:
+* x<sub>0</sub> = i\*q
 
-nb: l'insieme dei valori (chiamati rappresentanti) deila classe di confruenza è individuato dalla formula: a + nk con k appartenente agli interi
+dove:
+* q = b / d
+* d = ia + jb --> trovi i con bezout
+
+
+### classi di confruenza
+
+di base la classe di congruenza è l'insieme di tutti gli interi che soddisfano una congruenza.
+
+gli elementi (detti rappresentanti) deila classe di confruenza sono individuati dalla formula:
+* a + nk con k intero
+
+cioè \[a\]<sub>n</sub> == a + nk
 
 **proprietà**
 
-* \[a\]<sub>n</sub> == \[a + kn\]<sub>n</sub>
-* se c è un rappresentate della classe allora \[a\]<sub>n</sub> == \[c\]<sub>n</sub>
+* \[a\]<sub>n</sub> e x = a mod n sono uguali, per definizione di classe di congruenza
+* \[a\]<sub>n</sub> e \[a + kn\]<sub>n</sub> sono uguali, provare per credere
+* \[a\]<sub>n</sub> e \[c\]<sub>n</sub> sono uguali se c è un rappresentante della classe \[a\]<sub>n</sub>
+* \[a\]<sub>n</sub> e \[r\]<sub>n</sub> sono uguali (r è il resto ottenuto da a/n)
 
-### Congruenze lineari
+**operazioni**
 
-sono equzioni della forma ax congruo b mod n.
+* \[a\]<sub>n</sub> + \[b\]<sub>n</sub> == \[a+b\]<sub>n</sub> // uguale per il prodotto
 
-nb: se x0 è soluzione, la classe \[x0\]<sub>n</sub> è soluzione
-nb: non tutte le congruenze lineari hanno soluzione.
 
-**risoluzione congruenze lineari**
+### sistemi di congruenze
 
-ax = b mod n
+di base sistemi di congruenze lineari in cui bisogna trovare le soluzioni comuni
 
-* d = mcd(a,n)
-* se d non divide b allora non ha soluzioni
-* se d divide b allora ha infinite soluzioni
-    - le soluzioni di dividono in d classi di congruenza
-    - si trova una soluzione x0
+**teorema cinese dei resti**
 
-2x = 10 mod 12
+di base serve a sapere se un sistema ha soluzioni
 
-d = mcd (2,12) --> 2
+il sistema ha soluzioni se:
+* ogni equazione è scritta nella forma x = a mod n
+* i moduli di tutte le equazioni sono coprimi
 
-soluzioni in 2 classi di congruenza
+**metodo risolutivo di newton**
 
-cerco un x0 soluzione di 2x = 10 mod 12
-per farlo scrivo d come d = ia + jn, cioè: 2 = i2 + j12
+per risolvere il sistema:
+1. trovo x1 tale che x = b1 mod n1 (soluzione banale b1)
+2. trovo x2 = x1 + t2\*n1 tale che x1 + t2*n1 = b2 mod n2
+3. trovo x3 = x2 + t3\*n1\*n2 tale che x2 + t3\*n1\*n2 = b3 mod n3
+
+le soluzioni del sistema sono \[x3\]<sub>n1\*n2\*n3</sub>
+
+**metodo risolutivo di lagrange**
+
+di base non c'è da fare nulla, la soluzione è data da: \[z\]<sub>n1\*n2</sub>, con:
+* z = b1\*a1\*n1 + b2\*a2\*n2
+
+**semplificazione di sistemi di congruenze**
+
+per semplificare sistemi di congruenze che non rispettano le condizione del teorema cinese:
+* si risolve la congruneza lineare trovando una classe di congruenza
+* si scrive la classe di congruenza al posto della congruenza nel sistema

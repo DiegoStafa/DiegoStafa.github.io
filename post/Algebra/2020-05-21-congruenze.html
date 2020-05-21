@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info">
+            <li>
+                Title:
+            </li>
+            <li>
+                Section:
+            </li>
+            <li>
+                Author: Diego Stafa
+            </li>
+            <li>
+                Date:
+            </li>
+        </ul>
+        <div class="post"><h3 id="congreuenze">Congreuenze</h3>
+<p>si dice che a congruo b modulo n se n | (a-b)</p>
+<p><strong>proprietà</strong></p>
+<ul>
+<li>la congruenza è riflessiva, a è congruo a se stesso modulo n</li>
+<li>la congruenza è simmetrica, b è congruo a a modulo n</li>
+<li>la congruenza è transitiva, a è congruo a b, e b è congruo a c, allora a è congru a  (tutto modulo n)</li>
+<li>se a congruo a b e c congruo a d allora a+c è congruo a b+d</li>
+</ul>
+<p>nb: a è congruo a b mod n, sse a/n e b/n hanno stesso resto</p>
+<p><strong>risoluzione di una congruenza lineare</strong></p>
+<p>tutte le soluzioni di una congruenza lineare, se ci sono, sono del tipo:</p>
+<ul>
+<li>x<sub>0</sub> = i*q</li>
+</ul>
+<p>dove:</p>
+<ul>
+<li>q = b / d</li>
+<li>d = ia + jb --&gt; trovi i con bezout</li>
+</ul>
+<h3 id="classi-di-confruenza">classi di confruenza</h3>
+<p>di base la classe di congruenza è l&#39;insieme di tutti gli interi che soddisfano una congruenza.</p>
+<p>gli elementi (detti rappresentanti) deila classe di confruenza sono individuati dalla formula:</p>
+<ul>
+<li>a + nk con k intero</li>
+</ul>
+<p>cioè [a]<sub>n</sub> == a + nk</p>
+<p><strong>proprietà</strong></p>
+<ul>
+<li>[a]<sub>n</sub> e x = a mod n sono uguali, per definizione di classe di congruenza</li>
+<li>[a]<sub>n</sub> e [a + kn]<sub>n</sub> sono uguali, provare per credere</li>
+<li>[a]<sub>n</sub> e [c]<sub>n</sub> sono uguali se c è un rappresentante della classe [a]<sub>n</sub></li>
+<li>[a]<sub>n</sub> e [r]<sub>n</sub> sono uguali (r è il resto ottenuto da a/n)</li>
+</ul>
+<p><strong>operazioni</strong></p>
+<ul>
+<li>[a]<sub>n</sub> + [b]<sub>n</sub> == [a+b]<sub>n</sub> // uguale per il prodotto</li>
+</ul>
+<h3 id="sistemi-di-congruenze">sistemi di congruenze</h3>
+<p>di base sistemi di congruenze lineari in cui bisogna trovare le soluzioni comuni</p>
+<p><strong>teorema cinese dei resti</strong></p>
+<p>di base serve a sapere se un sistema ha soluzioni</p>
+<p>il sistema ha soluzioni se:</p>
+<ul>
+<li>ogni equazione è scritta nella forma x = a mod n</li>
+<li>i moduli di tutte le equazioni sono coprimi</li>
+</ul>
+<p><strong>metodo risolutivo di newton</strong></p>
+<p>per risolvere il sistema:</p>
+<ol>
+<li>trovo x1 tale che x = b1 mod n1 (soluzione banale b1)</li>
+<li>trovo x2 = x1 + t2*n1 tale che x1 + t2*n1 = b2 mod n2</li>
+<li>trovo x3 = x2 + t3*n1*n2 tale che x2 + t3*n1*n2 = b3 mod n3</li>
+</ol>
+<p>le soluzioni del sistema sono [x3]<sub>n1*n2*n3</sub></p>
+<p><strong>metodo risolutivo di lagrange</strong></p>
+<p>di base non c&#39;è da fare nulla, la soluzione è data da: [z]<sub>n1*n2</sub>, con:</p>
+<ul>
+<li>z = b1*a1*n1 + b2*a2*n2</li>
+</ul>
+<p><strong>semplificazione di sistemi di congruenze</strong></p>
+<p>per semplificare sistemi di congruenze che non rispettano le condizione del teorema cinese:</p>
+<ul>
+<li>si risolve la congruneza lineare trovando una classe di congruenza</li>
+<li>si scrive la classe di congruenza al posto della congruenza nel sistema</li>
+</ul>
+
+        </div>
+    </div>
+</body>
+
+</html>

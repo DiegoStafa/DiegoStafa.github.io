@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info">
+            <li>
+                Title:
+            </li>
+            <li>
+                Section:
+            </li>
+            <li>
+                Author: Diego Stafa
+            </li>
+            <li>
+                Date:
+            </li>
+        </ul>
+        <div class="post"><h3 id="mcd-in-n-e-z">MCD in N e Z</h3>
+<p>in N l&#39;mcd è unico.
+in Z mcd(a,b) == mcd(-a,b) == mcd(a,-b) == mcd(-a,-b).</p>
+<p><strong>conseguenze</strong></p>
+<ul>
+<li>mcd(a,b) e b|a --&gt; mcd = b</li>
+<li>mcd(0,b) == b</li>
+<li>a = bq + r --&gt; mcd(a,b) == mcd(b,r)</li>
+</ul>
+<p><strong>calcolo MCD in N (algoritmo di euclide)</strong></p>
+<p>function mcd(a,b)</p>
+<ul>
+<li>a/b --&gt; a = bq + r <ul>
+<li>se r == 0, return b</li>
+<li>se r != 0, call mcd(b,r)</li>
+</ul>
+</li>
+</ul>
+<p><strong>calcolo MCD in Z</strong></p>
+<p>ci sono 2 modi:</p>
+<ul>
+<li>algoritmo di euclide con i valori assoluti (più facile)</li>
+<li>algoritmo di euclide utilizzando la divisione in Z</li>
+</ul>
+<p><strong>identità di Bezout</strong></p>
+<p>di base roba dei corsi di matematica, ai + bj = d, bisogna trovare i,j:</p>
+<ul>
+<li>mcd di euclide con di a,b</li>
+<li>ricavi d</li>
+<li>scrivi i prodotti a ritroso</li>
+<li>ricavi i,j</li>
+</ul>
+
+        </div>
+    </div>
+</body>
+
+</html>

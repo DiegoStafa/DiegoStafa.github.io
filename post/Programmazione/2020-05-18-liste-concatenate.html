@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info">
+            <li>
+                Title:
+            </li>
+            <li>
+                Author: Diego Stafa
+            </li>
+            <li>
+                Date:
+            </li>
+        </ul>
+        <div class="post"><h3 id="liste-concatenate">Liste concatenate</h3>
+<p>di base sono strutture dati ricorsive.</p>
+<ul>
+<li>caso base --&gt; lista vuota</li>
+<li>caso ricorsivo --&gt; un elemento seguito dal resto della lista</li>
+</ul>
+<p>le liste concatenate vengono implementate attraverso una struttura nodo, del tipo:</p>
+<pre><code class="language-c++">struct nodo{
+    int info;
+    nodo* next;
+
+    nodo(int i, nodo* n)
+    {
+        info = i;
+        nodo = n;
+    }
+}</code></pre>
+<p>di base un nodo è una struttura dati che contiene un valore informativo ed un puntatore ad un nodo successivo.</p>
+<p>una lista è quindi <strong>un puntatore nodo*</strong>, allocato sullo stack, che punta ad un nodo allocato sull&#39;heap</p>
+<pre><code class="language-c++">nodo* lista = NULL; // crea una lista vuota
+
+lista = new nodo(0, NULL); // la lista ora punta ad un nodo
+lista-&gt;next = new nodo(1, NULL); //il primo elemento ora punta al secondo elemento
+lista-&gt;next-&gt;next = new nodo(1, NULL); // il secondo punta al terzo e così via</code></pre>
+<p><strong>liste ben formate</strong></p>
+<p>una lista è ben formata/corretta se:</p>
+<ul>
+<li>se il nodo* punta a NULL</li>
+<li>se il nodo* punta ad una lista ben formata</li>
+</ul>
+<p>di base una lista ben formata è quindi una lista di nodi, posibilmente vuota, il cui ultimo elemento punta a NULL</p>
+<h3 id="operazioni-sulle-liste">Operazioni sulle liste</h3>
+<p>di base sono le operazioni base che una lista deve implementare:</p>
+<ul>
+<li>creazione di una lista di n nodi</li>
+<li>distruzione di una lista</li>
+<li>stampa degli elementi</li>
+<li>ricerca di un elemento</li>
+<li>push</li>
+<li>pop</li>
+<li>ritornare la linghezza</li>
+<li>concatenazione di 2 liste</li>
+</ul>
+
+        </div>
+    </div>
+</body>
+
+</html>

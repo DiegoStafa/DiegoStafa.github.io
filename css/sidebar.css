@@ -3,7 +3,7 @@
   background-color: rgb(24, 34, 38);
   transition: 0.3s ease-in-out;
   height: 100%;
-  width: 0;
+  width:0;
   position: fixed;
   top: 0;
   left: 0;
@@ -16,7 +16,6 @@
   color: #8b8b8b;
   transition: 0.3s ease-in-out;
   line-height: 2;
-  margin: 0;
   text-align: center;
   cursor: pointer;
   text-transform: uppercase;
@@ -26,7 +25,6 @@
 }
 
 .sidebar-content {
-  margin: 0;
   height: 100%;
   transition: inherit;
   overflow-x: hidden;
@@ -55,6 +53,7 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  transition: 0.15s;
 }
 
 .sidebar-close:hover {
