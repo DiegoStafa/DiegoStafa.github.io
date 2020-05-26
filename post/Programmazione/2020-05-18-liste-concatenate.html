@@ -26,7 +26,7 @@
                 Title:
             </li>
             <li>
-                Author: Diego Stafa
+                Section:
             </li>
             <li>
                 Date:
@@ -51,11 +51,17 @@
 }</code></pre>
 <p>di base un nodo è una struttura dati che contiene un valore informativo ed un puntatore ad un nodo successivo.</p>
 <p>una lista è quindi <strong>un puntatore nodo*</strong>, allocato sullo stack, che punta ad un nodo allocato sull&#39;heap</p>
-<pre><code class="language-c++">nodo* lista = NULL; // crea una lista vuota
+<pre><code class="language-c++">// crea una lista vuota
+nodo* lista = NULL; 
 
-lista = new nodo(0, NULL); // la lista ora punta ad un nodo
-lista-&gt;next = new nodo(1, NULL); //il primo elemento ora punta al secondo elemento
-lista-&gt;next-&gt;next = new nodo(1, NULL); // il secondo punta al terzo e così via</code></pre>
+// la lista ora punta ad un nodo
+lista = new nodo(0, NULL);
+
+//il primo elemento ora punta al secondo elemento
+lista-&gt;next = new nodo(1, NULL); 
+
+// il secondo punta al terzo e così via
+lista-&gt;next-&gt;next = new nodo(1, NULL); </code></pre>
 <p><strong>liste ben formate</strong></p>
 <p>una lista è ben formata/corretta se:</p>
 <ul>
@@ -70,10 +76,12 @@ lista-&gt;next-&gt;next = new nodo(1, NULL); // il secondo punta al terzo e cos�
 <li>distruzione di una lista</li>
 <li>stampa degli elementi</li>
 <li>ricerca di un elemento</li>
+<li>inserimento di un elemento in una data posizione</li>
 <li>push</li>
 <li>pop</li>
-<li>ritornare la linghezza</li>
+<li>ritornare la lunghezza</li>
 <li>concatenazione di 2 liste</li>
+<li>inversione della lista</li>
 </ul>
 
         </div>

@@ -10,5 +10,5 @@ function closeSidebar()
 
 function toggle(caller)
 {
-    $(caller).next().slideToggle(200, "linear");
+    $(caller).next().slideToggle(300, "linear");
 }

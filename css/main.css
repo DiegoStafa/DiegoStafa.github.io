@@ -73,22 +73,26 @@
 .box-title {
     height: 75%;
     overflow: hidden;
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
 }
 
 .box-title>div {
-    margin: 15px;
+    margin: 0 15px;
     text-align: center;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .box-title>div>a {
-    font-size: 19px;
+    line-height:1.5;
+    font-size: 16px;
     transition: 0.15s ease;
 }
 
 .box-info {
-    height: 25%;
+
     line-height: 2.7;
     display: flex;
 }

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info">
+            <li>
+                Matrici e operazioni
+            </li>
+            <li>
+                Algebra
+            </li>
+            <li>
+                25 Maggio 2020
+            </li>
+        </ul>
+        <div class="post">
+            <h3 id="matrici">Matrici</h3>
+            <p>concetti base:</p>
+            <ul>
+                <li>sono tabelle di numeri (coefficenti della matrice)</li>
+                <li>sono identificate da una lettera latina maiuscola</li>
+                <li>righe e colonne partono da 1</li>
+                <li>per rifersi al generico elemento a in posizione i,j della matrice di m righe e n colonne si scrive:
+                </li>
+                <li>(a<sub>ij</sub>), m x n</li>
+                <li>la matrice identica è la matrice con righe == colonne e tutti 1 in diagonale</li>
+            </ul>
+            <hr>
+            <p><strong>prodotto scalare</strong></p>
+            <p>di base è moltiplicare una matrice per un numero, si moltiplica ogni coefficente della matrice per lo
+                scalare.</p>
+            <p>data la matrice A: </p>
+            <ul>
+                <li>0 svuota la matrice (A diventa una matrice a coefficenti == 0)</li>
+                <li>1 è l&#39;elemento neutro</li>
+                <li>tutto il resto moltiplica normalmente</li>
+            </ul>
+            <p><strong>somma tra matrici</strong></p>
+            <p>la somma tra matrici si può fare solo con matrici dallo stesso numero di righe e colonne, si sommano i
+                coefficenti di egual posizione.</p>
+            <p>data la matrice A: </p>
+            <ul>
+                <li>-A svuota la matrice</li>
+                <li>[||] elemento neutro</li>
+                <li>tutto il resto somma normalmente</li>
+            </ul>
+            <p><strong>prodotto riga per colonna</strong></p>
+            <p>definizioni base:</p>
+            <ul>
+                <li>matrici di una colonna sola sono detti vettori colonna (indicato da una lettera latina minuscola e
+                    sottolineata)</li>
+                <li>matrici di una riga sola sono detti vettori riga (indicata allo stesso modo ma con una t in alto a
+                    destra)</li>
+            </ul>
+            <p>il prodotto riga per colonna è definito solo se le 2 vettori hanno la stessa lunghezza, ritorna uno
+                scalare</p>
+            <p>nb: la legge di cancellazione non vale, u*v<sup>t</sup> = 0 non implica che uno dei due vettori sia
+                uguale a 0</p>
+            <p><strong>prodotto tra matrici</strong></p>
+            <p>data la matrice A<sub>nxm</sub> e la matrice B<sub>ixj</sub>: </p>
+            <ul>
+                <li>il prodotto è definito sse m == i</li>
+                <li>la matrice risultante è C<sub>nxj</sub></li>
+                <li>i coefficenti C in posizione generica (n,j) sono calcolati facendo il prodotto della riga n di A e
+                    la colonna j di B</li>
+            </ul>
+            <p>di base se si vuole calcolare il coefficente in posizione (3,4) si moltiplica la riga 3 di A con la
+                colonna 4 di B</p>
+            <p>data la matrice A e supposte le condizioni di esistenza del prodotto: </p>
+            <ul>
+                <li>la matrice vuota ritorna una matrice vuota</li>
+                <li>la matrice identica è l&#39;elemento neutro</li>
+                <li>A*B != B*\A</li>
+                <li>non vale la legge di cancellazione</li>
+            </ul>
+            <h3 id="operatori-unari">operatori unari</h3>
+            <p>di base operatori che si applicano ad una matrice e la moodificano:</p>
+            <ul>
+                <li>trasposizione</li>
+                <li>coniugio</li>
+                <li>h-trasposizione</li>
+            </ul>
+            <p><strong>trasposizione di una matrice</strong></p>
+            <p>la trasposta della matrice A<sub>nxm</sub> è B<sub>mxn</sub>, i coefficenti B in posizione generica (m,n)
+                sono i coefficenti A in posizione generica (n,m)</p>
+            <p>si indica con: A<sup>T</sup></p>
+            <p>proprietà:</p>
+            <ul>
+                <li>(A<sup>T</sup>)<sup>T</sup> == A</li>
+                <li>(k*A)<sup>T</sup> == k*A<sup>T</sup></li>
+                <li>(A + B)<sup>T</sup> == A<sup>T</sup> + B<sup>T</sup></li>
+                <li>(A*B)<sup>T</sup> == B<sup>T</sup>*A<sup>T</sup></li>
+                <li>A è una matrice simmetrica se A == A<sup>T</sup> --&gt; implica A è quadrata</li>
+                <li>A è una matrice antisimmetrica se A != A<sup>T</sup> --&gt; implica A è quadrata</li>
+            </ul>
+            <p><strong>coniugio di una matrice</strong></p>
+            <p>la coniugata della matrice A<sub>nxm</sub> è B<sub>nxm</sub>, i coefficenti B in posizione generica (n,m)
+                sono i coefficenti A in posizione generica (n,m) coniugati</p>
+            <p>nb: il coniugato di un numero reale è il numero reale stesso, il coniugato di un complesso è il numero
+                complesso opposto, il coniugato di una somma algebrica complessa si ricava dalle queste 2 regole base
+            </p>
+            <p>si indica con una barra sopra il nome della matrice</p>
+            <p>proprietà:</p>
+            <ul>
+                <li>il coniugato del coniugato di A è A</li>
+                <li>il coniugato di uno scalare per una matrice è il coniugato dello scalare per il coniugato della
+                    matrice</li>
+                <li>il coniugato della somma tra due matrici è la somma dei coniugati delle due matrici</li>
+                <li>il coniugato del prodotto tra due matrici è il prodotto dei coniugati delle due matrici</li>
+            </ul>
+            <p><strong>H-trasposizione di una matrice</strong></p>
+            <p>di base significa fare sia una trasposizione sia una coniugazione della stessa matrice (o viceversa,
+                prima coniugazione e poi trasposizione)</p>
+            <p>si indica con: A<sup>H</sup></p>
+            <p>proprietà:</p>
+            <ul>
+                <li>(A<sup>H</sup>)<sup>H</sup> == A</li>
+                <li>(k*A)<sup>H</sup> == k coniugato * A<sup>H</sup></li>
+                <li>(A + B)<sup>H</sup> == A<sup>H</sup> + B<sup>H</sup></li>
+                <li>(A*B)<sup>H</sup> == B<sup>H</sup>*A<sup>H</sup></li>
+                <li>A è una matrice hermitiana se A == A<sup>H</sup> --&gt; implica A è quadrata</li>
+                <li>A è una matrice antihermitiana se A != A<sup>T</sup> --&gt; implica A è quadrata</li>
+            </ul>
+            <hr>
+            <h3 id="notazioni">notazioni</h3>
+            <ul>
+                <li>M<sub>nxm</sub>(R/C) indica una generica matrice reale/complessa</li>
+                <li>M<sub>n</sub>(R/C) indica una generica matrice quadrata reale/complessa, n indica il grado della
+                    matrice</li>
+                <li>i coefficenti di una matrice che risiedono nella diagonale sono detti coefficenti diagonali</li>
+                <li>A = diag(d1, d2 .. dn) indica una matrice diagonale, una matrice è detta diagonale se:<ul>
+                        <li>è quadrata</li>
+                        <li>i coefficenti non diagonali sono == 0</li>
+                    </ul>
+                </li>
+                <li>una matrice scalare è una matrice identica moltiplicata per uno scalare</li>
+                <li>C/R<sup>n</sup> indica l&#39;insieme dei vettori colonna di n righe</li>
+                <li>C/R<sub>n</sub> indica l&#39;insieme dei vettori riga di n righe</li>
+                <li>un vettore coordinato contiene tutti 0, ed un 1 nella posizione i</li>
+                <li>e<sub>i</sub> indica un vettore colonna coordinato di lunghezza non specificata</li>
+            </ul>
+
+        </div>
+    </div>
+</body>
+
+</html>

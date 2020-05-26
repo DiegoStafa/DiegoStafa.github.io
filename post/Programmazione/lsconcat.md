@@ -24,11 +24,17 @@ di base un nodo è una struttura dati che contiene un valore informativo ed un p
 una lista è quindi **un puntatore nodo\***, allocato sullo stack, che punta ad un nodo allocato sull'heap
 
 ``` c++
-nodo* lista = NULL; // crea una lista vuota
+// crea una lista vuota
+nodo* lista = NULL; 
 
-lista = new nodo(0, NULL); // la lista ora punta ad un nodo
-lista->next = new nodo(1, NULL); //il primo elemento ora punta al secondo elemento
-lista->next->next = new nodo(1, NULL); // il secondo punta al terzo e così via
+// la lista ora punta ad un nodo
+lista = new nodo(0, NULL);
+
+//il primo elemento ora punta al secondo elemento
+lista->next = new nodo(1, NULL); 
+
+// il secondo punta al terzo e così via
+lista->next->next = new nodo(1, NULL); 
 ```
 
 **liste ben formate**
