@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info">            <li>
+                Forme ridotte di Gauss e Jordan
+            </li>
+            <li>
+                algebra
+            </li>
+            <li>
+                27-05-2020
+            </li>
+        </ul>
+        <div class="post">
+<h3 id="algoritmo-di-gauss-o-eliminazione-di-gauss-eg">Algoritmo di Gauss (o eliminazione di Gauss, EG)</h3>
+<p>l&#39;algoritmo di gauss trasforma una matrice in una forma ridotta di gauss</p>
+<p>una forma ridotta di gauss è una matrice:</p>
+<ul>
+<li>a gradini</li>
+<li>ogni gradino deve essere alto una riga</li>
+<li>ogni gradino inizia con un 1</li>
+<li>la colonna che l&#39;1 identifica è detta dominante, le altre libere</li>
+<li>sotto i gradini ci sono solo zeri </li>
+<li>numero di gradini == numero di righe non nulle</li>
+<li><strong>non unica</strong></li>
+</ul>
+<p>le uniche 3 operazioni lecite nell&#39;algoritmo di Gauss sono:</p>
+<ol>
+<li><strong>Ei(c)</strong> --&gt; moltiplica una riga i per uno scalare c diverso da 0 (significa anche dividere)</li>
+<li><strong>Eij(c)</strong> --&gt; somma ad una riga i, una riga j moltiplicata per uno scalare c</li>
+<li><strong>Eij</strong> --&gt; scambia la riga i con la riga j (Eij == Eji)</li>
+</ol>
+<p>l&#39;operazione viene indicata con:</p>
+<p>A → <sub>operazione</sub>→ B</p>
+<p>esempio gauss: trovare la forma ridotta di A</p>
+<pre><code class="language-c++">matrice A(3, 3); // la matrice è 3x3
+
+A = { 2 -4 14
+      1  3  2
+     -1  0 -5 }
+
+
+E1(1/2) // moltiplica la riga 1 per 1/2
+
+A = { 1 -2  7
+      1  3  2
+     -1  0 -5 }
+
+E21(-1) // somma alla riga 2 la riga 1 moltiplicata per -1
+
+A = { 1 -2  7
+      0  5 -5
+     -1  0 -5 }
+
+E31(1) // somma alla riga 3 la riga 1 moltiplicata per 1
+
+A = { 1 -2  7
+      0  5 -5
+      0 -2  2 }
+
+// --- trovata la prima colonna dominante ---
+
+
+E2(1/5) // moltiplica la riga 2 per 1/5
+
+A = { 1 -2  7
+      0  1 -1
+      0 -2  2 }
+
+E32(2) // sommo alla riga 3 la riga 2 moltiplicata per 2
+
+A = { 1 -2  7
+      0  1 -1
+      0  0  0 }
+
+// --- trovata la seconda colonna dominante ---</code></pre>
+<p><strong>non unicità della forma ridotta di gauss</strong></p>
+<p>avviene se:</p>
+<ul>
+<li>è necessario fare scambi di righe</li>
+<li>c&#39;è possibilità di scelta tra diverse operazione di gauss</li>
+</ul>
+<p><strong>EG con matrici parametriche</strong></p>
+<p>nel caso di matrici a coefficenti parametrici, per trovare una forma ridotta si deve andare per casi oppure tentare scambi di righe per togliere il parametro dalla colonna dominante</p>
+<hr>
+<h3 id="eliminazione-di-gauss-jordan">Eliminazione di Gauss-Jordan</h3>
+<p>di base consiste fare prima l&#39;EG dall&#39;alto verso il basso e poi l&#39;EG dal basso verso l&#39;alto, in modo tale che ogni 1 di colonna dominante abbia tutti 0 sopra l&#39;1</p>
+<pre><code class="language-c++">
+// eliminazione di Gauss
+
+{ 1 -2  3 -3  0  0
+  0  0  1  1  2  9
+  0  0  0  1  5  5 }
+
+// eliminazione di Gauss-Jordan
+
+{ 1 -2  0  0  0  0
+  0  0  1  0  2  9
+  0  0  0  1  5  5 }</code></pre>
+
+        </div>
+    </div>
+</body>
+
+</html>

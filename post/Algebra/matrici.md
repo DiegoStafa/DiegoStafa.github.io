@@ -5,7 +5,7 @@ concetti base:
 * sono identificate da una lettera latina maiuscola
 * righe e colonne partono da 1
 * per rifersi al generico elemento a in posizione i,j della matrice di m righe e n colonne si scrive:
-- (a<sub>ij</sub>), m x n
+    * (a<sub>ij</sub>), m x n
 * la matrice identica è la matrice con righe == colonne e tutti 1 in diagonale
 
 ---

@@ -22,14 +22,3 @@
 <body>
     <div class="post-wrapper">
         <ul class="post-info">
-            <li>
-                Title:
-            </li>
-            <li>
-                Section:
-            </li>
-            <li>
-                Date:
-            </li>
-        </ul>
-        <div class="post">

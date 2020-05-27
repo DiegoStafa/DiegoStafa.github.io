@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info">            <li>
+                Sistemi lineari e risoluzione con matrici
+            </li>
+            <li>
+                algebra
+            </li>
+            <li>
+                27-05-2020
+            </li>
+        </ul>
+        <div class="post">
+<h3 id="sistemi-lineari">Sistemi lineari</h3>
+<p>dato un sistema lineare formato dalle seguenti equazioni:</p>
+<ul>
+<li>a<sub>11</sub>x<sub>1</sub> + a<sub>12</sub>x<sub>2</sub> + ... + a<sub>1n</sub>x<sub>n</sub> = b<sub>1</sub></li>
+<li>a<sub>21</sub>x<sub>1</sub> + a<sub>22</sub>x<sub>2</sub> + ... + a<sub>2n</sub>x<sub>n</sub> = b<sub>2</sub>
+  .
+  .
+  .</li>
+<li>a<sub>m1</sub>x<sub>1</sub> + a<sub>m2</sub>x<sub>2</sub> + ... + a<sub>mn</sub>x<sub>n</sub> = b<sub>m</sub></li>
+</ul>
+<p><strong>Scrittura matriciale del sistema</strong></p>
+<p>la scrittura matriciale del sistema si ottiene impostando:</p>
+<ul>
+<li>si usa A<sub>nm</sub> per indicare la matrice dei coefficenti del sistema</li>
+<li>si usa b<sub>m</sub> (underscore) per indicare il vettore colonna dei termini noti del sistema</li>
+<li>si usa x<sub>n</sub> (underscore) per indicare il vettore colonna delle incognite del sistema</li>
+</ul>
+<p>da cui:</p>
+<ul>
+<li>Ax = b si chiama <strong>scrittura matriciale del sistema</strong></li>
+<li>[A | b] (A affiancata a b) si chiama <strong>matrice aumentata del sistema</strong></li>
+</ul>
+<p>operazioni che <strong>non</strong> modificano le soluzioni di un sistema:</p>
+<ul>
+<li>sommare ad un equazione un&#39;altra moltiplicata per uno scalare c</li>
+<li>moltiplicare un equazione per uno scalare c</li>
+<li>scambiare 2 equazione</li>
+</ul>
+<p>che guardacaso sono le stesse operazione elementari di gauss, perciò forma ridotta e matrice oriinale hanno le stesse soluzioni</p>
+<hr>
+<p><strong>risoluzione di sistemi lineari</strong></p>
+<ol>
+<li>scrivere la matrice aumentata [A | b]</li>
+<li>trovare la forma ridotta [U | d] della matrice aumentata<ol>
+<li>se d è una colonna dominante allora non ha soluzioni (eq. tipo 0=1)</li>
+<li>se d è una colonna libera allora ci sono soluzioni<ol>
+<li>se U ha solo colonne dominanti allora c&#39;è una sola soluzione</li>
+<li>se U ha k colonne libere allora il sistema ha infinito alla k soluzioni</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>si risolve il sistema isolando le variabili che corrispondono alle colonne dominanti</li>
+<li>le soluzioni vengono scritte in un vettore colonna v delle soluzioni</li>
+</ol>
+
+        </div>
+    </div>
+</body>
+
+</html>
