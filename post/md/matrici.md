@@ -64,6 +64,13 @@ di base operatori che si applicano ad una matrice e la moodificano:
 
 la trasposta della matrice A<sub>nxm</sub> è B<sub>mxn</sub>, i coefficenti B in posizione generica (m,n) sono i coefficenti A in posizione generica (n,m)
 
+
+``` c++
+for(int i = 0 ; i < n; i++)
+    for(int j = 0 ; j < m; j++)
+        B[j][i] = A[i][j];
+```
+
 si indica con: A<sup>T</sup>
 
 proprietà:
@@ -71,14 +78,19 @@ proprietà:
 * (k\*A)<sup>T</sup> == k\*A<sup>T</sup>
 * (A + B)<sup>T</sup> == A<sup>T</sup> + B<sup>T</sup>
 * (A\*B)<sup>T</sup> == B<sup>T</sup>\*A<sup>T</sup>
-* A è una matrice simmetrica se A == A<sup>T</sup> --> implica A è quadrata
-* A è una matrice antisimmetrica se A != A<sup>T</sup> --> implica A è quadrata
+* A è una matrice simmetrica se A<sup>T</sup> == A
+* A è una matrice antisimmetrica se A<sup>T</sup> == -A
 
 **coniugio di una matrice**
 
 la coniugata della matrice A<sub>nxm</sub> è B<sub>nxm</sub>, i coefficenti B in posizione generica (n,m) sono i coefficenti A in posizione generica (n,m) coniugati
 
-nb: il coniugato di un numero reale è il numero reale stesso, il coniugato di un complesso è il numero complesso opposto, il coniugato di una somma algebrica complessa si ricava dalle queste 2 regole base
+``` c++
+for(int i = 0 ; i < n; i++)
+    for(int j = 0 ; j < m; j++)
+        B[i][j] = Coniugato(A[i][j]);
+```
+
 
 si indica con una barra sopra il nome della matrice
 
@@ -101,8 +113,8 @@ proprietà:
 * (k\*A\)<sup>H</sup> == k coniugato \* A<sup>H</sup>
 * (A + B)<sup>H</sup> == A<sup>H</sup> + B<sup>H</sup>
 * (A\*B)<sup>H</sup> == B<sup>H</sup>\*A<sup>H</sup>
-* A è una matrice hermitiana se A == A<sup>H</sup> --> implica A è quadrata
-* A è una matrice antihermitiana se A != A<sup>T</sup> --> implica A è quadrata
+* A è una matrice hermitiana se A<sup>H</sup> == A
+* A è una matrice antihermitiana se A<sup>T</sup> -== -A
 
 ---
 

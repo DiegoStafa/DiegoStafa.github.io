@@ -93,6 +93,9 @@
 </ul>
 <p><strong>trasposizione di una matrice</strong></p>
 <p>la trasposta della matrice A<sub>nxm</sub> è B<sub>mxn</sub>, i coefficenti B in posizione generica (m,n) sono i coefficenti A in posizione generica (n,m)</p>
+<pre><code class="language-c++">for(int i = 0 ; i &lt; n; i++)
+    for(int j = 0 ; j &lt; m; j++)
+        B[j][i] = A[i][j];</code></pre>
 <p>si indica con: A<sup>T</sup></p>
 <p>proprietà:</p>
 <ul>
@@ -100,12 +103,14 @@
 <li>(k*A)<sup>T</sup> == k*A<sup>T</sup></li>
 <li>(A + B)<sup>T</sup> == A<sup>T</sup> + B<sup>T</sup></li>
 <li>(A*B)<sup>T</sup> == B<sup>T</sup>*A<sup>T</sup></li>
-<li>A è una matrice simmetrica se A == A<sup>T</sup> --&gt; implica A è quadrata</li>
-<li>A è una matrice antisimmetrica se A != A<sup>T</sup> --&gt; implica A è quadrata</li>
+<li>A è una matrice simmetrica se A<sup>T</sup> == A</li>
+<li>A è una matrice antisimmetrica se A<sup>T</sup> == -A</li>
 </ul>
 <p><strong>coniugio di una matrice</strong></p>
 <p>la coniugata della matrice A<sub>nxm</sub> è B<sub>nxm</sub>, i coefficenti B in posizione generica (n,m) sono i coefficenti A in posizione generica (n,m) coniugati</p>
-<p>nb: il coniugato di un numero reale è il numero reale stesso, il coniugato di un complesso è il numero complesso opposto, il coniugato di una somma algebrica complessa si ricava dalle queste 2 regole base</p>
+<pre><code class="language-c++">for(int i = 0 ; i &lt; n; i++)
+    for(int j = 0 ; j &lt; m; j++)
+        B[i][j] = Coniugato(A[i][j]);</code></pre>
 <p>si indica con una barra sopra il nome della matrice</p>
 <p>proprietà:</p>
 <ul>
@@ -123,8 +128,8 @@
 <li>(k*A)<sup>H</sup> == k coniugato * A<sup>H</sup></li>
 <li>(A + B)<sup>H</sup> == A<sup>H</sup> + B<sup>H</sup></li>
 <li>(A*B)<sup>H</sup> == B<sup>H</sup>*A<sup>H</sup></li>
-<li>A è una matrice hermitiana se A == A<sup>H</sup> --&gt; implica A è quadrata</li>
-<li>A è una matrice antihermitiana se A != A<sup>T</sup> --&gt; implica A è quadrata</li>
+<li>A è una matrice hermitiana se A<sup>H</sup> == A</li>
+<li>A è una matrice antihermitiana se A<sup>T</sup> -== -A</li>
 </ul>
 <hr>
 <h3 id="notazioni">notazioni</h3>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info">            <li>
+                Sottospazi vettoriali, combinazioni lineari e sistemi generatori
+            </li>
+            <li>
+                Algebra
+            </li>
+            <li>
+                28-05-2020
+            </li>
+        </ul>
+        <div class="post">
+<h3 id="sottospazi-di-spazi-vettoriali">Sottospazi di spazi vettoriali</h3>
+<p>sia V uno spazio vettoriale in R o C, allora U sottoinsieme di V si dice sottospazio vettoriale di V sse rispetta queste condizioni:</p>
+<ol>
+<li>deve contenere il vettore nullo</li>
+<li>se v1 e v2 appartengono a U allora v1+v2 deve appartenere a U</li>
+<li>se v appartiene a U allora k*v appartiene a U, con k scalare</li>
+</ol>
+<p>nb: la prima condizione equivale a imporre che U sia non vuoto</p>
+<p>di base un sottospazio vettoriale è uno spazio vettoriale</p>
+<hr>
+<p><strong>spazio nullo di una matrice</strong></p>
+<p>data una matrice A, si definisce lo spazio nullo N(A) come sottospazio vettoriale formato da vettori v tale per cui:</p>
+<ul>
+<li>Av = 0</li>
+</ul>
+<p>si verifica che è uno spazio vettoriale facendo:</p>
+<ol>
+<li>contiene il vettore nullo --&gt; in quanto Av = 0 --&gt; v = 0</li>
+<li>la somma è interna all&#39;insieme --&gt; in quanto A(v1+v2) = 0 --&gt; Av1 + Av2 = 0 --&gt; 0 + 0 = 0</li>
+<li>il prodotto scalare è interno all&#39;insieme --&gt; in quanto A(cv) = 0 --&gt; c(Av) = 0 --&gt; c(0) = 0</li>
+</ol>
+<hr>
+<p><strong>insieme dei multipli</strong></p>
+<p>per indicare l&#39;insieme di tutti i multipli di un vettore v, si usa la notazione <strong>&lt;v&gt;</strong></p>
+<p>che di base significa kv, k scalare che varia in tutto il suo campo, e v un vettore scelto</p>
+<p>l&#39;insieme dei multipli è un sottospazio vettoriale, dato che:</p>
+<ul>
+<li>esiste il vettore nullo --&gt; 0*v</li>
+<li>la somma è interna --&gt; v1+v2 --&gt; cv + sv --&gt; (c+s)v</li>
+<li>il prodotto scalare è interno --&gt; kv1 == k*(cv) == (kc)v</li>
+</ul>
+<p>nb: v1 e v2 diventano i vettori v moltiplicati ad uno scalare per definizione di insieme dei multipli</p>
+<p>l&#39;insieme dei multipli ha 1 elemento se v == 0 e tanti quanti k se v != 0</p>
+<p>non esistono sottospazi su campi R/C con un numero finito di elementi</p>
+<p><strong>Combinazione lineare</strong></p>
+<p>di base un a combinazione lineare è un espressione del tipo:</p>
+<ul>
+<li>a<sub>1</sub>v<sub>1</sub> + a<sub>2</sub>v<sub>2</sub> + a<sub>3</sub>v<sub>3</sub> + ... + a<sub>n</sub>v<sub>n</sub></li>
+</ul>
+<p><strong>sottospazio dei vettori v1,v2,...vn</strong></p>
+<p>per ottenere l&#39;insieme di tutte le combinazioni lineari possibili in un insieme di vettori, si fanno variare i parametri con tutti i loro possibili valori</p>
+<p>questo insieme si indica &lt;v<sub>1</sub>, v<sub>2</sub>, ... v<sub>n</sub>&gt; ed è un sottospazio vettoriale, dato che:</p>
+<ul>
+<li>esiste il vettore nullo --&gt; tutti i parametri == 0</li>
+<li>la somma è interna --&gt; w + z è scrivibile come combinazione lineare degli stessi vettori di partenza --&gt; si raccolgono i parametri dei vettori corrispondenti</li>
+<li>il prodotto scalare è interno --&gt; kw =k(combinazione lineare) --&gt; prop. distributiva è ancora una combinazione lineare</li>
+</ul>
+<p>nb: l&#39;insieme dei multipli è una particolare combi### Sistemi generatori</p>
+<p>un sistema generatore è un una lista di vettori v1,v2..vn di uno spazio vettoriale V, tale per cui:</p>
+<p>ogni vettore appartenente a V è ottenibile da una particolare combinazione lineare di v1,v2..vnnazione lineare dove si scegli solo un vettore, l&#39;insieme dei multipli può anche essere chiamato sottospazio vettoriale di v</p>
+<h3 id="sistemi-generatori-es-tipo">Sistemi generatori (es. tipo)</h3>
+<p>un sistema generatore è un una lista di vettori v1,v2..vn di uno spazio vettoriale V, tale per cui:</p>
+<p>ogni vettore appartenente a V è ottenibile da una particolare combinazione lineare di v1,v2..vn</p>
+<p>se la lista di vettori è finita allora si dice che lo spazio vettoriale è <strong>finitamente generabile</strong></p>
+<hr>
+<p>viene chiesto di verificare se una lista di vettori è un sistema generatore, per farlo bisogna verficare che un generica matrice sia ottenibile da una combinazione lineare</p>
+<p>si imposta l&#39;equivalenza tra la generica matrice e la generica combinazione lineare, e si determina se l&#39;equivalenza è vera</p>
+<p>di base si risolve con un sistema lineare A = b, dove b è il vettore dei termini generici della matrice, mentre A è la matrice contenente le espressioni con i parametri, si determina a soluzione del sistema con un EG</p>
+<p>si impone la condizione per le soluzioni del sistema sulla colonna b, se si trova che anche solo per un valore non ha soluzioni, allora non è un isstema generatore</p>
+
+        </div>
+    </div>
+</body>
+
+</html>
