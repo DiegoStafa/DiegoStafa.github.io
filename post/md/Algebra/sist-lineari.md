@@ -32,9 +32,9 @@ che guardacaso sono le stesse operazione elementari di gauss, perciò forma rido
 
 1. scrivere la matrice aumentata \[A \| b\]
 2. trovare la forma ridotta \[U \| d\] della matrice aumentata
-    1. se d è una colonna dominante allora non ha soluzioni (eq. tipo 0=1)
-    2. se d è una colonna libera allora ci sono soluzioni
-        1. se U ha solo colonne dominanti allora c'è una sola soluzione
-        2. se U ha k colonne libere allora il sistema ha infinito alla k soluzioni
+    * se d è una colonna dominante allora non ha soluzioni (eq. tipo 0=1)
+    * se d è una colonna libera allora ci sono soluzioni
+        * se U ha solo colonne dominanti allora c'è una sola soluzione
+        * se U ha k colonne libere allora il sistema ha infinito alla k soluzioni
 3. si risolve il sistema isolando le variabili che corrispondono alle colonne dominanti
 4. le soluzioni vengono scritte in un vettore colonna v delle soluzioni

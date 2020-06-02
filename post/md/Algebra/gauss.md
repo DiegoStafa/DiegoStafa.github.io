@@ -7,6 +7,7 @@ una forma ridotta di gauss è una matrice:
 * ogni gradino deve essere alto una riga
 * ogni gradino inizia con un 1
 * la colonna che l'1 identifica è detta dominante, le altre libere
+* il numero delle colonne dominanti è detto rango della matrice
 * sotto i gradini ci sono solo zeri 
 * numero di gradini == numero di righe non nulle
 * **non unica**

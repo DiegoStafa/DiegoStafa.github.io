@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info">            <li>
+                Rappresentazione geometrica, norma e prodotto scalare
+            </li>
+            <li>
+                Algebra
+            </li>
+            <li>
+                02-06-2020
+            </li>
+        </ul>
+        <div class="post">
+<h3 id="rappresentazione-geometrica-di-un-vettore">Rappresentazione geometrica di un vettore</h3>
+<p>un vettore R<sup>2</sup> è rappresentabile graficamente in un piano cartesiano, facendo corrispondere i suoi coefficenti con le coordinate del piano, il vettore è un segmento con estremi origine e il punto individuato</p>
+<p><strong>regola del parallelogramma</strong></p>
+<p>la somma di 2 vettori è rappresentabile graficamente con la regola del parallelogramma</p>
+<hr>
+<h3 id="norma-di-un-vettore">Norma di un vettore</h3>
+<p><strong>norma taxi driver</strong></p>
+<p>si indica con ||v||<sub>1</sub></p>
+<p>calcola la somma dei moduli dei coefficenti del vettore</p>
+<p><strong>norma euclidea</strong></p>
+<p>si indica con ||v||<sub>2</sub></p>
+<p>calcola la lunghezza del vettore, c
+per calcolare la lunchezza euclidea di un vettore:</p>
+<ul>
+<li>radice(v<sup>t</sup>v) --&gt; per coefficenti reali</li>
+<li>radice(v<sup>h</sup>v) --&gt; per coefficenti complessi (funziona anche per i reali in quanto il coniugato di un reale è il reale stesso)</li>
+</ul>
+<p>la lunghezza di una somma tra vettori è sempre minore o uguale alla somma delle lunghezze dei vettori, <strong>disuguaglianza triangolare</strong></p>
+<p><strong>norma infinito</strong></p>
+<p>si indica con ||v||<sub>inf</sub></p>
+<p>calcola il massimo dei coefficenti del vettore</p>
+<p><strong>||v||<sub>inf</sub> &lt;= ||v||<sub>2</sub> &lt;= ||v||<sub>1</sub></strong> --&gt; si osserva facilmente</p>
+<hr>
+<p><strong>Angoli tra vettori</strong></p>
+<p>dati 2 vettori v e w non nulli ed un angolo alfa associato:</p>
+<ul>
+<li>v<sup>t</sup>w = ||v||<sub>2</sub>*||v||<sub>2</sub>*cos(alfa)</li>
+</ul>
+<p>da cui:</p>
+<ul>
+<li>cos(alfa) = v<sup>t</sup>w / ( ||v||<sub>2</sub>*||v||<sub>2</sub> )</li>
+</ul>
+<p><strong>prodotto scalare</strong></p>
+<p>posto v<sup>t</sup>w == (v | w)</p>
+<p>allora (v | w) si chiama prodotto scalare ed è tale per cui:</p>
+<ul>
+<li>(v | w) = coniugato (w | v)</li>
+<li>(v | k1w + k2z) = k1(v | w) + k2(v | z)</li>
+<li>(v | v) è sempre maggiore uguale a 0</li>
+</ul>
+<p><strong>spazio metrico</strong></p>
+<p>è uno spazio vettoriale su cui è definito il prodotto scalare</p>
+<p><strong>norma indotta</strong></p>
+<p>calcola la radice del prodotto scalare tra v e se stesso</p>
+<p><strong>generalizzazione del coseno tra due vettori</strong></p>
+<ul>
+<li>cos v<sup>^</sup>w = (v|w) / ||v||<sub>2</sub>*||v||<sub>2</sub></li>
+</ul>
+<p><strong>vettori ortogonali</strong></p>
+<p>v è ortogonale a w sse il prodotto scalare tra v e w è uguale a 0</p>
+<p><strong>insiemi di vettori ortogonali</strong></p>
+<p>un insieme di vettori si dice ortoganale se tutti i vettori dell&#39;insieme sono ortogonali tra loro</p>
+<p>es: l&#39;insieme delle colonne della matrice identica</p>
+<p><strong>normalizzazione</strong></p>
+<p>significa moltiplicare v per l&#39;inverso della sua norma, cioè v*(1/||v||)</p>
+<p><strong>insiemi di vettori ortonormali</strong></p>
+<p>un insieme di vettori si dice ortonormale se:</p>
+<ul>
+<li>è ortogonale</li>
+<li>(vi|vi) == 1 </li>
+</ul>
+<p><strong>insiemi di generatori ortogonali</strong></p>
+<p>autoesplicativo</p>
+<p><strong>insiemi di generatori ortonormale</strong></p>
+<p>autoesplicativo</p>
+<p><strong>ibasi ortogonali</strong></p>
+<p>autoesplicativo</p>
+<p><strong>basi ortonormale</strong></p>
+<p>autoesplicativo</p>
+
+        </div>
+    </div>
+</body>
+
+</html>

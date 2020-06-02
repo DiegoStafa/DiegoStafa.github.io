@@ -10,7 +10,7 @@ concetti base:
 
 ---
 
-**prodotto scalare**
+**prodotto tra uno scalare**
 
 di base è moltiplicare una matrice per un numero, si moltiplica ogni coefficente della matrice per lo scalare.
 
@@ -120,14 +120,15 @@ proprietà:
 
 ### notazioni
 
-* M<sub>nxm</sub>(R/C) indica una generica matrice reale/complessa
-* M<sub>n</sub>(R/C) indica una generica matrice quadrata reale/complessa, n indica il grado della matrice
+* M<sub>nxm</sub>(R/C) indica l'insieme delle matrici nxm, a coefficenti reali/complessi
+* M<sub>n</sub>(R/C) indica l'insieme delle matrici quadrate di ordine n, a coefficenti reali/complessi
+* R/C<sup>n</sup> indica l'insieme dei vettori colonna alti n, a coefficenti reali/complessi
+* R/C<sub>n</sub> indica l'insieme dei vettori riga lunghi n, a coefficenti reali/complessi
 * i coefficenti di una matrice che risiedono nella diagonale sono detti coefficenti diagonali
 * A = diag(d1, d2 .. dn) indica una matrice diagonale, una matrice è detta diagonale se:
-    - è quadrata
-    - i coefficenti non diagonali sono == 0
+    * è quadrata
+    * i coefficenti non diagonali sono == 0
 * una matrice scalare è una matrice identica moltiplicata per uno scalare
-* C/R<sup>n</sup> indica l'insieme dei vettori colonna di n righe
-* C/R<sub>n</sub> indica l'insieme dei vettori riga di n righe
 * un vettore coordinato contiene tutti 0, ed un 1 nella posizione i
 * e<sub>i</sub> indica un vettore colonna coordinato di lunghezza non specificata
+* una matrice si dice triangolare superiore/inferiore, se ha tutti 0 sotto/sopra la diagonale, 
