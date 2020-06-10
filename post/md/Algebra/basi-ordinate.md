@@ -1,4 +1,6 @@
-### Basi ordinate
+### Basi ordinate e coordinate
+
+**base ordinata**
 
 una base ordinata è una base a cui agli elementi viene dato un ordine (primo, secondo, terzo...)
 

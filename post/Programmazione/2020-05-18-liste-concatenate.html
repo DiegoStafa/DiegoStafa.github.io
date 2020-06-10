@@ -21,18 +21,18 @@
 
 <body>
     <div class="post-wrapper">
-        <ul class="post-info">
-            <li>
-                Title:
+        <ul class="post-info">            <li>
+                Liste concatenate
             </li>
             <li>
-                Section:
+                Programmazione
             </li>
             <li>
-                Date:
+                18-05-2020
             </li>
         </ul>
-        <div class="post"><h3 id="liste-concatenate">Liste concatenate</h3>
+        <div class="post">
+<h3 id="liste-concatenate">Liste concatenate</h3>
 <p>di base sono strutture dati ricorsive.</p>
 <ul>
 <li>caso base --&gt; lista vuota</li>
@@ -69,20 +69,343 @@ lista-&gt;next-&gt;next = new nodo(1, NULL); </code></pre>
 <li>se il nodo* punta ad una lista ben formata</li>
 </ul>
 <p>di base una lista ben formata è quindi una lista di nodi, posibilmente vuota, il cui ultimo elemento punta a NULL</p>
-<h3 id="operazioni-sulle-liste">Operazioni sulle liste</h3>
-<p>di base sono le operazioni base che una lista deve implementare:</p>
+<p><strong>notazioni</strong></p>
 <ul>
-<li>creazione di una lista di n nodi</li>
-<li>distruzione di una lista</li>
-<li>stampa degli elementi</li>
-<li>ricerca di un elemento</li>
-<li>inserimento di un elemento in una data posizione</li>
-<li>push</li>
-<li>pop</li>
-<li>ritornare la lunghezza</li>
-<li>concatenazione di 2 liste</li>
-<li>inversione della lista</li>
+<li>L(n) indica una lista n ben formata</li>
+<li>vL(n) indica una copia di L(n)</li>
+<li>L(n) @ L(m) indica la concatenazione tra n e m</li>
+<li>Lk(n) indica una lista n formata dai primi k-1 nodi<ul>
+<li>L0(n) --&gt; lista vuota</li>
+<li>L1(n) --&gt; primo nodo</li>
+<li>...</li>
+<li>Lk-1</li>
+<li>R indica il resto di una lista</li>
 </ul>
+</li>
+<li>L(n)<sup>R</sup> è la lista invertita di L(n)</li>
+</ul>
+<hr>
+<h3 id="operazioni-sulle-liste">Operazioni sulle liste</h3>
+<p><strong>creazione di una lista di n elementi (decrescente)</strong></p>
+<ul>
+<li>pre: n è &gt;= 0</li>
+<li>post:restituisce una lista con n nodi e campi info decrescenti </li>
+</ul>
+<pre><code class="language-c++">nodo* build(int n)
+{
+    if(n == 0)
+        return 0;
+    return new nodo(n, build(n-1));
+}</code></pre>
+<p>correttezza:</p>
+<ul>
+<li>caso base:<ul>
+<li>banale, si ritorna 0 come specfica la post</li>
+</ul>
+</li>
+<li>caso ricorsivo:<ul>
+<li>siccome m non è 0, la pre ricorsiva è verficata</li>
+</ul>
+</li>
+</ul>
+<p><strong>creazione di una lista di n elementi (crescente)</strong></p>
+<ul>
+<li>pre: 0 &lt;= n &lt;= dim</li>
+<li>post:restituisce una lista con dim-n nodi e campi info crescenti </li>
+</ul>
+<pre><code class="language-c++">nodo* build(int n)
+{
+    if(n == dim)
+        return 0;
+    return new nodo(n, build(n+1, dim));
+}</code></pre>
+<p>correttezza:</p>
+<ul>
+<li>caso base:<ul>
+<li>banale, se ritorna dim-m nodi allora se d==m ritorna 0 nodi</li>
+</ul>
+</li>
+<li>caso ricorsivo:<ul>
+<li>siccome m non è dim, la pre ricorsiva è verficata</li>
+</ul>
+</li>
+</ul>
+<p><strong>distruzione di una lista (left to right)</strong></p>
+<ul>
+<li>pre: la lista è ben formata</li>
+<li>post: la lista è stata deallocata</li>
+</ul>
+<pre><code class="language-c++">nodo* distruggi(nodo* L)
+{
+    if(L)
+    {
+        nodo* t = L-&gt;next
+        delete L;
+        distruggi(t);
+    }
+}</code></pre>
+<p><strong>distruzione di una lista (right to left)</strong></p>
+<ul>
+<li>pre: la lista è ben formata</li>
+<li>post: la lista è stata deallocata</li>
+</ul>
+<pre><code class="language-c++">nodo* distruggi(nodo* L)
+{
+    if(L)
+    {
+        distruggi(L-&gt;next);
+        delete L;
+    }
+}</code></pre>
+<p><strong>distruzione di una lista (iterativa)</strong></p>
+<ul>
+<li>pre: la lista è ben formata</li>
+<li>post: la lista è stata deallocata</li>
+</ul>
+<pre><code class="language-c++">int dim = lunghezza(L);
+
+nodo* pila = new nodo*[dim] // array di nodo*
+
+// assegna ogni nodo all&#39;array
+for(int i = 0; i &lt; dim; i++)
+{
+    pila[i] = L;
+    L = L-&gt;next;
+}
+
+// left to right
+for(int i = 0; i &lt; dim; i++)
+    delete pila[i]
+
+// right to left
+for(int i = dim - 1; i &gt;= 0; i++)
+    delete pila[i]
+</code></pre>
+<p><strong>stampa di una lista (left to right)</strong></p>
+<ul>
+<li>pre: la lista è ben formata</li>
+<li>post: stampa i campi info della lista</li>
+</ul>
+<pre><code class="language-c++">nodo* stampa(nodo* L)
+{
+    if(L)
+    {
+        cout &lt;&lt; L-&gt;info;
+        stampa(L-&gt;next);
+    }
+}</code></pre>
+<p><strong>stampa di una lista (right to left)</strong></p>
+<ul>
+<li>pre: la lista è ben formata</li>
+<li>post: stampa i campi info della lista</li>
+</ul>
+<pre><code class="language-c++">nodo* stampa(nodo* L)
+{
+    if(L)
+    {
+        stampa(L-&gt;next);
+        cout &lt;&lt; L-&gt;info;
+    }
+}</code></pre>
+<p><strong>lunghezza di una lista</strong></p>
+<ul>
+<li>pre: la lista è ben formata</li>
+<li>post: restituisce la lunghezza della lista</li>
+</ul>
+<pre><code class="language-c++">int lunghezza(nodo* L)
+{
+    if (!L)
+        return 0;
+    return 1 + lunghezza(L-&gt;next);
+}</code></pre>
+<p><strong>concatenazione tra liste</strong></p>
+<p>si indica con L1@L2</p>
+<ul>
+<li>pre: L1 e L2 sono ben formate</li>
+<li>post: restituisce L1@L2</li>
+</ul>
+<pre><code class="language-c++">nodo* concatena(nodo* L1, nodo* L2)
+{
+    if (!L1)
+        return L2;
+    L!-&gt;next = concatenza (L1-&gt;next, L2);
+    return L1;
+}</code></pre>
+<p>correttezza:</p>
+<ul>
+<li>caso base:<ul>
+<li>banale, se L1 è vuota ritorna L2</li>
+</ul>
+</li>
+<li>caso ricorsivo:<ul>
+<li>L1-&gt;next è una lista ben formata per definizione</li>
+</ul>
+</li>
+</ul>
+<p><strong>inserimento a fine lista (tipo 1)</strong></p>
+<ul>
+<li>pre: L è una lista ben formata</li>
+<li>post: restituisce L@nodo(c, 0)</li>
+</ul>
+<pre><code class="language-c++">nodo* InsEnd(nodo* L, char c)
+{
+    // scorre fino alla fine
+    if (!L)
+        return new nodo(c); // crea e ritorna il nodo
+    L-&gt;next = InsEnd(L-&gt;next); // aggancia la lista passata concatenata al nuovo nodo
+    return L; // ritorna la lista
+}</code></pre>
+<p><strong>inserimento a fine lista (tipo 2)</strong></p>
+<ul>
+<li>pre: L è una lista ben formata e non vuota</li>
+<li>post: restituisce L@nodo(c, 0)</li>
+</ul>
+<pre><code class="language-c++">void InsEnd(nodo* L, char c)
+{
+    if(!L-&gt;next)
+        L-&gt;next = new nodo(c);
+    else
+        InsEnd(L-&gt;next,c);
+}</code></pre>
+<p><strong>inserimento a fine lista (tipo 3)</strong></p>
+<ul>
+<li>pre: L è una lista ben formata</li>
+<li>post: restituisce L@nodo(c, 0)</li>
+</ul>
+<pre><code class="language-c++">void InsEnd(nodo* &amp;L, char c)
+{
+    if(!L)
+        L = new nodo(c);
+    else
+        InsEnd(L-&gt;next,c);
+}</code></pre>
+<p><strong>pop di una lista (tipo 1)</strong></p>
+<ul>
+<li>pre: L è una lista ben formata e non vuota</li>
+<li>post: restituisce vL - ultimo nodo</li>
+</ul>
+<pre><code class="language-c++">nodo* pop(nodo* L)
+{
+    if(!L-&gt;next)
+    {
+        delete L;
+        return 0;
+    }
+    L-&gt;next = pop(L-&gt;next);
+    return L;
+}</code></pre>
+<p><strong>pop di una lista (tipo 2)</strong></p>
+<ul>
+<li>pre: L è una lista ben formata e con almeno 2 nodi</li>
+<li>post: restituisce vL - ultimo nodo</li>
+</ul>
+<pre><code class="language-c++">void pop(nodo* L)
+{
+    if(!L-&gt;next-&gt;next)
+    {
+        delete L-&gt;next;
+        L-&gt;next = 0;
+    }
+    else
+        pop(L-&gt;next);
+}</code></pre>
+<p><strong>pop di una lista (tipo 3)</strong></p>
+<ul>
+<li>pre: L è una lista ben formata e con almeno 2 nodi</li>
+<li>post: restituisce vL - ultimo nodo</li>
+</ul>
+<pre><code class="language-c++">void pop(nodo* &amp;L)
+{
+    // se non esiste il prossimo elemento, cioè è l&#39;ultimo nodo
+    if(!L-&gt;next)
+    {
+        // elimina l&#39;ultimo nodo
+        delete L;
+        // mette il penultimo a 0
+        L = 0;
+    }
+    else
+        pop(L-&gt;next);
+}</code></pre>
+<p><strong>inserimento in posizione k (tipo 1)</strong></p>
+<ul>
+<li>pre: L è una lista ben formata, k &gt;= 0, vL = L</li>
+<li>post: restituisce vLk@nodo(c)@R</li>
+</ul>
+<pre><code class="language-c++">nodo* ins(nodo* L, int k, int c)
+{
+    if(!k)
+        return new nodo(c, L);
+    if(!L)
+        return 0;
+    L-&gt;next = ins(L-&gt;next, k-1, c)
+}</code></pre>
+<p><strong>inserimento in posizione k (tipo 2)</strong></p>
+<ul>
+<li>pre: L è una lista ben formata e non vuota, k &gt; 0, vL = L</li>
+<li>post: restituisce vLk@nodo(c)@R</li>
+</ul>
+<pre><code class="language-c++">void ins(nodo* L, int k, int c)
+{
+    if(!k-1)
+        L-&gt;next = new nodo(c, L-&gt;next);
+    if(L-&gt;next)
+        ins(L-&gt;next, k-1, c)
+}</code></pre>
+<p><strong>inserimento in posizione k (tipo 3)</strong></p>
+<ul>
+<li>pre: L è una lista ben formata, k &gt;= 0, vL = L</li>
+<li>post: restituisce vLk@nodo(c)@R</li>
+</ul>
+<pre><code class="language-c++">void ins(nodo* &amp;L, int k, int c)
+{
+    if(!k)
+        L = new nodo(c, L);
+    if(L)
+        ins(L-&gt;next, k-1, c)
+}</code></pre>
+<p><strong>inversione di una lista (v1)</strong></p>
+<ul>
+<li>pre: L è una lista ben formata</li>
+<li>post: restituisce L<sup>R</sup></li>
+</ul>
+<pre><code class="language-c++">nodo* inverti(nodo* L)
+{
+    if(!L)
+        return 0;
+    nodo* t = inverti(L-&gt;next);
+    return InsEnd(t, L);
+}</code></pre>
+<p><strong>inversione di una lista (v2)</strong></p>
+<ul>
+<li>pre: L e Q sono liste ben formate</li>
+<li>post: restituisce L<sup>R</sup>@Q</li>
+</ul>
+<pre><code class="language-c++">nodo* inverti(nodo* L, nodo* Q)
+{
+    if(!L)
+        return Q;
+    nodo* t = L;
+    L = L-&gt;next;
+    t-&gt;next = Q;
+    return inverti(L, t);
+}</code></pre>
+<p><strong>inversione di una lista (v2 - iterativa)</strong></p>
+<ul>
+<li>R: Q = (vL - L)<sup>R</sup></li>
+</ul>
+<pre><code class="language-c++">nodo* inverti(nodo* L)
+{
+    nodo * Q = 0;
+    while(L)
+    {
+        nodo* t = L;
+        L = L-&gt;next;
+        t-&gt;next = Q;
+        Q = t;
+    }
+    return Q;
+} </code></pre>
 
         </div>
     </div>

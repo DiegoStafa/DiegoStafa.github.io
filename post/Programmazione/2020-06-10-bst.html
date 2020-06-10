@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info">            <li>
+                Binary search trees
+            </li>
+            <li>
+                Programmazione
+            </li>
+            <li>
+                10-06-2020
+            </li>
+        </ul>
+        <div class="post">
+<h3 id="binary-search-trees---bst">Binary Search Trees - BST</h3>
+<p>un albero BST è un albero binario tale per cui ogni radice è maggiore del sottoalbero sinistro e minore del sottoalbero destro</p>
+<p>la ricerca in un BST compie ha complessità logn ed il numero massimo di invocazioni è l&#39;altezza dell&#39;albero</p>
+<p><strong>ricerca BST</strong></p>
+<ul>
+<li>pre: albero è un albero BST</li>
+<li>post: restituisce se c&#39;è il nodo cercato, altrimenti 0</li>
+</ul>
+<pre><code class="language-c++">nodo* Cerca(nodo* albero, char c)
+{
+    if(!albero)
+        return 0;
+    else
+    {
+        if(albero-&gt;info == c)
+            return albero;
+        if (albero-&gt;info &gt; c)
+            return Cerca(albero-&gt;sx, c);
+        else
+            return Cerca(albero-&gt;dx, c);
+    }
+}</code></pre>
+<p>&nbsp;</p>
+<p><strong>inserimento di un nodo BST (sol. tipo 1)</strong></p>
+<ul>
+<li>pre: albero è un albero BST</li>
+<li>post: inserisce un nodo in albero ed albero è un BST</li>
+</ul>
+<pre><code class="language-c++">nodo* Inserisci(nodo* albero, char c)
+{
+    if(!albero)
+        return new nodo(c, 0)
+    else
+    {
+        if(albero-&gt;info &gt; c)
+            r-&gt;sx = Inserisci(albero-&gt;sx, c);
+        else
+            r-&gt;dx = Inserisci(alberp-&gt;dx, c)
+
+        return albero;
+    }
+}</code></pre>
+<p>&nbsp;</p>
+<p><strong>inserimento di un nodo BST (sol. tipo 2 - ricorsiva)</strong></p>
+<ul>
+<li>pre: albero è un albero BST non vuoto</li>
+<li>post: inserisce un nodo in albero ed albero è un BST</li>
+</ul>
+<pre><code class="language-c++">void Inserisci(nodo* albero, char c)
+{
+    if(albero-&gt;info &gt;= c)
+        if(albero-&gt;sx)
+            Inserisci(albero-&gt;sx, c);
+        else
+            albero-&gt;sx = new nodo(c);    
+    else
+        if(albero-&gt;dx)
+            Inserisci(albero-&gt;dx, c);
+        else
+            albero-&gt;dx = new nodo(c);
+}</code></pre>
+<p>&nbsp;</p>
+<p><strong>inserimento di un nodo BST (sol. tipo 2 - iterativa)</strong></p>
+<ul>
+<li>pre: albero è un albero BST non vuoto</li>
+<li>post: inserisce un nodo in albero ed albero è un BST</li>
+</ul>
+<pre><code class="language-c++">void Inserisci(nodo* albero, char c)
+{
+    bool continua = true;
+    while(continua)
+    {
+        if(albero-&gt;info &gt;= c)
+            if(albero-&gt;sx)
+                albero = albero-&gt;sx;
+            else
+                albero-&gt;sx = new nodo(c);
+                continua = false;
+        else
+            if(albero-&gt;dx)
+                albero = albero-&gt;dx;
+            else
+                albero-&gt;dx = new nodo(c);
+                continua = false;
+    }
+}</code></pre>
+
+        </div>
+    </div>
+</body>
+
+</html>

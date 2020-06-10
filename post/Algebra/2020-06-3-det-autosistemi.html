@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info">            <li>
+                Determinanti e Autosistemi
+            </li>
+            <li>
+                Algebra
+            </li>
+            <li>
+                03-06-2020
+            </li>
+        </ul>
+        <div class="post">
+<h3 id="determinanti-di-una-matrice">Determinanti di una matrice</h3>
+<p><strong>determinanti di matrici quadrate</strong></p>
+<p>indicando con Det(A) il determinante di una matrice A, allora:</p>
+<ul>
+<li>A<sub>1x1</sub> --&gt; Det(A) == a<sub>1,1</sub></li>
+<li>A<sub>2x2</sub> --&gt; Det(A) == ad - bc</li>
+<li>A<sub>nxn</sub> <ul>
+<li>Det(A) == riga i*cofattori della i-esima riga</li>
+<li>Det(A) == colonna j trasposta*cofattori della j-esima colonna</li>
+</ul>
+</li>
+</ul>
+<p>il cofattore A<sub>i,j</sub> di una matrice A è:</p>
+<ul>
+<li>(-1)<sup>i+j</sup> * Det(C<sub>ij</sub>)<ul>
+<li>C<sub>ij</sub> è la matrice A senza la i-esima riga e j-esima colonna</li>
+</ul>
+</li>
+</ul>
+<p>nb: è meglio scegliere la riga/colonna che ha più zeri</p>
+<pre><code class="language-c++">// matrice quadrata
+A = { a11 a12 ... a1n 
+      a21 a22 ... a2n
+      .
+      .
+      .
+      an1 an2 ... ann }
+
+riga = [ a11 a12 ... a1n ]
+
+cofattori = [ A11
+              A12
+              .
+              .
+              .
+              A1n ]
+
+determinante = riga*cofattori</code></pre>
+<p><strong>determinanate di matrici triangolari sup/inf</strong></p>
+<p>il determinanate di una matrice triangolare sup/inf è uguale al prodotto dei numeri sulla diagonale</p>
+<p><strong>proprietà dei determinanti</strong></p>
+<ol>
+<li>Det(A<sup>T</sup>) == Det(A)</li>
+<li>Det(coniugato(A)) == coniugato(Det(A))</li>
+<li>Det(A<sup>H</sup>) == coniugato(Det(A))</li>
+<li>Det(AB) == Det(A) * Det(B)</li>
+<li>A è singolare &lt;--&gt; Det(A) == 0</li>
+</ol>
+<p><strong>equzione caratteristica</strong></p>
+<p>è un equzione associata ad una matrice A, nella forma:</p>
+<ul>
+<li>Det(A - xId) = 0</li>
+</ul>
+<hr>
+<h3 id="autovalori-autovettori-e-autospazi">Autovalori, autovettori e autospazi</h3>
+<p>si definisce con E<sub>A</sub>(k), l&#39;insieme dei vettori v tali per cui:</p>
+<ul>
+<li>Av == kv</li>
+</ul>
+<p>oppure:</p>
+<ul>
+<li>N(A - kId) = 0</li>
+</ul>
+<p>se la condizione è rispettata:</p>
+<ul>
+<li>k si dice autovalore<ul>
+<li>l&#39;insieme di tutti gli autovalori di una matrice si chiama spettro dello matrice</li>
+</ul>
+</li>
+<li>v si dice autovettore</li>
+<li>E<sub>A</sub>(k) si dice autospazio<ul>
+<li>dim(autospazio) si dice molteplicità geometrica</li>
+</ul>
+</li>
+</ul>
+<p><strong>calcolo degli autovalori</strong></p>
+<p>un numero k è un autovalore di A sse è soluzione dell&#39;equazione caratteristica di A (det(A − kId) = 0)</p>
+<ul>
+<li>il numero di volte che k annulla l&#39;equazione si dice molteplicità algebrica</li>
+</ul>
+<p>di base è sufficiente calcolare gli zeri del suo polinomio caratteristico.</p>
+<p><strong>calcolo della base di un autospazio</strong></p>
+<p>si calcola la base di N(A - kId)v = 0</p>
+<p>nb: 1 &lt;= molt. geometrica &lt;= molt. algebrica</p>
+<p><strong>autovalori di matrici triangolari sup/inf</strong></p>
+<p>gli autovalori sono tutti i numeri sulla diagonale</p>
+<p><strong>indipendenza di autospazi</strong></p>
+<p>la somma di autospazi di autovalori distinti è una somma diretta</p>
+<p>l&#39;unione delle basi di autospazi == base della somma diretta degli autospazi</p>
+<p><strong>matrici simili</strong></p>
+<p>due matrici A e B sono simili sse esiste una matrice S, tale per cui:</p>
+<ul>
+<li>A = SBS<sup>-1</sup></li>
+</ul>
+<p>proprietà:</p>
+<ol>
+<li>P<sub>A</sub>(x) == P<sub>A</sub>(x) (polinomi caratteristici)<ul>
+<li>A e B hanno gli stessi autovalori e molteplicità</li>
+</ul>
+</li>
+<li>dim(E<sub>A</sub>(k)) == dim(E<sub>B</sub>(k))</li>
+<li>v appartiene a E<sub>B</sub>(k) sse Sv appartiene a E<sub>A</sub>(k)</li>
+</ol>
+<p><strong>matrici diagonalizzabili</strong></p>
+<p>una matrice è diagonalizzabile sse per ogni suo autovalore molteplicità geometrica e algebrica corrispondono </p>
+<p>una matrice A è diagonalizzabile sse esistono matrice S e D, tale per cui:</p>
+<ul>
+<li>D è un matrice diagonale</li>
+<li>A = SDS<sup>-1</sup></li>
+</ul>
+<p>proprietà:</p>
+<ol>
+<li>A e D sono simili</li>
+<li>A<sup>n</sup> == SD<sup>n</sup>S<sup>-1</sup></li>
+</ol>
+<p><strong>matrici unitariamente diagonalizzabili</strong></p>
+<p>una matrice si dice unitaria se</p>
+<ul>
+<li>A<sup>-1</sup> == A<sup>H</sup></li>
+</ul>
+<p>una matrice si dice ortogonale se:</p>
+<ul>
+<li>A<sup>-1</sup> == A<sup>T</sup></li>
+</ul>
+<p>una matrice si dice normale se:</p>
+<ul>
+<li>AA<sup>H</sup> == A<sup>H</sup>A</li>
+</ul>
+<p>una matrice è unitariamente diagonalizzabile se D è una matrice unitaria e A è una matrice normale-</p>
+<p><strong>teorema spettrale (forma moltiplicativa)</strong></p>
+<p>A = UDU<sup>H</sup></p>
+<p><strong>teorema spettrale (forma additiva)</strong></p>
+<p>A = k1P1 + k2P2 + ... + knPn</p>
+<p>con P<sub>i</sub> = matrice di priezione del autospazio con autovalore k<sub>i</sub></p>
+<p>proprietà:</p>
+<ul>
+<li>se A = A<sup>H</sup> allora ha solo autovalori reali</li>
+</ul>
+
+        </div>
+    </div>
+</body>
+
+</html>

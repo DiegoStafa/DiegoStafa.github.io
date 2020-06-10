@@ -22,7 +22,7 @@
 <body>
     <div class="post-wrapper">
         <ul class="post-info">            <li>
-                Rappresentazione geometrica, norma e prodotto scalare
+                Norme, prodotto scalare e ortogonalità
             </li>
             <li>
                 Algebra
@@ -49,6 +49,7 @@ per calcolare la lunchezza euclidea di un vettore:</p>
 <li>radice(v<sup>t</sup>v) --&gt; per coefficenti reali</li>
 <li>radice(v<sup>h</sup>v) --&gt; per coefficenti complessi (funziona anche per i reali in quanto il coniugato di un reale è il reale stesso)</li>
 </ul>
+<p>nb: si può definire come radice del prodotto scalare canonico</p>
 <p>la lunghezza di una somma tra vettori è sempre minore o uguale alla somma delle lunghezze dei vettori, <strong>disuguaglianza triangolare</strong></p>
 <p><strong>norma infinito</strong></p>
 <p>si indica con ||v||<sub>inf</sub></p>
@@ -101,6 +102,51 @@ per calcolare la lunchezza euclidea di un vettore:</p>
 <p>autoesplicativo</p>
 <p><strong>basi ortonormale</strong></p>
 <p>autoesplicativo</p>
+<p><strong>complemento ortogonale di un sottospazio</strong></p>
+<p>dato un sottospazio U di uno spazio V, il complemento ortogonale di U è l&#39;insieme dei vettori in V tale per cui:</p>
+<ul>
+<li>(u | v) = 0, per ogni u</li>
+</ul>
+<p>di base sono tutti i vettori di V (quindi anche di U) che sono ortogonali a tutti i vettori di u</p>
+<p>proprietà:</p>
+<ul>
+<li>il complemento ortogonale è un sottospazio di V</li>
+<li>la somma diretta di U e il suo complemento è V</li>
+<li>dim U + dim complemento U == dim V</li>
+<li>ogni vettore di V è unicamente individuato dalla somma tra 2 vettori di U e il suo complemento (proiezione ortogonale)</li>
+<li>complemento ortogonale == N(A<sup>H</sup>), con A la matrice che ha per colonne i vettori di U</li>
+</ul>
+<p><strong>Proiezione ortogonale</strong></p>
+<p>di base un vettore nello spazio V è individuabile da 2 vettori, uno di U, uno del complemento</p>
+<p>si indica con P<sub>U</sub>(v) la proiezione ortogonale del vettore v sul sottospazio U</p>
+<p>per trovare P<sub>U</sub>(v)</p>
+<ol>
+<li>si trova una base di U</li>
+<li>si trova la base ortogonale con gram schmidt</li>
+<li>si trova la base ortonormale normalizzando</li>
+<li>P<sub>U</sub>(v) = (b<sub>1</sub>|v)b<sub>1</sub> + (b<sub>2</sub>|v)b<sub>2</sub> +...+ (b<sub>n</sub>|v)b<sub>n</sub></li>
+</ol>
+<p><strong>matrice di proieizione</strong></p>
+<p>è una matrice quadrata Q tale per cui il prodotto tra Q e un vettore v da la proiezione ortogonale di v</p>
+<p>la costruzione della matrice:</p>
+<ol>
+<li>si crea una matrice nxk, che ha per colonne i vettori alti n di una base ortonormale di k elementi</li>
+<li>si moltiplica questa matrice per la sua H trasposta</li>
+</ol>
+<p>per calcolare la matrice di proiezione del complemento ortogonale si fa matrice identintica - matrice di proiezione</p>
+<h3 id="algoritmo-gram-schmidt">Algoritmo Gram-Schmidt</h3>
+<p>costruisce un sistema generatore ortogonale da un sistema generatore</p>
+<p>nb:</p>
+<ol>
+<li>un sistema generatore ortogonale senza vettori nulli è sempre una base</li>
+<li>una base su cui viene applciato GS diventa una base ortogonale</li>
+<li>per costruire una base ortonormale si normalizzano tutti i vettori della base ortogonale</li>
+</ol>
+<p>dati un insieme V formato da v1,v2..vn, si costruisce l&#39;insieme ortoganale W formato da u1,u2..un, con:</p>
+<ul>
+<li>u<sub>1</sub> = v<sub>1</sub></li>
+<li>u<sub>n</sub> = v<sub>n</sub> - u<sub>1</sub>((v<sub>n</sub> | u<sub>1</sub>) / (u<sub>1</sub> | u<sub>1</sub>)) - u<sub>2</sub>((v<sub>n</sub> | u<sub>2</sub>) / (u<sub>2</sub> | u<sub>2</sub>)) - ... - u<sub>n-1</sub>((v<sub>n</sub> | <sub>n-1</sub>) / (u<sub>n-1</sub> | u<sub>n-1</sub>))</li>
+</ul>
 
         </div>
     </div>

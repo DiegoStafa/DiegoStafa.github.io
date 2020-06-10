@@ -13,6 +13,7 @@ esempi di basi:
 data una matrice A, per trovare una base dello spazio nullo N(A), si risolve prima il sistema omogeneo relativo, Ax=0, cioè si fa una EG su A e si risolve Ux=0, dopo aver trovato tutte le soluzioni (aka lo spazio nullo), si cerca la base, che avrà tanti elementi quanti la dimensione di N(A)
 
 per ottenere il primo vettore della base, si pone a 1 il primo parametro e a 0 i restanti, per il secondo, si pone a 1 il secondo paramentro e a 0 i restanti, e così via
+
 --- 
 
 **teorema 1**
@@ -40,7 +41,8 @@ un insieme generatore che abbia tanti elementi quanti la dimensione dello spazio
 
 **teorema 5**
  
-per verificare che B, formata da vettori colonna alti n, sia una base di K<sup>n</sup> basta verficare che il rango della matrice A formata dai vettori di B, sia ==
+per verificare che B, formata da vettori colonna alti n, sia una base di K<sup>n</sup> basta verficare che il rango della matrice A formata dai vettori di B, sia uguale ad n
+
 ---
 
 ### Spazio delle colonne di una matrice

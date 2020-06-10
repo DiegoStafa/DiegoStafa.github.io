@@ -25,6 +25,8 @@ per calcolare la lunchezza euclidea di un vettore:
 * radice(v<sup>t</sup>v) --> per coefficenti reali
 * radice(v<sup>h</sup>v) --> per coefficenti complessi (funziona anche per i reali in quanto il coniugato di un reale è il reale stesso)
 
+nb: si può definire come radice del prodotto scalare canonico
+
 la lunghezza di una somma tra vettori è sempre minore o uguale alla somma delle lunghezze dei vettori, **disuguaglianza triangolare**
 
 **norma infinito**
@@ -101,3 +103,53 @@ autoesplicativo
 **basi ortonormale**
 
 autoesplicativo
+
+**complemento ortogonale di un sottospazio**
+
+dato un sottospazio U di uno spazio V, il complemento ortogonale di U è l'insieme dei vettori in V tale per cui:
+* (u \| v) = 0, per ogni u
+
+di base sono tutti i vettori di V (quindi anche di U) che sono ortogonali a tutti i vettori di u
+
+proprietà:
+* il complemento ortogonale è un sottospazio di V
+* la somma diretta di U e il suo complemento è V
+* dim U + dim complemento U == dim V
+* ogni vettore di V è unicamente individuato dalla somma tra 2 vettori di U e il suo complemento (proiezione ortogonale)
+* complemento ortogonale == N(A<sup>H</sup>), con A la matrice che ha per colonne i vettori di U
+
+**Proiezione ortogonale**
+
+di base un vettore nello spazio V è individuabile da 2 vettori, uno di U, uno del complemento
+
+si indica con P<sub>U</sub>(v) la proiezione ortogonale del vettore v sul sottospazio U
+
+per trovare P<sub>U</sub>(v)
+
+1. si trova una base di U
+2. si trova la base ortogonale con gram schmidt
+3. si trova la base ortonormale normalizzando
+4. P<sub>U</sub>(v) = (b<sub>1</sub>\|v)b<sub>1</sub> + (b<sub>2</sub>\|v)b<sub>2</sub> +...+ (b<sub>n</sub>\|v)b<sub>n</sub>
+
+**matrice di proieizione**
+
+è una matrice quadrata Q tale per cui il prodotto tra Q e un vettore v da la proiezione ortogonale di v
+
+la costruzione della matrice:
+1. si crea una matrice nxk, che ha per colonne i vettori alti n di una base ortonormale di k elementi
+2. si moltiplica questa matrice per la sua H trasposta
+
+per calcolare la matrice di proiezione del complemento ortogonale si fa matrice identintica - matrice di proiezione
+
+### Algoritmo Gram-Schmidt
+
+costruisce un sistema generatore ortogonale da un sistema generatore
+
+nb:
+1. un sistema generatore ortogonale senza vettori nulli è sempre una base
+2. una base su cui viene applciato GS diventa una base ortogonale
+3. per costruire una base ortonormale si normalizzano tutti i vettori della base ortogonale
+
+dati un insieme V formato da v1,v2..vn, si costruisce l'insieme ortoganale W formato da u1,u2..un, con:
+* u<sub>1</sub> = v<sub>1</sub>
+* u<sub>n</sub> = v<sub>n</sub> - u<sub>1</sub>((v<sub>n</sub> \| u<sub>1</sub>) / (u<sub>1</sub> \| u<sub>1</sub>)) - u<sub>2</sub>((v<sub>n</sub> \| u<sub>2</sub>) / (u<sub>2</sub> \| u<sub>2</sub>)) - ... - u<sub>n-1</sub>((v<sub>n</sub> \| <sub>n-1</sub>) / (u<sub>n-1</sub> \| u<sub>n-1</sub>))
