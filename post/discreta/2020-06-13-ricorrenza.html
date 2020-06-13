@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info">            <li>
+                Relazioni di ricorrenza
+            </li>
+            <li>
+                Matematica discreta
+            </li>
+            <li>
+                13-06-2020
+            </li>
+        </ul>
+        <div class="post">
+<h3 id="relazioni-di-ricorrenza">Relazioni di ricorrenza</h3>
+<p><strong>relazioni di ricorrenza</strong></p>
+<p>è una formula ricorsiva che esprime l&#39;ennesimo termine della successione atraverso termini precedenti</p>
+<p>ad esempio:</p>
+<ul>
+<li>a<sub>n</sub> = a<sub>n-1</sub> + a<sub>n-2</sub></li>
+</ul>
+<hr>
+<p><strong>relazioni lineari omogenee di ordine r</strong></p>
+<p>sono relazioni di ricorrenza, dipendenti solo da gli ultimi n-r termini</p>
+<p>cioè:</p>
+<ul>
+<li>a<sub>n</sub> = c<sub>1</sub>a<sub>n-1</sub> + c<sub>2</sub>a<sub>n-2</sub> + ... c<sub>r</sub>a<sub>n-r</sub></li>
+</ul>
+<p><strong>soluzioni</strong></p>
+<p>per risolvere una relazione di ricorrenza di ordine r:</p>
+<ol>
+<li>si crea un polinomio in X <ul>
+<li>coefficenti --&gt; c1, c2 ... cr</li>
+<li>gradi di X --&gt; n, n-1, n-2 ... n-r</li>
+</ul>
+</li>
+<li>si divide tutto il polinomio per X<sup>n-r</sup></li>
+</ol>
+<p>il polinomio ottenuto prende il nome di equazione caratteristica ed ha r soluzioni particolari</p>
+<p>la soluzione generale è una combinazione lineare tra tutte le soluzioni, i coefficenti di questa combinazione devono essere ricavati dalle r condizioni iniziali del sistema</p>
+<p>di base sostituendo le condizioni iniziali viene fuori un sistema con termini noti == condizioni iniziali </p>
+<hr>
+<p><strong>relazioni lineari non omogenee di ordine r</strong></p>
+<p>sono relazioni di ricorrenza, dipendenti da gli ultimi n-r termini e anche da una funzione di qualsiasi genere</p>
+<p><strong>non omogenee del primo ordine</strong></p>
+<p>sono del tipo:</p>
+<ul>
+<li>a<sub>n</sub> = ca<sub>n-1</sub> + f(n)</li>
+<li>condizione iniziale a<sub>0</sub></li>
+</ul>
+<p>soluzioni:</p>
+<ul>
+<li>se c == 1<ul>
+<li>a<sub>n</sub> = a<sub>0</sub> + f(1) + f(2) + ... f(n)</li>
+</ul>
+</li>
+<li>se c != 1<ul>
+<li>si cerca la soluzione generale dell&#39;omogenea associata</li>
+<li>la si somma ad una soluzione particolare della non omogenea</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><strong>relazioni dividi e conquista</strong></p>
+<p>sono relazioni di ricorrenza, dipendenti dl n/2-esimo termine e anche da una funzione di qualsiasi genere</p>
+<p>sono del tipo:</p>
+<ul>
+<li>a<sub>n</sub> = ca<sub>n/2</sub> + f(n)</li>
+<li>condizione iniziale a<sub>0</sub></li>
+</ul>
+<p>soluzioni:</p>
+<ul>
+<li>se c == 1 e f(n) == d<ul>
+<li>a<sub>n</sub> = dLog<sub>2</sub>n + A</li>
+</ul>
+</li>
+<li>se c == 2 e f(n) == d<ul>
+<li>a<sub>n</sub> = An - d</li>
+</ul>
+</li>
+<li>se c == 2 e f(n) == dn<ul>
+<li>a<sub>n</sub> = dn(Log<sub>2</sub>n + A)</li>
+</ul>
+</li>
+<li>se c &gt; 2 e f(n) == d<ul>
+<li>a<sub>n</sub> = An<sup>Log<sub>2</sub>n</sup> + (2d / 2 - c)n</li>
+</ul>
+</li>
+</ul>
+<p>nb: il logaritmo si deve arrotondare per eccesso ad un intero</p>
+
+        </div>
+    </div>
+</body>
+
+</html>

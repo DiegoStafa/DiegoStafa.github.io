@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info">            <li>
+                Grafi ad albero
+            </li>
+            <li>
+                Matematica discreta
+            </li>
+            <li>
+                13-06-2020
+            </li>
+        </ul>
+        <div class="post">
+<h3 id="foreste-e-alberi">Foreste e alberi</h3>
+<p><strong>foreste</strong></p>
+<p>una foresta è un grafo senza cicli/circuiti</p>
+<p><strong>alberi</strong></p>
+<p>è una foresta connessa</p>
+<p>proprietà:</p>
+<ul>
+<li>ogni albero (con almeno 2 nodi) ha almeno 2 nodi di grado 2</li>
+<li>il numero degli archi è uguale al numero dei nodi meno 1</li>
+<li>ogni coppia di vertici esiste un unico cammino che li collega</li>
+</ul>
+<p><strong>algoritmo di kruskal</strong></p>
+<p>dato un grafo connesso i cui archi hanno un costo, crea l&#39;albero più economico</p>
+<p>per creare un albero</p>
+<ol>
+<li>crea una lista degli archi in ordine crescente di costo</li>
+<li>toglie il primo arco della lista e lo mette nel grafo</li>
+<li>forma un ciclo?<ul>
+<li>si --&gt; lo toglie dal grafo</li>
+<li>no --&gt; step 2</li>
+</ul>
+</li>
+</ol>
+<p><strong>algoritmo di dijkstra</strong></p>
+<p>dato un grafo G connesso i cui archi hanno un costo ed un nodo n di partenza, trova un albero (sottografo di G) che contiene tutti i cammini di costo minimo tra n e ogni altro nodo</p>
+<p>inizializzazione:</p>
+<ul>
+<li>n ha distanza 0</li>
+<li>tutti gli altri nodi hanno distanza infinito</li>
+<li>S è una lista di tutti i nodi in ordine crescente alle loro distanze</li>
+</ul>
+<p>algoritmo:</p>
+<ol>
+<li>prende il primo nodo p di S</li>
+<li>prende un nodo q adiacente a p e contenuto in S</li>
+<li>q ha una distanza maggiore di p + l&#39;arco che li unisce?<ul>
+<li>si --&gt; aggiorna la distanza di q</li>
+<li>no --&gt; step 2</li>
+</ul>
+</li>
+<li>rimuove p dalla lista S</li>
+<li>step 1</li>
+</ol>
+
+        </div>
+    </div>
+</body>
+
+</html>

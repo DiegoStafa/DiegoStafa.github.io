@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info">            <li>
+                Teoria dei grafi
+            </li>
+            <li>
+                Matematica discreta
+            </li>
+            <li>
+                13-06-2020
+            </li>
+        </ul>
+        <div class="post">
+<h3 id="grafi">Grafi</h3>
+<p>si indicano con:</p>
+<ul>
+<li>G (V, E)</li>
+</ul>
+<p>dove:</p>
+<ul>
+<li>G è il grafo</li>
+<li>V è un insieme di vertici (nodi)</li>
+<li>E è un insieme di coppie di vertici (archi)</li>
+</ul>
+<p><strong>terminologia</strong></p>
+<ul>
+<li>percorso: sequenza di vertici<ul>
+<li>il percorso è chiuso se i vertici alle estremità coincidono</li>
+</ul>
+</li>
+<li>cammino: percorso con vertici. distinti<ul>
+<li>ll cammino è un ciclo/circuito se i vertici alle estremità coincidono</li>
+</ul>
+</li>
+<li>lunghezza: numero di archi in un percorso</li>
+<li>isomorfismo: grafi uguali con disegno diverso</li>
+</ul>
+<p><strong>grado di un vertice</strong></p>
+<p>si indica con d(V) il grado di un vertice, ed indica di quanti archi V è un estremo</p>
+<p><strong>proprietà sui gradi</strong></p>
+<ol>
+<li>il grado totale di un grafo (somma dei gradi dei singoli vertici) è uguale a 2 volte il numero di archi.</li>
+<li>la somma dei vertici di grado dispari è sempre un numero pari</li>
+</ol>
+<hr>
+<h3 id="tipi-di-grafi">Tipi di grafi</h3>
+<p>i grafi possono essere:</p>
+<ul>
+<li>connessi: ogni vertice può raggiungere ogni altro vertice tramite un percorso</li>
+<li>completi: tutti i vertici sono connessi tra loro (eg. rete a stella)</li>
+<li>bipartiti: il grafo è formato da 2 insiemi di vertici, ogni arco connette questi 2 insiemi<ul>
+<li>è completo se tutti i vertici del primo insieme sono connessi a tutti i vertici del secondo</li>
+</ul>
+</li>
+<li>k-regolari: ogni vertice ha grado k<ul>
+<li>sono chiamati cubici se K=3</li>
+</ul>
+</li>
+<li>tornei: grafi orientati e completi </li>
+</ul>
+<p><strong>multigrafi</strong></p>
+<p>sono grafi con pià archi passanti per 2 vertici</p>
+<ul>
+<li>archi passanti per 2 stessi vertici sono detti paralleli</li>
+<li>archi che hanno le stesse estremità sono detti cappi<ul>
+<li>un cappio contribuisce di 2 al grado di un nodo</li>
+</ul>
+</li>
+</ul>
+<p><strong>sottografi</strong></p>
+<p>un grafo G&#39; è sottografo di G se i vertici e archi di G&#39; sono sottoinsiemi dei vertici e archi di G</p>
+<p>per indicarli sono necessari sia vertici che archi </p>
+<p><strong>sottografi indotti</strong></p>
+<p>sono sottografi che mantengono le adiacenze tra vertici, di base consiste </p>
+<p>per indicarli sono necessari solo i vertici, in quanto gli archi sono indotti da questi</p>
+<p><strong>grafi complementari</strong></p>
+<p>di base il grafo G&#39; complentare di un grafo G, è un grafo formato dagli stessi vertici di G, ma gli archi che G non ha li ha G&#39;, e i grafi che G&#39; non ha li ha G</p>
+<p><strong>grafi isomorfi</strong></p>
+<p>sono grafi uguali ma disegnati in modo diverso</p>
+<p>se due grafi sono isomorfi allora:</p>
+<ul>
+<li>hanno stesso numero di vertici</li>
+<li>hanno stesso numero di archi</li>
+<li>hanno stesso numero di vertici con lo stesso grado</li>
+<li>i complementari sono isomorfi</li>
+<li>hanno gli stessi sottografi indotti</li>
+</ul>
+<h3 id="grafi-bipartiti">Grafi bipartiti</h3>
+<p>un grafo bipartito è un grafo tale per si possono dividere i vertici in due gruppi ed ogni arco ha per estremi vertici di gruppi differenti</p>
+<p><strong>condizione di bipartizione</strong></p>
+<p>un grafo e bipartibile se e solo se non contene nessun ciclo/circuito di lunghezza dispari</p>
+<p><strong>algoritmo di bipartizione</strong></p>
+<ol>
+<li>si assegna un nodo qualsiasi ad un insieme</li>
+<li>per ogni nodo appartenente ad un insieme si assegnano tutti i suoi nodi adiacenti all&#39;altro insieme</li>
+</ol>
+<hr>
+<h3 id="grafi-orientati">Grafi orientati</h3>
+<p>sono grafi in cui gli archi sono coppie ordinate di vertici
+    * si dicono semplici se non sono multigrafi</p>
+<p>i nodi sono:</p>
+<ul>
+<li>iniziali: coda di un arco</li>
+<li>finali: testa di un arco</li>
+</ul>
+<p>il cammino di un grafo orientato è detto cammino orientato
+    * il grafo si dice fortemente connesso se per ogni coppia di vertici esiste un cammino orientato</p>
+<p><strong>gradi orientati</strong></p>
+<p>si indicano con G (V, A)</p>
+<ul>
+<li>grado entrante (d<sup>in</sup>(v)): numero di archi entranti nel nodo</li>
+<li>grado uscente (d<sup>out</sup>(v)): numero di archi uscenti dal nodo</li>
+</ul>
+<p>la somma di tutti i gradi entranti del grafo è uguale alla somma di tutti i gradi ed è anche uguale al numero di archi totali</p>
+<hr>
+<h3 id="rappresentazione-matriciale">Rappresentazione matriciale</h3>
+<p><strong>matrice di incidenza vertici/archi (non orientato)</strong></p>
+<p>è una matrice che ha per righe i vertici e per colonne gli archi</p>
+<p>si guardano le colonne, contiene 1 se un vertice è estremo dell&#39;arco, 0 altrimenti</p>
+<p><strong>matrice di incidenza vertici/archi (orientato)</strong></p>
+<p>come quella non orientata,</p>
+<p>contiene 1 se il vertice è l&#39;estremo uscente, -1 se è l&#39;entrante, 0 altrimenti</p>
+<p><strong>matrice di adiacenza vertici/vertici</strong></p>
+<p>è una matrice quadrata che ha per dimensione il numero di vertici</p>
+<p>contiene 1 se i vertici sono collegati, 0 altrimenti</p>
+<hr>
+
+        </div>
+    </div>
+</body>
+
+</html>

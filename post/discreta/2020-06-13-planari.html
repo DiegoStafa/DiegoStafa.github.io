@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info">            <li>
+                Grafi planari
+            </li>
+            <li>
+                Matematica discreta
+            </li>
+            <li>
+                13-06-2020
+            </li>
+        </ul>
+        <div class="post">
+<h3 id="grafi-planari">Grafi planari</h3>
+<p>un grafo è planare se nel suo disegno non si intersecano gli archi</p>
+<p><strong>grafi minori</strong></p>
+<p>sono sottografi ottenuti attraverso 3 operazioni:</p>
+<ul>
+<li>contrazione di archi</li>
+<li>rimozione di archi</li>
+<li>rimozione di vertici isolati</li>
+</ul>
+<p>se un grafo minore di G è planare allora G è planare</p>
+<p><strong>contrazione di un arco</strong></p>
+<p>la contrazione di un arco con estremi p e q significa far collassare i due nodi in un nuico nodo eliminando l&#39;arco</p>
+<p><strong>teorema di kuratowski</strong></p>
+<p>un grafo è planare sse non contiene i minori:</p>
+<ul>
+<li>K_5 --&gt; grafo a stella</li>
+<li>K_3_3 --&gt; grafo bipartito 3x3</li>
+</ul>
+<p><strong>regioni o facce</strong></p>
+<p>una regione è una porzione d piano delimitata da archi</p>
+<p><strong>perimetro</strong></p>
+<p>percorso chiuso (ciclo) percorrendo gli archi di una faccia/regione</p>
+<p>la lunghezza di un perimetro è il numero di archi che si percorrono</p>
+<p><strong>ponte</strong></p>
+<p>è un arco la cui rimozione aumenta il numero di componenti connesse</p>
+<p>un arco è un ponte sse non appartiene ad un ciclo</p>
+<p>ogni ponte è percorso 2 volte in un perimetro</p>
+<p>tutti gli archi di un albero sono ponti</p>
+<p>ogni arco di un albero è percorso 2 volte</p>
+<p><strong>ciclo hamiltoniano</strong></p>
+<p>è un ciclo che attraversa ogni vertice del grafo una sola volta</p>
+<p>il grafo si dice hamiltoniano</p>
+<p>condizioni affinchè un grafo sia hamiltoniano:</p>
+<ul>
+<li>ogni nodo deve avere grado &gt;= 2</li>
+<li>la connettività deve essere &gt;= 2</li>
+<li>il numero di componenti connesse di un grafo senza n nodi deve essere &lt; n</li>
+</ul>
+<p><strong>teorema di dirac</strong></p>
+<p>se G è un grafo semplice di n nodi e il grado di ogni nodo è &gt;= n/2 allora H è hamiltoniano</p>
+<p><strong>metodo del cerchio e delle corde</strong></p>
+<p>dato un grafo che ammette un ciclo hamiltoniano, ne controlla la planarità</p>
+<p>di base consiste nel disegnare un poligono regolare contentente i vertici del grafo, poi si disegnano gli archi, se non ci sono intersezioni è planare</p>
+<p><strong>formula di eulero</strong></p>
+<p>consente di trovare il numero di regioni per ogni grafo planare e connesso</p>
+<p>dato il grafo G = (V, E), allora il numero di regioni di G è:</p>
+<ul>
+<li>r = E - V + 2</li>
+</ul>
+<p>corollari</p>
+<ol>
+<li>E &lt;= 3V -6 (il numero di archi è sempre limitato da una funzione lineare del numero di vertici)</li>
+<li>E &lt;= 2v - 4 (se G è bipartito)</li>
+<li>ogni grafo planare contiene un vertice di grado &lt;= 5</li>
+</ol>
+<p><strong>colorazione delle regioni</strong></p>
+<p>ogni grafo planare è colorabile con almeno 4 colori, in modo tale che regioni confinanti abbiano colori distinti </p>
+<p><strong>numero cromatico</strong></p>
+<p>è il minimo numero di colori necessari afficnè nodi adiacenti abbiano colori diversi</p>
+<p>il numero cromatico è sempre &lt;= al grado massimo di un grafo più uno</p>
+<p><strong>numero arcocromatico</strong></p>
+<p>è il minimo numero di colori necessari afficnè archi con estremi in comune abbiano colori diversi</p>
+<p>il numero arcocromatico di un grafo semplice è sempre o uguale al grado massimo del grafo, o uguale al grado massimo più uno (teorema di vizing)</p>
+<p><strong>scheletro</strong></p>
+<p>dato un multigrafo, lo scheletro è il grafo semplice (no cappi o archi paralleli), con gli stess nodi, con gli stess nodi adiacenti</p>
+<p>ogni scheletro di un grafo hamiltoniano è hamiltoniano</p>
+<p><strong>percorsi euleriani</strong></p>
+<p>è un ciclo che attraversa ogni arco del grafo una sola volta</p>
+<p>il grafo si dice euleriano</p>
+<p>condizioni affinchè un grafo sia euleriano:</p>
+<ul>
+<li>un grafo è euleriano sse ogni nodo ha grado pari</li>
+</ul>
+
+        </div>
+    </div>
+</body>
+
+</html>

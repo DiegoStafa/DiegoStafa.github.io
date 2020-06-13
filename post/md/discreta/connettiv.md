@@ -1,5 +1,7 @@
 ### Connettività
 
+un grafo è connesso se il numero di componenenti connesse è 1
+
 due nodi sono connessi sse esiste un cammino tra i due
 
 **proprietà di connessione**
