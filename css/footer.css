@@ -45,7 +45,7 @@ footer {
     justify-content: space-between;
 }
 
-.contact>div>i {
+.contact>div>a>i {
     font-size: 25px;
     margin: 10px;
 }
