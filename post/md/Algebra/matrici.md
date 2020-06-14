@@ -154,20 +154,20 @@ nb: se A è quadrata: AB == id implica BA == id e B è unica, se A non è quadra
 
 **condizione sufficente di invertibilità per matrici qudarate**
 
-condizione generale:
-* A ammette inversa sse la sua forma ridotta di gauss ha solo colonne dominanti
-
 condizione specifica per ordine 2:
 * A ammette inversa sse la differenza tra la diagonale e l'antidiagonale != 0
 
+condizione generale:
+* A ammette inversa sse la sua forma ridotta di gauss ha solo colonne dominanti
+
 per calcolare l'inversa di A:
-1. si scrive la matrice aumentata \[A \| Id\]
-2. si fa Eg della matrice aumentata e si ottiene \[U \| b\]
-    1. se U ha delle colonne libere
-        1. non esiste l'inversa
-    2. se U ha tutte le colonne dominanti
-        1. si esegue gauss-jordan su U
-        2. dopo l'eliminazione si avrà \[Id \| A<sup>-1</sup>\]
+* si scrive la matrice aumentata \[A \| Id\]
+* si fa Eg della matrice aumentata e si ottiene \[U \| b\]
+    * se U ha delle colonne libere
+        * non esiste l'inversa
+    * se U ha tutte le colonne dominanti
+        * si esegue gauss-jordan su U
+        * dopo l'eliminazione si avrà \[Id \| A<sup>-1</sup>\]
 
 per calcolare l'inversa di A di ordine 2:
 1. si esegue (1/diff diag) moltiplicato alla stessa matrice dove:

@@ -45,7 +45,8 @@
 </ul>
 <p><strong>base di uno spazio nullo</strong></p>
 <p>data una matrice A, per trovare una base dello spazio nullo N(A), si risolve prima il sistema omogeneo relativo, Ax=0, cioè si fa una EG su A e si risolve Ux=0, dopo aver trovato tutte le soluzioni (aka lo spazio nullo), si cerca la base, che avrà tanti elementi quanti la dimensione di N(A)</p>
-<h2 id="per-ottenere-il-primo-vettore-della-base-si-pone-a-1-il-primo-parametro-e-a-0-i-restanti-per-il-secondo-si-pone-a-1-il-secondo-paramentro-e-a-0-i-restanti-e-così-via">per ottenere il primo vettore della base, si pone a 1 il primo parametro e a 0 i restanti, per il secondo, si pone a 1 il secondo paramentro e a 0 i restanti, e così via</h2>
+<p>per ottenere il primo vettore della base, si pone a 1 il primo parametro e a 0 i restanti, per il secondo, si pone a 1 il secondo paramentro e a 0 i restanti, e così via</p>
+<hr>
 <p><strong>teorema 1</strong></p>
 <p>ogni spazio vettoriale <strong>finitamente generabile</strong> ha una base, di base si parte dal fatto che il sistema ha un numero finito di elementi, e attraverso un algoritmo iterativo, si elimina un elemento finchè il sistema non è anche linearmente indipendente</p>
 <p>per eliminare gli elementi:</p>
@@ -65,7 +66,8 @@
 <p><strong>teorema 4</strong></p>
 <p>un insieme generatore che abbia tanti elementi quanti la dimensione dello spazio, è una base</p>
 <p><strong>teorema 5</strong></p>
-<h2 id="per-verificare-che-b-formata-da-vettori-colonna-alti-n-sia-una-base-di-kn-basta-verficare-che-il-rango-della-matrice-a-formata-dai-vettori-di-b-sia-">per verificare che B, formata da vettori colonna alti n, sia una base di K<sup>n</sup> basta verficare che il rango della matrice A formata dai vettori di B, sia ==</h2>
+<p>per verificare che B, formata da vettori colonna alti n, sia una base di K<sup>n</sup> basta verficare che il rango della matrice A formata dai vettori di B, sia uguale ad n</p>
+<hr>
 <h3 id="spazio-delle-colonne-di-una-matrice">Spazio delle colonne di una matrice</h3>
 <p>data la matrice A di dimensione mxn a coefficent complessi, si considera lo spazio vettoriale C(A) generato dalle colonne di A &lt;a1,a2...an&gt;, per trovare una base di C(A):</p>
 <ul>
@@ -81,6 +83,8 @@
 </ul>
 <p><strong>teorema nullità + rango</strong></p>
 <p>la dimensione dello spazio nullo di una matrice A == numero dello colonne di A meno il rango di A</p>
+<p>cioè il numero delle colonne == numero di colonne libere(nullita) + numero di colonne dominanti(rango) </p>
+<p>in parole povere, la dimensione dello spazio nullo è uguale alla dimensione delle soluzioni del sistem Ax=0, cioè al al numero di colonne libere del forma ridotta</p>
 <p><strong>teorema rouche capelli</strong></p>
 <p>di base è un teorema che riformula i teoremi sulle soluzioni di un sistema lineare usando però la definizione di rango</p>
 

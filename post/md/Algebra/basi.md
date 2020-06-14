@@ -62,6 +62,10 @@ proprietà rango di una matrice:
 
 la dimensione dello spazio nullo di una matrice A == numero dello colonne di A meno il rango di A
 
+cioè il numero delle colonne == numero di colonne libere(nullita) + numero di colonne dominanti(rango) 
+
+in parole povere, la dimensione dello spazio nullo è uguale alla dimensione delle soluzioni del sistem Ax=0, cioè al al numero di colonne libere del forma ridotta
+
 **teorema rouche capelli**
 
 di base è un teorema che riformula i teoremi sulle soluzioni di un sistema lineare usando però la definizione di rango

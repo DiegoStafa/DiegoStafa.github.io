@@ -166,30 +166,30 @@
 <li>(A<sup>H</sup>)<sup>-1</sup> == (A<sup>-1</sup>)<sup>H</sup></li>
 </ul>
 <p><strong>condizione sufficente di invertibilità per matrici qudarate</strong></p>
-<p>condizione generale:</p>
-<ul>
-<li>A ammette inversa sse la sua forma ridotta di gauss ha solo colonne dominanti</li>
-</ul>
 <p>condizione specifica per ordine 2:</p>
 <ul>
 <li>A ammette inversa sse la differenza tra la diagonale e l&#39;antidiagonale != 0</li>
 </ul>
+<p>condizione generale:</p>
+<ul>
+<li>A ammette inversa sse la sua forma ridotta di gauss ha solo colonne dominanti</li>
+</ul>
 <p>per calcolare l&#39;inversa di A:</p>
-<ol>
+<ul>
 <li>si scrive la matrice aumentata [A | Id]</li>
-<li>si fa Eg della matrice aumentata e si ottiene [U | b]<ol>
-<li>se U ha delle colonne libere<ol>
+<li>si fa Eg della matrice aumentata e si ottiene [U | b]<ul>
+<li>se U ha delle colonne libere<ul>
 <li>non esiste l&#39;inversa</li>
-</ol>
+</ul>
 </li>
-<li>se U ha tutte le colonne dominanti<ol>
+<li>se U ha tutte le colonne dominanti<ul>
 <li>si esegue gauss-jordan su U</li>
 <li>dopo l&#39;eliminazione si avrà [Id | A<sup>-1</sup>]</li>
-</ol>
+</ul>
 </li>
-</ol>
+</ul>
 </li>
-</ol>
+</ul>
 <p>per calcolare l&#39;inversa di A di ordine 2:</p>
 <ol>
 <li>si esegue (1/diff diag) moltiplicato alla stessa matrice dove:<ul>

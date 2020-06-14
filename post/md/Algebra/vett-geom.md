@@ -72,21 +72,22 @@ calcola la radice del prodotto scalare tra v e se stesso
 
 v è ortogonale a w sse il prodotto scalare tra v e w è uguale a 0
 
+**normalizzazione**
+
+significa moltiplicare v per l'inverso della sua norma, cioè v\*(1/\|\|v\|\|)
+
 **insiemi di vettori ortogonali**
 
 un insieme di vettori si dice ortoganale se tutti i vettori dell'insieme sono ortogonali tra loro
 
 es: l'insieme delle colonne della matrice identica
 
-**normalizzazione**
-
-significa moltiplicare v per l'inverso della sua norma, cioè v\*(1/\|\|v\|\|)
 
 **insiemi di vettori ortonormali**
 
 un insieme di vettori si dice ortonormale se:
 * è ortogonale
-* (vi|vi) == 1 
+* tutti i vettori dell'insieme sono normalizzati  ( (v | v) == 1 per ogni v dell'insieme)
 
 **insiemi di generatori ortogonali**
 
@@ -96,13 +97,26 @@ autoesplicativo
 
 autoesplicativo
 
-**ibasi ortogonali**
+**basi ortogonali**
 
 autoesplicativo
 
 **basi ortonormale**
 
 autoesplicativo
+
+**algoritmo Gram-Schmidt**
+
+costruisce un sistema generatore ortogonale da un sistema generatore
+
+nb:
+1. un sistema generatore ortogonale senza vettori nulli è sempre una base
+2. una base su cui viene applciato GS diventa una base ortogonale
+3. per costruire una base ortonormale si normalizzano tutti i vettori della base ortogonale
+
+dati un insieme V formato da v1,v2..vn, si costruisce l'insieme ortoganale W formato da u1,u2..un, con:
+* u<sub>1</sub> = v<sub>1</sub>
+* u<sub>n</sub> = v<sub>n</sub> - u<sub>1</sub>((v<sub>n</sub> \| u<sub>1</sub>) / (u<sub>1</sub> \| u<sub>1</sub>)) - u<sub>2</sub>((v<sub>n</sub> \| u<sub>2</sub>) / (u<sub>2</sub> \| u<sub>2</sub>)) - ... - u<sub>n-1</sub>((v<sub>n</sub> \| <sub>n-1</sub>) / (u<sub>n-1</sub> \| u<sub>n-1</sub>))
 
 **complemento ortogonale di un sottospazio**
 
@@ -141,15 +155,3 @@ la costruzione della matrice:
 
 per calcolare la matrice di proiezione del complemento ortogonale si fa matrice identintica - matrice di proiezione
 
-### Algoritmo Gram-Schmidt
-
-costruisce un sistema generatore ortogonale da un sistema generatore
-
-nb:
-1. un sistema generatore ortogonale senza vettori nulli è sempre una base
-2. una base su cui viene applciato GS diventa una base ortogonale
-3. per costruire una base ortonormale si normalizzano tutti i vettori della base ortogonale
-
-dati un insieme V formato da v1,v2..vn, si costruisce l'insieme ortoganale W formato da u1,u2..un, con:
-* u<sub>1</sub> = v<sub>1</sub>
-* u<sub>n</sub> = v<sub>n</sub> - u<sub>1</sub>((v<sub>n</sub> \| u<sub>1</sub>) / (u<sub>1</sub> \| u<sub>1</sub>)) - u<sub>2</sub>((v<sub>n</sub> \| u<sub>2</sub>) / (u<sub>2</sub> \| u<sub>2</sub>)) - ... - u<sub>n-1</sub>((v<sub>n</sub> \| <sub>n-1</sub>) / (u<sub>n-1</sub> \| u<sub>n-1</sub>))

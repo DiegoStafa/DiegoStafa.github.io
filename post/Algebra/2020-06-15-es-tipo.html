@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info">            <li>
+                Esercizi tipo
+            </li>
+            <li>
+                Algebra
+            </li>
+            <li>
+                15-06-2020
+            </li>
+        </ul>
+        <div class="post">
+<p><strong>tipo 1</strong></p>
+<p>bisogna risolvere un sistema di congruenze, nella forma:</p>
+<ul>
+<li>a<sub>1</sub>x = c<sub>1</sub> mod m<sub>1</sub></li>
+<li>a<sub>2</sub>x = c<sub>2</sub> mod m<sub>3</sub></li>
+</ul>
+<p>risoluzione:</p>
+<ol>
+<li>si verfica che il sistema abbia soluzioni esi semplifica<ul>
+<li>si trova d<sub>1</sub> = mcd(a<sub>1</sub>,m<sub>1</sub>)</li>
+<li>si trova d<sub>2</sub> = mcd(a<sub>2</sub>,m<sub>2</sub>)</li>
+<li>se d<sub>1</sub> non divide b<sub>1</sub> o d<sub>2</sub> non divide b<sub>2</sub> <ul>
+<li>il sistema non ha soluzioni</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>si risolvono le due congruenze (si trovano le loro classi)<ul>
+<li>trovo q = b/d</li>
+<li>pongo d = ia + jb e trovo i</li>
+<li>trovo la soluzione particolare x<sub>0</sub> = i*q</li>
+<li>trovo la soluzione generale [x<sub>0</sub>]m</li>
+</ul>
+</li>
+<li>si usa il teorema cinese dei resti<ul>
+<li>si usa il metodo di newton o lagrange (solo con 2 congruenze)<ul>
+<li></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p><strong>tipo 2</strong></p>
+<p>bisogna risolvere 3 sistemi lineari, nella forma:</p>
+<ul>
+<li>Ax = b</li>
+</ul>
+<p>nei 3 casi:</p>
+<ul>
+<li>il sistema ha soluzioni</li>
+<li>il sistema non ha soluzioni</li>
+<li>il sistema ha infinite soluzioni</li>
+</ul>
+<p><strong>tipo 3</strong></p>
+<p>bisogna risolere un sistema lineare parametrico, nella forma:</p>
+<ul>
+<li>A(α)x = b(α)</li>
+</ul>
+<p>le EG si fanno per casi</p>
+<p><strong>tipo 4</strong></p>
+<p>bisogna trovare l&#39;inversa di una matrice parametrica, della forma:</p>
+<ul>
+<li>A(α)</li>
+</ul>
+<p>risoluzione:</p>
+<ol>
+<li>si fa la forma ridotta di gauss sulla matrice matrice aumentata A|id</li>
+<li>si fa la forma di gauss jordan</li>
+</ol>
+<p><strong>tipo 5</strong></p>
+<p>bisogna verficare un sottospazio e un sistema i generatori di esso</p>
+<p>dati W e S e uno spazio vettoriale V dimostra:</p>
+<ul>
+<li>W è un sottospazio di V</li>
+<li>S è un insieme di generatori di W</li>
+</ul>
+<p>risoluzione pt. 1:</p>
+<ol>
+<li>si dimostra che il vettore nullo appartiene a W</li>
+<li>si dimostra che w1 + w2 appartiene a W</li>
+<li>si dimostra che kw1 appartiene a W</li>
+</ol>
+<p>risoluzione pt. 2:</p>
+<ol>
+<li>si verifica che S appartenga a W</li>
+<li>si scrive il generico vettore di W come combinazione lineare di S</li>
+<li>si risolve il sistema lineare associato</li>
+</ol>
+<p><strong>tipo 6</strong></p>
+<p>bisogna verificare che un insieme di vettori sia linearmente (in)dipendente</p>
+<p>risoluzione:</p>
+<ol>
+<li>si pone la generica combinazione lineare == 0</li>
+<li>si risolve il sistema lineare associato</li>
+<li>la forma ridotta ha tutte colonne dominanti?<ul>
+<li>si --&gt; LI</li>
+<li>no --&gt; LD</li>
+</ul>
+</li>
+</ol>
+<p><strong>tipo 7</strong></p>
+<p>bisogna verficare che un insieme di vettori colonna sia linearmente (in)dipendente</p>
+<p>risoluzione:</p>
+<ol>
+<li>si crea la matrice formata dai vettori colonna</li>
+<li>si trova una forma ridotta</li>
+<li>la forma ridotta ha tutte colonne dominanti?<ul>
+<li>si --&gt; LI</li>
+<li>no --&gt; LD</li>
+</ul>
+</li>
+</ol>
+<p><strong>tipo 8</strong></p>
+<p>bisogna trovare una base da un insieme di generatori</p>
+<p>risoluzione:</p>
+<ol>
+<li>si eliminano i vettori nulli</li>
+<li>si eliminano i vettori multipli</li>
+<li>si pone la generica combinazione lineare == 0</li>
+<li>si risolve il sistema lineare associato</li>
+<li>la forma ridotta ha tutte colonne dominanti?<ul>
+<li>si --&gt; l&#39;insieme è una base</li>
+<li>no<ul>
+<li>si trova una soluzione particolare del sistema</li>
+<li>si elimina un vettore LD</li>
+<li>step 4</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p><strong>tipo 9</strong></p>
+<p>bisogna trovare il rango di una matrice parametrica e una base del suo spazio delle colonne</p>
+<p>risoluzione:</p>
+<ol>
+<li>si trova una forma ridotta della matrice</li>
+<li>il rango corrisponde alle colonne dominanti</li>
+<li>la base corrisponde ai vettori colonna nelle posizioni delle colonne dominanti</li>
+</ol>
+<p><strong>tipo 10</strong></p>
+<p>bisogna trovare una base dello spazio nulla di una matrice</p>
+<p>risoluzione:</p>
+<ol>
+<li>si risolve il sistema lineare associato</li>
+<li>per trovare i vettori della base, si crea un vettore dalla soluzione generale del sistema ponendo un parametro == 1, ed i restanti == 0</li>
+</ol>
+<p><strong>tipo 11</strong></p>
+<p>bisogna determinare la matrice associata ad un&#39;applicazione lineare su basi del dominio e codominio</p>
+<p>risoluzione:</p>
+<ol>
+<li>si applica l&#39;applcazione lineare su ogni elemento della base del dominio</li>
+<li>la matrice associata ha per colonne i vettori colonna delle coordinate su base D dei precedenti vettori</li>
+<li>per trovare i vettori delle coordinate<ul>
+<li>si scrive la generica combinazione lineare di D sui vettori</li>
+<li>si risolve il sisteme lineare</li>
+</ul>
+</li>
+</ol>
+<p><strong>tipo 12</strong></p>
+<p>bisogna calcolare la matrice di passaggio tra 2 basi di uno stesso spazio</p>
+<p>la risoluzione è uguale al tipo 11, solo che l&#39;applciazione lineare è la funzione identica, quindi si fanno solo step 2, 3</p>
+<p><strong>tipo 13</strong></p>
+<p>bisogna trovare una base ortonormale di un sottospazio generato V</p>
+<p>risoluzione:</p>
+<ol>
+<li>si trova una base qualunque di V, con lo spazio delle colonne</li>
+<li>si trova una base ortogonale applicando gram shcmidt sulla base trovata</li>
+<li>si normalizza la base trovata</li>
+</ol>
+<p><strong>tipo 14</strong></p>
+<p>bisogna trovare il complemento ortogonale di un sottospazio W e calcolare la proieizione ortogonale di un vettore su W</p>
+<p>risoluzione pt. 1:</p>
+<ol>
+<li>creo la matrice dei vettori colonna di W</li>
+<li>ne faccio l&#39;h-tasposta</li>
+<li>trovo lo spazio nullo == complemento ortogonale</li>
+</ol>
+<p>risoluzione pt. 3:</p>
+<ol>
+<li>si trova una base di W</li>
+<li>si trova una base ortogonale applicando gram shcmidt sulla base trovata</li>
+<li>si normalizza la base trovata</li>
+<li>la proiezione ortogonale del vettore su base è la somma dei prodotti scalari tra la base ed il vettore che moltiplicano la base</li>
+</ol>
+<p><strong>tipo 15</strong></p>
+<p>bisogna verificare quando una matrice parametrica è NON singolare</p>
+<p>risoluzione:</p>
+<ol>
+<li>si calcola il determinante della matrice</li>
+<li>lo si pone != 0</li>
+</ol>
+<p><strong>tipo 16</strong></p>
+<p>bisogna calcolare autovalori, molt. algebriche/geometriche e basi dei loro autospazi</p>
+<p>risoluzione:</p>
+<ol>
+<li>si calcola il polinomio caratteristico della matrice</li>
+<li>si risolve l&#39;equazione caratteristica</li>
+<li>si trovano gli autovalori e molt. algebriche</li>
+<li>si trova l&#39;autospazio di ogni autovalore</li>
+<li>si trova la dimensione dell&#39;autospazio == molt. geomtrica</li>
+<li>si trova una base ponendo un parametro == 1 e i restanti == 0</li>
+</ol>
+<p><strong>tipo 17</strong></p>
+<p><strong>tipo 18</strong></p>
+
+        </div>
+    </div>
+</body>
+
+</html>

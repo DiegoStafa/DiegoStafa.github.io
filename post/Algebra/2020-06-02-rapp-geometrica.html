@@ -83,25 +83,38 @@ per calcolare la lunchezza euclidea di un vettore:</p>
 </ul>
 <p><strong>vettori ortogonali</strong></p>
 <p>v è ortogonale a w sse il prodotto scalare tra v e w è uguale a 0</p>
+<p><strong>normalizzazione</strong></p>
+<p>significa moltiplicare v per l&#39;inverso della sua norma, cioè v*(1/||v||)</p>
 <p><strong>insiemi di vettori ortogonali</strong></p>
 <p>un insieme di vettori si dice ortoganale se tutti i vettori dell&#39;insieme sono ortogonali tra loro</p>
 <p>es: l&#39;insieme delle colonne della matrice identica</p>
-<p><strong>normalizzazione</strong></p>
-<p>significa moltiplicare v per l&#39;inverso della sua norma, cioè v*(1/||v||)</p>
 <p><strong>insiemi di vettori ortonormali</strong></p>
 <p>un insieme di vettori si dice ortonormale se:</p>
 <ul>
 <li>è ortogonale</li>
-<li>(vi|vi) == 1 </li>
+<li>tutti i vettori dell&#39;insieme sono normalizzati  ( (v | v) == 1 per ogni v dell&#39;insieme)</li>
 </ul>
 <p><strong>insiemi di generatori ortogonali</strong></p>
 <p>autoesplicativo</p>
 <p><strong>insiemi di generatori ortonormale</strong></p>
 <p>autoesplicativo</p>
-<p><strong>ibasi ortogonali</strong></p>
+<p><strong>basi ortogonali</strong></p>
 <p>autoesplicativo</p>
 <p><strong>basi ortonormale</strong></p>
 <p>autoesplicativo</p>
+<p><strong>algoritmo Gram-Schmidt</strong></p>
+<p>costruisce un sistema generatore ortogonale da un sistema generatore</p>
+<p>nb:</p>
+<ol>
+<li>un sistema generatore ortogonale senza vettori nulli è sempre una base</li>
+<li>una base su cui viene applciato GS diventa una base ortogonale</li>
+<li>per costruire una base ortonormale si normalizzano tutti i vettori della base ortogonale</li>
+</ol>
+<p>dati un insieme V formato da v1,v2..vn, si costruisce l&#39;insieme ortoganale W formato da u1,u2..un, con:</p>
+<ul>
+<li>u<sub>1</sub> = v<sub>1</sub></li>
+<li>u<sub>n</sub> = v<sub>n</sub> - u<sub>1</sub>((v<sub>n</sub> | u<sub>1</sub>) / (u<sub>1</sub> | u<sub>1</sub>)) - u<sub>2</sub>((v<sub>n</sub> | u<sub>2</sub>) / (u<sub>2</sub> | u<sub>2</sub>)) - ... - u<sub>n-1</sub>((v<sub>n</sub> | <sub>n-1</sub>) / (u<sub>n-1</sub> | u<sub>n-1</sub>))</li>
+</ul>
 <p><strong>complemento ortogonale di un sottospazio</strong></p>
 <p>dato un sottospazio U di uno spazio V, il complemento ortogonale di U è l&#39;insieme dei vettori in V tale per cui:</p>
 <ul>
@@ -134,19 +147,6 @@ per calcolare la lunchezza euclidea di un vettore:</p>
 <li>si moltiplica questa matrice per la sua H trasposta</li>
 </ol>
 <p>per calcolare la matrice di proiezione del complemento ortogonale si fa matrice identintica - matrice di proiezione</p>
-<h3 id="algoritmo-gram-schmidt">Algoritmo Gram-Schmidt</h3>
-<p>costruisce un sistema generatore ortogonale da un sistema generatore</p>
-<p>nb:</p>
-<ol>
-<li>un sistema generatore ortogonale senza vettori nulli è sempre una base</li>
-<li>una base su cui viene applciato GS diventa una base ortogonale</li>
-<li>per costruire una base ortonormale si normalizzano tutti i vettori della base ortogonale</li>
-</ol>
-<p>dati un insieme V formato da v1,v2..vn, si costruisce l&#39;insieme ortoganale W formato da u1,u2..un, con:</p>
-<ul>
-<li>u<sub>1</sub> = v<sub>1</sub></li>
-<li>u<sub>n</sub> = v<sub>n</sub> - u<sub>1</sub>((v<sub>n</sub> | u<sub>1</sub>) / (u<sub>1</sub> | u<sub>1</sub>)) - u<sub>2</sub>((v<sub>n</sub> | u<sub>2</sub>) / (u<sub>2</sub> | u<sub>2</sub>)) - ... - u<sub>n-1</sub>((v<sub>n</sub> | <sub>n-1</sub>) / (u<sub>n-1</sub> | u<sub>n-1</sub>))</li>
-</ul>
 
         </div>
     </div>

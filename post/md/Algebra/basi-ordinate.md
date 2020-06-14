@@ -36,7 +36,7 @@ l'applicazione lineare è iniettiva sse il nucleo del dominio è formato solo da
 
 nb: il nucleo è un sottospazio vettoriale del dominio
 
-**applicazione lineare indota da una matrice**
+**applicazione lineare indotta da una matrice**
 
 l'applicazione lineare indotta da una matrice è una funzione che data una matrice A<sub>mxn</sub> e un vettore colonna alto n, definisce A\*v1, cioè ottiene un vettore colonna alto m
 
