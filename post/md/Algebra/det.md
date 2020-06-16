@@ -57,14 +57,13 @@ il determinanate di una matrice triangolare sup/inf è uguale al prodotto dei nu
 è un equzione associata ad una matrice A, nella forma:
 * Det(A - xId) = 0
 
----
 
 ### Autovalori, autovettori e autospazi
 
 si definisce con E<sub>A</sub>(k), l'insieme dei vettori v tali per cui:
-* Av == kv
+* Av = kv
 
-oppure:
+da cui:
 *  N(A - kId) = 0
 
 se la condizione è rispettata:
@@ -74,12 +73,20 @@ se la condizione è rispettata:
 * E<sub>A</sub>(k) si dice autospazio
     * dim(autospazio) si dice molteplicità geometrica
 
+**molteplicità algebrica**
+
+numero di volte che un autovalore annulla l'eq. caratteristica
+
+**molteplicità geometrica**
+
+dimensione dell'autospazio
+
 **calcolo degli autovalori**
 
-un numero k è un autovalore di A sse è soluzione dell'equazione caratteristica di A (det(A − kId) = 0)
-* il numero di volte che k annulla l'equazione si dice molteplicità algebrica
+sono le radici dell'equazione caratteristica:
+* det(A − kId) = 0
 
-di base è sufficiente calcolare gli zeri del suo polinomio caratteristico.
+nel caso di matrici diagonali, gli autovalori sono i numeri sulla diagonale
 
 **calcolo della base di un autospazio**
 
@@ -87,10 +94,6 @@ si calcola la base di N(A - kId)v = 0
 
 
 nb: 1 <= molt. geometrica <= molt. algebrica
-
-**autovalori di matrici triangolari sup/inf**
-
-gli autovalori sono tutti i numeri sulla diagonale
 
 **indipendenza di autospazi**
 
@@ -111,7 +114,7 @@ proprietà:
 
 **matrici diagonalizzabili**
 
-una matrice è diagonalizzabile sse per ogni suo autovalore molteplicità geometrica e algebrica corrispondono 
+una matrice è diagonalizzabile sse per ogni suo autovalore, molteplicità geometrica e algebrica sono uguali 
 
 una matrice A è diagonalizzabile sse esistono matrice S e D, tale per cui:
 * D è un matrice diagonale
@@ -121,29 +124,44 @@ proprietà:
 1. A e D sono simili
 2. A<sup>n</sup> == SD<sup>n</sup>S<sup>-1</sup>
 
-**matrici unitariamente diagonalizzabili**
+diagonalizzazione:
+* D è una matrice diagonale con gli autovalori nella diagonale
+* S è una matrice che ha per colonne una base relativa agli autovalori
+
+**matrici unitarie**
 
 una matrice si dice unitaria se
 * A<sup>-1</sup> == A<sup>H</sup>
 
+**matrici ortogonali**
+
 una matrice si dice ortogonale se:
 * A<sup>-1</sup> == A<sup>T</sup>
+
+**matrici normali**
 
 una matrice si dice normale se:
 * AA<sup>H</sup> == A<sup>H</sup>A
 
-una matrice è unitariamente diagonalizzabile se D è una matrice unitaria e A è una matrice normale-
+**matrici unitariamente diagonalizzabili**
 
+una matrice unitariamente diagonalizzabile è una matrice normale e diagonalizzabile tramite una matrice unitaria, cioè
+* A = UDU<sup>H</sup>
+
+diagonalizzazione unitaria:
+* D è una matrice diagonale con gli autovalori nella diagonale
+* S è una matrice che ha per colonne una base ORTONORMALE relativa agli autovalori
 
 **teorema spettrale (forma moltiplicativa)**
 
-A = UDU<sup>H</sup>
+di base significa scrivere una matrice come prodotto di matrici:
+* A = UDU<sup>H</sup>
+ 
+**teorema spettrale (forma moltiplicativa)**
 
-**teorema spettrale (forma additiva)**
+di base significa scrivere una matrice unitariamente diagonalizzabile come somme
+* A = k<sub>1</sub>P<sub>1</sub> + k<sub>2</sub>P<sub>1</sub> + ... + k<sub>n</sub>P<sub>n</sub>
 
-A = k1P1 + k2P2 + ... + knPn
+con P<sub>i</sub> = Q*Q<sup>H</sup>
 
-con P<sub>i</sub> = matrice di priezione del autospazio con autovalore k<sub>i</sub>
-
-proprietà:
-* se A = A<sup>H</sup> allora ha solo autovalori reali
+A = UDU<sup>-1</sup>

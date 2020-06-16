@@ -185,4 +185,32 @@ risoluzione:
 
 **tipo 17**
 
+bisogna verificare quando una matrice parametrica è diagonalizzabile, calcolare una sua diagonalizzazione e una sua potenza
+
+risoluzione:
+1. si calcolano gli autovalori
+2. si trovano le molteplicità
+    * quella algebriva --> quante volte annulla l'equazione caratteristica
+    * quella geometrica --> dimensione dello spazio nullo
+3. se sono uguali diagonalizzabile, altrimenti no
+4. si trova la diagonale
+    * matrice diagonale che ha gli autovalori nella diagonale
+5. si trova la S
+    * matrice che ha per colonne gli elementi della base dell'autospazio
+6. si calcola la potenza
+    * si calcola la poteza della matrice diagonale
+    * la si moltiplica per S e S<sup>-1</sup>
+
+
+
 **tipo 18**
+
+pt 1: 
+bisogna determinare quando una matrice parametrica con parametro non negativo, è diagonalizzabile
+
+pt 2: 
+bisogna determinare quando è unitariamente diagonalizzabile 
+
+pt 3:
+
+pt 4:
