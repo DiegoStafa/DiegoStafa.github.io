@@ -85,13 +85,12 @@ determinante = riga*cofattori</code></pre>
 <ul>
 <li>Det(A - xId) = 0</li>
 </ul>
-<hr>
 <h3 id="autovalori-autovettori-e-autospazi">Autovalori, autovettori e autospazi</h3>
 <p>si definisce con E<sub>A</sub>(k), l&#39;insieme dei vettori v tali per cui:</p>
 <ul>
-<li>Av == kv</li>
+<li>Av = kv</li>
 </ul>
-<p>oppure:</p>
+<p>da cui:</p>
 <ul>
 <li>N(A - kId) = 0</li>
 </ul>
@@ -107,17 +106,19 @@ determinante = riga*cofattori</code></pre>
 </ul>
 </li>
 </ul>
+<p><strong>molteplicità algebrica</strong></p>
+<p>numero di volte che un autovalore annulla l&#39;eq. caratteristica</p>
+<p><strong>molteplicità geometrica</strong></p>
+<p>dimensione dell&#39;autospazio</p>
 <p><strong>calcolo degli autovalori</strong></p>
-<p>un numero k è un autovalore di A sse è soluzione dell&#39;equazione caratteristica di A (det(A − kId) = 0)</p>
+<p>sono le radici dell&#39;equazione caratteristica:</p>
 <ul>
-<li>il numero di volte che k annulla l&#39;equazione si dice molteplicità algebrica</li>
+<li>det(A − kId) = 0</li>
 </ul>
-<p>di base è sufficiente calcolare gli zeri del suo polinomio caratteristico.</p>
+<p>nel caso di matrici diagonali, gli autovalori sono i numeri sulla diagonale</p>
 <p><strong>calcolo della base di un autospazio</strong></p>
 <p>si calcola la base di N(A - kId)v = 0</p>
 <p>nb: 1 &lt;= molt. geometrica &lt;= molt. algebrica</p>
-<p><strong>autovalori di matrici triangolari sup/inf</strong></p>
-<p>gli autovalori sono tutti i numeri sulla diagonale</p>
 <p><strong>indipendenza di autospazi</strong></p>
 <p>la somma di autospazi di autovalori distinti è una somma diretta</p>
 <p>l&#39;unione delle basi di autospazi == base della somma diretta degli autospazi</p>
@@ -136,7 +137,7 @@ determinante = riga*cofattori</code></pre>
 <li>v appartiene a E<sub>B</sub>(k) sse Sv appartiene a E<sub>A</sub>(k)</li>
 </ol>
 <p><strong>matrici diagonalizzabili</strong></p>
-<p>una matrice è diagonalizzabile sse per ogni suo autovalore molteplicità geometrica e algebrica corrispondono </p>
+<p>una matrice è diagonalizzabile sse per ogni suo autovalore, molteplicità geometrica e algebrica sono uguali </p>
 <p>una matrice A è diagonalizzabile sse esistono matrice S e D, tale per cui:</p>
 <ul>
 <li>D è un matrice diagonale</li>
@@ -147,29 +148,48 @@ determinante = riga*cofattori</code></pre>
 <li>A e D sono simili</li>
 <li>A<sup>n</sup> == SD<sup>n</sup>S<sup>-1</sup></li>
 </ol>
-<p><strong>matrici unitariamente diagonalizzabili</strong></p>
+<p>diagonalizzazione:</p>
+<ul>
+<li>D è una matrice diagonale con gli autovalori nella diagonale</li>
+<li>S è una matrice che ha per colonne una base relativa agli autovalori</li>
+</ul>
+<p><strong>matrici unitarie</strong></p>
 <p>una matrice si dice unitaria se</p>
 <ul>
 <li>A<sup>-1</sup> == A<sup>H</sup></li>
 </ul>
+<p><strong>matrici ortogonali</strong></p>
 <p>una matrice si dice ortogonale se:</p>
 <ul>
 <li>A<sup>-1</sup> == A<sup>T</sup></li>
 </ul>
+<p><strong>matrici normali</strong></p>
 <p>una matrice si dice normale se:</p>
 <ul>
 <li>AA<sup>H</sup> == A<sup>H</sup>A</li>
 </ul>
-<p>una matrice è unitariamente diagonalizzabile se D è una matrice unitaria e A è una matrice normale-</p>
-<p><strong>teorema spettrale (forma moltiplicativa)</strong></p>
-<p>A = UDU<sup>H</sup></p>
-<p><strong>teorema spettrale (forma additiva)</strong></p>
-<p>A = k1P1 + k2P2 + ... + knPn</p>
-<p>con P<sub>i</sub> = matrice di priezione del autospazio con autovalore k<sub>i</sub></p>
-<p>proprietà:</p>
+<p><strong>matrici unitariamente diagonalizzabili</strong></p>
+<p>una matrice unitariamente diagonalizzabile è una matrice normale e diagonalizzabile tramite una matrice unitaria, cioè</p>
 <ul>
-<li>se A = A<sup>H</sup> allora ha solo autovalori reali</li>
+<li>A = UDU<sup>H</sup></li>
 </ul>
+<p>diagonalizzazione unitaria:</p>
+<ul>
+<li>D è una matrice diagonale con gli autovalori nella diagonale</li>
+<li>S è una matrice che ha per colonne una base ORTONORMALE relativa agli autovalori</li>
+</ul>
+<p><strong>teorema spettrale (forma moltiplicativa)</strong></p>
+<p>di base significa scrivere una matrice come prodotto di matrici:</p>
+<ul>
+<li>A = UDU<sup>H</sup></li>
+</ul>
+<p><strong>teorema spettrale (forma moltiplicativa)</strong></p>
+<p>di base significa scrivere una matrice unitariamente diagonalizzabile come somme</p>
+<ul>
+<li>A = k<sub>1</sub>P<sub>1</sub> + k<sub>2</sub>P<sub>1</sub> + ... + k<sub>n</sub>P<sub>n</sub></li>
+</ul>
+<p>con P<sub>i</sub> = Q*Q<sup>H</sup></p>
+<p>A = UDU<sup>-1</sup></p>
 
         </div>
     </div>
