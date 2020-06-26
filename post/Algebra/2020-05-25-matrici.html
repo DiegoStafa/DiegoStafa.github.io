@@ -44,6 +44,23 @@
 </li>
 <li>la matrice identica è la matrice con righe == colonne e tutti 1 in diagonale</li>
 </ul>
+<p><strong>notazioni</strong></p>
+<ul>
+<li>M<sub>nxm</sub>(R/C) indica l&#39;insieme delle matrici nxm, a coefficenti reali/complessi</li>
+<li>M<sub>n</sub>(R/C) indica l&#39;insieme delle matrici quadrate di ordine n, a coefficenti reali/complessi</li>
+<li>R/C<sup>n</sup> indica l&#39;insieme dei vettori colonna alti n, a coefficenti reali/complessi</li>
+<li>R/C<sub>n</sub> indica l&#39;insieme dei vettori riga lunghi n, a coefficenti reali/complessi</li>
+<li>i coefficenti di una matrice che risiedono nella diagonale sono detti coefficenti diagonali</li>
+<li>A = diag(d1, d2 .. dn) indica una matrice diagonale, una matrice è detta diagonale se:<ul>
+<li>è quadrata</li>
+<li>i coefficenti non diagonali sono == 0</li>
+</ul>
+</li>
+<li>una matrice scalare è una matrice identica moltiplicata per uno scalare</li>
+<li>un vettore coordinato contiene tutti 0, ed un 1 nella posizione i</li>
+<li>e<sub>i</sub> indica un vettore colonna coordinato di lunghezza non specificata</li>
+<li>una matrice si dice triangolare superiore/inferiore, se ha tutti 0 sotto/sopra la diagonale, </li>
+</ul>
 <hr>
 <p><strong>prodotto tra uno scalare</strong></p>
 <p>di base è moltiplicare una matrice per un numero, si moltiplica ogni coefficente della matrice per lo scalare.</p>
@@ -131,26 +148,7 @@
 <li>A è una matrice hermitiana se A<sup>H</sup> == A</li>
 <li>A è una matrice antihermitiana se A<sup>T</sup> -== -A</li>
 </ul>
-<hr>
-<h3 id="notazioni">notazioni</h3>
-<ul>
-<li>M<sub>nxm</sub>(R/C) indica l&#39;insieme delle matrici nxm, a coefficenti reali/complessi</li>
-<li>M<sub>n</sub>(R/C) indica l&#39;insieme delle matrici quadrate di ordine n, a coefficenti reali/complessi</li>
-<li>R/C<sup>n</sup> indica l&#39;insieme dei vettori colonna alti n, a coefficenti reali/complessi</li>
-<li>R/C<sub>n</sub> indica l&#39;insieme dei vettori riga lunghi n, a coefficenti reali/complessi</li>
-<li>i coefficenti di una matrice che risiedono nella diagonale sono detti coefficenti diagonali</li>
-<li>A = diag(d1, d2 .. dn) indica una matrice diagonale, una matrice è detta diagonale se:<ul>
-<li>è quadrata</li>
-<li>i coefficenti non diagonali sono == 0</li>
-</ul>
-</li>
-<li>una matrice scalare è una matrice identica moltiplicata per uno scalare</li>
-<li>un vettore coordinato contiene tutti 0, ed un 1 nella posizione i</li>
-<li>e<sub>i</sub> indica un vettore colonna coordinato di lunghezza non specificata</li>
-<li>una matrice si dice triangolare superiore/inferiore, se ha tutti 0 sotto/sopra la diagonale, </li>
-</ul>
-<hr>
-<h3 id="matrici-invertibili">Matrici invertibili</h3>
+<p><strong>matrici invertibili</strong></p>
 <p>di base una matrice quadrata A è invertibile se esiste una matrice quadrata B tale per cui:</p>
 <ul>
 <li>AB == matrice identica (quella con diagonale == 1)</li>
@@ -158,22 +156,11 @@
 </ul>
 <p>la matrice B è l&#39;inversa di A e si scrive come A<sup>-1</sup> ed è anche unica.</p>
 <p>nb: se A è quadrata: AB == id implica BA == id e B è unica, se A non è quadrata non si può dire nulla.</p>
-<p><strong>proprietà matrici quadrate</strong></p>
-<ul>
-<li>(AB)<sup>-1</sup> == B<sup>-1</sup>A<sup>-1</sup></li>
-<li>(A<sup>-1</sup>)<sup>-1</sup> == A</li>
-<li>(A<sup>T</sup>)<sup>-1</sup> == (A<sup>-1</sup>)<sup>T</sup></li>
-<li>(A<sup>H</sup>)<sup>-1</sup> == (A<sup>-1</sup>)<sup>H</sup></li>
-</ul>
-<p><strong>condizione sufficente di invertibilità per matrici qudarate</strong></p>
-<p>condizione specifica per ordine 2:</p>
-<ul>
-<li>A ammette inversa sse la differenza tra la diagonale e l&#39;antidiagonale != 0</li>
-</ul>
-<p>condizione generale:</p>
-<ul>
-<li>A ammette inversa sse la sua forma ridotta di gauss ha solo colonne dominanti</li>
-</ul>
+<p><strong>condizioni di invertibilità</strong></p>
+<ol>
+<li>la sua forma ridotta di gauss ha solo colonne dominanti</li>
+<li>il determinante è diverso da 0</li>
+</ol>
 <p>per calcolare l&#39;inversa di A:</p>
 <ul>
 <li>si scrive la matrice aumentata [A | Id]</li>
@@ -190,14 +177,13 @@
 </ul>
 </li>
 </ul>
-<p>per calcolare l&#39;inversa di A di ordine 2:</p>
-<ol>
-<li>si esegue (1/diff diag) moltiplicato alla stessa matrice dove:<ul>
-<li>si scambiano gli elementi della diagonale</li>
-<li>si scambiano gli elementi dell&#39;antidigonale e si moltiplicano per -1</li>
+<p><strong>proprietà matrici quadrate</strong></p>
+<ul>
+<li>(AB)<sup>-1</sup> == B<sup>-1</sup>A<sup>-1</sup></li>
+<li>(A<sup>-1</sup>)<sup>-1</sup> == A</li>
+<li>(A<sup>T</sup>)<sup>-1</sup> == (A<sup>-1</sup>)<sup>T</sup></li>
+<li>(A<sup>H</sup>)<sup>-1</sup> == (A<sup>-1</sup>)<sup>H</sup></li>
 </ul>
-</li>
-</ol>
 
         </div>
     </div>

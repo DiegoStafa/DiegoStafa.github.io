@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info">            <li>
+                Pobabilità condizionata e Formula di bayes
+            </li>
+            <li>
+                Probabilità e Statistica
+            </li>
+            <li>
+                25-06-2020
+            </li>
+        </ul>
+        <div class="post">
+<h3 id="probabilità-condizionata">Probabilità condizionata</h3>
+<p>dato uno spazio di probabilità, e due eventi E(evento) ed F(evento condizionante), allora la probabilità condizionata di E dato F è:</p>
+<ul>
+<li>P(E | F) = P(E&amp;F)/P(F)</li>
+</ul>
+<p>P(evento | condizione) = P(evento &amp; condizione) / P(condizione)</p>
+<p>di base indica la probabilità di un evento quando prima se ne è verificato un altro</p>
+<p>ha la forma di P(evento, evento_condizione)</p>
+<p><strong>formula delle probabilità totali</strong></p>
+<p>dato uno spazio di probabilità, un evento E ed una partizione di k eventi F<sub>k</sub>, allora:</p>
+<ul>
+<li>P(E) = P(E|F<sub>1</sub>)P(F<sub>1</sub>) + P(E|F<sub>2</sub>)P(F<sub>2</sub>) + ... + P(E|F<sub>k</sub>)P(F<sub>k</sub>)</li>
+</ul>
+<p>si legge come:</p>
+<ul>
+<li>la probabilità di un evento è uguale al prodotto tra la probabilità condizionata e la probabilità della condizione</li>
+</ul>
+<p><strong>formula di bayes</strong></p>
+<p>dalla formula della probabilità condizionata, si ricava che:</p>
+<ul>
+<li>P(F|E)P(E) = P(E|F)P(F)</li>
+</ul>
+<p><strong>incompatibilità tra 2 eventi</strong></p>
+<p>2 eventi E ed F sono incompatibile se non possono accadere contemporaneamente, quindi:</p>
+<ul>
+<li>P(E &amp; F) = 0</li>
+</ul>
+<p><strong>indipendenza tra 2 eventi</strong></p>
+<p>2 eventi E ed F sono indipendenti se:</p>
+<ul>
+<li>P(E&amp;F) = P(E)P(F)</li>
+</ul>
+<p>che equivale a:</p>
+<ul>
+<li>P(E|F) = P(E)</li>
+<li>P(F|E) = P(F)</li>
+</ul>
+<p>indipendenza != incompatibilità</p>
+<p><strong>indipendenza generale</strong></p>
+<p>di base un insieme di n eventi è indipendente se ogni possibile sottoinsieme è indipendente</p>
+<p>proprietà:</p>
+<ul>
+<li>l&#39;indipenza rimane se sostituendo uno o più eventi con i loro complementari</li>
+</ul>
+
+        </div>
+    </div>
+</body>
+
+</html>

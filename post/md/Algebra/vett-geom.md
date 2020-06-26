@@ -116,6 +116,8 @@ nb:
 
 dati un insieme V formato da v1,v2..vn, si costruisce l'insieme ortoganale W formato da u1,u2..un, con:
 * u<sub>1</sub> = v<sub>1</sub>
+* u<sub>2</sub> = v<sub>2</sub> - u<sub>1</sub>Z<sub>1</sub>
+
 * u<sub>n</sub> = v<sub>n</sub> - u<sub>1</sub>((v<sub>n</sub> \| u<sub>1</sub>) / (u<sub>1</sub> \| u<sub>1</sub>)) - u<sub>2</sub>((v<sub>n</sub> \| u<sub>2</sub>) / (u<sub>2</sub> \| u<sub>2</sub>)) - ... - u<sub>n-1</sub>((v<sub>n</sub> \| <sub>n-1</sub>) / (u<sub>n-1</sub> \| u<sub>n-1</sub>))
 
 **complemento ortogonale di un sottospazio**

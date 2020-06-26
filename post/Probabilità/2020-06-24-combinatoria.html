@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info">            <li>
+                Combinatoria
+            </li>
+            <li>
+                Probabilità e Statistica
+            </li>
+            <li>
+                24-06-2020
+            </li>
+        </ul>
+        <div class="post">
+<h3 id="principio-fondamentale-del-conteggio">Principio fondamentale del conteggio</h3>
+<p>se in un insieme ogni elemento è individuabile univocamente da ka scelte di n esiti possibili, allora la cardinalità dell&#39;insieme è:</p>
+<ul>
+<li>|E| = n<sub>1</sub>n<sub>2</sub>...n<sub>k</sub></li>
+</ul>
+<p>mazzo di carte:</p>
+<ul>
+<li>4 semi</li>
+<li>13 valori</li>
+</ul>
+<p>il numero di carte del mazzo è 4x13</p>
+<p>il principio di conteggio vale <strong>SSE</strong> ogni elemento è individuabile univocamente</p>
+<p>quindi se 2 distinte sequenze di scelte danno risultati uguali non vale il PFC</p>
+<h3 id="disposizioni">Disposizioni</h3>
+<p>indica un vettore (quindi ordinato) di k elementi, con o senza elementi ripetuti</p>
+<p><strong>Disposizioni con ripetizioni</strong></p>
+<p>siccome le ripetizioni sono ammesse si sceglie tra n elementi, k volte</p>
+<ul>
+<li>n<sup>k</sup></li>
+</ul>
+<p>da cui</p>
+<ul>
+<li>il numero di possibili sottoinsiemi di un insieme di k elementi è:</li>
+<li>2<sup>k</sup></li>
+</ul>
+<p>si nota facilemente associando ad ogni elemento 0 o 1 se presente nel sottoinsieme --&gt; 2<sup>k</sup></p>
+<p><strong>Disposizioni senza ripetizioni</strong></p>
+<p>le ripetizioni non sono ammesse, quindi ad ogni scelta si rimuove un elemento dalla scelta, questo procedimento si fa k volte, quindi:</p>
+<ul>
+<li>n(n-1)(n-2)...(n-k+1)</li>
+</ul>
+<p>se k = n la disposizione prende il nome di permutazione</p>
+<h3 id="combinazioni">Combinazioni</h3>
+<p>indica sottoinsieme (quindi NON ordinato) di k elementi, con o senza elementi ripetuti</p>
+<p><strong>Combinazioni con ripetizioni</strong></p>
+<p>di base si contano le disposizioni e si tologono quelle che senza ordinamento risultano uguali</p>
+<ul>
+<li>n!/k!(n-k)! (coeff. binomiale n su k)</li>
+</ul>
+<p><strong>relazione tra disposizione e  z combinazione</strong></p>
+<p>siccome manca la condizione di ordine, il numero di combinazioni è SEMPRE minore di quello delle disposizioni</p>
+<p>nelle disposizioni è come se ad ogni elemento del vettore venga assegnata una posizione quindi (nel caso di un alfabeto) se si scelgono 5 lettere, u2 possibili disposizioni sono:</p>
+<ul>
+<li>A1, A2, A3, T4, v%</li>
+<li>A1, A2, A3, T4, v%</li>
+</ul>
+<p>nel caso delle combinazioni manca l&#39;indice di ordinamento, quindi quelle 2 sono uguali</p>
+
+        </div>
+    </div>
+</body>
+
+</html>

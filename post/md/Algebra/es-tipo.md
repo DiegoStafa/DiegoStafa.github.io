@@ -65,6 +65,7 @@ risoluzione pt. 2:
 1. si verifica che S appartenga a W
 2. si scrive il generico vettore di W come combinazione lineare di S
 3. si risolve il sistema lineare associato
+    * il sistema deve avere almeno una soluzione
 
 **tipo 6**
 

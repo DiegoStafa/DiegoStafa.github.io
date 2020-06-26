@@ -8,6 +8,21 @@ concetti base:
     * (a<sub>ij</sub>), m x n
 * la matrice identica è la matrice con righe == colonne e tutti 1 in diagonale
 
+**notazioni**
+
+* M<sub>nxm</sub>(R/C) indica l'insieme delle matrici nxm, a coefficenti reali/complessi
+* M<sub>n</sub>(R/C) indica l'insieme delle matrici quadrate di ordine n, a coefficenti reali/complessi
+* R/C<sup>n</sup> indica l'insieme dei vettori colonna alti n, a coefficenti reali/complessi
+* R/C<sub>n</sub> indica l'insieme dei vettori riga lunghi n, a coefficenti reali/complessi
+* i coefficenti di una matrice che risiedono nella diagonale sono detti coefficenti diagonali
+* A = diag(d1, d2 .. dn) indica una matrice diagonale, una matrice è detta diagonale se:
+    * è quadrata
+    * i coefficenti non diagonali sono == 0
+* una matrice scalare è una matrice identica moltiplicata per uno scalare
+* un vettore coordinato contiene tutti 0, ed un 1 nella posizione i
+* e<sub>i</sub> indica un vettore colonna coordinato di lunghezza non specificata
+* una matrice si dice triangolare superiore/inferiore, se ha tutti 0 sotto/sopra la diagonale, 
+
 ---
 
 **prodotto tra uno scalare**
@@ -116,26 +131,7 @@ proprietà:
 * A è una matrice hermitiana se A<sup>H</sup> == A
 * A è una matrice antihermitiana se A<sup>T</sup> -== -A
 
----
-
-### notazioni
-
-* M<sub>nxm</sub>(R/C) indica l'insieme delle matrici nxm, a coefficenti reali/complessi
-* M<sub>n</sub>(R/C) indica l'insieme delle matrici quadrate di ordine n, a coefficenti reali/complessi
-* R/C<sup>n</sup> indica l'insieme dei vettori colonna alti n, a coefficenti reali/complessi
-* R/C<sub>n</sub> indica l'insieme dei vettori riga lunghi n, a coefficenti reali/complessi
-* i coefficenti di una matrice che risiedono nella diagonale sono detti coefficenti diagonali
-* A = diag(d1, d2 .. dn) indica una matrice diagonale, una matrice è detta diagonale se:
-    * è quadrata
-    * i coefficenti non diagonali sono == 0
-* una matrice scalare è una matrice identica moltiplicata per uno scalare
-* un vettore coordinato contiene tutti 0, ed un 1 nella posizione i
-* e<sub>i</sub> indica un vettore colonna coordinato di lunghezza non specificata
-* una matrice si dice triangolare superiore/inferiore, se ha tutti 0 sotto/sopra la diagonale, 
-
----
-
-### Matrici invertibili
+**matrici invertibili**
 
 di base una matrice quadrata A è invertibile se esiste una matrice quadrata B tale per cui:
 * AB == matrice identica (quella con diagonale == 1)
@@ -145,20 +141,10 @@ la matrice B è l'inversa di A e si scrive come A<sup>-1</sup> ed è anche unica
 
 nb: se A è quadrata: AB == id implica BA == id e B è unica, se A non è quadrata non si può dire nulla.
 
-**proprietà matrici quadrate**
+**condizioni di invertibilità**
 
-* (AB)<sup>-1</sup> == B<sup>-1</sup>A<sup>-1</sup>
-* (A<sup>-1</sup>)<sup>-1</sup> == A
-* (A<sup>T</sup>)<sup>-1</sup> == (A<sup>-1</sup>)<sup>T</sup>
-* (A<sup>H</sup>)<sup>-1</sup> == (A<sup>-1</sup>)<sup>H</sup>
-
-**condizione sufficente di invertibilità per matrici qudarate**
-
-condizione specifica per ordine 2:
-* A ammette inversa sse la differenza tra la diagonale e l'antidiagonale != 0
-
-condizione generale:
-* A ammette inversa sse la sua forma ridotta di gauss ha solo colonne dominanti
+1. la sua forma ridotta di gauss ha solo colonne dominanti
+2. il determinante è diverso da 0
 
 per calcolare l'inversa di A:
 * si scrive la matrice aumentata \[A \| Id\]
@@ -169,7 +155,9 @@ per calcolare l'inversa di A:
         * si esegue gauss-jordan su U
         * dopo l'eliminazione si avrà \[Id \| A<sup>-1</sup>\]
 
-per calcolare l'inversa di A di ordine 2:
-1. si esegue (1/diff diag) moltiplicato alla stessa matrice dove:
-    * si scambiano gli elementi della diagonale
-    * si scambiano gli elementi dell'antidigonale e si moltiplicano per -1
+**proprietà matrici quadrate**
+
+* (AB)<sup>-1</sup> == B<sup>-1</sup>A<sup>-1</sup>
+* (A<sup>-1</sup>)<sup>-1</sup> == A
+* (A<sup>T</sup>)<sup>-1</sup> == (A<sup>-1</sup>)<sup>T</sup>
+* (A<sup>H</sup>)<sup>-1</sup> == (A<sup>-1</sup>)<sup>H</sup>
