@@ -26,13 +26,14 @@ risposta:
 **domanda 3**
 
 domande:
-1. enunciare e dimostrare il teorema ponte
+1. enunciare il teorema ponte
+2. dimostrarlo
 
 risposta 1:
 * f(x0) == L sse per ogni successione an->x0 allora f(an) == L
 
 risposta 2:
-* 
+* **da finire**
 
 **domanda 4**
 
@@ -120,7 +121,7 @@ risposta 1:
 * SUP A è il più piccolo dei maggioranti di A
 
 risposta 2:
-* 
+* **da finire**
 
 **domanda 11**
 
@@ -318,7 +319,7 @@ domande:
 1. dimostrare che in una funzione continua in un intervallo chiuso \[a,b\] l'immagine è contenuta tra il minimo e massimo 
 
 risposta:
-* 
+* **da finire**
 
 **domanda 24**
 
@@ -547,7 +548,7 @@ risposta 1:
 * il criterio di leibnitz afferma che una serie a termini positivi, decrescente che converge a 0 è convergente
 
 risposta 2:
-* 
+* **da finire**
 
 
 **domanda 34**
@@ -563,7 +564,7 @@ risposta 1:
     * se = 1 non si può dire nulla
 
 risposta 2:
-* 
+* **da finire**
 
 
 **domanda 35**
@@ -575,18 +576,18 @@ domande:
 3. dimostrare che se P(z) è un polinomio a coefficenti complessi, allora se z<sub>0</sub> è una radice, anche z<sub>0</sub> coniugato lo è
 
 risposta 1:
-* 
+* **da finire**
 
 risposta 2:
-* 
+* **da finire**
 
 risposta 3:
-* 
+* **da finire**
 
 **domanda 36**
 
 domande:
-1. 
+
 
 
 **domanda 37**
