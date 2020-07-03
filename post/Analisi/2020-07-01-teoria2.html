@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info">            <li>
+                Domande di teoria 2019/20 (pt. 2)
+            </li>
+            <li>
+                Analisi
+            </li>
+            <li>
+                01-07-2020
+            </li>
+        </ul>
+        <div class="post">
+<p><strong>domanda 21</strong></p>
+<p>domande:</p>
+<ol>
+<li>scrivere la formula di taylor</li>
+</ol>
+<p>risposta:</p>
+<ul>
+<li>f<sup>k</sup>(x<sub>0</sub>)(x - x<sub>0</sub>) / k!     </li>
+</ul>
+<p>nb: k parte da 0</p>
+<p><strong>domanda 22</strong></p>
+<p>domande:</p>
+<ol>
+<li>dimostrare la continuità di sinx</li>
+<li>dimostrare che lim sinx / x = 0</li>
+<li>dimostrare che lim sin(x<sup>2</sup>) non esiste per x-&gt;+inf</li>
+</ol>
+<p>risposta 1:</p>
+<ul>
+<li><p>risposta 2:</p>
+</li>
+<li><p>si usa hopital</p>
+</li>
+</ul>
+<p>risposta 3:</p>
+<ul>
+<li>si dimostra con il teorema ponte</li>
+</ul>
+<p><strong>domanda 23</strong></p>
+<p>domande:</p>
+<ol>
+<li>dimostrare che se f(x) è continua in un intervallo chiuso [a,b] allora l&#39;immagine è contenuta tra MIN e MAX di f(x)</li>
+</ol>
+<p>risposta:</p>
+<ul>
+<li>esiste un x<sub>m</sub> tale per cui f(x<sub>m</sub>) = MIN (per weirstrass)</li>
+<li>esiste un x<sub>M</sub> tale per cui f(x<sub>M</sub>) = MAX (per weirstrass)</li>
+<li>quindi per definizione di MIN e MAX: MIN &lt;= f(x) &lt;= MAX</li>
+</ul>
+<p><strong>domanda 24</strong></p>
+<p>domande:</p>
+<ol>
+<li>definizione di partizione</li>
+<li>definizione di funzione a scala</li>
+<li>integrale della funzione a scala in [a,b]</li>
+<li>condizione affinchè una funzione sia integrabile secondo reinmann</li>
+<li>definizione di integrale in [a,b]</li>
+<li>condizione sufficente di integrabilità</li>
+<li>esempio di funzione non integrabile</li>
+</ol>
+<p>risposta 1:</p>
+<ul>
+<li>una partizioni è un insieme di punti ordinati</li>
+</ul>
+<p>risposta 2:</p>
+<ul>
+<li>una funzione a scala è una funzione costante negli intervalli formati dai punti di una partizione</li>
+</ul>
+<p>risposta 3:</p>
+<ul>
+<li>l&#39;area di una funzione a scala è la sommatoria delle aree formate dai rettangoli di ogni intervallo</li>
+</ul>
+<p>risposta 4:</p>
+<ul>
+<li>per ogni E maggiore di 0 esistono 2 approssimazioni della funzione a scala alla funzione t.c la loro differenza sia minore di E</li>
+</ul>
+<p>risposta 5:</p>
+<ul>
+<li>si definisce l&#39;integrale come l&#39;area della funzione a scala che approssima la funzione</li>
+</ul>
+<p>risposta 6:</p>
+<ul>
+<li>la funzione deve essere continua in [a,b]</li>
+</ul>
+<p>risposta 7:</p>
+<ul>
+<li>funzione di dirichelet</li>
+</ul>
+<p><strong>domanda 25</strong></p>
+<p>domande:</p>
+<ol>
+<li>enunciare il teorema della media integrale</li>
+<li>dimostrarlo</li>
+</ol>
+<p>risposta 1:</p>
+<ul>
+<li>il teorema della media integrale afferma che esiste un numero c t.c. l&#39;integrale tra [a,b] di f(x) == f(c)(b - a)</li>
+</ul>
+<p>risposta 2:</p>
+<ul>
+<li>si ha che min &lt; f(x) &lt; max</li>
+<li>si integra </li>
+<li>min*(b-a) &lt; integrale{ f(x)dx &lt; max*(b-a)</li>
+<li>min &lt; 1/(b-a) integrale{ f(x)dx &lt; max</li>
+<li>siccome questo valore è compreso tra il min e max allora essendo la funzione continua deve assumere in un punto c questo valore</li>
+<li>f(c) = 1/b-a integrale{ f(x)dx</li>
+</ul>
+<p><strong>domanda 26</strong></p>
+<p>domande:</p>
+<ol>
+<li>definizione di funzione integrale</li>
+<li>enunciare il teorema fondamentale del calcolo integrale </li>
+<li>dimostrarlo</li>
+<li>equazione della retta tangente alla funzione integrale</li>
+</ol>
+<p>risposta 1:</p>
+<ul>
+<li>si definisce la funzione integrale come A(x) = integrale{ f(t)dt tra [a,x]</li>
+</ul>
+<p>risposta 2:</p>
+<ul>
+<li>il TFC afferma che A&#39;(x) = f(x)</li>
+</ul>
+<p>risposta 3:</p>
+<ul>
+<li>si scrive il rapporto incrementale della funzione integrale</li>
+<li>si spezza l&#39;integrale con l&#39;h in due integrali, tra [a,x] e tra [x.x+h]</li>
+<li>si semplifica</li>
+<li>si usa il teorema della media al numeratore</li>
+<li>si semplifica</li>
+<li>siccome c è tra [x,x+h] allora c = x per h-&gt;0</li>
+<li>lim f(x) = f(x) in quanto continua, fine</li>
+</ul>
+<p>risposta 4:</p>
+<ul>
+<li>T(x) = A(x<sub>0</sub>) + A&#39;(x<sub>0</sub>)(x - x<sub>0</sub>)</li>
+<li>cioè T(x) = A(x<sub>0</sub>) + f(x<sub>0</sub>)(x - x<sub>0</sub>)</li>
+</ul>
+<p><strong>domanda 27</strong></p>
+<p>domande:</p>
+<ol>
+<li>definizione di integrale indefinito</li>
+<li>enunciare la regola di barrow</li>
+<li>dimostrarla</li>
+</ol>
+<p>nb: indico con pr(x) la primitiva di f(x)</p>
+<p>risposta 1:</p>
+<ul>
+<li>data f(x) l&#39;integrale indefinito assegna una famiglia di funzioni ad f(x) chiamate primitive, tali per cui la loro derivata è uguale a f(x)</li>
+</ul>
+<p>risposta 2:</p>
+<ul>
+<li>la regola di barrow afferma che: integrale{ f(xt)dx tra [a,b] = pr(b) - pr(b)</li>
+</ul>
+<p>risposta 3:</p>
+<ul>
+<li>ipotesi:<ul>
+<li>f(x) continua</li>
+<li>pr(x) una primitiva di f(x)<ul>
+<li>pr&#39;(x) = f(x) </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>tesi:<ul>
+<li>integrale{ f(x)dx tra [a,b] = pr(b) - pr(a)</li>
+</ul>
+</li>
+<li>dimostrazione:<ul>
+<li>si prende la primitiva particolare A(x) = pr(x) + k che vale 0 quando x=a</li>
+<li>A(b) = pr(b) + k cioè integrale{ f(x)dx tra [a,b], si trova k</li>
+<li>A(a) = pr(a) + k cioè integrale{ f(x)dx tra [a,a] cioè 0</li>
+<li>k = -pr(a)</li>
+<li>si sostiutisce, quindi pr(b) - pr(a) = integrale{ f(x)dx tra [a,b]</li>
+</ul>
+</li>
+</ul>
+<p><strong>domanda 28</strong></p>
+<p>domande:</p>
+<ol>
+<li>che relazione c&#39;è tra F(x) = integrale{ f(t)dt tra [a,x] e G(x) = integrale{ f(t)dt tra [b,x]</li>
+<li>cosa si può ricavare quindi dal teorema di lagrange</li>
+<li>calcolare la derivata di H(x) = integrale{ f(t)dt tra [a,h(x)]</li>
+</ol>
+<p>risposta 1:</p>
+<ul>
+<li>F(x) e G(x) hanno la stessa derivata</li>
+</ul>
+<p>risposta 2:</p>
+<ul>
+<li>siccome hanno la stessa derivata F(x) e G(x) differiscono al più di una costante k</li>
+</ul>
+<p>risposta 3:</p>
+<ul>
+<li>si calcola la derivata di F(h(x)) = integrale{ f(t)dt tra [a,h(x)]</li>
+<li>da cui F&#39;(h(x)) = F&#39;(h(x))h&#39;(x) cioè f(h(x))h&#39;(x)</li>
+</ul>
+<p><strong>domanda 29</strong></p>
+<p>domande:</p>
+<ol>
+<li>enunciare la formula di integrazione per parti</li>
+<li>dimostrarla</li>
+<li>enunciare la formula di integrazione per sostituzione</li>
+<li>dimostrarla</li>
+</ol>
+<p>risposta 1:</p>
+<ul>
+<li>integrale{ f&#39;(x)g(x)dx = f(x)g(x) - integrale{ f(x)g&#39;(x)dx</li>
+</ul>
+<p>risposta 2:</p>
+<ul>
+<li>si scrive la regola di derivazione del prodotto</li>
+<li>si integra tutto</li>
+<li>si porta tutto a destra</li>
+<li>si porta a sinistra uno degli integrali</li>
+</ul>
+<p>risposta 3:</p>
+<ul>
+<li>se G(x) = integrale{ f(h(x))h&#39;(x)dx allora F(h(x)) = G(x) + k</li>
+</ul>
+<p>risposta 4:</p>
+<ul>
+<li>(G(x))&#39; = f(h(x))h&#39;(x)</li>
+<li>(F(h(x)))&#39; = F&#39;(h(x))h&#39;(x) = f(h(x))h&#39;(x)</li>
+<li>quindi (F(h(x)))&#39; == (G(x))ì</li>
+<li>siccome le due funzioni hanno derivata uguale, le primitive differiscono al più di una costante</li>
+</ul>
+<p><strong>domanda 30</strong></p>
+<p>domande:</p>
+<p>data la funzione F(x) = integrale{ |e<sup>t</sup> - 1|dt tra [1,2x]</p>
+<ol>
+<li>dimostrare la crescenza in 2 modi</li>
+<li>determinare quante volte è derivabile</li>
+<li>determinare la convessità</li>
+<li>abbozzare il grafico</li>
+</ol>
+<p><strong>domanda 31</strong></p>
+<p>domande:</p>
+<ol>
+<li>definizione di serie convergente</li>
+<li>definizione di serie divergente</li>
+<li>definizione di serie indeterminata</li>
+<li>dimostrare che una serie a termini positivi non è mai indeterminata</li>
+<li>dimostrare che in una serie convergente il lim a<sub>n</sub> = 0 con x-&gt;+inf</li>
+<li>dimostrare che è una condizione necessaria ma non sufficente</li>
+<li>definizione di serie telescopica</li>
+<li>calcolo di una serie telescopica</li>
+</ol>
+<p>risposta 1:</p>
+<ul>
+<li>S<sub>n</Sub> è convergente se lim S<sub>n</sub> = L con n-&gt;+inf</li>
+</ul>
+<p>risposta 2:</p>
+<ul>
+<li>S<sub>n</Sub> è divergente se lim S<sub>n</sub> = L con n-&gt;+inf</li>
+</ul>
+<p>risposta 3</p>
+<ul>
+<li>S<sub>n</Sub> è indeterminata se non esiste lim S<sub>n</sub> con n-&gt;+inf</li>
+</ul>
+<p>risposta 4:</p>
+<ul>
+<li>S<sub>n</Sub> è monotona crescente</li>
+<li>essendo monotona il limite o esiste o è +inf</li>
+</ul>
+<p>risposta 5:</p>
+<ul>
+<li>a<sub>n</sub> = S<sub>n</sub> - S<sub>n-1</sub></li>
+<li>si fa il lim con n-&gt;+inf sia a sinistra che a destra</li>
+<li>lim a<sub>n</Sub> = 0</li>
+</ul>
+<p>risposta 6:</p>
+<ul>
+<li>si dimostra con il controesempio della serie 1/n, la serie diverge ma la successione converge a 0</li>
+</ul>
+<p>risposta 7:</p>
+<ul>
+<li>è una serie la cui successione è del tipo a<sub>n</sub> - a<sub>n+k</sub></li>
+</ul>
+<p>risposta 8:</p>
+<ul>
+<li>al serie telescopica è uguale alla somma parziale della successione fino a k, cioè a<sub>1</sub> + a<sub>2</sub> + ... + a<sub>k</sub></li>
+</ul>
+<p><strong>domanda 32</strong></p>
+<p>domande:</p>
+<ol>
+<li>determinare il carattere della serie di 1/n<sup>p</sup> al variare di p</li>
+<li>dimostrare che se p = 2 allora la serie è &lt;= 2</li>
+<li>dimostrare che se p = 1/2 allora la serie diverge a +inf</li>
+</ol>
+<p>risposta 1:</p>
+<ul>
+<li>se p &gt;= 1 la serie converge</li>
+<li>se p &lt; 1 la serie diverge</li>
+</ul>
+<p>risposta 2:</p>
+<ul>
+<li>si deduce da sopra</li>
+</ul>
+<p>risposta 3:</p>
+<ul>
+<li>si deduce da sopra</li>
+</ul>
+<p><strong>domanda 33</strong></p>
+<p>domande:</p>
+<ol>
+<li>enunciare il criterio di leibnitz per le serie a segno alterno</li>
+<li>dimostrarlo</li>
+</ol>
+<p>nb: una successione a segno alterno è del tipo: (-1)<sup>n</sup>a<sub>n</sub></p>
+<p>risposta 1:</p>
+<ul>
+<li>il criterio di leibnitz afferma che se a<sub>n</sub> è a termini positivi, decrescente e tende a 0, allora la serie è convergente</li>
+</ul>
+<p>risposta 2:</p>
+<ul>
+<li>le somme parziali di indice pari sono crescenti</li>
+<li>le somme parziali di indice dispari sono decrescenti</li>
+<li>essendo crescenti le somme parziali di indice pari sono in particolare tutte maggiori della somma parziale di indice 1</li>
+<li>essendo decrescenti le somme parziali di indice dispari sono in particolare tutte minori della somma parziale di indice 2</li>
+<li>lim S<sub>2n</sub> = L<sub>1</sub></li>
+<li>lim S<sub>2n-1</sub> = L<sub>2</sub></li>
+<li>dimostro che L<sub>1</sub> = L<sub>2</sub> = 0</li>
+<li>lim S<sub>2n</sub> - S<sub>2n-1</sub> = L<sub>1</sub> = L<sub>2</sub><ul>
+<li>S<sub>2n</sub> - S<sub>2n-1</sub> = a<sub>2n</sub></li>
+</ul>
+</li>
+<li>lim a<sub>2n</sub> = L<sub>1</sub> = L<sub>2</sub></li>
+<li>per ipotesi a<sub>n</sub> tende a 0</li>
+<li>L<sub>1</sub> = L<sub>2</sub> = 0</li>
+<li>L<sub>1</sub> = L<sub>2</sub></li>
+</ul>
+<p><strong>domanda 34</strong></p>
+<p>domande:</p>
+<ol>
+<li>enunciare il criterio del rapporto per le serie</li>
+<li>dimostrarlo</li>
+</ol>
+<p>risposta 1:</p>
+<ul>
+<li>il criterio del rapporto afferma che per determinare il carattere di una serie, si fa il limite del rapporto tra il termine ennesimo successivo ed l&#39;ennesimo della successione<ul>
+<li>se L &gt; 1 la serie diverge</li>
+<li>se L &lt; 1 la serie converge</li>
+<li>se L = 1 non si può dire nulla</li>
+</ul>
+</li>
+</ul>
+<p>risposta 2:</p>
+<ul>
+<li>caso L &lt; 1</li>
+<li>per definizione di limite:<ul>
+<li>|a<sub>n+1</sub>/a<sub>n</sub> - L| &lt; E</li>
+<li>L - E &lt; a<sub>n+1</sub>/a<sub>n</sub> &lt; E + L</li>
+</ul>
+</li>
+</ul>
+<p><strong>domanda 35</strong></p>
+<p>domande:</p>
+<ol>
+<li>dimostrare che dato un numero complesso z, allora esistono sempre n radici di z<ul>
+<li>una radice w di z è tale per cui w<suP>n</suo> = z</li>
+</ul>
+</li>
+<li>scrivere la formula per le radici cubiche con z=-1</li>
+<li>dimostrare che se P(z) è un polinomio a coefficenti complessi, allora se z<sub>0</sub> è una radice, anche z<sub>0</sub> coniugato lo è</li>
+</ol>
+<p>risposta 1:</p>
+<ul>
+<li>si scrive z in forma trigonometrica<ul>
+<li>A(cosx + isinx)</li>
+<li>A è il modulo</li>
+<li>x è l&#39;argomento</li>
+</ul>
+</li>
+<li>A<suo>1/n</sup>(cos(x + 2Kpi / n) + isin(x + 2Kpi / n)) individua tutte le radici di z al variare di k da 0 a n-1</li>
+</ul>
+<p>risposta 2:</p>
+<ul>
+<li>si scrive la forma trigonometrica di -1<ul>
+<li>modulo = rad(a<sup>2</sup> + b<sup>2</sup>)</li>
+<li>argomento = arctan(b/a)</li>
+</ul>
+</li>
+<li>1(cos(0) + isin(0))</li>
+<li>si trovano le radici cubiche</li>
+<li>1(cos(2kpi/3) + isin(2kpi/3)) con k da 0 a 2</li>
+</ul>
+<p>risposta 3:</p>
+<ul>
+<li>z<sub>0</sub> è una radice di P(x) allora significa che P(z)=0</li>
+<li>si coniuga tutto a destra e a sinistra</li>
+<li>P<sup>c</sup>(z) = 0</li>
+<li>il coniugato di un polinomio si può spezzare sulla somma e il prodotto</li>
+<li>il coniugato di un numero reale è il numero reale stesso</li>
+<li>il coniugato si applica quindi solo al numero complesso</li>
+<li>P(z<sup>c</sup>) = 0</li>
+</ul>
+<p><strong>domanda 36</strong></p>
+<p>domande:</p>
+<ol>
+<li>data la funzione y&#39; = a(x)y dimostrare che se y<sub>1</sub> y<sub>2</sub> sono soluzioni allora esiste una loro combinazione lineare y<sub>3</sub> anch&#39;essa soluzione</li>
+<li>dimostrare che tutte le soluzioni sono del tipo y = ce<sup>A(x)</sup>, con A&#39;(x) = a(x) </li>
+</ol>
+<p>risposta 1:</p>
+<ul>
+<li>si dimostra le L(y) = y&#39; - a(x)y è una funzione lineare</li>
+<li>quindi se L(y<sub>1</sub>) e L(y<sub>2</sub>) sono soluzioni, allora L(ay<sub>1</sub> + by<sub>2</sub>) è soluzione</li>
+</ul>
+<p>risposta 2:</p>
+<ul>
+<li>si divide tutto per y</li>
+<li>si integra tutto</li>
+<li>a sinistra si ha sempre un logaritmo</li>
+<li>a destra si ha A(x)</li>
+<li>si eleva tutto alla e, fine</li>
+</ul>
+<p><strong>domanda 37</strong></p>
+<p>domande:</p>
+<ol>
+<li>data la funzione y&#39; = a(x)y + b(x) ricavarne la soluzione generale</li>
+</ol>
+<p>risposta:</p>
+<ul>
+<li>y&#39; - a(x)y = b(x)</li>
+<li>si moltiplica tutto per e<sup>-A(x)</sup></li>
+<li>e<sup>-A(x)</sup>y&#39; - e<sup>-A(x)</sup>a(x)y = e<sup>-A(x)</sup>b(x)</li>
+<li>si nota che tutto ciò a sinistra è uguale ad (e<sup>-A(x)</sup>y)&#39;</li>
+<li>(e<sup>-A(x)</sup>y)&#39; = e<sup>-A(x)</sup>b(x)</li>
+<li>e<sup>-A(x)</sup>y = integrale{ e<sup>-A(x)</sup>b(x)dx</li>
+<li>y = e<sup>A(x)</sup>(integrale{ e<sup>-A(x)</sup>b(x)dx)</li>
+</ul>
+<p><strong>domanda 38</strong></p>
+<p>domande:</p>
+<ol>
+<li>data la funzione y&#39; = a(x)y + b(x) dimostrare che la soluzione al problema di cauchy esiste ed è unica</li>
+</ol>
+<p>risposta:</p>
+<ul>
+<li>il problema di cauchy impone y<sub>0</sub> = y(x<sub>0</sub>)</li>
+<li>si sostituisce quindi x ad x<sub>0</sub></li>
+<li>y =  e<sup>A(x<sub>0</sub>)</sup>(integrale{ e<sup>-A(x<sub>0</sub>)</sup>b(x<sub>0</sub>)dx)</li>
+<li>si ricava la C e la si sostituisce alla precedente formula</li>
+<li>l&#39;esistenza è garantita dal teorema fondamentale del calcolo integrale</li>
+<li>per dimostrare l&#39;unicità:<ul>
+<li>si suppone che S(x) sia un&#39;altra primitiva di a(x)</li>
+<li>quindi S(x) = A(x) + k</li>
+<li>da cui S(x) - S(x<sub>0</sub>) = A(x) - A(x<sub>0</sub>) (???)</li>
+</ul>
+</li>
+</ul>
+<p><strong>domanda 39</strong></p>
+<p>domande:</p>
+<ol>
+<li>data la funzione y&#39; = f(x)g(y) ricavarne la soluzione</li>
+<li>dare il significato del problema di cauchy</li>
+<li>dare un esempio di funzione e problema di cauchy con più di una soluzione</li>
+</ol>
+<p>risposta 1:</p>
+<ul>
+<li>si trovano le soluzioni costanti</li>
+<li>si divide tutto per g(y)</li>
+<li>si integra tutto</li>
+<li>si esplicita la y</li>
+</ul>
+<p>risposta 2:</p>
+<ul>
+<li>il problema di cauchy fissa un punto nel piano ed impone di trovare la soluzione dell&#39;equzione differenziale che passa in quel punto</li>
+</ul>
+<p>risposta 3:</p>
+<ul>
+<li>y&#39; = y<sup>1/3</sup></li>
+<li>y(0) = 0</li>
+</ul>
+<p><strong>domanda 40</strong></p>
+<p>domande:</p>
+<ol>
+<li>data una f(x,y) definire la derivata in (x<sub>0</sub>, y<sub>0</sub>) rispetto ad x e y e darne il significato geometrico</li>
+<li>dire cosa significa f di C<sup>1</sup>(R<sup>2</sup>)</li>
+<li>scrivere l&#39;equzione delle rette tangenti a f(x,y) in (x<sub>0</sub>, y<sub>0</sub>) nei piani x = x<sub>0</sub> e y = y<sub>0</sub></li>
+<li>scrivere l&#39;equzione del piano tangente in (0,0) di f(x,y) = xarctan(xy)</li>
+</ol>
+<p>risposta 1:</p>
+<ul>
+<li>si fa il rapporto incrementale rispetto ad x e y<ul>
+<li>lim f(x+h, y<sub>0</sub>) - f(x<sub>0</sub>,y<sub>0</sub>) / h</li>
+<li>lim f(x<sub>0</sub>, y+h) - f(x<sub>0</sub>,y<sub>0</sub>) / h</li>
+</ul>
+</li>
+<li>rispetto a x è il coefficente angolare della funzione f(x,y<sub>0</sub>)</li>
+<li>rispetto a y è il coefficente angolare della funzione f(x<sub>0</sub>,y)</li>
+</ul>
+<p>risposta 2:</p>
+<ul>
+<li>significa che f è continua in R<sup>2</sup></li>
+</ul>
+<p>risposta 3:</p>
+<ul>
+<li>rispetto ad x: T(x,y) = f (x<sub>0</sub>,y<sub>0</sub>) + f&#39;<sub>x</sub>(x<sub>0</sub>,y<sub>0</sub>)(x − x<sub>0</sub>)</li>
+<li>rispetto ad y: T(x,y) = f (x<sub>0</sub>,y<sub>0</sub>) + f&#39;<sub>y</sub>(x<sub>0</sub>,y<sub>0</sub>)(y − y<sub>0</sub>)</li>
+</ul>
+<p>risposta 4:</p>
+<ul>
+<li>T(x,y) = f (x<sub>0</sub>,y<sub>0</sub>) + f&#39;(x<sub>0</sub>,y<sub>0</sub>)(x − x<sub>0</sub>) + f&#39;(x<sub>0</sub>,y<sub>0</sub>)(y − y<sub>0</sub>)</li>
+</ul>
+
+        </div>
+    </div>
+</body>
+
+</html>
