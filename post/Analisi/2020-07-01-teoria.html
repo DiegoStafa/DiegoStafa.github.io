@@ -762,21 +762,34 @@
 </ol>
 <p>risposta 1:</p>
 <ul>
-<li>si impone che w<sup>n</sup> = z</li>
-<li>si scrive w in forma trigonometrica<ul>
-<li>w = A(cosx + isinx)</li>
+<li>si scrive z in forma trigonometrica<ul>
+<li>A(cosx + isinx)</li>
+<li>A è il modulo</li>
+<li>x è l&#39;argomento</li>
 </ul>
 </li>
-<li>(A(cosx + isinx))<sup>n</sup> = z</li>
-<li>A<sup>n</sup>()</li>
+<li>A<suo>1/n</sup>(cos(x + 2Kpi / n) + isin(x + 2Kpi / n)) individua tutte le radici di z al variare di k da 0 a n-1</li>
 </ul>
 <p>risposta 2:</p>
 <ul>
-<li><strong>da finire</strong></li>
+<li>si scrive la forma trigonometrica di -1<ul>
+<li>modulo = rad(a<sup>2</sup> + b<sup>2</sup>)</li>
+<li>argomento = arctan(b/a)</li>
+</ul>
+</li>
+<li>1(cos(0) + isin(0))</li>
+<li>si trovano le radici cubiche</li>
+<li>1(cos(2kpi/3) + isin(2kpi/3)) con k da 0 a 2</li>
 </ul>
 <p>risposta 3:</p>
 <ul>
-<li><strong>da finire</strong></li>
+<li>z<sub>0</sub> è una radice di P(x) allora significa che P(z)=0</li>
+<li>si coniuga tutto a destra e a sinistra</li>
+<li>P<sup>c</sup>(z) = 0</li>
+<li>il coniugato di un polinomio si può spezzare sulla somma e il prodotto</li>
+<li>il coniugato di un numero reale è il numero reale stesso</li>
+<li>il coniugato si applica quindi solo al numero complesso</li>
+<li>P(z<sup>c</sup>) = 0</li>
 </ul>
 <p><strong>domanda 36</strong></p>
 <p>domande:</p>
@@ -786,9 +799,16 @@
 </ol>
 <p>risposta 1:</p>
 <ul>
-<li><p>risposta 2:</p>
-</li>
-<li></li>
+<li>si dimostra le L(y) = y&#39; - a(x)y è una funzione lineare</li>
+<li>quindi se L(y<sub>1</sub>) e L(y<sub>2</sub>) sono soluzioni, allora L(ay<sub>1</sub> + by<sub>2</sub>) è soluzione</li>
+</ul>
+<p>risposta 2:</p>
+<ul>
+<li>si divide tutto per y</li>
+<li>si integra tutto</li>
+<li>a sinistra si ha sempre un logaritmo</li>
+<li>a destra si ha A(x)</li>
+<li>si eleva tutto alla e, fine</li>
 </ul>
 <p><strong>domanda 37</strong></p>
 <p>domande:</p>
@@ -797,7 +817,13 @@
 </ol>
 <p>risposta:</p>
 <ul>
-<li></li>
+<li>y&#39; - a(x)y = b(x)</li>
+<li>si moltiplica tutto per e<sup>-A(x)</sup></li>
+<li>e<sup>-A(x)</sup>y&#39; - e<sup>-A(x)</sup>a(x)y = e<sup>-A(x)</sup>b(x)</li>
+<li>si nota che tutto ciò a sinistra è uguale ad (e<sup>-A(x)</sup>y)&#39;</li>
+<li>(e<sup>-A(x)</sup>y)&#39; = e<sup>-A(x)</sup>b(x)</li>
+<li>e<sup>-A(x)</sup>y = integrale{ e<sup>-A(x)</sup>b(x)dx</li>
+<li>y = e<sup>A(x)</sup>(integrale{ e<sup>-A(x)</sup>b(x)dx)</li>
 </ul>
 <p><strong>domanda 38</strong></p>
 <p>domande:</p>
@@ -806,7 +832,17 @@
 </ol>
 <p>risposta:</p>
 <ul>
-<li></li>
+<li>il problema di cauchy impone y<sub>0</sub> = y(x<sub>0</sub>)</li>
+<li>si sostituisce quindi x ad x<sub>0</sub></li>
+<li>y =  e<sup>A(x<sub>0</sub>)</sup>(integrale{ e<sup>-A(x<sub>0</sub>)</sup>b(x<sub>0</sub>)dx)</li>
+<li>si ricava la C e la si sostituisce alla precedente formula</li>
+<li>l&#39;esistenza è garantita dal teorema fondamentale del calcolo integrale</li>
+<li>per dimostrare l&#39;unicità:<ul>
+<li>si suppone che S(x) sia un&#39;altra primitiva di a(x)</li>
+<li>quindi S(x) = A(x) + k</li>
+<li>da cui S(x) - S(x<sub>0</sub>) = A(x) - A(x<sub>0</sub>) (???)</li>
+</ul>
+</li>
 </ul>
 <p><strong>domanda 39</strong></p>
 <p>domande:</p>
@@ -817,20 +853,45 @@
 </ol>
 <p>risposta 1:</p>
 <ul>
-<li><p>risposta 2:</p>
-</li>
-<li></li>
+<li>si trovano le soluzioni costanti</li>
+<li>si divide tutto per g(y)</li>
+<li>si integra tutto</li>
+<li>si esplicita la y</li>
+</ul>
+<p>risposta 2:</p>
+<ul>
+<li>il problema di cauchy fissa un punto nel piano ed impone di trovare la soluzione dell&#39;equzione differenziale che passa in quel punto</li>
 </ul>
 <p>risposta 3:</p>
 <ul>
-<li></li>
-<li><p><em>domanda 40*</em></p>
-</li>
+<li>y&#39; = y<sup>1/3</sup></li>
+<li>y(0) = 0</li>
 </ul>
+<p><strong>domanda 40</strong></p>
 <p>domande:</p>
 <ol>
-<li></li>
+<li>data una f(x,y) definire la derivata in (x<sub>0</sub>, y<sub>0</sub>) rispetto ad x e a y e darne il significato geometrico</li>
+<li>dire cosa significa f di C<sup>1</sup>(R<sup>2</sup>)</li>
+<li>scrivere l&#39;equzione delle rette tangenti a f(x,y) in (x<sub>0</sub>, y<sub>0</sub>) nei piani x = x<sub>0</sub> e y = y<sub>0</sub></li>
+<li>scrivere l&#39;equzione del piano tangente in (0,0) di f(x,y) = xarctan(xy)</li>
 </ol>
+<p>risposta 1:</p>
+<ul>
+<li>si fa il limite del rapporto incrementale rispetto ad x e y<ul>
+<li>lim f(x+h, y<sub>0</sub>) - f(x<sub>0</sub>,y<sub>0</sub>) / h</li>
+<li>lim f(x<sub>0</sub>, y+h) - f(x<sub>0</sub>,y<sub>0</sub>) / h</li>
+</ul>
+</li>
+<li>rispetto a x è il coefficente angolare della funzione f(x,y<sub>0</sub>)</li>
+<li>rispetto a y è il coefficente angolare della funzione f(x<sub>0</sub>,y)</li>
+</ul>
+<p>risposta 2:</p>
+<ul>
+<li><p>risposta 3:</p>
+</li>
+<li><p>T(x,y) = f (x<sub>0</sub>,y<sub>0</sub>) + f&#39;(x<sub>0</sub>,y<sub>0</sub>)(x − x<sub>0</sub>) + f&#39;(x<sub>0</sub>,y<sub>0</sub>)(y − y<sub>0</sub>)</p>
+</li>
+</ul>
 
         </div>
     </div>

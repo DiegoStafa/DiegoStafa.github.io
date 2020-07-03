@@ -616,17 +616,28 @@ domande:
 3. dimostrare che se P(z) è un polinomio a coefficenti complessi, allora se z<sub>0</sub> è una radice, anche z<sub>0</sub> coniugato lo è
 
 risposta 1:
-* si impone che w<sup>n</sup> = z
-* si scrive w in forma trigonometrica
-    * w = A(cosx + isinx)
-* (A(cosx + isinx))<sup>n</sup> = z
-* A<sup>n</sup>()
+* si scrive z in forma trigonometrica
+    * A(cosx + isinx)
+    * A è il modulo
+    * x è l'argomento
+* A<suo>1/n</sup>(cos(x + 2Kpi / n) + isin(x + 2Kpi / n)) individua tutte le radici di z al variare di k da 0 a n-1
 
 risposta 2:
-* **da finire**
+* si scrive la forma trigonometrica di -1
+    * modulo = rad(a<sup>2</sup> + b<sup>2</sup>)
+    * argomento = arctan(b/a)
+* 1(cos(0) + isin(0))
+* si trovano le radici cubiche
+* 1(cos(2kpi/3) + isin(2kpi/3)) con k da 0 a 2
 
 risposta 3:
-* **da finire**
+* z<sub>0</sub> è una radice di P(x) allora significa che P(z)=0
+* si coniuga tutto a destra e a sinistra
+* P<sup>c</sup>(z) = 0
+* il coniugato di un polinomio si può spezzare sulla somma e il prodotto
+* il coniugato di un numero reale è il numero reale stesso
+* il coniugato si applica quindi solo al numero complesso
+* P(z<sup>c</sup>) = 0
 
 **domanda 36**
 
@@ -635,10 +646,15 @@ domande:
 2. dimostrare che tutte le soluzioni sono del tipo y = ce<sup>A(x)</sup>, con A'(x) = a(x) 
 
 risposta 1:
-* 
+* si dimostra le L(y) = y' - a(x)y è una funzione lineare
+* quindi se L(y<sub>1</sub>) e L(y<sub>2</sub>) sono soluzioni, allora L(ay<sub>1</sub> + by<sub>2</sub>) è soluzione
 
 risposta 2:
-* 
+* si divide tutto per y
+* si integra tutto
+* a sinistra si ha sempre un logaritmo
+* a destra si ha A(x)
+* si eleva tutto alla e, fine
 
 
 **domanda 37**
@@ -647,8 +663,13 @@ domande:
 1. data la funzione y' = a(x)y + b(x) ricavarne la soluzione generale
 
 risposta:
-* 
-
+* y' - a(x)y = b(x)
+* si moltiplica tutto per e<sup>-A(x)</sup>
+* e<sup>-A(x)</sup>y' - e<sup>-A(x)</sup>a(x)y = e<sup>-A(x)</sup>b(x)
+* si nota che tutto ciò a sinistra è uguale ad (e<sup>-A(x)</sup>y)'
+* (e<sup>-A(x)</sup>y)' = e<sup>-A(x)</sup>b(x)
+* e<sup>-A(x)</sup>y = integrale{ e<sup>-A(x)</sup>b(x)dx
+* y = e<sup>A(x)</sup>(integrale{ e<sup>-A(x)</sup>b(x)dx)
 
 **domanda 38**
 
@@ -656,8 +677,15 @@ domande:
 1. data la funzione y' = a(x)y + b(x) dimostrare che la soluzione al problema di cauchy esiste ed è unica
 
 risposta:
-* 
-
+* il problema di cauchy impone y<sub>0</sub> = y(x<sub>0</sub>)
+* si sostituisce quindi x ad x<sub>0</sub>
+* y =  e<sup>A(x<sub>0</sub>)</sup>(integrale{ e<sup>-A(x<sub>0</sub>)</sup>b(x<sub>0</sub>)dx)
+* si ricava la C e la si sostituisce alla precedente formula
+* l'esistenza è garantita dal teorema fondamentale del calcolo integrale
+* per dimostrare l'unicità:
+    * si suppone che S(x) sia un'altra primitiva di a(x)
+    * quindi S(x) = A(x) + k
+    * da cui S(x) - S(x<sub>0</sub>) = A(x) - A(x<sub>0</sub>) (???)
 
 **domanda 39**
 
@@ -667,16 +695,35 @@ domande:
 3. dare un esempio di funzione e problema di cauchy con più di una soluzione
 
 risposta 1:
-* 
+* si trovano le soluzioni costanti
+* si divide tutto per g(y)
+* si integra tutto
+* si esplicita la y
+
+risposta 2:
+* il problema di cauchy fissa un punto nel piano ed impone di trovare la soluzione dell'equzione differenziale che passa in quel punto
+
+risposta 3:
+* y' = y<sup>1/3</sup>
+* y(0) = 0
+
+**domanda 40**
+
+domande:
+1. data una f(x,y) definire la derivata in (x<sub>0</sub>, y<sub>0</sub>) rispetto ad x e a y e darne il significato geometrico
+2. dire cosa significa f di C<sup>1</sup>(R<sup>2</sup>)
+3. scrivere l'equzione delle rette tangenti a f(x,y) in (x<sub>0</sub>, y<sub>0</sub>) nei piani x = x<sub>0</sub> e y = y<sub>0</sub>
+4. scrivere l'equzione del piano tangente in (0,0) di f(x,y) = xarctan(xy)
+
+risposta 1:
+* si fa il limite del rapporto incrementale rispetto ad x e y
+    * lim f(x+h, y<sub>0</sub>) - f(x<sub>0</sub>,y<sub>0</sub>) / h
+    * lim f(x<sub>0</sub>, y+h) - f(x<sub>0</sub>,y<sub>0</sub>) / h
+* rispetto a x è il coefficente angolare della funzione f(x,y<sub>0</sub>)
+* rispetto a y è il coefficente angolare della funzione f(x<sub>0</sub>,y)
 
 risposta 2:
 * 
 
 risposta 3:
-* 
-
-**domanda 40**
-
-domande:
-1. 
-
+* T(x,y) = f (x<sub>0</sub>,y<sub>0</sub>) + f'(x<sub>0</sub>,y<sub>0</sub>)(x − x<sub>0</sub>) + f'(x<sub>0</sub>,y<sub>0</sub>)(y − y<sub>0</sub>)
