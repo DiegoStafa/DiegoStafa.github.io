@@ -40,8 +40,8 @@
 </ol>
 <p>risposta 1:</p>
 <ul>
-<li>per ogni numero E maggiore di 0 esiste un n tale per cui |an - L| &lt; E</li>
-<li>per ogni numero M maggiore di 0 esiste un n tale per cui an &gt; M</li>
+<li>per ogni numero E maggiore di 0 esiste un n tale per cui |a<sub>n</sub> - L| &lt; E</li>
+<li>per ogni numero M maggiore di 0 esiste un n tale per cui a<sub>n</sub> &gt; M</li>
 </ul>
 <p>risposta 2:</p>
 <ul>
@@ -59,21 +59,43 @@
 </ol>
 <p>risposta:</p>
 <ul>
-<li>|an| &lt; M, |bn|&lt; E, impica che il loro prodotto è minore di E*M, che chiamandolo E&#39; è la definizione di limite -&gt; 0</li>
+<li>|an| &lt; M, |b<sub>n</sub>|&lt; E, impica che il loro prodotto è minore di E*M, che chiamandolo E&#39; è la definizione di limite -&gt; 0</li>
 </ul>
 <p><strong>domanda 3</strong></p>
 <p>domande:</p>
 <ol>
 <li>enunciare il teorema ponte</li>
-<li>dimostrarlo</li>
+<li>dimostrarlo a sinistra</li>
+<li>dimostrarlo a destra</li>
 </ol>
 <p>risposta 1:</p>
 <ul>
-<li>f(x0) == L sse per ogni successione an-&gt;x0 allora f(an) == L</li>
+<li>lim f(x) = L con x-&gt;x<sub>0</sub> sse per ogni successione a<sub>n</sub>-&gt;x<sub>0</sub> allora lim f(a<sub>n</sub>) = L con n-&gt;+inf</li>
 </ul>
 <p>risposta 2:</p>
 <ul>
-<li><strong>da finire</strong></li>
+<li>si vuole dimostrare che lim f(a<sub>n</sub>) = L con n-&gt;+inf<ul>
+<li>cioè che |f(a<sub>n</sub>) - L| &lt; E</li>
+</ul>
+</li>
+<li>si scrive la definizione di lim f(x) = L con x-&gt;x<sub>0</sub><ul>
+<li>per ogni E esiste un λ tale per cui per ogni |x - x<sub>0</sub>| &lt; λ allora |f(x) - L| &lt; E</li>
+</ul>
+</li>
+<li>si scrive la definzione di a<sub>n</sub>-&gt;x<sub>0</sub><ul>
+<li>per ogni E esiste un n<sub>0</sub> dopo la quale |a<sub>n</sub> - x<sub>0</sub>| &lt; E&#39;</li>
+</ul>
+</li>
+<li>si prende E&#39; &lt; λ, quindi vale |a<sub>n</sub> - x<sub>0</sub>| &lt; λ, che verifica la tesi</li>
+</ul>
+<p>risposta 3:</p>
+<ul>
+<li>per assurdo si suppone che lim f(x) != l</li>
+<li>per ogni λ esiste un E tale per cui |f(x) - L| &gt; E</li>
+<li>esiste quindi un valore x<sub>λ</Sub> che soddisfa quanto detto sopra per ogni λ</li>
+<li>si sceglie λ = 1/n</li>
+<li>|x<sub>n</sub> - x<sub>0</sub>| &lt; 1/n</li>
+<li>cioè |f(x<sub>n</sub>) - L| &gt; E, che contraddice l&#39;ipotesi</li>
 </ul>
 <p><strong>domanda 4</strong></p>
 <p>domande:</p>
@@ -167,16 +189,25 @@
 <p><strong>domanda 10</strong></p>
 <p>domande:</p>
 <ol>
-<li>dare la definizione di SUP e INF di A (un insime di R)</li>
+<li>dare la definizione di SUP e INF di A</li>
 <li>dimostrare che se A è contenuto in B allora il SUP A &lt;= SUP B</li>
+<li>dimostrare che se il SUP appartiene ad A allora è anche il MAX</li>
 </ol>
 <p>risposta 1:</p>
 <ul>
 <li>SUP A è il più piccolo dei maggioranti di A</li>
+<li>un maggiorante è un qualsiasi numero &gt;= a tutti gli elementi di A (può appartenere ad A o anche no)</li>
 </ul>
 <p>risposta 2:</p>
 <ul>
-<li><strong>da finire</strong></li>
+<li>ogni elemento di A appartiene a B</li>
+<li>SUP B è quindi anche maggiore di ogni elemento di A, cioè è un maggiorante di A</li>
+<li>SUP A è il più piccolo dei suoi maggioranti</li>
+<li>quindi SUP A &lt;= SUB B</li>
+</ul>
+<p>risposta 3:</p>
+<ul>
+<li>se MAX A non fosse SUP A allora significa che un elemento di A è maggiore del suo SUP, assurdo</li>
 </ul>
 <p><strong>domanda 11</strong></p>
 <p>domande:</p>
@@ -404,11 +435,13 @@
 <p><strong>domanda 23</strong></p>
 <p>domande:</p>
 <ol>
-<li>dimostrare che in una funzione continua in un intervallo chiuso [a,b] l&#39;immagine è contenuta tra il minimo e massimo </li>
+<li>dimostrare che se f(x) è continua in un intervallo chiuso [a,b] allora l&#39;immagine è contenuta tra MIN e MAX di f(x)</li>
 </ol>
 <p>risposta:</p>
 <ul>
-<li><strong>da finire</strong></li>
+<li>esiste un x<sub>m</sub> tale per cui f(x<sub>m</sub>) = MIN (per weirstrass)</li>
+<li>esiste un x<sub>M</sub> tale per cui f(x<sub>M</sub>) = MAX (per weirstrass)</li>
+<li>quindi per definizione di MIN e MAX: MIN &lt;= f(x) &lt;= MAX</li>
 </ul>
 <p><strong>domanda 24</strong></p>
 <p>domande:</p>
@@ -670,13 +703,28 @@
 <li>enunciare il criterio di leibnitz per le serie a segno alterno</li>
 <li>dimostrarlo</li>
 </ol>
+<p>nb: una successione a segno alterno è del tipo: (-1)<sup>n</sup>a<sub>n</sub></p>
 <p>risposta 1:</p>
 <ul>
-<li>il criterio di leibnitz afferma che una serie a termini positivi, decrescente che converge a 0 è convergente</li>
+<li>il criterio di leibnitz afferma che se a<sub>n</sub> è a termini positivi, decrescente e tende a 0, allora la serie è convergente</li>
 </ul>
 <p>risposta 2:</p>
 <ul>
-<li><strong>da finire</strong></li>
+<li>le somme parziali di indice pari sono crescenti</li>
+<li>le somme parziali di indice dispari sono decrescenti</li>
+<li>essendo crescenti le somme parziali di indice pari sono in particolare tutte maggiori della somma parziale di indice 1</li>
+<li>essendo decrescenti le somme parziali di indice dispari sono in particolare tutte minori della somma parziale di indice 2</li>
+<li>lim S<sub>2n</sub> = L<sub>1</sub></li>
+<li>lim S<sub>2n-1</sub> = L<sub>2</sub></li>
+<li>dimostro che L<sub>1</sub> = L<sub>2</sub> = 0</li>
+<li>lim S<sub>2n</sub> - S<sub>2n-1</sub> = L<sub>1</sub> = L<sub>2</sub><ul>
+<li>S<sub>2n</sub> - S<sub>2n-1</sub> = a<sub>2n</sub></li>
+</ul>
+</li>
+<li>lim a<sub>2n</sub> = L<sub>1</sub> = L<sub>2</sub></li>
+<li>per ipotesi a<sub>n</sub> tende a 0</li>
+<li>L<sub>1</sub> = L<sub>2</sub> = 0</li>
+<li>L<sub>1</sub> = L<sub>2</sub></li>
 </ul>
 <p><strong>domanda 34</strong></p>
 <p>domande:</p>
@@ -687,15 +735,20 @@
 <p>risposta 1:</p>
 <ul>
 <li>il criterio del rapporto afferma che per determinare il carattere di una serie, si fa il limite del rapporto tra il termine ennesimo successivo ed l&#39;ennesimo della successione<ul>
-<li>se &gt; 1 la serie diverge</li>
-<li>se &lt; 1 la serie converge</li>
-<li>se = 1 non si può dire nulla</li>
+<li>se L &gt; 1 la serie diverge</li>
+<li>se L &lt; 1 la serie converge</li>
+<li>se L = 1 non si può dire nulla</li>
 </ul>
 </li>
 </ul>
 <p>risposta 2:</p>
 <ul>
-<li><strong>da finire</strong></li>
+<li>caso L &lt; 1</li>
+<li>per definizione di limite:<ul>
+<li>|a<sub>n+1</sub>/a<sub>n</sub> - L| &lt; E</li>
+<li>L - E &lt; a<sub>n+1</sub>/a<sub>n</sub> &lt; E + L</li>
+</ul>
+</li>
 </ul>
 <p><strong>domanda 35</strong></p>
 <p>domande:</p>
@@ -709,7 +762,13 @@
 </ol>
 <p>risposta 1:</p>
 <ul>
-<li><strong>da finire</strong></li>
+<li>si impone che w<sup>n</sup> = z</li>
+<li>si scrive w in forma trigonometrica<ul>
+<li>w = A(cosx + isinx)</li>
+</ul>
+</li>
+<li>(A(cosx + isinx))<sup>n</sup> = z</li>
+<li>A<sup>n</sup>()</li>
 </ul>
 <p>risposta 2:</p>
 <ul>
@@ -721,14 +780,57 @@
 </ul>
 <p><strong>domanda 36</strong></p>
 <p>domande:</p>
+<ol>
+<li>data la funzione y&#39; = a(x)y dimostrare che se y<sub>1</sub> y<sub>2</sub> sono soluzioni allora esiste una loro combinazione lineare y<sub>3</sub> anch&#39;essa soluzione</li>
+<li>dimostrare che tutte le soluzioni sono del tipo y = ce<sup>A(x)</sup>, con A&#39;(x) = a(x) </li>
+</ol>
+<p>risposta 1:</p>
+<ul>
+<li><p>risposta 2:</p>
+</li>
+<li></li>
+</ul>
 <p><strong>domanda 37</strong></p>
 <p>domande:</p>
+<ol>
+<li>data la funzione y&#39; = a(x)y + b(x) ricavarne la soluzione generale</li>
+</ol>
+<p>risposta:</p>
+<ul>
+<li></li>
+</ul>
 <p><strong>domanda 38</strong></p>
 <p>domande:</p>
+<ol>
+<li>data la funzione y&#39; = a(x)y + b(x) dimostrare che la soluzione al problema di cauchy esiste ed è unica</li>
+</ol>
+<p>risposta:</p>
+<ul>
+<li></li>
+</ul>
 <p><strong>domanda 39</strong></p>
 <p>domande:</p>
-<p><strong>domanda 40</strong></p>
+<ol>
+<li>data la funzione y&#39; = f(x)g(y) ricavarne la soluzione</li>
+<li>dare il significato del problema di cauchy</li>
+<li>dare un esempio di funzione e problema di cauchy con più di una soluzione</li>
+</ol>
+<p>risposta 1:</p>
+<ul>
+<li><p>risposta 2:</p>
+</li>
+<li></li>
+</ul>
+<p>risposta 3:</p>
+<ul>
+<li></li>
+<li><p><em>domanda 40*</em></p>
+</li>
+</ul>
 <p>domande:</p>
+<ol>
+<li></li>
+</ol>
 
         </div>
     </div>

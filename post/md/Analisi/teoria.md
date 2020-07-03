@@ -5,8 +5,8 @@ domande:
 2. analizzare come varia a<sup>n</sup> a +inf
 
 risposta 1:
-* per ogni numero E maggiore di 0 esiste un n tale per cui \|an - L\| < E
-* per ogni numero M maggiore di 0 esiste un n tale per cui an > M
+* per ogni numero E maggiore di 0 esiste un n tale per cui \|a<sub>n</sub> - L\| < E
+* per ogni numero M maggiore di 0 esiste un n tale per cui a<sub>n</sub> > M
 
 
 risposta 2:
@@ -21,19 +21,34 @@ domande:
 1. dimostrare che il limite del prodotto di una funzione limitata e un'infinitesima è uguale a 0
 
 risposta:
-* \|an\| < M, |bn|< E, impica che il loro prodotto è minore di E\*M, che chiamandolo E' è la definizione di limite -> 0
+* \|an\| < M, |b<sub>n</sub>|< E, impica che il loro prodotto è minore di E\*M, che chiamandolo E' è la definizione di limite -> 0
 
 **domanda 3**
 
 domande:
 1. enunciare il teorema ponte
-2. dimostrarlo
+2. dimostrarlo a sinistra
+3. dimostrarlo a destra
 
 risposta 1:
-* f(x0) == L sse per ogni successione an->x0 allora f(an) == L
+* lim f(x) = L con x->x<sub>0</sub> sse per ogni successione a<sub>n</sub>->x<sub>0</sub> allora lim f(a<sub>n</sub>) = L con n->+inf
 
 risposta 2:
-* **da finire**
+* si vuole dimostrare che lim f(a<sub>n</sub>) = L con n->+inf
+    * cioè che \|f(a<sub>n</sub>) - L\| < E
+* si scrive la definizione di lim f(x) = L con x->x<sub>0</sub>
+    * per ogni E esiste un λ tale per cui per ogni \|x - x<sub>0</sub>\| < λ allora \|f(x) - L\| < E
+* si scrive la definzione di a<sub>n</sub>->x<sub>0</sub>
+    * per ogni E esiste un n<sub>0</sub> dopo la quale \|a<sub>n</sub> - x<sub>0</sub>\| < E'
+* si prende E' < λ, quindi vale \|a<sub>n</sub> - x<sub>0</sub>\| < λ, che verifica la tesi
+
+risposta 3:
+* per assurdo si suppone che lim f(x) != l
+* per ogni λ esiste un E tale per cui \|f(x) - L\| > E
+* esiste quindi un valore x<sub>λ</Sub> che soddisfa quanto detto sopra per ogni λ
+* si sceglie λ = 1/n
+* \|x<sub>n</sub> - x<sub>0</sub>\| < 1/n
+* cioè \|f(x<sub>n</sub>) - L\| > E, che contraddice l'ipotesi
 
 **domanda 4**
 
@@ -114,14 +129,22 @@ risposta:
 **domanda 10**
 
 domande:
-1. dare la definizione di SUP e INF di A (un insime di R)
+1. dare la definizione di SUP e INF di A
 2. dimostrare che se A è contenuto in B allora il SUP A <= SUP B
+3. dimostrare che se il SUP appartiene ad A allora è anche il MAX
 
 risposta 1:
 * SUP A è il più piccolo dei maggioranti di A
+* un maggiorante è un qualsiasi numero >= a tutti gli elementi di A (può appartenere ad A o anche no)
 
 risposta 2:
-* **da finire**
+* ogni elemento di A appartiene a B
+* SUP B è quindi anche maggiore di ogni elemento di A, cioè è un maggiorante di A
+* SUP A è il più piccolo dei suoi maggioranti
+* quindi SUP A <= SUB B
+
+risposta 3:
+* se MAX A non fosse SUP A allora significa che un elemento di A è maggiore del suo SUP, assurdo
 
 **domanda 11**
 
@@ -316,10 +339,12 @@ risposta 3:
 **domanda 23**
 
 domande:
-1. dimostrare che in una funzione continua in un intervallo chiuso \[a,b\] l'immagine è contenuta tra il minimo e massimo 
+1. dimostrare che se f(x) è continua in un intervallo chiuso \[a,b\] allora l'immagine è contenuta tra MIN e MAX di f(x)
 
 risposta:
-* **da finire**
+* esiste un x<sub>m</sub> tale per cui f(x<sub>m</sub>) = MIN (per weirstrass)
+* esiste un x<sub>M</sub> tale per cui f(x<sub>M</sub>) = MAX (per weirstrass)
+* quindi per definizione di MIN e MAX: MIN <= f(x) <= MAX
 
 **domanda 24**
 
@@ -544,12 +569,25 @@ domande:
 1. enunciare il criterio di leibnitz per le serie a segno alterno
 2. dimostrarlo
 
+nb: una successione a segno alterno è del tipo: (-1)<sup>n</sup>a<sub>n</sub>
+
 risposta 1:
-* il criterio di leibnitz afferma che una serie a termini positivi, decrescente che converge a 0 è convergente
+* il criterio di leibnitz afferma che se a<sub>n</sub> è a termini positivi, decrescente e tende a 0, allora la serie è convergente
 
 risposta 2:
-* **da finire**
-
+* le somme parziali di indice pari sono crescenti
+* le somme parziali di indice dispari sono decrescenti
+* essendo crescenti le somme parziali di indice pari sono in particolare tutte maggiori della somma parziale di indice 1
+* essendo decrescenti le somme parziali di indice dispari sono in particolare tutte minori della somma parziale di indice 2
+* lim S<sub>2n</sub> = L<sub>1</sub>
+* lim S<sub>2n-1</sub> = L<sub>2</sub>
+* dimostro che L<sub>1</sub> = L<sub>2</sub> = 0
+* lim S<sub>2n</sub> - S<sub>2n-1</sub> = L<sub>1</sub> = L<sub>2</sub>
+    * S<sub>2n</sub> - S<sub>2n-1</sub> = a<sub>2n</sub>
+* lim a<sub>2n</sub> = L<sub>1</sub> = L<sub>2</sub>
+* per ipotesi a<sub>n</sub> tende a 0
+* L<sub>1</sub> = L<sub>2</sub> = 0
+* L<sub>1</sub> = L<sub>2</sub>
 
 **domanda 34**
 
@@ -559,13 +597,15 @@ domande:
 
 risposta 1:
 * il criterio del rapporto afferma che per determinare il carattere di una serie, si fa il limite del rapporto tra il termine ennesimo successivo ed l'ennesimo della successione
-    * se > 1 la serie diverge
-    * se < 1 la serie converge
-    * se = 1 non si può dire nulla
+    * se L > 1 la serie diverge
+    * se L < 1 la serie converge
+    * se L = 1 non si può dire nulla
 
 risposta 2:
-* **da finire**
-
+* caso L < 1
+* per definizione di limite:
+    * \|a<sub>n+1</sub>/a<sub>n</sub> - L\| < E
+    * L - E < a<sub>n+1</sub>/a<sub>n</sub> < E + L
 
 **domanda 35**
 
@@ -576,7 +616,11 @@ domande:
 3. dimostrare che se P(z) è un polinomio a coefficenti complessi, allora se z<sub>0</sub> è una radice, anche z<sub>0</sub> coniugato lo è
 
 risposta 1:
-* **da finire**
+* si impone che w<sup>n</sup> = z
+* si scrive w in forma trigonometrica
+    * w = A(cosx + isinx)
+* (A(cosx + isinx))<sup>n</sup> = z
+* A<sup>n</sup>()
 
 risposta 2:
 * **da finire**
@@ -587,29 +631,52 @@ risposta 3:
 **domanda 36**
 
 domande:
+1. data la funzione y' = a(x)y dimostrare che se y<sub>1</sub> y<sub>2</sub> sono soluzioni allora esiste una loro combinazione lineare y<sub>3</sub> anch'essa soluzione
+2. dimostrare che tutte le soluzioni sono del tipo y = ce<sup>A(x)</sup>, con A'(x) = a(x) 
 
+risposta 1:
+* 
+
+risposta 2:
+* 
 
 
 **domanda 37**
 
 domande:
+1. data la funzione y' = a(x)y + b(x) ricavarne la soluzione generale
 
+risposta:
+* 
 
 
 **domanda 38**
 
 domande:
+1. data la funzione y' = a(x)y + b(x) dimostrare che la soluzione al problema di cauchy esiste ed è unica
 
+risposta:
+* 
 
 
 **domanda 39**
 
 domande:
+1. data la funzione y' = f(x)g(y) ricavarne la soluzione
+2. dare il significato del problema di cauchy
+3. dare un esempio di funzione e problema di cauchy con più di una soluzione
 
+risposta 1:
+* 
 
+risposta 2:
+* 
+
+risposta 3:
+* 
 
 **domanda 40**
 
 domande:
-
+1. 
 
