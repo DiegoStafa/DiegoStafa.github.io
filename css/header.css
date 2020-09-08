@@ -11,7 +11,7 @@
 }
 
 .header-title a {
-  color: #C3DCDA;
+  color: #ebdbb2;
   font-size: 30px;
   font-weight: 300;
   text-align: center;
@@ -34,7 +34,7 @@
   letter-spacing: 2px;
   font-weight: 800;
   text-transform: uppercase;
-  color: #798988;
+  color: #a89984;
 }
 
 .navbar a:hover {
