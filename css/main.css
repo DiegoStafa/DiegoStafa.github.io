@@ -127,7 +127,7 @@
     color: #a34900;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
     .wrap {
         flex-direction: column;
         padding: 0;
