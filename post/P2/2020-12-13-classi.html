@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info"><li>
+Classi e costruttori
+</li>
+<li>
+Programmazione 2
+</li>
+<li>
+13-12-2020
+</li>
+</ul>
+<div class="post">
+<h2 id="classi-e-oggetti">Classi e oggetti</h2>
+<p><strong>classi</strong></p>
+<p>il concetto di classe implementa il concetto di ADT in programmazione</p>
+<p>una classe è quindi formata da:</p>
+<ul>
+<li>dichiarazione --&gt; campi e metodi</li>
+<li>definizione --&gt; implementazione metodi</li>
+</ul>
+<p>concetti base:</p>
+<ul>
+<li>le variabili di una classe si chiamano campi</li>
+<li>le funzioni di una classe si chimano metodi</li>
+<li>le istanze di una classe sono chiamate oggetti</li>
+<li>l&#39;oggetto su cui viene invocato un metodo è chiamato oggetto di invocazione</li>
+</ul>
+<p><strong>oggetti</strong></p>
+<p>ogni istanza ha la sua porzione di memoria nello stack</p>
+<p><strong>metodi</strong></p>
+<p>i metodi sono unici tra tutti le istanze di una classe, il binding tra metodo e istanza avviene tramite il parametro formale nascosto &#39;this&#39;</p>
+<p><strong>this</strong></p>
+<p>è il parametro formale che ogni metodo contiene, è un puntatore al tipo della classe</p>
+<p>il parametro attuale è implicitamente passato ad ongi invocazione:</p>
+<ul>
+<li>oggetto.metodo() --&gt; interfaccia</li>
+<li>metodo(&amp;oggetto) --&gt; implemntazione</li>
+</ul>
+<p>si utilizza il this solo con:</p>
+<ul>
+<li>ambiguità tra parametri e campi</li>
+<li>per ritornare l&#39;oggetto di invocazione</li>
+</ul>
+<p><strong>specificatori di accesso</strong></p>
+<p>implementano la proprietà dell&#39;information hiding dei ADT</p>
+<p>di default:</p>
+<ul>
+<li>strutture --&gt; tutto pubblico</li>
+<li>classi --&gt; tutto privato</li>
+</ul>
+<p><strong>campi statici</strong></p>
+<p>sono campi comuni a tutte le istanze</p>
+<p><strong>metodi statici</strong></p>
+<p>sono metodi che non usano oggetti di invocazione, quindi non contiene il puntatore this</p>
+<p>vincoli:</p>
+<ul>
+<li>non si possono accedere a campi non statici</li>
+<li>non si può utilizzare il this</li>
+</ul>
+<p><strong>modificatore friend</strong></p>
+<p>il modificatore friend consente ad una funzione/classe di accedere ai campi privati di un&#39;altra classe</p>
+<p>sintassi (dichiarazione interna, implementazione esterna):</p>
+<ul>
+<li>friend tipo nome(parametri);</li>
+</ul>
+<p><strong>esempio classe orario</strong></p>
+<pre><code class="language-c++">// header file: ./orario.h
+class orario{
+    private:
+        int sec;
+    public:
+        // scrivere l&#39;implementazione qui significa scrivere un&#39;inline function de base una macro
+
+        int Ore();
+        int Minuti();
+        int Secondi();
+}
+
+// source file: ./orario.cpp
+
+int orario::Ore()
+{
+    return sec / 3600;
+}
+
+int orario::Minuti()
+{
+    return (sec / 60) % 60;
+}
+
+int orario::Secondi()
+{
+    return sec % 60;
+}</code></pre>
+<p><strong>esempio classe complesso</strong></p>
+<pre><code class="language-c++">// header file: ./complesso.h
+class complesso{
+    private:
+        double re,im;
+    public:
+        void Init());
+        double Reale();
+        double Immag();
+}
+
+// source file: ./complesso.cpp
+
+void complesso::init(r, i)
+{
+    re = r;
+    im = i;
+}
+
+double complesso::Reale()
+{
+    return re;
+}
+
+double complesso::Immag()
+{
+    return im;
+}</code></pre>
+<h2 id="costruttori">Costruttori</h2>
+<p><strong>costruttori</strong></p>
+<p>sono metodi speciali che hanno lo scopo di inizializzare gli oggetti di una classe</p>
+<p>sintassi:</p>
+<ul>
+<li><em>className</em>(...){///}</li>
+</ul>
+<p>uso:</p>
+<ul>
+<li>costruttore standard --&gt; <em>nomeClasse</em> var;</li>
+<li>costruttore di default --&gt; <em>nomeClasse</em> var(...);</li>
+<li>costruttore di copia --&gt; <em>nom eClasse</em> var = <em>nomeClasse</em>(...);</li>
+</ul>
+<p><strong>costruttore di default</strong></p>
+<p>è un costruttore con 0 parametri formali</p>
+<p><strong>costruttore standard</strong></p>
+<p>è un costruttore di default creato implicitamente dal compilatore in assenza di un QUALSIASI tipo di costruttore, 
+il costruttore standard di un oggetto chiama il costruttore standard per ogni campo dell&#39;oggetto</p>
+<p><strong>costruttore di copia</strong></p>
+<p>costruttore invocato durante un&#39;assegnazione che inizializza un oggetto non ancora inizializzato</p>
+<p>firma:</p>
+<ul>
+<li><em>className</em>(const obj&amp;) --&gt; obj è un riferimento a obj costante</li>
+</ul>
+<p>viene automaticamente invocato quando:</p>
+<ul>
+<li>un oggetto viene dichiarato ed inizialiazzato con un altro oggetto</li>
+<li>quando si passa un paramentro per valore</li>
+<li>quando si ritorna per valore</li>
+</ul>
+<p><strong>costruttore di copia standard</strong></p>
+<p>è il costruttore di copia definito dal compilatore in assenza di un costruttore di copia, il costruttore di copia standard fa una shallow copy dell&#39;oggetto (copia campo per)</p>
+<p><strong>comportamento del costruttore</strong></p>
+<p>data una classe con n campi dati di qualsiasi tipo ed un qualsiasi costruttore, il comportamento del costruttore è quanto segue:</p>
+<ol>
+<li>per ogni tipo primitivo viene allocato il corrispondente spazio non inizializzato</li>
+<li>per ogni tipo definito da utente viene invocato il suo costruttore di default</li>
+<li>viene eseguito il codice interno al costruttore</li>
+</ol>
+<p>nb: lil compilatore segue l&#39;ordine di dichiarazione dei campi</p>
+<p><strong>lista di inizializzazione</strong></p>
+<p>sintassi:</p>
+<ul>
+<li>classe() : campo1(X1), campo2(X2) ... , parN(XN){}</li>
+</ul>
+<p>di base modifica il passo 2 del comportamento del costruttore, invece di invocare il costruttore di default per quei campi, chiama i[{l costruttore di copia con gli oggetti specificati</p>
+<p>vantaggi:</p>
+<ul>
+<li>non si inizializza tramite un&#39;assegnazione, ma si usa il costruttore di copia</li>
+<li>campi dati riferimento</li>
+</ul>
+<p><strong>firma dei costruttori standard</strong></p>
+<p>default:</p>
+<ul>
+<li>C() : x1() , x2, ... , xn() {}</li>
+</ul>
+<p>copia: </p>
+<ul>
+<li>C(const C&amp; obj) : x1(obk.x1) , x2(obj.x2) , ... , xn(obj.xn) {}</li>
+</ul>
+<h2 id="conversioni-di-tipo">Conversioni di tipo</h2>
+<p><strong>conversione implicita</strong></p>
+<p>ogni costruttore è un costruttore convertitore quando in un assegnazione/copia si assegna un oggetto ad un altro oggetto di tipo diverso</p>
+<p>un espressione del tipo:</p>
+<ul>
+<li><em>className</em> obj1 = obj2;</li>
+</ul>
+<p>significa costruire l&#39;oggetto obj con l&#39;oggetto obj2, si possono verificare 2 casi:</p>
+<ul>
+<li>obj1 e obj2 hanno stesso tipo --&gt; viene invocato il costruttore di copia</li>
+<li>obj2 ha un tipo diverso:<ol>
+<li>viene invocato costruttore(obj2) se esiste che crea un oggetto temporaneo</li>
+<li>viene assegnato l&#39;oggetto temporaneo</li>
+<li>viene deallocato l&#39;oggetto temporaneo</li>
+</ol>
+</li>
+</ul>
+<p>se il costruttore viene definito con la keyword <em>explicit</em> tutto questo non succede automaticamente ma bisogna invocare il costruttore esplicitamente</p>
+<p><strong>conversione esplicita</strong></p>
+<p>si possono definire conversioni esplicite dal tipo della classe a un tipo qualsiasi</p>
+<p>firma:</p>
+<ul>
+<li>operator <em>tipo</em>();</li>
+</ul>
+<h2 id="distruttori">Distruttori</h2>
+<p>il distruttore è un metodo che va a deallocare ogni risorsa quando un oggetto viene distrutto</p>
+<p>il costruttore viene invocato automaticamente nelle seguenti condizioni:</p>
+<ul>
+<li>oggetti statici --&gt; all&#39;uscita dal main()</li>
+<li>oggetti automatici --&gt; all&#39;uscita dal blocco di definizione (pop del call stack)</li>
+<li>oggetti dinamici --&gt; all&#39;invocazione dell&#39;operatore <em>delete</em></li>
+<li>oggetti annidati --&gt; alla distruzione del parent</li>
+</ul>
+<p>in particolare nell funzioni l&#39;ordine di invocazione del costruttore è il seguente:</p>
+<ul>
+<li>sulle variabili locali</li>
+<li>sui parametri passati per valore</li>
+<li>sul temporaneo anonimo ritornato per valore</li>
+</ul>
+<p>oggetti automatici/statici che hanno stesso tempo di vita (definiti nello stesso blocco) vengono distrutti nel modo inverso in sono stati costruiti</p>
+<p>comportamento del costruttore:</p>
+<ol>
+<li>viene eseguito il corpo (se esiste) del costruttore</li>
+<li>vengono chiamati i distruttori per i campi dati nell&#39;ordine inverso alla loro lista di dichiarazione<ol>
+<li>per ogni tipo primitivo e derivato viene rilasciata la memoria occupata</li>
+<li>per i tipi classe viene invocato il distruttore della classe</li>
+</ol>
+</li>
+</ol>
+<p><strong>distruttore standard</strong></p>
+<p>è il distruttore creato automaticamente dal compilatore in assenza di un distruttore esplicito, di base chiama il distruttore standard per ogni campo dato della classe in ordine inverso</p>
+<p><strong>distruzione profonda</strong></p>
+<p>è un distruttore che va a deallocare anche i referimenti dei puntatori e la memoria occupara sull&#39;heap</p>
+<p><strong>rule of three</strong></p>
+<p>se si ridefinisce un distruttore, costruttore di copia o operatore di assegnazione, probabilmente bisogna definirli tutti e tre</p>
+<p><strong>reference counting</strong></p>
+<p>di base è il processo di contare da quanti oggetti e referenziata una risorsa (quanti puntatori puntano allo stesso elemento)</p>
+<p><strong>smart pointer</strong></p>
+<p>è un ADT che incpsula i puntatori e implementa il reference counting, nello standard il tipo è std::shared_ptr</p>
+<h2 id="information-hiding">information hiding</h2>
+<p><strong>dichiarazioni incomplete</strong></p>
+<p>una dichiarazione incompleta è la seguente:</p>
+<ul>
+<li>classe c;</li>
+</ul>
+<p>si definisce il nome della classe, ci si preoccupa della sua implementazione successivamente, questa tecnica è utile per nascondere la parte privata negli header file, in una sintassi del tipo:</p>
+<p>class orario_rappr{
+    private:
+        class orario;
+        orario* o;
+    public:
+        // ...
+}</p>
+<p>in questo caso la classe orario viene solo dichiarata, la sua implementazione va fatta su un file differente, cioò consente di nascondere l&#39;implementazione di orario</p>
+<p>di base si implemnta l&#39;information hiding degli header files tramite una classe wrapper formata da una dichiarazione incompleta e un puntaore alla classe</p>
+
+        </div>
+    </div>
+</body>
+
+</html>

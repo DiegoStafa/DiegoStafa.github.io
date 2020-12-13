@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info"><li>
+Introduzione alle reti
+</li>
+<li>
+Reti e sicurezza
+</li>
+<li>
+07-12-2020
+</li>
+</ul>
+<div class="post">
+<h2 id="introduzione-alla-reti">Introduzione alla reti</h2>
+<p><strong>rete</strong></p>
+<p>qualsiasi cosa che è rappresentabile con un grafo</p>
+<p>esempi di rete:</p>
+<ul>
+<li>internet</li>
+<li>ethernet</li>
+<li>periferiche</li>
+<li>rete telefonica</li>
+<li>adsl</li>
+<li>bluetooth</li>
+<li>bancomat</li>
+<li>corpo umano</li>
+</ul>
+<p><strong>classificazione delle reti</strong></p>
+<p>una rete si puà classficare in base a diverse proprietà:</p>
+<ul>
+<li>per taglia:<ul>
+<li>WAN</li>
+<li>MAN --&gt; reti cittadine, università</li>
+<li>LAN<ul>
+<li>wired --&gt; ethernet, token ring</li>
+<li>wireless --&gt; fddi, atm, wifi</li>
+</ul>
+</li>
+<li>PAN<ul>
+<li>wired --&gt; tastiere, mouse, stampanti</li>
+<li>wireless --&gt; tastiere, mouse, bluetooth</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>per topologia:<ul>
+<li>P2P o point to point (importantissima)</li>
+<li>bus</li>
+<li>star</li>
+<li>ring</li>
+<li>mesh</li>
+<li>tree</li>
+<li>hybrid (tra le precedenti)<ul>
+<li>reti gerarchiche (es. internet)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Internet</strong></p>
+<p>l&#39;internet è una rete di reti:</p>
+<ul>
+<li>formata da hosts<ul>
+<li>eseguono applicazioni di rete</li>
+</ul>
+</li>
+<li>rete fisica<ul>
+<li>rame, onde radio ...</li>
+</ul>
+</li>
+<li>routers </li>
+</ul>
+<p>organizzazioni:</p>
+<ul>
+<li>RFC --&gt; request for comments</li>
+<li>IETF --&gt; internet engineering task force</li>
+</ul>
+<p>ogni strato comunica con dei protocolli</p>
+<p><strong>multiplexing</strong></p>
+<p>di base come il multitasking, è una tecnica che divide un canale per gestire multiple comunicazioni</p>
+<p>analogia:</p>
+<ul>
+<li>cpu --&gt; canale</li>
+<li>processi --&gt; comunicazioni</li>
+</ul>
+<p><strong>servizi e protocolli</strong></p>
+<ul>
+<li>protocollo --&gt; permettono di comunicare nello stesso mondo (layer)</li>
+<li>servizi --&gt; permettono di comunicare tra mondi adiacenti</li>
+</ul>
+<p><strong>OSI</strong></p>
+<p>è il modello ufficiale, ha 7 strati:</p>
+<ol>
+<li>physical</li>
+<li>data link</li>
+<li>network</li>
+<li>transport</li>
+<li>session</li>
+<li>presentation</li>
+<li>application</li>
+</ol>
+<p>vantaggi:</p>
+<ul>
+<li>separazione delle funzionalitù</li>
+<li>interoperabilità</li>
+</ul>
+<p>svantaggi:</p>
+<ul>
+<li>separazione e layers troppo rigidi</li>
+</ul>
+<p><strong>TCP/IP</strong></p>
+<p>è il modello della rete internet, ha 4 strati:</p>
+<ol>
+<li>host to network --&gt; pastrocchio</li>
+<li>internet</li>
+<li>transport</li>
+<li>application</li>
+</ol>
+<p>svantaggi:</p>
+<ul>
+<li>gli strati non sono nettamente separati</li>
+<li>il modello tcp/ip è stato fatto per retrofitting</li>
+<li>host to network non è un vero layer</li>
+<li>non ci sono layer fisici/data link</li>
+<li>molti protocolli non sono separati</li>
+</ul>
+<p><strong>modello ibrido</strong></p>
+<p>è di base TCP/IP + OSI, ha 5 strati:</p>
+<ol>
+<li>physical</li>
+<li>data link</li>
+<li>network</li>
+<li>transport</li>
+<li>application</li>
+</ol>
+
+        </div>
+    </div>
+</body>
+
+</html>

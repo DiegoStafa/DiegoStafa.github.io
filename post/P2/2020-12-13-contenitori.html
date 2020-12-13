@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info"><li>
+Contenitori
+</li>
+<li>
+Programmazione 2
+</li>
+<li>
+13-12-2020
+</li>
+</ul>
+<div class="post">
+<h2 id="contenitori">Contenitori</h2>
+<p>un contenitore è un ADT le cui istanze sono collezioni di altri oggetti</p>
+<p>un tipo contenitore DEVE implementare i seguenti metodi:</p>
+<ul>
+<li>costruzione di un contenitore vuoto (costruttore)</li>
+<li>inserimento</li>
+<li>rimozione di un elemento</li>
+<li>rimozione totale (clear)</li>
+<li>accesso agli elementi</li>
+<li>accesso al numero di elmenti (count)</li>
+</ul>
+<p>esempi dei contenitori standard:</p>
+<ul>
+<li>string</li>
+<li>list</li>
+<li>vector</li>
+<li>map</li>
+<li>set</li>
+</ul>
+<p><strong>classi annidate</strong></p>
+<p>sono classi definite all&#39;interno di un&#39;altra classe</p>
+<p><strong>esempio bolletta</strong></p>
+<pre><code class="language-c++">class Bolletta{
+    public:
+        bolletta();
+        bool Vuota() const;
+        void Aggiungi(const Telefonata&amp;);
+        void Rimuovi(const Telefonata&amp;);
+        Telefonata Estrai();
+    private:
+        class nodo{
+            public:
+                nodo();
+                nodo(const telefonata&amp;, nodo*);
+                telefonata info;
+                nodo* next;
+        };
+        nodo* first;
+}</code></pre>
+<p><strong>aliasing</strong></p>
+<p>è un problema nella quale oggetti diversi possono accedere alla stessa zona di memoria in un modo non previsto dal programmatore, creando inconsistenza, è dovuto a:</p>
+<ul>
+<li>condivisione di memoria</li>
+<li>metodi con side effects</li>
+</ul>
+<p><strong>shallow copy</strong></p>
+<p>dati 2 oggetti dello stesso tipo aventi n campi, in una shallow copy del tipo:</p>
+<ul>
+<li>obj1 = obj2;</li>
+</ul>
+<p>va a copiare tutti i campo di obj2 in obj1, senza tenere assolutamente di ciò che i campi contengono, ciò può causare aliasing</p>
+<p>la shallow copy è implementata nei costruttori di copia standard e negli operatori di assegnazione standard</p>
+<p><strong>deep copy</strong></p>
+<p>di base la deep copy è una copia tra oggetti implementata dall&#39;utente tramite overgloading dell&#39;operatore di assegnazione e di costruttore di copia</p>
+<pre><code class="language-c++">// assegnazione profonda
+
+tipo&amp; tipo::operator=(const tipo&amp; t)
+{
+    if(this != &amp;t)
+    {
+        distruggi(...);
+        copia(...);
+    }
+    return *this;
+}
+
+// costruttore di copia profonda
+
+tipo::tipo(const tipo&amp; t) : copia() {}
+</code></pre>
+<p><strong>cicli di vita delle variabili</strong></p>
+<p>ci sono diversi tipi di variabili:</p>
+<ul>
+<li>automatiche<ul>
+<li>variabili locali</li>
+<li>parametri formali di funzione</li>
+<li>variabile ritornata per valore</li>
+</ul>
+</li>
+<li>statiche<ul>
+<li>campi statici</li>
+<li>variabili globali</li>
+<li>dentro funzioni (bad practice)</li>
+</ul>
+</li>
+<li>dinamiche<ul>
+<li>variabile allocate con new</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+    </div>
+</body>
+
+</html>

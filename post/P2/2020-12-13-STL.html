@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info"><li>
+STL
+</li>
+<li>
+Programmazione 2
+</li>
+<li>
+13-12-2020
+</li>
+</ul>
+<div class="post">
+<h2 id="standard-template-library">Standard Template Library</h2>
+<h3 id="contenitori-stl">Contenitori STL</h3>
+<p>ci sono diversi tipi di contenitori:</p>
+<ul>
+<li>sequenziali:<ul>
+<li>array</li>
+<li>vector</li>
+<li>deque</li>
+<li>forward_list (single linked)</li>
+<li>list (double linked)</li>
+</ul>
+</li>
+<li>adattatori:<ul>
+<li>stack</li>
+<li>queue</li>
+<li>priority_queue</li>
+</ul>
+</li>
+<li>associativi --&gt; accesso tramite chiave<ul>
+<li>set</li>
+<li>multiset</li>
+<li>map</li>
+<li>multimap</li>
+</ul>
+</li>
+<li>non ordinati:<ul>
+<li>unordered_set</li>
+<li>unordered_multiset</li>
+<li>unordered_map</li>
+<li>unordered_multimap</li>
+</ul>
+</li>
+</ul>
+<p>ogni contenitore STL supporta 2 tipi di iteratori:</p>
+<ul>
+<li>iterator</li>
+<li>const_iterator --&gt; iteratore di sola lettura</li>
+</ul>
+<pre><code class="language-c++">// iterator
+T&amp; vector&lt;T&gt;::iterator::operator*() const;
+
+// const_iterator
+const T&amp; vector&lt;T&gt;::const_iterator::operator*() const;</code></pre>
+<pre><code class="language-c++">// scorrimento di un contenitore
+cont&lt;T&gt; x;
+for(cont&lt;T&gt;::iterator i = x.begin(); i != x.end(); i++)
+{
+    ...
+}</code></pre>
+<p><strong>vector</strong></p>
+<p>il vector è un template di classe che va ad aggiungere funzionalità ad un array statico con proprietà quali:</p>
+<ul>
+<li>size</li>
+<li>capacity</li>
+<li>begin</li>
+<li>end</li>
+<li>...</li>
+</ul>
+<p>vantaggi:</p>
+<ul>
+<li>accesso casuale (indicizzazione O(1))</li>
+<li>inserimento e rimozione in coda (O(logn))</li>
+<li>inserimento e rimozione in tempo lineare (O(n))</li>
+<li>la capacità può variare dinamicamente<ul>
+<li>non è allocato sull&#39;heap, ma viene riallocato con una capacità maggiore </li>
+<li>la capacità viene raddoppiata ogni volta che si inserisce oltre la capacità massima (la capacità sarà sempre una potenza di 2 a meno di diverse inizializzazioni )</li>
+</ul>
+</li>
+<li>gestione della memoria automatica</li>
+</ul>
+<p>metodi importanti:</p>
+<ul>
+<li>push_back</li>
+<li>pop_back</li>
+<li>front</li>
+<li>back</li>
+<li>begin</li>
+<li>end</li>
+</ul>
+<p>altri metodi:</p>
+<ul>
+<li>empty</li>
+<li>size</li>
+<li>insert</li>
+<li>erase</li>
+</ul>
+<p>metodi utili:</p>
+<ul>
+<li>sort</li>
+<li>count</li>
+<li>copy</li>
+<li>reverse</li>
+<li>binary search</li>
+</ul>
+<p><strong>rimozione</strong></p>
+<p>la rimozione di un elemento avviene tramite la pop_back che rimuove l&#39;ultimo elemento chiamando il suo distruttore su di esso</p>
+<p>si può rimuovere un elemento in posizione arbitraria anche tramite il metodo erase</p>
+<p><strong>esercizio importante</strong></p>
+<pre><code class="language-c++">/*
+definire un template di classe dlist con:
+- gestione della memoria senza condivisione
+- costruttore che inizializza tutti gli elementi uniformemente
+- inserimento in testa e coda in O(1)
+    - insertFront
+    - insertBack
+- overloading operatore &lt; che implementa ordinamento lessicografico
+- iteratore costante
+*/
+
+template&lt;class T&gt;
+class dlist
+{
+    private:
+        class dnode
+        {
+            public:
+                T info;
+                dnode* prev, next;
+
+                dnode(const T&amp; i, dnode* p, dnode* n) : info(i), prev(p), next(n) {}
+        }
+
+        dnode* first, last;
+
+        static bool isLess(const dnode* a, const dnode* b)
+        {
+            if(!a &amp;&amp; !b) return false;
+            if(!a) return true;
+            if(!b) return false;
+            if(a-&gt;info &lt; b-&gt;info) return true;
+            else if (a-&gt;info &gt; b-&gt;inof) return false;
+            else isLess(a-&gt;next, b-&gt;next);
+        }
+
+        static void destroy(dnode* n)
+        {
+            if(n)
+            {
+                destroy(n-&gt;next);
+                delete n;
+            }
+        }
+
+        static void deep_copy(dnode* src, dnode*&amp; first,dnode*&amp; last)
+        {
+            if(src)
+            {
+                first = last = new dnode(src-&gt;info);
+                dnode* src_sc = src_next;
+                while(src_sc)
+                {
+                    last = new dnode(src_sc-&gt;info, last);
+                    last-&gt;prev-&gt;next = last;
+                    src_sc = src_sc-&gt;next;
+                }
+            }
+            else
+            {
+                first = last = nullptr;
+            }
+        }
+
+    public:   
+        dlist(unsigned int k, const T&amp; t) : first(nullptr), last(nullptr)
+        {
+            for(unsigned int j = 0; j &lt; k; ++j) insertFront(t);
+        }
+
+        dlist(const dlist&amp; l) 
+        {
+            deep_copy(l.first,first,last
+        }
+
+        dlist&amp; operator=(const T&amp; l)
+        {
+            if(this != &amp;l)
+            {
+                destroy(first);
+                deep_copy(l.first,first,last);
+            }
+        }
+
+        ~dlist()
+        {
+            destroy(first);
+        }
+
+        void insertFront(const T&amp; t)
+        {
+            // speculare ad insert back
+        }
+
+        void insertBack(const T&amp; t)
+        {
+            if(last)
+            {
+                last = new nodo(t, last, nullptr)
+                (last-&gt;prev)-&gt;next = last;
+            }
+            else first = last = new nodo(t);
+        }
+
+
+        bool operator&lt;(const dlist&amp; l) const
+        {
+            if(this == &amp;l) return false;
+            return isLess(first, l-&gt;first)
+        }
+
+        const_iterator begin() const
+        {
+            return const_iterator(first, false)
+        }
+
+        const_iterator end() const
+        {
+            if(!last) return const_iterator();
+            return const_iterator(last + 1, true)
+        }
+
+
+        class const_iterator
+        {
+            friend dlist&lt;T&gt;;
+
+            private:
+                const dnode* ptr;
+                bool past_the_end;
+
+                // agisce anche da convertitore dnode* =&gt; consr_iterator
+                const_iterator(dnode* p, bool pte = false) : ptr(p), past_the_end(pte) {}
+            public:
+                // const_iterator è indefinito di default
+                const_iterator() : ptr(nullptr), past_the_end(false) {}
+
+                const_iterator&amp; operator++()
+                {
+                    if(ptr)
+                        if(!past_the_end)
+                            if(ptr-&gt;next)
+                                ptr = ptr-&gt;next
+                    else
+                    {
+                        ptr = ptr + 1; past_the_end = true;
+                    }
+                    return *this;
+                }
+
+                const_iterator operator++(int)
+                {
+                    const_iterator aux(*this)
+                    if(ptr)
+                        if(!past_the_end)
+                            if(ptr-&gt;next)
+                                ptr = ptr-&gt;next
+                    else
+                    {
+                        ptr = ptr + 1; past_the_end = true;
+                    }
+                    return aux
+                }
+
+                const_iterator&amp; operator--()
+                {
+                    if(ptr)
+                        if(ptr == first) ptr = nullptr;
+                        else if(!past_the_end) ptr = ptr-&gt;prev;
+                        else
+                        {
+                            ptr = ptr - 1;
+                            past_the_end = false;
+                        }
+
+                    return *this;
+                }
+
+                const_iterator operator--(int);
+
+                bool operator==(const const_iterator&amp; cit) const
+                {
+                    return ptr == cit.ptr;
+                }
+
+                bool operator!=(const const_iterator&amp; cit) const
+                {
+                    return !(*this == cit);
+                }
+
+                const T&amp; operator*() const
+                {
+                    return ptr-&gt;info;
+                }
+
+                const T* operator-&gt;() const
+                {
+                    return &amp;(ptr-&gt;info)
+                }
+        }
+}</code></pre>
+
+        </div>
+    </div>
+</body>
+
+</html>

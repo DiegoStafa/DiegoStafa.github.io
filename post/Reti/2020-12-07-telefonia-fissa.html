@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info"><li>
+Telefonia fissa
+</li>
+<li>
+Reti e Sicurezza
+</li>
+<li>
+07-12-2020
+</li>
+</ul>
+<div class="post">
+<h2 id="telefonia-fissa">Telefonia Fissa</h2>
+<p><strong>backbone transatlantica</strong></p>
+<ul>
+<li>costruita per la prima volta da cyrus fields l&#39;occhiopazzo</li>
+<li>attualmente utilizza un cavo in fibra ottica TAT-8</li>
+<li>la topologia è SHR (self healing ring)</li>
+</ul>
+<p><strong>PSTN (public switched telephone network)</strong></p>
+<p>è l&#39;infrastruttura telefonica americana, onguno è collegato con un cavo in rame ad un altro, nel tempo questa rete a stella diventava ingestibile quindi sono stati creati dei livelli</p>
+<p>ogni utente è collegato ad un centralino e questi centralini si collegano tra loro e gestiscono la comunicazione, quando ci sono troppi centralini si aggiunge un nuovo livello</p>
+<p><strong>Local Loop</strong></p>
+<p>è la porzione finale di rete che connete un utente al centralino, detta anche ultimo miglio</p>
+<p><strong>Legge sul liberismo</strong></p>
+<p>nel 1984 il monopolio AT&amp;T viene spezzato in 23 compagnie diverse che si fanno concorrenza per incentivare l&#39;innovazione</p>
+<p><strong>Switching</strong></p>
+<p>è l&#39;azione di dirigere il traffico, esistono 3 tecniche:</p>
+<ul>
+<li>circuit switching</li>
+<li>message switching</li>
+<li>packet switching</li>
+</ul>
+<p><strong>Circuit switching</strong></p>
+<p>è la prima tecnica di switching utilizzata, i centralinisti collegavano fisicamente i 2 cavi che dovevano comunicare, quindi si crea fisicamente un circuito tra 2 persone</p>
+<p>pro:</p>
+<ul>
+<li>connessine dedicata fisica</li>
+</ul>
+<p>contro:</p>
+<ul>
+<li>delay dovuto alla creazione della connessine</li>
+</ul>
+<p><strong>Message switching</strong></p>
+<p>è detto anche store and forward</p>
+<p>invece di creare il cammino fisico e poi iniziare la trasmissione, si manda direttamente il messaggio, e questo resta in attesa ad ogni centralino fino a che non viene definita la sua prossima destinazione</p>
+<p>pro:</p>
+<ul>
+<li>tempo di creazione del canale</li>
+</ul>
+<p>contro:</p>
+<ul>
+<li>intoppa il centralino se il messaggio è troppo grande</li>
+</ul>
+<p><strong>Packet switching</strong></p>
+<p>come il message switching ma viene spezzato alla fonte in pacchetti di lunghezza massima per evitare l&#39;intoppo</p>
+<p>inoltre ogni pacchetto è poi mandato indipendentemente in un microcanale in parallelo</p>
+<p><strong>Trasmissione telefonica</strong></p>
+<p>la trasmissione telefonica viaggia su una banda di 4000Hz in quanto frequenze maggiori sono dannose per l&#39;apparato uditivo, utilizzando questa banda ha un limite fisico di 35000bps con cavi UTP3</p>
+<p>gli standards telefonici di trasmissione sono:</p>
+<ul>
+<li>simmetrici:<ul>
+<li>V.21 (1964) --&gt; FSK a 300bps </li>
+<li>V.22 (1980) --&gt; PSK a 1200bps</li>
+<li>v.22bis (1984) --&gt; QAM-16 a 2400bps</li>
+<li>v.32 (1984) --&gt; QAM-32 a 9600bps con error correction</li>
+<li>v.32bis (1991) --&gt; 14400bps</li>
+<li>v.34 (1994) --&gt; 28800bps</li>
+<li>v.34bis (1996) --&gt; 33600bps</li>
+</ul>
+</li>
+<li>asimmetrici:<ul>
+<li>v.90 (1998) --&gt; 56000bps down, 33600bps up</li>
+<li>v.92 (1999) --&gt; 56000bps down, 48000bps up</li>
+</ul>
+</li>
+</ul>
+<p>per risolvere il limite fisico si pone un intermediario (gestore telefonico) tra i 2 chiamanti così si utilizzano entrambi i cavi duplex per inviare, raddoppiando il bitrate e arrivando ad un bitrate massimo di 70000bps</p>
+<p><strong>Modem 56k</strong></p>
+<p>i modem 56Kbps non possono andare a 64Kbps perchè utilizzano una codifica ASCII (7 bit) per la trasmissione dei dati, quindi utilizza 7/8 simboli disponibili per ogni impulso</p>
+<p><strong>Fax</strong></p>
+<p>è un telegrafo che trasmette immagini, ci sono diversi tipi di fax:</p>
+<ul>
+<li>gruppo 1 --&gt; obsoleto</li>
+<li>gruppo 2 --&gt; obsoleto</li>
+<li>gruppo 3 --&gt; 10~ secondi per la trasmissione</li>
+<li>super gruppo 3 --&gt; più veloce del 3</li>
+<li>gruppo 4 --&gt; utilizza le linee digitali</li>
+</ul>
+<p>standard di trasmissione dei fax:</p>
+<ul>
+<li>limitati ai fax<ul>
+<li>v.27 (1988) --&gt; PSK</li>
+<li>v.29 (1988) --&gt; QAM</li>
+<li>v.17 (1991) --&gt; TCM</li>
+</ul>
+</li>
+<li>unione telefonica<ul>
+<li>v.34</li>
+<li>v.34bis</li>
+</ul>
+</li>
+</ul>
+<p><strong>DSL (Digital Subscriber Line)</strong></p>
+<p>per ovviare al limite della trasmissione telefonica le dsl rimuovono il filtro di banda imposto sulle linee telefoniche (4000Hz) passando a 1.1MHz, per rimuovere i danni per frequenze troppo alte durente le telefonate si introduce quindi lo splitter, un dispositivo che separa il segnale telefonico da quello extra (internet)</p>
+<p>ls DSL non vanno mai alla velocità dichiarata in quanto nell&#39;ultimo miglio il segnale degrada prima di arrivare a destinazione a causa dell&#39;UTP</p>
+<p><strong>ADSL (Asymmetric DSL)</strong></p>
+<p>è la DSL ma asimmetrica, utilizza gli standard V.90, V.92</p>
+<p>di base l&#39;assimmetria è data da come l&#39;FDM suddivide la banda, riserva una porzione più grande di banda per il download</p>
+<p>suddivisione adsl:</p>
+<ul>
+<li>0-4KHz --&gt; banda telefonica</li>
+<li>25KHz - 138KHz --&gt; banda upstream</li>
+<li>138KHz - 1104KHz --&gt; banda downstream</li>
+</ul>
+<p>siccome l&#39;ADSL utilizza l&#39;FDM, queste porzioni sono a loro volta suddivise in microbande, onguna di queste forma un canale indipendente trattato come connessione a se stante, quindi è come se ci fossero tanti modem singoli per il download, tanti altri modem singoli per l&#39;upload e uno per la linea telefonica</p>
+<p>il gap tra la banda telefonica e l&#39;upstream è stato messo per evitare per problemi di trasmissione delle frequenze molto alte possano arrivare alla linea telefonica</p>
+<p>standard adsl:</p>
+<ul>
+<li>ADSL lite --&gt; 1.5 down, 0.5 up</li>
+<li>ADSL --&gt; 8 down, 1 up</li>
+<li>ADSL2 --&gt; 12 down, 1 up</li>
+<li>ADSL2+ --&gt; 24 down, 1 up</li>
+<li>ADSL2 annex J --&gt; 12 down, 3.5 up</li>
+<li>ADSL2 annex M --&gt; 28 down, 3.5 up</li>
+</ul>
+<p>bitrate in Mbps</p>
+<p>le ADSL+ usano una banda doppia, 2.2MHz invece che 1.1 MHz, frequenze molto alte viagginao male sull&#39;UTP quindi la linea deve essere buona</p>
+<p>le varianti ADSL 2+ e All-Digital rimuovono la banda telefonica e il gap per dedicarsi solo all&#39;up e down</p>
+<p><strong>VDSL (Video DSL)</strong></p>
+<p>di base è come l&#39;ADSL, ma l&#39;ultimo miglio è in cavo coassiale</p>
+<p>standard vdsl:</p>
+<ul>
+<li>VDSK (2001) --&gt; 55 down, 3 up</li>
+<li>VDSL2 (2006) --&gt; 200 down, 100 up</li>
+<li>VDSL2 (2011) --&gt; 300 down, 100 up</li>
+</ul>
+<p><strong>FTTH (Fiber To The Home)</strong></p>
+<p>di base si cambia l&#39;ultimo miglio in UTP con la fibra ottica che arriva direttamente dentro casa e serve un modem con entrate ottica,
+il datarate aumenta in quando la banda che passa in fibra senza degradarsi è molto alta</p>
+<p>per la suddivione della banda si è deciso di creare più versioni diverse</p>
+<p>evoluzione fibra</p>
+<ul>
+<li>1990 --&gt; 8 canali da 2.5Gbps per capello</li>
+<li>1998 --&gt; 40 canali da 2.5Gbps per capello</li>
+<li>2001 --&gt; 96 canali da 10Gbps per capello</li>
+<li>2007 --&gt; 124 canali da 50Gbps per capello</li>
+</ul>
+<p><strong>FTTB (Fiber To The Basement)</strong></p>
+<p>la fibra arriva appena fuori casa e lo si collega dentro ad un UTP</p>
+
+        </div>
+    </div>
+</body>
+
+</html>

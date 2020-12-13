@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info"><li>
+Casting
+</li>
+<li>
+Programmazione 2
+</li>
+<li>
+13-12-2020
+</li>
+</ul>
+<div class="post">
+<h2 id="tipi">tipi</h2>
+<p><strong>c++ datatypes</strong></p>
+<p>i tipi offerti dal c++ sono:</p>
+<ul>
+<li>primitivi<ul>
+<li>integer<ul>
+<li>int</li>
+<li>char</li>
+</ul>
+</li>
+<li>floating<ul>
+<li>float</li>
+<li>double</li>
+</ul>
+</li>
+<li>void</li>
+</ul>
+</li>
+<li>derivati<ul>
+<li>array</li>
+<li>pointer</li>
+<li>reference</li>
+</ul>
+</li>
+<li>user defined<ul>
+<li>struct</li>
+<li>union</li>
+<li>class</li>
+<li>enum</li>
+</ul>
+</li>
+</ul>
+<p><strong>conversioni di tipo</strong></p>
+<p>si possono definire in:</p>
+<ul>
+<li>implicite</li>
+<li>esplicite</li>
+</ul>
+<p>oppure in:</p>
+<ul>
+<li>predefinite</li>
+<li>definte dall&#39;utente</li>
+</ul>
+<p>oppure ancora:</p>
+<ul>
+<li>con perdita di informazione</li>
+<li>senza perdita di informazione</li>
+</ul>
+<p><strong>conversioni implicite</strong></p>
+<p>sono le conversioni automatiche offerte dal c++, oppure quelle definite tramite i costruttori di copia</p>
+<p>conversioni safe tra tipi (anche definiti da utente):</p>
+<ul>
+<li>tipo&amp; --&gt; tipo</li>
+<li>tipo[] --&gt; tipo*</li>
+<li>tipo* --&gt; void* (è un puntatore generico)</li>
+<li>tipo --&gt; const tipo</li>
+<li>cost primitivo --&gt; primitivo</li>
+<li>tipo --&gt; const tipo*</li>
+<li>tipo --&gt; const tipo&amp;</li>
+</ul>
+<p>conversioni safe di c++:</p>
+<ul>
+<li>bool --&gt; int</li>
+<li>float --&gt; double</li>
+<li>char --&gt; short int --&gt; int --&gt; long</li>
+<li>unsigned char --&gt; unsigned int --&gt; unsigned long</li>
+</ul>
+<p>per le conversioni non safe si usano i cast espliciti</p>
+<p><strong>conversioni esplicite</strong></p>
+<p>sono le conversioni effetuate tramite i seguenti operatori:</p>
+<ul>
+<li>static_cast</li>
+<li>dynamic_cast</li>
+<li>const_cast</li>
+<li>reinterpret_cast</li>
+</ul>
+<p><strong>static cast</strong></p>
+<p>si usa nelle conversioni dove si perde informazione (double --&gt; int) oppure nelle conversioni safe per sottolineare la conversione</p>
+<p>sintassi:</p>
+<ul>
+<li>static_cast<t>(obj)</li>
+</ul>
+<p><strong>const cast</strong></p>
+<p>di base serve a togliere il const a ciò che si punta/riferisce</p>
+<p>sintassi:</p>
+<ul>
+<li>const_cast<t>(puntatore/riferimento)</li>
+</ul>
+<p><strong>reinterpret cast</strong></p>
+<p>va a reinterpretare il dato senza nessuna conversione</p>
+<ul>
+<li>sintassi:</li>
+<li>reinterpret_cast&lt;t*&gt;(puntatore)</li>
+</ul>
+
+        </div>
+    </div>
+</body>
+
+</html>

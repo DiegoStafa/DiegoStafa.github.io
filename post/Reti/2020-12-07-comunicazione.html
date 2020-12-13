@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info"><li>
+Teoria della comunicazione
+</li>
+<li>
+Reti e Sicurezza
+</li>
+<li>
+07-12-2020
+</li>
+</ul>
+<div class="post">
+<h2 id="teoria-della-comunicazione">Teoria della comunicazione</h2>
+<p><strong>Bandwidth</strong></p>
+<p>l&#39;insieme delle frequenze che si possono trasmettere in un canale, si misura in Hz</p>
+<p>più frequenze in una banda più informazione si riesce ad inviare</p>
+<p>più alte sono le frequenze più alto è il costo e la potenza necessaria, ma si riescono a trasmettere più dati (la frequenza ha più picchi)</p>
+<p>siccome quindi la parte importante è il limite di frequenza alta disponibile (quella bassa è garantita) i dispositivi non vengono specificati con banda 0-100Hz ma ci si concentra solo sulla frequenza più alta (es. wifi a 2.4GHz)</p>
+<p><strong>Data rate</strong></p>
+<p>quanta dati vengono trasmessi in un secondo, in base all&#39;informazione</p>
+<ul>
+<li>bit --&gt; quanti 0 e 1 vengono trasmessi in 1 secondo</li>
+<li>baud --&gt; quanti simboli vengono trasmessi in un secondo</li>
+</ul>
+<p>dato un insieme di N simboli, allora:</p>
+<ul>
+<li>bitrate = baudrate * log<sub>2</sub>(N)</li>
+</ul>
+<p><strong>Forma del segnale</strong></p>
+<p>il segnale in un canale viene trasmesso secondo la trasformata di fourier</p>
+<p><strong>Trasformata di Fourier</strong></p>
+<p>la trasformata di Fourier è una formula che consente di approssimare una curva digitale (0 e 1) con delle frequenze analogiche (Hz)</p>
+<p>più frequenze si hanno migliore è l&#39;approssimazione, ovviamente non basta avere il giusto numero di frequenze, ma anche le frequenze giuste</p>
+<p><strong>Attenuazione del segnale</strong></p>
+<p>ogni onda trasmesso in un mezzo che non sia il vuoto viene attenuata (si rimpicciolisce) dal mezzo e dipende dalla frequenza</p>
+<p>l&#39;attenuzione è data da:</p>
+<ul>
+<li>potenza trasmessa / potenza ricevuta</li>
+</ul>
+<p>siccome le frequenze si attenuano in modo diverso, un onda iniziale può essere distrutta, più larga è la banda più irregolare è l&#39;attenuazione</p>
+<p>si risolve limitando la banda su frequenze che non sfasano di molto tra loro e utilizzando aggiustatori</p>
+<p><strong>Dispersione del segnale</strong></p>
+<p>la dispersione cambia la frequenza delle onde in altre frequenze</p>
+<p>per risolvere ciò si aggiungono ripetitori e si riducono le distanze</p>
+<p><strong>Teorema di Nyquist</strong></p>
+<p>in un canale di comunicazione ideale, data la banda massima B e il numero F delle frequenze utilizzate della banda, il datarate massimo è dato da:</p>
+<ul>
+<li>datarate<sub>max</sub> = 2Blog<sub>2</sub>F</li>
+</ul>
+<p><strong>Teorema di Shannon</strong></p>
+<p>nei canali reali si aggiunge un&#39;altra variabile N (noise) che definisce il rumore del canale che interferisce con il segnale</p>
+<p>la qualità del segnale è definito dal rapporto tra potenza del segnale S e il rumore N:</p>
+<ul>
+<li>SNR = 10log<sub>10</sub>(S/N) --&gt; decibel</li>
+</ul>
+<p>il teorema di Shannon generalizza nyquist aggiungendo la qualità come fattore:</p>
+<ul>
+<li>datarate<sub>max</sub> = Blog<sub>2</sub>(1 + S/N)</li>
+</ul>
+<p>nel caso in cui la qualità si altissima si può semplificare la formula come segue:</p>
+<ul>
+<li>datarate<sub>max</sub> = B/3 * SNR</li>
+</ul>
+<p><strong>Solitoni</strong></p>
+<p>sono delle onde speciali che non si disperdono e non vengnon affette da altre onde, sono perfette per le fibre ottiche</p>
+<p>siccome non sono influenzate da altre onde si possono creare canali bidirezionali usando 2 onde solitoniche</p>
+<p><strong>Trasmissione digitale</strong></p>
+<p>3 modi per trasmette un bit:</p>
+<ul>
+<li>modulando ampliezza<ul>
+<li>altezza dell&#39;onda</li>
+</ul>
+</li>
+<li>modulando frequenza (FSK - Frequency Shift Keying)<ul>
+<li>numero di picchi </li>
+</ul>
+</li>
+<li>modulando fase (PSK - Phase Shift Keying)<ul>
+<li>posizione del pennino nel tempo</li>
+</ul>
+</li>
+</ul>
+<p><strong>QPSK (Quadrature Phase Shift Keying)</strong></p>
+<p>è una modulazione di fase che utilizza 4 sfasamenti simmetrici, quindi ha un bitrate doppio
+troppi sfasamenti rendono le fasi troppo simili</p>
+<p><strong>QAM-16 (Quadrature Amplitude Modulation)</strong></p>
+<p>si tiene la frequenza al massimo (aiuta sincronizzazione e generazione del segnale) e si usano ampiezza e fase insieme per massimizzare il numero di codifiche (baudrate) fino a 16 simboli, il bitrate è quadruplo</p>
+<p><strong>QAM-64</strong></p>
+<p>come il 16. ma si utilizzano più fasi e ampliezze, il bitrate è sestuplo</p>
+<p><strong>QAM Circolari</strong></p>
+<p>come sopra, ma i simboli sono disposti in modo circolare anzichè rettangolare, la spaziatura è ottimale e quindi le interferenze fisiche diventano meno rilevanti</p>
+<p>i QAM rettangolari sono comunque più utilizzati perchè più veloci da generare e decodificare</p>
+<p><strong>Constellation diagrams</strong></p>
+<p>per rappresentare queste modulazioni si disegnano i punti (simboli su un piano) con un cerchio di riferimento</p>
+<p><strong>FDM (Frequency Division Multiplexing)</strong></p>
+<p>è una tecnica che divide le frequenze per creare più canali di trasmissione (es. 300-1000Hz è un canale, 1001-2000Hx è un altro canale...), per avere connessioni multipli sullo stesso cavo, ad ogni canale quindi corrisponde una porzione di banda</p>
+<p><strong>WDM (wavelength Division Multiplexing)</strong></p>
+<p>di base è la FDM ma fatta in fibra ottica</p>
+<p><strong>TDM (Temporal Division Multiplexing)</strong></p>
+<p>suddivide il tempo, di base ogni ad ogni canale si associa una frazione di seocondo riservata (es 24 canali si associano 1/24 secondi ad ognuno)</p>
+<p>è meglio del FDM/WDM in quanto è molto più flessibile, quello sulle frequenze è limitato dal range di frequenze, quello temporale non ha limiti di suddivisione</p>
+<p>lo svantaggio è che il datarate del singolo canale scende in proporzione al numero di canali in parallelo</p>
+<p><strong>Delta modulation</strong></p>
+<p>è una tecnica che consente di trasformare un segnale analogico in digitale</p>
+<p>dato un offset costante delta e un quanto di tempo t, ad ogni quanto di tempo se la frequenza aumenta rispetto a prima si invia il valore 1, se diminuisce 0</p>
+<p>il ricevente da questi dati, sapendo offset e quanto di tempo riesce a ricostruire una curva approssimata di qualità abbastanza buona</p>
+<p><strong>CDMA</strong></p>
+<p>funzionamento:</p>
+<ul>
+<li>si crea una base ortogonale di vettori, su dominio [1,-1]</li>
+<li>si ruota la base di 45°<ul>
+<li>ogni vettore della base risultante contiene quindi solo 1 o -1</li>
+<li>ogni vettore della base rappresenta quindi un onda</li>
+</ul>
+</li>
+<li>ad ogni cellulare è assegnato un vettore della base</li>
+<li>tutti i cellulari comunicano in un determinato istante</li>
+<li>invio dei dati:<ul>
+<li>bit 1 --&gt; manda il suo vettore</li>
+<li>bit 0 --&gt; manda il suo vettore negativo</li>
+</ul>
+</li>
+<li>il vettore viene tradotto in un onda digitale e approssimata con fourier</li>
+<li>onde contemporaneamente si sommano</li>
+<li>il gestore della cella riceve l&#39;onda e determina:<ul>
+<li>chi ha inviato --&gt; prodotto scalare != 0</li>
+<li>cosa ha inviato<ul>
+<li>bit 1 --&gt; prodotto scalare &gt; 0</li>
+<li>bit 0 --&gt; prodotto scalare &lt; 0</li>
+<li>nulla --&gt; prodotto scalare == 0</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>a causa dell&#39;attenuazione delle onde la distanza di un cellulare dalla gestore influenzava la somma delle onde</p>
+<p>per risolvere ciò si moltiplica l&#39;onda di un cellulare per la sua distanza con il gestore</p>
+<p>pro:</p>
+<ul>
+<li>comunicazione parallela</li>
+<li>si utilizza una sola porzione di banda<ul>
+<li>niente interferenze tra celle adiacenti</li>
+<li>basta tenere conto dei cellulari adiacenti con gli stessi vettori, ma il costo è irrisorio</li>
+</ul>
+</li>
+<li>siccome non ci sono frequenze riservate se qualcuno non comunica non spreca banda</li>
+</ul>
+
+        </div>
+    </div>
+</body>
+
+</html>

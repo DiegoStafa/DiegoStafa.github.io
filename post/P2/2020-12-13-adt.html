@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info"><li>
+Abstract data types
+</li>
+<li>
+Programmazione 2
+</li>
+<li>
+13-12-2020
+</li>
+</ul>
+<div class="post">
+<h2 id="introduzione-agli-adt">Introduzione agli ADT</h2>
+<p><strong>namespace</strong></p>
+<p>di base un namespace è una keyword che definisce uno scope dei nomi</p>
+<p>sintassi:</p>
+<ul>
+<li>namespace <em>nome_namespace</em> { ... }</li>
+</ul>
+<p>operatore:</p>
+<ul>
+<li><em>nome_namespace</em>::<em>nome_interno</em> </li>
+</ul>
+<p><strong>alias di namespace</strong></p>
+<p>definisce un nome alternativo per un namespace</p>
+<p>sintassi:</p>
+<ul>
+<li>namespace <em>alias</em> = <em>nome_namespace</em></li>
+</ul>
+<p><strong>using</strong></p>
+<p>di base il using rimuove il namespace (<em>fa uscire i buoi dal recinot</em>)  </p>
+<p>sintassi:</p>
+<ul>
+<li>using namespace <em>nome_namespace</em></li>
+</ul>
+<p>consente anche di far uscire buoi particolari </p>
+<p>sintassi:</p>
+<ul>
+<li>using <em>nome_namespace</em>::<em>nome_interno</em></li>
+</ul>
+<p>dopo questa dichiarazione d&#39;uso &quot;nome_interno&quot; non necessita di essere specificato dal namespace</p>
+<p><strong>Tipi di dato astratto (ADT)</strong></p>
+<p>l&#39;ADT è un tipo di dato le cui istanze vengono modificate solo tramite la semantica (significato) del tipo e non dalla loro implementazione</p>
+<p>un ADT viene definito definito da:</p>
+<ul>
+<li>interfaccia (accessibile) --&gt; le operazione di manipolazione che il dato fornisce</li>
+<li>implementazione (inaccessibile) --&gt; come le informazioni di stato vengono gestite</li>
+</ul>
+<p>la struct non è un ADT in quanto la rappresentazione del dato è completamente pubblica e manipolabile, il tipo int invece lo è in quanto la sua implementazione è privata</p>
+<p><strong>problema struct</strong></p>
+<pre><code>// 1) bad, è come creare un int specificando la posizione dei bit a 1
+complesso c1 = {a,b}
+complesso c2 = {c,d}
+complesso c3
+c3.re = c1.re + c2.re // è come fare la somma di 2 int con il metodo del complemento a 2
+c3.im = c1.im + c2.im 
+
+// 2) good, si lascia l&#39;implementazione dei dati e delle operazioni al ripo di dato
+complesso c1 = init(a,b)
+complesso c2 = init(c,d)
+complesso c3 = sum(c1,c2)</code></pre>
+
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info"><li>
+Iteratori
+</li>
+<li>
+Programmazione 2
+</li>
+<li>
+13-12-2020
+</li>
+</ul>
+<div class="post">
+<p><strong>iteratori</strong></p>
+<p>sono delle classi che consentono di scorrere gli elementi di un tipo contenitore</p>
+<p>gli iteratori differiscono in base al contenitore da scorrere</p>
+<p>un iteratore per dirsi tale deve implementare i seguenti operatori:</p>
+<ul>
+<li>uguaglianza</li>
+<li>disuguaglianza</li>
+<li>incremento pre/postfisso</li>
+</ul>
+<p>l&#39;operatore postfisso per distinguersi dal prefisso ha un parametro formale intero che non serve a nulla</p>
+<pre><code class="language-c++">class iteratore{
+    private:
+        contenitore::nodo* punt;
+    public:
+       bool operator==(const iteratore&amp; i) const{
+           return punt == i.punt;
+       } 
+       bool operator!=(const iteratore&amp; i) const{
+           return punt != i.punt;
+       }
+       //prefisso
+       iteratore&amp; operator++(){
+           if(punt) punt = punt-&gt;next;
+           return *this;
+       }
+       //postfisso
+       iteratore operator++(int){
+           iteratore aux = *this;
+           if(punt) punt = punt-&gt;next;
+           return aux;
+       }
+
+       tipo* operator-&gt;() const{
+           return &amp;(punt-&gt;indfo);
+       }
+
+       tipo&amp; operator*() const{
+           return punt-&gt;info;
+       }
+}</code></pre>
+<p>un contenitore che implementa gli iteratori deve fornirep i seguenti metodi:</p>
+<ul>
+<li>iterator begin() const<ul>
+<li>ritorna il primo elemento di un contenitore</li>
+</ul>
+</li>
+<li>iterator end() const<ul>
+<li>ritorna il past the end</li>
+</ul>
+</li>
+<li>tipo&amp; operator[](const iteratore&amp;) const</li>
+</ul>
+<p>il past the end è il successivo dell&#39;ultimo elemento della lista, il modo più semplice per ritornare il past the end è ritornare il puntatore all&#39;ultimo elemento di un contenitore + 1, ciò consente di fare un - 1 per tornare indietro</p>
+<pre><code class="language-c++">contenitore::iteratore contenitore::begin() const{
+    iteratore aux; // costruisce un iteratore
+    aux.punt = first; // lo fa puntare al primo
+    return aux; // lo ritorna per valore (costruttore di copia)
+}
+
+contenitore::iteratore contenitore::end() const{
+    iteratore aux; // costruisce un iteratore
+    aux.punt = 0;
+    return aux; // lo ritorna per valore (costruttore di copia)
+}
+
+tipo&amp; contenitore::operator[](const contenitore::iteratore&amp; it) cosnt{
+    return it.punt-&gt;info; // ritorna ciò a cui punta l&#39;iteratore per riferimento
+}</code></pre>
+<p>gli iteratori permettono di scorrere un contenitore normalmente:</p>
+<pre><code class="language-c++">int somma_elementi(const contenitore&amp; c){
+    int somma=0;
+    for(contenitore::iteratore i=c.begin(); i!=c.end(); i++)
+    {
+        somma+=c[i];
+    }
+    return somma;
+}</code></pre>
+<p><strong>esercizio tree</strong></p>
+<pre><code class="language-c++">class nodo{
+    friend class tree: // tree può accedere alla parte privata
+    private:
+        char info;
+        nodo* sx;
+        nodo* dx;
+
+        nodo(char c=&#39;*&#39;, nodo* d=0, nodo* s=0) : info(c), sx(s), dx(d) {}
+}
+
+class tree{
+    private:
+        nodo* root;
+
+        static nodo* copia(nodo* r){
+            if(r == nullptr)
+                return nullptr;
+            return new nodo(r-&gt;info, copia(r-&gt;sx), copia(r-&gt;dx));
+        }
+
+        static void distruggi(nodo* r){
+            if(r!=nullptr){
+                distruggi(sx);
+                distruggi(dx);
+                delete r;
+            }
+        }
+    public:
+        tree(): root(nullptr){}
+
+        tree(const tree&amp; t) : root(copia(t.root)) {}
+
+        tree&amp; operator=(const tree&amp;){
+            if(this != &amp;t){
+                distruggi(root);
+                root=copia(t.root);
+            }
+            return *this;
+        }
+
+        ~tree(){
+            if(root!=nullptr) distruggi(root)
+        }
+}</code></pre>
+<p><strong>esercizio vettore</strong></p>
+<pre><code class="language-c++">class vettore{
+    private:
+        int* a;
+        unsigned int size;
+        // invariante: vettore nullo se a == nullptr &amp;&amp; size ==0
+    public:
+        vettore(unsigned int s = 0, int value=0) : a((s == 0) ? nullptr : new int[s]), size(s) {
+            for(unsigned int i = 0; i &lt; s; i++)
+                a[i]=value;
+        }
+
+        vettore(const vettore&amp; v) : a((v.size == 0) ? nullptr : new int[v.size]), size(v.size) {
+            for(unsigned int i = 0; i &lt; s; i++)
+                a[i]=v.a[i];
+        }
+
+        vettore&amp; operator=(const vettore&amp; v){
+            // bisogna sempre fare questo check
+            if(this!=&amp;v){
+                delete[] a;
+                size = v.size;
+                a = (size == 0) ? nullptr : new int[size];
+                for (unsigned int i = 0; i &lt; size; i++&gt;)
+                    a[i] = v.a[i]; // da ridefinire il subscripting
+                return *this;
+            }
+        }
+
+        ~vettore(){
+            if(a != nullptr) delete[] a;
+        }
+
+        vettore&amp; append(const vettore&amp; v){
+            if(v.size != 0){
+                int* aux = new int[size + v.size];
+
+                for (unsigned int i=0; i &lt; size; i++&gt;)
+                    aux[i] = a[i];
+
+                for (unsigned int i=0; i &lt; v.size; i++&gt;)
+                    aux[i+size] = v.a[i];
+
+                size += v.size;
+                delete[] a;
+                a = aux;
+            }
+            return *this;
+        }
+
+        vettore operator+(const vettore&amp; v) const{
+            vector aux(*this);
+            aux.append(v);
+            return aux;
+        }
+
+        bool operator==(const vettore&amp; v) const{
+            if(this!=&amp;v){
+                if(size != v.size) return false;
+                for(unsigned int i = 0; i &lt; size; i++)
+                    if(a[i]!=v.a[i]) return false;
+            }
+            return true;
+        }
+
+        int&amp; operator[](const int i) const{
+            return a[i];
+        }
+
+        int getSize(){
+            return size;
+        }
+}
+
+std::ostream&amp; operator&lt;&lt;(std::ostream&amp; os, const vettore&amp; v){
+    os &lt;&lt; &#39;[&#39;;
+    for(unsigned int = 0; i &lt; v.getSize(); i++)
+        os &lt;&lt; v[i] &lt;&lt; (i != v.getSize()) ? &#39;,&#39; : &#39;&#39;;
+    os &lt;&lt; &#39;]&#39;;
+    return os;
+}
+
+class nodo{
+    private:
+    char info;
+        nodo* next;
+    public:
+        nodo(char i=0, nodo* n=nullptr) : info(i), next(n){}
+}
+</code></pre>
+
+        </div>
+    </div>
+</body>
+
+</html>

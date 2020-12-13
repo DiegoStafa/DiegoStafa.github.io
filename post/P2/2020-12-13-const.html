@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info"><li>
+Const saga
+</li>
+<li>
+Programmazione 2
+</li>
+<li>
+13-12-2020
+</li>
+</ul>
+<div class="post">
+<h2 id="const-saga">Const saga</h2>
+<p><strong>side effect</strong></p>
+<p>una metodo che modifica l&#39;oggetto di invocazione si dice che fa side effects</p>
+<p><strong>oggetti costanti</strong></p>
+<p>un oggetto costante è un oggetto non consente side effects su i suoi campi, ad eccezione dei costruttori</p>
+<p>sintassi:</p>
+<ul>
+<li>const <em>tipo</em> <em>nomeOggetto</em></li>
+</ul>
+<p>vincoli:</p>
+<ul>
+<li>un oggetto costante può invocare solo metodi costanti</li>
+</ul>
+<p><strong>metodi costanti</strong></p>
+<p>un metodo costante è un metodo che non crea side effects</p>
+<p>sintassi:</p>
+<ul>
+<li><em>tipo</em> <em>nomeMetodo</em>(<em>parametri</em>) const {...}</li>
+</ul>
+<p>vincoli:</p>
+<ul>
+<li>non si possono modificare i campi del oggetto di invocazione (side effects)</li>
+<li>non si possono invocare metodi non costanti nel corpo del metodo</li>
+</ul>
+<p>in un metodo costante il puntatore this diventa un puntatore ad un oggetto costante, cioè può cambiare l&#39;oggetto puntato, ma non il suo contenuto</p>
+<p><strong>const e puntatori</strong></p>
+<p>ci sono 3 combinazioni con puntatori e costanti</p>
+<ul>
+<li><em>tipo</em> * const <em>nome</em> --&gt; il puntatore è costante</li>
+<li>const <em>tipo</em> * <em>nome</em> --&gt; il puntato è costante</li>
+<li>const <em>tipo</em> * const <em>nome</em> --&gt; puntatore e puntato costanti</li>
+</ul>
+<p><strong>const e riferimenti</strong></p>
+<p>ci sono 3 combinazioni con reference e costanti</p>
+<ul>
+<li><em>tipo</em> &amp; const <em>nome</em> --&gt; illegale, non ha senso</li>
+<li>const <em>tipo</em> &amp; <em>nome</em> --&gt; <em>nome</em> è costante</li>
+<li>const <em>tipo</em> &amp; const <em>nome</em> --&gt; illegale, non ha senso</li>
+</ul>
+<p>la seconda combinazione permette scritture del tipo:</p>
+<ul>
+<li>const <em>tipo</em> &amp; <em>nome</em> = <em>variabile/literal/temporaneo anonimo</em></li>
+</ul>
+<p>questa scrittura è importante in quanto consente di assegnar literals a riferimenti, const <em>tipo</em> &amp; lo si pò usare come tipo di ritorno o parametro formale, con i relativi vantaggi</p>
+<h2 id="operatori-di-classe">Operatori di classe</h2>
+<p>gli operatori di classe sono:</p>
+<ul>
+<li>operatori aritmetici<ul>
+<li>+</li>
+<li>-    </li>
+<li>* </li>
+<li>/ </li>
+<li>% </li>
+</ul>
+</li>
+<li>operatori logici<ul>
+<li>== </li>
+<li>!= </li>
+<li>&lt; </li>
+<li>&gt; </li>
+<li>&lt;= </li>
+<li>&gt;= </li>
+</ul>
+</li>
+<li>di linguaggio:<ul>
+<li>++ --&gt; incremento</li>
+<li>-- --&gt; decremento</li>
+<li>&lt;&lt; --&gt; output</li>
+<li>&gt;&gt; --&gt; input</li>
+<li>= --&gt; assegnazione (importante)</li>
+<li>-&gt; --&gt; accesso</li>
+<li>[] --&gt; subscripting</li>
+<li>() --&gt; function call</li>
+<li>&amp; --&gt; address of</li>
+<li>new --&gt; allocazione</li>
+<li>delete --&gt; deallocazione</li>
+</ul>
+</li>
+</ul>
+<p><strong>overloading degli operatori</strong></p>
+<p>sintassi:</p>
+<ul>
+<li><em>tipo</em> operator<em>op</em>(<em>parametro</em>) const; </li>
+</ul>
+<p>regole:</p>
+<ul>
+<li>non si può ridefinire la posizione degli operatori</li>
+<li>non si può ridefinire il numero di operandi</li>
+<li>non si possono ridefinire regole di precedenza/associazione</li>
+<li>deve esserci almeno un argomento di tipo definito da utente</li>
+<li>esistono operatori NON sovraccaricabili</li>
+<li>&#39;=&#39;,&#39;&amp;&#39;,&#39;,&#39; hanno sempre una versione standard fatta dal compilatore</li>
+</ul>
+<p><strong>operatore condizionale ternario</strong></p>
+<p>sintassi:</p>
+<ul>
+<li>(condizione) ? expr1 : expr2</li>
+</ul>
+<p><strong>operatore virgola</strong></p>
+<p>è un operatore ad n argomenti, ogni argomento è un espressione, valuta tutte le espressioni (compresi side effects) e ritorna quella più a destra</p>
+<p><strong>operatore assegnazione</strong></p>
+<p>viene invocato durante l&#39;assegnazione di un oggetto già creato</p>
+<p>funzionamento:</p>
+<ol>
+<li>oggetto a sinistra invoca l&#39;operatore di assegnazione</li>
+<li>oggetto a destra è un parametro  in sola lettura</li>
+<li>vengono copiati i dati in modo opportuno</li>
+<li>viene ritornato l&#39;oggetto a sinistra</li>
+</ol>
+<p>firma:</p>
+<ul>
+<li><em>className</em>&amp; operator=(const obj&amp;)</li>
+</ul>
+<p>sintassi:</p>
+<ul>
+<li>obj1 = obj2;</li>
+</ul>
+<p>dove:</p>
+<ul>
+<li>obj1 --&gt; oggetto di invocazione</li>
+<li>obj2 --&gt; parametro attuale</li>
+</ul>
+<p>l&#39;operatore di assegnazione ritorna sempre l&#39;oggetto di invocazione, quindi alla fine del corpo del metodo ci sarà sempre:</p>
+<ul>
+<li>return *this</li>
+</ul>
+<p><strong>assegnazione standard</strong></p>
+<p>l&#39;operatore di assegnazione tra 2 oggetti standard (in assenza di un operatore definito dall&#39;utente) esegue una copia campo per campo tra i 2 oggetti</p>
+<p>gli array statici non hanno l&#39;assegnazione standard, gli array statici interni ad un&#39;oggetti sì</p>
+<p><strong>operatore di output</strong></p>
+<p>ostream fornisce un flusso generico in output, standard, file, stampanti...</p>
+<p><strong>output interno</strong></p>
+<p>firma:</p>
+<ul>
+<li>ostream&amp; <em>classe</em>::operator&lt;&lt;(ostream&amp; os) const;</li>
+</ul>
+<p>se definito internamente la sintassi di stampa non concorda con quella del linguaggio</p>
+<p><strong>output esterno</strong></p>
+<p>firma:</p>
+<ul>
+<li>ostream&amp; operator&lt;&lt;(ostream&amp; os, const <em>classe</em>&amp; c);</li>
+</ul>
+<p>se definito esternamente l&#39;operatore non ha accesso ai campi privati dell&#39;oggetto</p>
+<h2 id="preprocessore">Preprocessore</h2>
+<p>il preprocessore è un programma che lavora sulle direttive di un file</p>
+<p>le direttive sono dei comandi che il preprocessore andrà ad eseguire prima di inviare il file al compilatore</p>
+<p>direttive:</p>
+<ul>
+<li>di inclusione<ul>
+<li>#include</li>
+</ul>
+</li>
+<li>di macro<ul>
+<li>#define</li>
+</ul>
+</li>
+<li>condizionali<ul>
+<li>#ifdef</li>
+<li>#ifndef</li>
+<li>#elif</li>
+<li>#endif</li>
+</ul>
+</li>
+</ul>
+<p><strong>inclusione</strong></p>
+<p>sintassi:</p>
+<ul>
+<li>#include <em>file</em></li>
+</ul>
+<p>la direttiva di inclusione copia il contenuto di <em>file</em> e lo incolla al suo posto</p>
+<p><strong>macros</strong></p>
+<p>sintassi:</p>
+<ul>
+<li>#define <em>nomeMacro</em>(p1,p2,...,pn) (<em>codice</em>)</li>
+</ul>
+<p>le macro sono porzioni di codice a cui viene dato un nome, se lo necessita si possono definire dei parametri, quando il preprocessore incontra <em>nomeMacro</em> nel codice c++ lo va a sostituire pari pari con <em>codice</em> e va anche a sostiturire i parametri attuali passati con quelli formali nel <em>codice</em></p>
+<pre><code class="language-c++">
+// ESEMPI
+
+// sostituisce 123 ogni qualvolta incontra COST
+#define COST 123 
+
+#define max(A,B) ((A)&gt;(B) ? (A) : (B))
+/*
+sostituisce tutto il il codice ogni qualvolta incontra max(x,y),
+va anche a sostituire i parametri attuali x,y ai parametri formali A,B nel codice
+*/
+</code></pre>
+<p><strong>condizionali</strong></p>
+<p>sintassi:</p>
+<ul>
+<li>#ifdef <em>nome</em> <em>codice c++</em> <em>endif</em></li>
+</ul>
+<h2 id="make">make</h2>
+<p>è un programma che prende in input un file in linguaggio makefile, il linguaggio makefile specifica le dipendenze dei file nei programmi, e li aggiorna di conseguenza</p>
+<p>sintassi:</p>
+<pre><code>&lt;target file&gt; : &lt;lista di dipendenze
+    &lt;comando da eseguire&gt;</code></pre>
+<p>le variabili si definiscono come in bash</p>
+<p>funzionamento:</p>
+<ol>
+<li>si crea un makefile del progetto/programma</li>
+<li>make crea un file che monitora se le dipendenze sono state modificate</li>
+<li>si modifica un file</li>
+<li>make si accorge che il file è stato modificato</li>
+<li>esegue solo i target necessari</li>
+</ol>
+<p>sintassi:</p>
+<ul>
+<li>$ make --&gt; esegue tutti i target</li>
+<li>$ make <em>target</em> --&gt; esegue solo i target specificato</li>
+</ul>
+
+        </div>
+    </div>
+</body>
+
+</html>

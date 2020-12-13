@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info"><li>
+Relazioni tra classi
+</li>
+<li>
+Programmazione 2
+</li>
+<li>
+13-12-2020
+</li>
+</ul>
+<div class="post">
+<h2 id="relazioni-tra-classi">Relazioni tra classi</h2>
+<p>tipi di relazioni tra classi:</p>
+<ul>
+<li>dipendenza --&gt; usa un</li>
+<li>associazione --&gt; ha un<ul>
+<li>aggregazione --&gt; possiede un</li>
+<li>composizione --&gt; fa parte di</li>
+</ul>
+</li>
+<li>generalizzazione --&gt; è un</li>
+</ul>
+<p>data una classe A e una classe B</p>
+<p><strong>dipendenza</strong></p>
+<p>A utilizza un tipo B come parametro, tipo di ritorno o oggetto in un metodo</p>
+<p><strong>associazione</strong></p>
+<p>A ha un puntatore alla classe B nei suoi campi dati</p>
+<p><strong>aggregazione</strong></p>
+<p>A possiede un tipo B, se muore A non è detto muoia B</p>
+<p><strong>composizione</strong></p>
+<p>A è composto da B, se muore A muore B</p>
+<p><strong>generalizzazione</strong></p>
+<p>A è B, ma B non è detto sia A</p>
+<p><strong>esempio classe telefonata</strong></p>
+<pre><code class="language-c++">class Telefonata{
+    private:
+        orario inizio;
+        orario fine;
+        int numero;
+    public:
+        Telefonata(orario,orario,int);
+        Telefonata();         
+        orario Inizio() const;
+        orario Fine() const;
+        bool operator==(const telefonata&amp;) const;
+
+}</code></pre>
+
+        </div>
+    </div>
+</body>
+
+</html>
