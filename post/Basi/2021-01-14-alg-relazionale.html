@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info"><li>
+Algebra relazionale
+</li>
+<li>
+Basi di Dati
+</li>
+<li>
+14-01-2021
+</li>
+</ul>
+<div class="post">
+<h1 id="algebra-relazionale">Algebra relazionale</h1>
+<p>L&#39;algebra relazionale è un linguaggio matematico di query, ha 6 operatori di base e diversi operatori derivati</p>
+<p>operatori primitivi:</p>
+<ul>
+<li>binari<ul>
+<li>unione</li>
+<li>differenza</li>
+<li>prodotto cartesiano</li>
+</ul>
+</li>
+<li>unari<ul>
+<li>selezione</li>
+<li>proiezione</li>
+<li>ridenominazione</li>
+</ul>
+</li>
+</ul>
+<p>operatori derivati:</p>
+<ul>
+<li>intersezione</li>
+<li>join<ul>
+<li>inner</li>
+<li>left</li>
+<li>right</li>
+<li>full</li>
+<li>semi</li>
+<li>theta</li>
+<li>equi</li>
+</ul>
+</li>
+</ul>
+<h2 id="operatori-primitivi">Operatori primitivi</h2>
+<h3 id="binari">Binari</h3>
+<p>questi operatori sono ricavati dalle normali operazioni insiemistiche</p>
+<p><strong>unione</strong></p>
+<p>ritorna una relazione che contiene le tuple appartenenti ad entrambe le relazioni, senza ripetizioni</p>
+<p><strong>differenza</strong></p>
+<p>ritorna una relazione che contiene le tuple della prima relazione che non appartengono alla seconda</p>
+<p><strong>prodotto cartesiano</strong></p>
+<p>ritorna una relazione che contiene il prodotto cartesiano delle tuple delle 2 relazioni, il prodotto cartesiano delle relazioni di base è un grafo bipartito completo, ogni tupla connette con tutte le tuple dell&#39;altra relazione</p>
+<h3 id="unari">Unari</h3>
+<p><strong>selezione</strong></p>
+<p>ritorna una relazione che contiene le tuple che rispettano una determinata condizione sugli attributi</p>
+<p><strong>proiezione</strong></p>
+<p>ritorna una relazione con solo gli attributi specificati, rimuove le ripetizioni</p>
+<p><strong>ridenominazione</strong></p>
+<p>ritorna una relazione con attributi di nome diverso</p>
+<h2 id="operatori-derivati">Operatori derivati</h2>
+<p><strong>intersezione</strong></p>
+<p>ritorna una relazione che contiene le tuple in comune ad entrambe le relazione, si ricava come !(A-B)</p>
+<p><strong>inner join</strong></p>
+<p>fa il prodotto cartesiano e seleziona le tuple che hanno 2 attributi specificati uguali</p>
+<p>numero di tuple finali:</p>
+<ul>
+<li>0 (join vuoto) &lt;= R1 join R2 &lt;= R1 x R2 (join completo)</li>
+</ul>
+<p><strong>left join</strong></p>
+<p>è l&#39;inner join, ma se una tupla della prima relazione non matcha viene inserita comunque</p>
+<p><strong>right join</strong></p>
+<p>è l&#39;inner join, ma se una tupla della seconda relazione non matcha viene inserita comunque</p>
+<p><strong>full outer join</strong></p>
+<p>è l&#39;unione del left e right join</p>
+<p><strong>semi join</strong></p>
+<p>fa un normale inner join, ma proietta solo gli attributi della prima tabella</p>
+<p><strong>theta-join</strong></p>
+<p>fa il prodotto cartesiano e seleziona le tuple che rispettano una condizione theta</p>
+<p><strong>equi-join</strong></p>
+<p>è il theta join che usa l&#39;operatore di uguaglianza nella condizione</p>
+<p><strong>gestione dei valori nulli</strong></p>
+<p>per rifersi ai valori nulli in una selezione si utilizzano le condizioni:</p>
+<ul>
+<li>is null</li>
+<li>is not null</li>
+</ul>
+
+        </div>
+    </div>
+</body>
+
+</html>

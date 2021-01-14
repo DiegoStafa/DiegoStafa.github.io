@@ -5,6 +5,10 @@ implementa la relazione di classe di generalizzazione, una classe viene definita
 terminologia:
 * classe base, superclasse, supertipo, padre
 * classe derivata, sottoclasse, sottotipo, figlio
+* sottotipo proprio significa che è diverso dalla classe base
+
+rappresentazione testuale di una gerarchia:
+* sottoclasse <= superclasse
 
 i casi d'uso tipici dell'ereditarietà sono:
 * estensione di un tipo
@@ -18,7 +22,7 @@ i casi d'uso tipici dell'ereditarietà sono:
 
 **gerarchie di classi**
 
-un sottotipo di dice diretto se deriva direttamente da una classe, indiretto se ci sono uno o più livelli di indirettezza tra il sottotipo e la superclasse
+un sottotipo/sottoclasse di dice diretto se deriva direttamente da una classe, indiretto se ci sono uno o più livelli di indirettezza tra il sottotipo e la superclasse
 
 **subtyping di tipo**
 
@@ -219,4 +223,133 @@ class contoarancio : contorisparmio
             return Saldo();
         }
 };
+```
+
+**ereditarietà multipla**
+
+definisce una relazione tra un entità figlia e più entità padri
+
+probelemi:
+* complessità/ambiguità
+* problema del diamante
+
+in c++ viene implementata tramite l'ereditarietà virtuale
+ 
+```c++
+// sintassi
+
+#include "orario.h"
+#include "data.h"
+
+class dataora : public data, public ora
+{
+    // ...
+};
+```
+
+**ambiguità**
+
+con ereditarietà multipla si crea ambiguità tra metodi con lo stesso nome in superclassi diverse
+
+soluzione:
+* scoping dei metodi
+* ridefinizione del metodo nella sottoclasse (nasconde l'ambiguità e costringe lo scoping)
+
+**problema del diamante**
+
+accade quando nell'ereditarietà multipla le superclassi ereditano da una stessa superclasse
+
+```c++
+// situazione a diamante
+
+class A;
+
+class B : public A;
+class C : public A;
+
+class D : public B. public C;
+
+/* 
+
+situazione in memoria
+
+D               
+    B
+        A
+    C
+        A
+
+- il sottoggetto A occupa i doppio dello spazio
+- ambiguità di subtyping
+
+*/
+```
+
+problemi:
+* si crea ambiguità tra i sottoggetti A quando si fa subtyping di puntatore o quando
+* si crea un doppio sottoggetto A, spreco di memoria
+
+soluzione:
+* derivazione virtuale (non centra nulla con i metodi virtuali)
+
+**derivazione virtuale**
+
+fa sì che non si creino 2 sottoggetti, ma ne venga creato solo uno
+
+```c++
+class A; // detta anche base virtuale
+
+class B : virtual public A; // passo di derivazione virtuale
+class C : virtual public A; // passo di derivazione virtuale
+
+class D : public B. public C; // derivazione finale
+
+/* 
+
+situazione in memoria
+
+D               
+    B
+        A*
+    C
+        A*
+    A
+
+- B e C guadagnano un puntatore nascosto al sottoggetto A
+- il sottoggetto A è unico
+- non c'è ambiguità di subtyping
+- D si deve occupare di inizializzare A
+*/
+```
+
+a differenza della normale ereditarietà, le classi si devono occupare di inizializzare i sottoggetti delle superclassi e anche i sottoggetti delle basi virtuali
+
+siccome la base si occupa di inizializzare la base virtuale, quando si crea un oggetto, vengono ignorate le chiamate ai costruttori delle superclassi alla base virtuale
+
+funzionamento del costruttore:
+1. vengono invocati i costruttori delle basi virtuali
+    * in presenza di più basi virtuali l'ordine è quello di precedenza, left to right - top bottom
+    * la costruzione di una base vrtuale implica automaticamente la costruzione delle sue superclassi
+2. vegono richiamati i costruttori delle basi dirette
+    * questi costruttori vanno ad ignorare i chiamate ai costruttori delle basi virtuali
+3. vengono costruiti i campi
+4. viene eseguito il corpo
+
+
+**unique final overriding**
+
+in una derivazione virtuale, se le base virtuale ha un metodo virtuale, e le due sottoclassi ne fanno l'overriding, la sottoclasse finale DEVE fare l'overriding del metodo virtuale della base virtuale
+
+di base la classe sottoclasse deve fare l'overriding di ogni metodo virtuale della base virtuale 
+
+**visibilità con derivazioni virtuali**
+
+```c++
+class A;
+
+class B : virtual private A;
+class C : virtual public A;
+
+class D : public B. public C; // prevale la derivazione più aperta
+
 ```

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info"><li>
+Normalizzazione
+</li>
+<li>
+Basi di Dati
+</li>
+<li>
+14-01-2021
+</li>
+</ul>
+<div class="post">
+<h1 id="normalizzazione">Normalizzazione</h1>
+<h2 id="dipendenze-funzionali">Dipendenze funzionali</h2>
+<p><strong>dipendenza funzionale</strong></p>
+<p>un attributo Y dipende funzionalmente da un gruppo di attributi X se X riesce ad identificare univocamente Y, quindi 2 o più tuple di X con gli stessi valori devono avere anche stesso Y</p>
+<p>si indica con X --&gt; Y</p>
+<p>di base è l&#39;implica logico, una dipendeza funzionale è quando gli attributi X implicano l&#39;atributo Y</p>
+<p>le dipendenze funzionali si dividono in:</p>
+<ul>
+<li>banali</li>
+<li>parziali</li>
+<li>complete</li>
+</ul>
+<p><strong>dipendenza funzionale banale</strong></p>
+<p>si ha quando Y compare anche a sinistra, cioè quando:</p>
+<ul>
+<li>Y,X --&gt; Y (y implica y duh) </li>
+</ul>
+<p>di base è una tautologia</p>
+<p><strong>dipendenza funzionale parziale</strong></p>
+<p>si ha quando una dipendenza funzionale rimane togliendo attributi dall&#39;insieme X</p>
+<p>di base significa che X contiene attributi superflui</p>
+<p><strong>dipendeza funzionale completa</strong></p>
+<p>si ha quando una dipendenza funzionale non rimane togliendo attributi dall&#39;insieme X</p>
+<p>significa che X non ha attributi superflui</p>
+<p><strong>chiusura</strong></p>
+<p>la chiusura di una dipendenza è l&#39;insieme degli attributi che riesce ad implicare</p>
+<p><strong>copertura</strong></p>
+<p>quando due insiemi di dipendenze funzionali su una stessa relazione sono equivalenti </p>
+<h2 id="forme-normali">Forme Normali</h2>
+<p><strong>forma normale</strong></p>
+<p>una base di dati si dice in forma normale quando:</p>
+<ul>
+<li>non c&#39;è ridondanza</li>
+<li>inserimenti, rimozioni e aggiornamenti non creano incosistenze</li>
+</ul>
+<p><strong>prima forma normale</strong></p>
+<p>una relazione è in prima forma normale quando:</p>
+<ul>
+<li>tutti gli attributi sono atomici e non ulteriormente scomponibili</li>
+</ul>
+<p><strong>seconda forma normale</strong></p>
+<p>una relazione è in seconda forma+</p>
+<ul>
+<li>ha solo dipendenze funzionali complete</li>
+</ul>
+<p><strong>terza forma normale</strong></p>
+<p>una relazione è in terza formale normale quando:</p>
+<ul>
+<li>è in seconda forma normale</li>
+<li>per ogni dipendenza funzionale non banale, X è una superchiave, oppure y è un attributo primo (fa parte della chiave)</li>
+</ul>
+<p><strong>forma normale di boyce e codd</strong></p>
+<p>una relazione è in forma normale di boyce e codd quando:</p>
+<ul>
+<li>è in terza forma normale</li>
+<li>per ogni dipendenza funzionale non banale, X è una superchiave</li>
+</ul>
+<p><strong>algoritmo di normalizzazione</strong></p>
+<p>si calcola la chiusura ridotta (o minima):</p>
+<ul>
+<li>si trovano tutte le dipendenze funzionali della relazione</li>
+<li>si spezzano gli implica facendo in modo di avere solo una tesi<ul>
+<li>es. AB --&gt; CDE si spezza in: AB --&gt; C, AB --&gt; D, AB --&gt; E</li>
+</ul>
+</li>
+<li>si rimuovono le tautologie (dipendenze funzionali banali)</li>
+<li>si semplificano le implicazioni transitive<ul>
+<li>es. A --&gt; B e B --&gt; C deve rimuovere A --&gt; C</li>
+</ul>
+</li>
+<li>si semplificano le ipotesi<ul>
+<li>es. ABC --&gt; D e A --&gt; C diventa AB --&gt; D e A --&gt; C</li>
+</ul>
+</li>
+</ul>
+<p>si per ogni ipotesi si crea una partizione:</p>
+<ul>
+<li>ogni partizione è formata da ciò che l&#39;ipotesi riesce ad implicare (anche transativamente)</li>
+<li>si costruisce una relazione per ogni partizione</li>
+</ul>
+
+        </div>
+    </div>
+</body>
+
+</html>

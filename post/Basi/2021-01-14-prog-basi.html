@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info"><li>
+Progettazione di una base dati
+</li>
+<li>
+Basi di Dati
+</li>
+<li>
+14-01-2021
+</li>
+</ul>
+<div class="post">
+<h1 id="progettazione-di-una-base-di-dati">Progettazione di una base di dati</h1>
+<p><strong>fasi tecniche</strong></p>
+<ol>
+<li>studio di fattibilità --&gt; costi e priorità</li>
+<li>raccolta e analisi dei requisiti --&gt; proprietà del sistema</li>
+<li>progettazione --&gt; funzionalità e dati manipolati</li>
+<li>realizzazione</li>
+<li>validazione e collaudo --&gt; verfica delle funzionalità</li>
+<li>funzionamento</li>
+</ol>
+<h2 id="progettazione">Progettazione</h2>
+<p>è formata da:</p>
+<ol>
+<li>progettazione concettuale --&gt; diagramma ER</li>
+<li>progettazione logica --&gt; schema logico </li>
+<li>progettazione fisica --&gt; indici</li>
+</ol>
+<h3 id="progettazione-concettuale">Progettazione concettuale</h3>
+<p><strong>modello ER</strong></p>
+<p>è il modello concettuale più utilizzato, formato da:</p>
+<ul>
+<li>entità --&gt; rappresentano classi di oggetti</li>
+<li>relazioni --&gt; rappresentano legami logici tra entità</li>
+</ul>
+<p>ed altri costrutti:</p>
+<ul>
+<li>attributi</li>
+<li>cardinalità</li>
+<li>identificatore</li>
+<li>generalizzazione</li>
+</ul>
+<p>convenzione:</p>
+<ul>
+<li>entità e relazioni sono sostantivi singolari</li>
+</ul>
+<p>documentazione:</p>
+<ul>
+<li>dizionario dei dati<ul>
+<li>entità</li>
+<li>relazioni</li>
+</ul>
+</li>
+<li>vincoli non esprimibili in ER<ul>
+<li>ad esempio i capi hanno stipendi più alti degli impiegati</li>
+</ul>
+</li>
+</ul>
+<p><strong>part of</strong></p>
+<p>un entità ha la relazione come attributo</p>
+<p><strong>instance of</strong></p>
+<p>è il part of, ma la seconda entità è una particolare istanza della prima </p>
+<p><strong>attributo</strong></p>
+<p>è una proprietà che un entità od una relazione puà avere, ci sono attributi semplici e composti</p>
+<p><strong>cardinalitò di relazione</strong></p>
+<p>è una coppia di numeri (a,b) associati ad ogni entità che partecipa ad una relazione, dove:</p>
+<ul>
+<li>a --&gt; numero minimo di occorrenze</li>
+<li>b --&gt; numero massimo di occorenze</li>
+</ul>
+<p>es.</p>
+<ul>
+<li>impiegato(2,5)---assegnamento---(0,50)incarico<ul>
+<li>ogni impiegato può avere minimo 2 e massimo 5 incarichi</li>
+<li>ogni incaricopuò avere nessuno o massimo 50 impiegati</li>
+</ul>
+</li>
+</ul>
+<p>tipi di relazione:</p>
+<ul>
+<li>uno a uno (1,1) oppure (0,1)</li>
+<li>uno a molti (1,n)</li>
+<li>molti a molti (n,n)</li>
+</ul>
+<p><strong>cardinalità di attributi</strong></p>
+<p>si associa una coppia di valori agli attributi che indicano:</p>
+<ul>
+<li>opzionalità --&gt; (0,1)</li>
+<li>attributi multivalore --&gt; (0,n)</li>
+</ul>
+<p><strong>identificatore</strong></p>
+<p>è usato per identificare univocamente le istanze di un&#39;entità, si dividono in:</p>
+<ul>
+<li>identificatori interni --&gt; 1 o più attributi di un&#39;entità</li>
+<li>identificatiri esterni --&gt; </li>
+</ul>
+<p><strong>generalizzazione</strong></p>
+<p>consiste nel creare un&#39;entitò da cui altre entità derivano gli attributi, ce ne sono 2 tipi:</p>
+<ul>
+<li>totale --&gt; il genitore è sempre uno dei figli</li>
+<li>parziale --&gt; il genitore può non essere uno dei figli</li>
+</ul>
+<p>esempio generalizzazione totale:</p>
+<ul>
+<li>persona<ul>
+<li>uomo</li>
+<li>donna</li>
+</ul>
+</li>
+</ul>
+<p>esempio generalizzazione parziale:</p>
+<ul>
+<li>persona<ul>
+<li>avvocato</li>
+<li>dottore</li>
+</ul>
+</li>
+</ul>
+<h4 id="documentazione-diagramma-er">documentazione diagramma ER</h4>
+<p>è formata da:</p>
+<ul>
+<li>dizionari entità e relazioni</li>
+<li>vincoli non esprimibli nel diagramma</li>
+</ul>
+<p><strong>dizionario entità</strong></p>
+<p>è una tabella con le seguenti colonne:</p>
+<ul>
+<li>entità</li>
+<li>descrizione</li>
+<li>attributi</li>
+<li>identificatore</li>
+</ul>
+<p><strong>dizionario relazioni</strong></p>
+<p>è una tabella con le seguenti colonne:</p>
+<ul>
+<li>relazioni</li>
+<li>descrizione</li>
+<li>componenti --&gt; entità partecipanti</li>
+<li>attributi</li>
+</ul>
+<h3 id="progettazione-logica">Progettazione logica</h3>
+<p>consiste nel trasformare un schema concettuale (solitamente ER) in schema logico (solitamente relazionale), per fare ciò si eseguono i seguenti passi:</p>
+<ul>
+<li>analisi delle ridondanze</li>
+<li>eliminazione delle generalizzazioni</li>
+<li>accoppiamento delle entità e relazioni</li>
+<li>scelta degli identificatori</li>
+</ul>
+<p>le relazioni e cardinalità si traducono secondo schemi fissati (pdf lezione 8)</p>
+<p><strong>analisi delle ridondanze</strong></p>
+<p>consiste nel decidere se eliminare o meno attributi ricavabili da altri attributi o da relazioni</p>
+<p><strong>eliminazione delle generalizzazioni</strong></p>
+<p>siccome le generalizzazioni non sono rappresentabili, si eliminano, ci sono 3 modi:</p>
+<ul>
+<li>accorpamento delle figlie nel genitore</li>
+<li>accorpamento del gentiore nelle figlie --&gt; preferibile se gli accessi al padre e figlie sono separati</li>
+<li>sostituzione della generalizzazione con una relazione --&gt; preferibile se gli accessi al padre non implicano accesso alle figlie</li>
+</ul>
+<p>nel primo caso il padre avrà un attributo aggiuntivo che andrà a specificare di che tipo è</p>
+<p><strong>scelta degli identificatori</strong></p>
+<p>consiste nel scegliere le chiavi primarie ed esterne delle entità finali</p>
+<h3 id="progettazione-fisica">Progettazione fisica</h3>
+<p>si occupa della memorizzazione delle relazioni e della creazione degli indici per velocizzare le operazioni di query</p>
+<p><strong>indici</strong></p>
+<p>consiste nel creare una tabella ausiliaria di indici di tutte le tuple di una tabella, in modo tale da non dover eseguire una ricerca lineare, ma costante</p>
+<p>un indice di base è una tabella con 2 colonne:</p>
+<ul>
+<li>chiave</li>
+<li>valore --&gt; punta al dato effettivo</li>
+</ul>
+<p>metriche di giudizio:</p>
+<ul>
+<li>tempo di accesso</li>
+<li>tempo di inserimento</li>
+<li>tempo di rimozione</li>
+<li>spazio occupato</li>
+</ul>
+<p>si dividono in 2 categorie:</p>
+<ul>
+<li>indici primari</li>
+<li>indici secondari</li>
+</ul>
+<p><strong>implementazione degli indici</strong></p>
+<p>un indice si implementa con un albero binario:</p>
+<ul>
+<li>b+ tree</li>
+<li>b- tree</li>
+<li>file hash</li>
+</ul>
+<p><strong>B+ tree</strong></p>
+<p>sono alberi binari i cui nodi hanno più di un valore</p>
+<p>funzionamento:</p>
+<ul>
+<li>nodi non foglia:<ul>
+<li>ogni nodo ha n valori</li>
+<li>per ogni valore ci sono 2 puntatori</li>
+<li>il puntatore sinistro punta ad un valore minore</li>
+<li>il puntatore destro punta ad un valore maggiore</li>
+</ul>
+</li>
+<li>nodi foglia:<ul>
+<li>n valori</li>
+<li>per ogni valore c&#39;è 1 puntaore</li>
+<li>ogni puntatore punta alla tupla della relazione con medesimo valore</li>
+<li>c&#39;è un puntatore extra che punta alla foglia successiva</li>
+</ul>
+</li>
+</ul>
+<p>vantaggi:</p>
+<ul>
+<li>organizzazione semplice e scalabile ad inserimenti e rimozioni</li>
+<li>le query su intervalli di valori sono molto veloci (si scorrono le foglie)</li>
+</ul>
+<p>svantaggi:</p>
+<ul>
+<li>spazio occupato</li>
+<li>tempi extra di inserimento e rimozione</li>
+</ul>
+<p><strong>B- tree</strong></p>
+<p>è come il b+ tree, ma:</p>
+<ul>
+<li>le foglie non sono connesse</li>
+<li>ogni valore in qualsiasi nodo ha un puntatore extra che lo collega alla tupla della relazione</li>
+</ul>
+<p>vantaggi:</p>
+<ul>
+<li>meno nodi del b+ tree</li>
+<li>non serve arrivare alla foglia per trovare un valore</li>
+</ul>
+<p>svantaggi:</p>
+<ul>
+<li>non danno benefici in query su intervalli di valori</li>
+<li>inserimenti e rimozioni più complesse</li>
+<li>manutenzione più complessa</li>
+</ul>
+<p><strong>file hash</strong></p>
+<p>si crea un file hash nella quale ogni valore ha un hash associato, la ricerca è costante, ma funziona solo in query del tipo variabile=valore</p>
+
+        </div>
+    </div>
+</body>
+
+</html>

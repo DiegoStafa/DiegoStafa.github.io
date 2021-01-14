@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info"><li>
+I/O stream ed eccezioni
+</li>
+<li>
+Programmazione 2
+</li>
+<li>
+14-01-2021
+</li>
+</ul>
+<div class="post">
+<h1 id="stream">Stream</h1>
+<p>uno stream è una sequenza di byte, di base un vettore di byte</p>
+<pre><code class="language-c++">/*
+gerarchia c++
+
+ios
+    istream
+        istringstream
+        ifstream
+        iostream
+            stringstream
+            fstream
+    ostream
+        osstringstream
+        ofstream
+        iostream
+            stringstream
+            fstream
+*/</code></pre>
+<p><strong>I/O stream</strong></p>
+<p>significa trasformare tipi di dato c++, in tipi di dato esterni (es. utf-8, binario, ascii...)</p>
+<p><strong>buffer</strong></p>
+<p>divide il vettore di byte in porzioni uguali in base al tipo di dato primitivo da inviare</p>
+<p><strong>stato dello stream</strong></p>
+<p>lo stato di uno stream è identificato da 3 bit, che possono generare 8 combinazioni diverse:</p>
+<ul>
+<li>eof --&gt; lo stream/vettore ha raggiunto la posizione di eof</li>
+<li>fail --&gt; la precedente operazione di stream è fallita (senza perdita di dati)<ul>
+<li>errore sintatico</li>
+</ul>
+</li>
+<li>bad --&gt; la precedente operazione di stream è fallita, con perdita di dati<ul>
+<li>accesso a file inesistenti</li>
+</ul>
+</li>
+</ul>
+<p><strong>operatore di input standard</strong></p>
+<p>di base è un parser, prende uno stream di caratteri, ed estrae i dati del tipo primitivo specificato, ignorando i marcatori (spazi, tab, return)</p>
+<p><strong>operatore di input ridefinito</strong></p>
+<p>è necessario ridefinire l&#39;operatore di input nel caso si voglia estarre dallo stream un tipo definito dall&#39;utente</p>
+<p>di base, come per l&#39;output ridefinito che stampa determinati caratteri e valori, ridefinire l&#39;input significa andare a ritroso a prendere in input quei caratteri e valori</p>
+<p><strong>I/O binario</strong></p>
+<ul>
+<li>istream&amp; get(char&amp; c) --&gt; prende un byte e ritorna lo stream</li>
+<li>ostream&amp; put(char&amp; c) --&gt; scrive un byte e ritorna lo stream</li>
+<li>istream&amp; read(char* c, int n) --&gt; prende n byte e riotorna lo stream</li>
+<li>ostream&amp; write(const char* c, int n) --&gt; scrive n byte e ritorna lo stream</li>
+</ul>
+<p><strong>file stream</strong></p>
+<p>è un I/O stream associato ad un file</p>
+<p><strong>string stream</strong></p>
+<p>di base è come un file stream, ma in ram, quindi il file non esiste e si opera a livello di stringhe (i file sono stringhe in ram)</p>
+<h1 id="gestione-delle-eccezioni">Gestione delle eccezioni</h1>
+<p>l&#39;idea di base è che in un call stack, la funzione attualmente in esecuzione (quella in cima allo stack) può lanciare un messaggio di eccezione, questo messaggio viene passato al livello inferiore del call stack, la funzione che riceve il messaggio può decidere di gestire l&#39;eccezione o di passarla al livello inferiore, se nessuna funzione gestisce l&#39;eccezione e si arriva al bottom del call stack, il programma crasha (termina lanciando il comando di abort())</p>
+<p>in c++ questa gestione è implementata dai comandi</p>
+<ul>
+<li>throw</li>
+<li>try</li>
+<li>catch</li>
+</ul>
+<pre><code class="language-c++">/*
+
+gerarchia exception c++
+
+exception
+    bad_alloc
+    logic_error
+        length_error
+        domain_error
+        out_of_range
+        invalid_argument
+    runtime_error
+        range_error
+        overflow_error
+        underflow_error
+    bad_cast
+*/</code></pre>
+<p><strong>throw <em>espressione</em></strong></p>
+<p>è il comando che una funzione utilizza per lanciare un&#39;eccezione, l&#39;eccezione può essere una variabile o un&#39;espressione</p>
+<p>ogni funzione che non gestisce un&#39;eccezione ne fa il throw nascosto a fine funzione</p>
+<p><strong>try { ... }</strong></p>
+<p>definisce una porzione di codice che può ricevere un&#39;eccezione</p>
+<p><strong>catch(<em>tipo</em>)</strong></p>
+<p>il catch definisce una porzione di codice che gestisce un eccezione di tipo specifico, il catch può rilanciare l&#39;eccezione nel caso voglia fare una gestione dell&#39;errore parziale</p>
+<p>si può creare il catch anche nella funzione che lancia l&#39;eccezione, ma non ha senso</p>
+<p><strong>catch(...)</strong></p>
+<p>è la catch generica, accetta ogni eccezione, viene usata per il rilascio delle risorse</p>
+<p>le catch generiche nelle funzioni che lanciano le eccezioni hanno senso</p>
+<p><strong>match di tipo nel catch</strong></p>
+<p>in un catch(T) su eccezione di tipo E avviene solo se:</p>
+<ul>
+<li>T ha stesso tipo di E</li>
+<li>T è una superclasse di E<ul>
+<li>subtyping di tipo (E &lt; T)<ul>
+<li>implica derivazione pubblica</li>
+</ul>
+</li>
+<li>subtyping di puntatore</li>
+<li>subtyping di riferimento</li>
+</ul>
+</li>
+<li>T è void*, E è un puntatore qualsiasi</li>
+</ul>
+<p><strong>comportemnto del catch</strong></p>
+<p>di solito i catch vengono utilizzati per:</p>
+<ul>
+<li>rilanciare l&#39;eccezione</li>
+<li>convertire l&#39;eccezione e rilanciarla</li>
+<li>ripristinare il funzionamento del programma</li>
+<li>risolvere l&#39;errore e rieseguire la funzione</li>
+<li>invocare std::terminate()</li>
+</ul>
+<p><strong>eccezioni vs if-else</strong></p>
+<p>le eccezioni si usano quando in situazioni asincrone e di race condition, gli if else si usano in ciò che riguarda lo scope del programma</p>
+<h1 id="c-11">C++ 11</h1>
+<p><strong>inferenza di tipo</strong></p>
+<p>keywords:</p>
+<ul>
+<li>auto --&gt; non serve specificare il tipo, il compilatore lo inferisce</li>
+<li>decltype --&gt; deduce il tipo di un&#39;espressione</li>
+<li>default --&gt; esplicita al compilatore di usare la versione standard di una funzione</li>
+<li>delete --&gt; non crea la versione standard</li>
+<li>override --&gt; definisce l&#39;override di un metodo virtuale</li>
+<li>final --&gt; proibisce alle sottoclassi di farne l&#39;override</li>
+<li>nullptr</li>
+</ul>
+<p><strong>esercizi tipo</strong></p>
+<pre><code class="language-c++">/*
+definire un template fi funzione bool fun(t1*, t2&amp;) in modo tale che ritorni true sse:
+- i parametri istanziati devono essere dello stesso tipo
+- i parametri istanzati hanno stesso tipo dinamico
+- il tipo dinamico è un sottotipo della classe ios
+*/
+
+template &lt;class T1, class T2&gt;
+bool fun(T1* p, T2&amp; r)
+{
+    return typeid(p) == typeid(&amp;r) &amp;&amp;
+           typeid(*p) == typeid(r) &amp;&amp;
+           dynamic_cast&lt;ios&gt;(p);
+}</code></pre>
+
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info"><li>
+Linguaggio SQL
+</li>
+<li>
+Basi di Dati
+</li>
+<li>
+14-01-2021
+</li>
+</ul>
+<div class="post">
+<h2 id="sql">SQL</h2>
+<p>SQL è il linguaggio per comandare i sistemi dbms, ha 2 tipi di comandi:</p>
+<ul>
+<li>DML --&gt; esegue operazioni sulle relazioni (basato sull&#39;algebra relazionale)</li>
+<li>DDL --&gt; esegue operazioni sugli schemi</li>
+</ul>
+<h2 id="ddl">DDL</h2>
+<h3 id="creazione">creazione</h3>
+<p><strong>domini elementari</strong></p>
+<p>di base i domini sono i tipi, si chiamano domini perchè specificano un range di valori</p>
+<ul>
+<li>stringhe<ul>
+<li>char(x) --&gt; lunghezza fissa</li>
+<li>varchar(x) --&gt; lunghezza approssimata</li>
+</ul>
+</li>
+<li>numerici<ul>
+<li>integer</li>
+<li>smallint</li>
+<li>float</li>
+</ul>
+</li>
+<li>virgola fissa<ul>
+<li>numeric(x,y) --&gt; x interi, y decimali</li>
+</ul>
+</li>
+<li>data e ora<ul>
+<li>date</li>
+<li>time</li>
+<li>timestamp</li>
+</ul>
+</li>
+<li>logici<ul>
+<li>boolean</li>
+</ul>
+</li>
+</ul>
+<p><strong>creazione di un dominio</strong></p>
+<p>sintassi:</p>
+<pre><code class="language-SQL">CREATE DOMAIN *nomeDomain* AS &lt;dominio&gt; &lt;vincoli&gt;</code></pre>
+<p>esempio:</p>
+<pre><code class="language-SQL">CREATE DOMAIN Voto AS SMALLINT 
+DEFAULT NULL 
+CHECK (value &gt;= 18 AND value &lt;= 30)</code></pre>
+<p><strong>Creazione di una tabella</strong></p>
+<p>sintassi:</p>
+<pre><code class="language-SQL">CREATE TABLE *nomeTabella*
+{
+    &lt;attributo1&gt; &lt;tipo&gt; &lt;vincoli-intra&gt;,
+    &lt;attributo2&gt; &lt;tipo&gt; &lt;vincoli-intra&gt;,
+    .
+    .
+    .
+    &lt;aatributoN&gt; &lt;tipo&gt; &lt;keywords&gt;
+
+    &lt;vincoli-inter&gt;
+}</code></pre>
+<p>esempio:</p>
+<pre><code class="language-SQL">CREATE TABLE Impiegato
+{
+    Matricola   CHAR(6)     PRIMARY KEY,
+    Nome        CHAR(20)    NOT NULL,
+    Cognome     CHAR(20)    NOT NULL,
+    Dipart      CHAR(15)    NOT NULL,
+    Stipendio   NUMERIC(9)  DEFAULT 0,
+
+    Unique(Cognome, Nome)
+    FOREIGN KEY(Dipart) REFERENCES Dipartimento(NomeDip),
+}</code></pre>
+<p><strong>viste</strong></p>
+<p>di base sono delle query</p>
+<pre><code class="language-sql">CREATE VIEW nomeView(attr1.attr2...) AS
+SELECT attr1,attr2,..
+FROM tabella
+WHERE condizione
+
+// opzionale, consente modifiche alla vista a patto che rispetti le condizioni della vista
+WITH CHECK OPTION</code></pre>
+<p>il numero di attributi della view e della query deve essere uguale</p>
+<h3 id="vincoli-intrarelazionali">vincoli intrarelazionali</h3>
+<p>sono vincoli che vanno ad coinvolgere gli attributi di una sola tabella</p>
+<p><strong>default</strong></p>
+<p>specifica il valore di default dell&#39;attributo</p>
+<p>sintassi:</p>
+<ul>
+<li><em>nome</em> <em>tipo</em> DEFAULT <em>valore_default</em></li>
+</ul>
+<p><strong>not null</strong></p>
+<p>i valori di quel attributo non possono essere nulli</p>
+<p>sintassi:</p>
+<ul>
+<li><em>nome</em> <em>tipo</em> NOT NULL</li>
+</ul>
+<p><strong>unique</strong></p>
+<p>i valori di quel attributo devono essere tutti diversi</p>
+<p>sintassi 1:</p>
+<ul>
+<li><em>nome</em> <em>tipo</em> UNIQUE</li>
+</ul>
+<p>sintassi 2:</p>
+<ul>
+<li>UNIQUE(<em>attr1</em>,<em>attr2</em>,...,<em>attrn</em>)</li>
+</ul>
+<p>la prima sintassi lega il unique ad un solo attributo la seconda è diversa, impone che non esistano tuple uguali formate dagli attributi specificati</p>
+<p><strong>primary key</strong></p>
+<p>l&#39;attributo è la chiave della tabella</p>
+<p>sintassi:</p>
+<ul>
+<li><em>nome</em> <em>tipo</em> primary key</li>
+</ul>
+<p>oppure:</p>
+<ul>
+<li>primary key(<em>attr1</em>)</li>
+</ul>
+<p><strong>check</strong></p>
+<p>vincolo generico condizionale</p>
+<h3 id="vincoli-interrelazionali">vincoli interrelazionali</h3>
+<p>sono vincoli che coinvolgono più tabelle</p>
+<p><strong>foreing key</strong></p>
+<p>l&#39;attributo è la chiave esterna</p>
+<p>sintassi 1:</p>
+<ul>
+<li><em>nome</em> <em>tipo</em> REFERENCES <em>Tabella_esterna(chiave_primaria)</em></li>
+</ul>
+<p>sintassi 2:</p>
+<ul>
+<li>FOREIGN KEY (<em>attr1</em>,<em>attr2</em>,...,<em>attrn</em>) REFERENCES <em>Tabella_esterna(<em>attr1</em>,<em>attr2</em>,...,<em>attrn</em>)</em></li>
+</ul>
+<p>prima sintassi lega i valori degli attributi specificati</p>
+<p>la seconda lega le tuple degli attributi specificati</p>
+<h3 id="politiche-di-reazione">politiche di reazione</h3>
+<p>determina come si deve comportare il database quando si esegue una delete o un update, servono a mantenere coerenza tra chiavi e chiavi esterne</p>
+<p>sintassi:</p>
+<ul>
+<li>on <em>delete/update</em> <em>azione</em></li>
+</ul>
+<p><strong>politiche di delete</strong></p>
+<p>le azioni che il dbms può prendere sono:</p>
+<ul>
+<li>cascade --&gt; elimina anche tutte le chiavi esterne ricorsivamente</li>
+<li>set null --&gt; imposta a null l&#39;attributo referente alla tupla cancellata </li>
+<li>set default --&gt; imposta il valore di default all&#39;attributo referente alla tupla cancellata </li>
+<li>no action (default) --&gt; non si può cancellare una tupla referenziata</li>
+</ul>
+<h3 id="controllo-dellaccesso">controllo dell&#39;accesso</h3>
+<p>si possono assegnare i seguenti privilegi a gli utenti database:</p>
+<ul>
+<li>insert</li>
+<li>update</li>
+<li>delete</li>
+<li>select</li>
+<li>references --&gt; definizione di vincoli di integrità referenziale</li>
+<li>usage --&gt; utilizzo di una risorsa</li>
+</ul>
+<pre><code class="language-sql">GRANT SELECT ON tabella TO PUBLIC 
+GRANT ALL PRIVILEGES ON tabella TO Manuel
+GRANT INSERT PRIVILEGES ON tabella TO Tom</code></pre>
+<h2 id="dml">DML</h2>
+<p><strong>select ... from ...</strong></p>
+<p>proietta gli attributi di una relazione</p>
+<p>di default NON rimuove multipli</p>
+<ul>
+<li>l&#39;asterisco proietta tutta la tabella</li>
+<li>&#39;AS&#39; rinomina un attributo/relazione</li>
+<li>distinct rimuove multipli risultanti </li>
+</ul>
+<p><strong>where</strong></p>
+<p>applica una condiziona alle tuple</p>
+<p>pattern matching:</p>
+<ul>
+<li>&#39;-&#39; --&gt; qualsiasi carattere</li>
+<li>% --&gt; qualsiasi sequenza di caratteri anche vuota</li>
+</ul>
+<p>gestione dei null</p>
+<ul>
+<li>qualsiasi confrono con null è sempre false</li>
+<li>is null --&gt; true se è null</li>
+</ul>
+<p><strong>order</strong></p>
+<p>ordina una tabella in seocondo un certo attributo</p>
+<p><strong>aggregati</strong></p>
+<p>operatori:</p>
+<ul>
+<li>count(...) --&gt; numero di tuple risultanti</li>
+<li>sum(...)</li>
+<li>avg(...)</li>
+<li>max(...)</li>
+<li>min(...)</li>
+</ul>
+<p>questi operatori agiscono sulle relazioni, se si passa una colonna ne fanno prima la proiezione e poi calcolano il risultato, quindi tutti gli operatori aggregati ignorano il NULL</p>
+<p><strong>group by</strong></p>
+<p>è un operatore di raggruppamento, di base prende una colonna, raggruppa e raggruppa i valori uguali, gli operatori aggregati vengono eseguiti su ogni raggruppamento in modo distinto</p>
+<p><strong>having</strong></p>
+<p>è letteralmente l&#39;operatore where, ma applicato sui raggruppamenti di group by</p>
+<p><strong>union</strong></p>
+<p>unisce due tabelle che con colonne dello stesso tipo, se si usa union all si uniscono anche tuple uguali</p>
+<p><strong>except</strong></p>
+<p>fa la differenza tra 2 tabelle</p>
+<p><strong>intersect</strong></p>
+<p>fa l&#39;intersezione, equivale ad un join</p>
+<p><strong>query annidate</strong></p>
+<p>si possono fare query annidate negli argomenti di operatori che accettano relazioni (praticamente ovunque)</p>
+<p><strong>exists</strong></p>
+<p>restituisce true se una sottoquery non è vuota</p>
+<p><strong>coalesce</strong></p>
+<p>restituisce il primo valore non nullo nei suoi parametri</p>
+<ul>
+<li>coalesce(attr1, 0) --&gt; sostituisce null con 0</li>
+</ul>
+<p><strong>nullif</strong></p>
+<p>restituisce null se il suo parametro ètrue</p>
+
+        </div>
+    </div>
+</body>
+
+</html>

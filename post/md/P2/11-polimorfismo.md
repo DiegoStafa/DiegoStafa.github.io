@@ -149,7 +149,10 @@ il typeid funziona sotto le seguenti regole:
 
 data una superclasse polimorfa e una sottoclasse, la conversione di un puntatore della superclasse ad uno della sottoclasse è detto downcast ed è effetuato dal dynamic_cast
 
-il dynamic_cast ritorna nullptr se i 2 tipi non sono compatibili (cioè se il tipo dinamico è sottoclasse del tipo statico)
+significato:
+* dynamic_cast<A*>(&B) ? true : false;
+    * true --> B è una sottoclasse di A
+    * false --> B NON è una sottoclasse di A
 
 **upcasting**
 

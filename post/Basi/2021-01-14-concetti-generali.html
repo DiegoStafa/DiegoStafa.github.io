@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info"><li>
+Concetti generali
+</li>
+<li>
+Basi di Dati
+</li>
+<li>
+14-01-2021
+</li>
+</ul>
+<div class="post">
+<h1 id="basi-di-dati">Basi di dati</h1>
+<h2 id="definizioni">definizioni</h2>
+<p><strong>dati</strong></p>
+<p>i dati sono misure di qualcosa</p>
+<p><strong>informazioni</strong></p>
+<p>le informazioni sono ciò che si deduce dai dati</p>
+<p><strong>basi di dati</strong></p>
+<p>concetto astratto, significato analogo ai linguaggi di programmazione:</p>
+<ul>
+<li>base di dati --&gt; linguaggio c++ --&gt; definisce cosa fa</li>
+<li>dbms --&gt; c++ compiler --&gt; implementazione</li>
+</ul>
+<p><strong>DBMS</strong></p>
+<p>sistemi software che gestiscono basi di dati</p>
+<p>problemi:</p>
+<ul>
+<li>ridondanza</li>
+<li>incoerenza</li>
+<li>privacy</li>
+</ul>
+<p>problemi di accesso:</p>
+<ul>
+<li>autorizzazione</li>
+<li>concorrenza</li>
+</ul>
+<p><strong>SQL</strong></p>
+<p>linguaggio di comunicazione con le basi di dati relazionali</p>
+<p><strong>DML</strong></p>
+<p>linguaggio per modificare i contenuti delle tabelle</p>
+<p><strong>DDL</strong></p>
+<p>linguaggio per la definizione delle tabelle (schema)</p>
+<p><strong>transazione</strong></p>
+<p>insieme di operazioni che o vengono fatte tutte assieme o non vengono fatte</p>
+<p><strong>commit</strong></p>
+<p>tutte le operazioni di una transazione sono state eseguite con successo</p>
+<p><strong>transazioni concorrenti</strong></p>
+<p>n transazioni parallele vengono eseguite sequenzialmente</p>
+<p><strong>DBMS</strong></p>
+<p>estensione di un file system, aggiunge:</p>
+<ul>
+<li>privatezza</li>
+<li>affidabilita</li>
+<li>efficenza</li>
+<li>efficacia</li>
+</ul>
+<p>architteture del DBMS</p>
+<ol>
+<li>utente</li>
+<li>schema esterno (vista/view)</li>
+<li>schema logico (argomento del corso)</li>
+<li>schema interno</li>
+<li>base di dati</li>
+</ol>
+<p>vantaggi:</p>
+<ul>
+<li>i dati sono una risorsa comune</li>
+<li>gestione centralizzata</li>
+<li>riduzione ridondanze</li>
+<li>indipendenza dai dati</li>
+</ul>
+<p>svantaggi:</p>
+<ul>
+<li>necessitano tanti utenti altrimenti sono overkill</li>
+</ul>
+<p><strong>schema</strong></p>
+<p>è l&#39;aspetto intensionale</p>
+<p>è la parte immutabile/statica della base di dati, definisce:</p>
+<ul>
+<li>nome della colonna</li>
+<li>dominio del tipo della colonna</li>
+</ul>
+<p><strong>istanza</strong></p>
+<p>aka tupla</p>
+<p>è l&#39;aspetto estensionale</p>
+<p>è la parte mutabile/dinamica della base di dati, rappresenta:</p>
+<ul>
+<li>le righe di una tabella</li>
+<li>i loro valori</li>
+</ul>
+<hr>
+<p><strong>schema concettuale</strong></p>
+<p>detto anche schem/modello ER</p>
+<p>rappresenta in modo astratto l&#39;organizzazione dei dati, definisce:</p>
+<ul>
+<li>entità</li>
+<li>relazioni tra entità</li>
+</ul>
+<p>uno schema concettuale può essere trasformato in un qualsiasi schema logico</p>
+<p><strong>schema logico</strong></p>
+<p>implementa lo schema concettuale secondo un modello logico:</p>
+<ul>
+<li>relazionale --&gt; di base sono le tabelle etc..</li>
+<li>reticolare</li>
+<li>xml</li>
+<li>oggetti</li>
+<li>gerarchico</li>
+</ul>
+<p>uno schema logico può essere trasformato in un qualsiasi schema interno</p>
+<p><strong>schema interno</strong></p>
+<p>implementa lo schema logico e si occupa di gestire l&#39;organizzazione e manipolazione interna dei dati</p>
+<p><strong>Architettura standard ANSI/SPARC</strong></p>
+<ol>
+<li>schemi esterni (view)</li>
+<li>schema logico &lt;-- schema concettuale</li>
+<li>schema interno </li>
+<li>DB</li>
+</ol>
+
+        </div>
+    </div>
+</body>
+
+</html>

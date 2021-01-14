@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info"><li>
+Modello relazionale
+</li>
+<li>
+Basi di Dati
+</li>
+<li>
+14-01-2021
+</li>
+</ul>
+<div class="post">
+<h2 id="modello-relazionale">Modello relazionale</h2>
+<p>il modello relazionale si basa sul modello di relazione matematica</p>
+<p><strong>relazione</strong></p>
+<p>def1nizione di relazione (tabella):</p>
+<ul>
+<li>R(A<sub>1</sub>,...A<sub>n</sub>)</li>
+</ul>
+<p>dove:</p>
+<ul>
+<li>R --&gt; tabella</li>
+<li>A --&gt; colonna </li>
+</ul>
+<p>proprietà:</p>
+<ul>
+<li>ordinamento delle tuple non rilevante</li>
+<li>ordinamento degli attributi non rilevante</li>
+<li>ogni tupla è diversa</li>
+<li>ogni attributo è diverso</li>
+<li>i valori di ogni attributi sono definiti su domini specifici</li>
+<li>il riferimento tra diverse relazione è per valore<ul>
+<li>i riferimenti sono rappresentati tramite dei valori che appaiono in entrambe le relazioni</li>
+</ul>
+</li>
+</ul>
+<p><strong>base di dati</strong></p>
+<p>definizione di schema di base di dati:</p>
+<ul>
+<li>S = {R<sub>1</sub>(X<sub>1</sub>),...R<sub>n</sub>(X<sub>k</sub>)}</li>
+</ul>
+<p>dove:</p>
+<ul>
+<li>S --&gt; schema del database</li>
+<li>R --&gt; tabella</li>
+<li>X --&gt; colonne della tabella</li>
+</ul>
+<p>di base lo schema del database è un insieme di tabelle con le relative colonne e dominii delle colonne</p>
+<p><strong>tuple</strong></p>
+<p>le tuple sono le righe di una tabella, sono delle funzioni che per dominio hanno gli attributi della tabella (colonne) e per codominio hanno il dominio degli attributi</p>
+<p><strong>istanza di una relazione</strong></p>
+<p>è l&#39;insieme delle tuple di una relazione</p>
+<p><strong>istanza di una base di dati</strong></p>
+<p>è l&#39;insieme di tutte le istanze di relazioni della base di dati</p>
+<h2 id="vincoli">Vincoli</h2>
+<p><strong>informazione incompleta</strong></p>
+<p>quando un valore è assente in una tabella il dbms insierisce NULL, che è un valore speciale</p>
+<p><strong>vincolo di integrità</strong></p>
+<p>è una funzione booleana sull&#39;istanza della base di dati</p>
+<p>di base un vincolo è una condizione imposta su una relazione</p>
+<p>i vincoli di intergrita possono essere:</p>
+<ul>
+<li>supportati<ul>
+<li>il dbms si occupa di far rispettare i vincoli e rigetta tuple che non li rispettano</li>
+</ul>
+</li>
+<li>non supportati<ul>
+<li>il programmatore si occupa lato server che i valori inseriti siano conformi</li>
+</ul>
+</li>
+</ul>
+<p>tipi di vincoli:</p>
+<ul>
+<li>vincoli intrarelazionali<ul>
+<li>vincolo di tupla<ul>
+<li>vincoli di dominio</li>
+</ul>
+</li>
+<li>vincolo di chiave</li>
+</ul>
+</li>
+<li>vincoli interrelazionali<ul>
+<li>vincolo integrità referenziale</li>
+</ul>
+</li>
+</ul>
+<p><strong>vincoli intrarelazionali</strong></p>
+<p>Fanno parte dei vincoli intrarelazionali tutti quei vincoli il cui soddisfacimento è definito per singole relazioni, ovvero tutte le istanze di una relazione devono soddisfare tutti i vincoli che sono definiti sulla relazione stessa (wikipedia)</p>
+<p><strong>vincoli di tupla</strong></p>
+<p>esprime una condizione sui valori di ogni tupla, coinvolge più attributi, ad esempio:</p>
+<ul>
+<li>il valore nell&#39;attributo lordo deve essere uguale alla somma del valore dell&#39;attributo netto più il valore dell&#39;attributo delle ritenute</li>
+</ul>
+<p><strong>vincoli di dominio</strong></p>
+<p>è un caso particolare di vincolo di tupla, agisce solo sui valori di un attributo</p>
+<p><strong>vincoli di chiave</strong></p>
+<p>il vincolo di chiave su un attributo impone che non ci siano 2 tuple con lo stesso attributo in quell&#39;attributo</p>
+<p><strong>vincolo di integrità referenziale</strong></p>
+<p>di base è la chiave esterna, cioè la chiave esterna di una relazione deve avere i valori di una chiave primaria di un&#39;altra relazione</p>
+<h2 id="chiavi">Chiavi</h2>
+<p><strong>superchiave</strong></p>
+<p>è un qualsiasi gruppo di attributi che identifica univocamente una tupla</p>
+<p>definizione formale:</p>
+<ul>
+<li>K = (k1,k2,...,kn)</li>
+<li>se t1 != t2 allora esiste t1[k] != t2[k] con k appartenente a {k1,k2,..kn}</li>
+</ul>
+<p>dove:</p>
+<ul>
+<li>K --&gt; superchiave</li>
+<li>k --&gt; attributo</li>
+<li>t --&gt; tupla</li>
+</ul>
+<p>di base vuol dire che se 2 tuple son diverse allora esiste un attributo della superchiave che ha diversi valori nelle 2 tuple</p>
+<p><strong>chiave</strong></p>
+<p>è una superchiave che non contiene attributi superflui</p>
+<p>è la più piccola superchiave (quella che utilizza meno attributi)</p>
+<p><strong>chiave primaria</strong></p>
+<p>è una chiave che non ammette valori nulli</p>
+<p><strong>chiave esterna</strong></p>
+<p>sono attributi collegati a chiavi primarie di un&#39;altra tabella (integrità referenziale)</p>
+<p>problemi:</p>
+<ul>
+<li>eliminazione di una tupla referenziata da una chiave esterna</li>
+</ul>
+<p>soluzioni:</p>
+<ul>
+<li>rifiuto dell&#39;eliminazione</li>
+<li>eliminazione in cascata dei dangling reference</li>
+<li>valori nulli</li>
+</ul>
+<p><strong>viste virtuali</strong></p>
+<p>di base una vista è una tabella ritornata da una query</p>
+<p>esempio:</p>
+<ul>
+<li>Afferenza(impiegato, reparto)</li>
+<li>Direzione(reparto, capo)</li>
+</ul>
+<p>la vista &quot;Supervisione&quot; è:</p>
+<p>select impiegato,capo
+from (Afferenza join Direzione) as Supervisione</p>
+<p>motivazioni:</p>
+<ul>
+<li>servono schemi esterni per utenti diversi</li>
+<li>consente un sistema di autorizzazioni</li>
+<li>semplifica le query</li>
+</ul>
+<p>quando si modifica una vista non sempre si può aggiornare la base di dati correttamente, è garantito solo se la vista è data da un join completo</p>
+<p><strong>viste materiallizzate</strong></p>
+<p>di base una vista materializzata è una vista che viene salvata su disco</p>
+<p>vantaggi:</p>
+<ul>
+<li>disponibilità immediate per future query</li>
+</ul>
+<p>svantaggi:</p>
+<ul>
+<li>ridondanza</li>
+<li>consistenza dei dati</li>
+<li>raramente supportate dai dbms</li>
+</ul>
+
+        </div>
+    </div>
+</body>
+
+</html>

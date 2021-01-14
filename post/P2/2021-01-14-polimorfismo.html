@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info"><li>
+Polimorfismo
+</li>
+<li>
+Programmazione 2
+</li>
+<li>
+14-01-2021
+</li>
+</ul>
+<div class="post">
+<h2 id="polimorfismo">polimorfismo</h2>
+<p>si tratta del subtyping di puntatori e riferimenti, ma non di tipo</p>
+<p>di base consiste in una superclasse che utilizza il suo tipo statico per interpretare un tipo derivato</p>
+<pre><code class="language-c++">super base;
+sotto deriv;
+
+super* base_ptr = &amp;deriv;
+sotto* deriv_ptr = &amp;base;
+
+// polimorfismo
+base_ptr = deriv_ptr;
+// base_ptr ha tipo statico super* e tipo dinamico sotto*</code></pre>
+<p><strong>tipo statico</strong></p>
+<p>è il tipo di dichiarazione di un oggetto, quello definito nel sorgente</p>
+<p><strong>tipo dinamico</strong></p>
+<p>è il tipo di un oggetto in runtime</p>
+<p><strong>static binding</strong></p>
+<p>è il normale collegamento che il compilatore crea tra l&#39;oggetto e metodo di una classe</p>
+<p>in un contesto polimorfico dove si invoca un metodo definito sia nella superclasse che nella sottoclasse, viene comunque invocato quello della superclasse, in quanto il compilatore non conosce il tipo a runtime, quindi collega l&#39;oggetto di tipo dinamico della sottoclasse con il metodo del tipo statico</p>
+<p><strong>dynamic binding</strong></p>
+<p>detto anche late binding, è il collegamento creato a runtime tra un puntatore polimorfo e il metodo di una sottoclasse</p>
+<p>linkare a runtime il metodo giusto crea un overhead intorno al ~10%, questo è causato dal doppio livello di indirettezza della virtual table</p>
+<p><strong>virtual</strong></p>
+<p>un metodo marcato come virtual permette alle sottoclassi di farne l&#39;overriding, ciò permette di fare il binding dinamico</p>
+<p>di base il comportamento del compilatore è:</p>
+<ul>
+<li>cerca sempre il metodo nella classe del tipo statico</li>
+<li>se c&#39;è e non è marcato virtual fa il binding statico</li>
+<li>se c&#39;è ed è marcato virtual fa il binding con il prototipo della metodo virtuale ed a runtime verrà deciso il giusto metodo</li>
+<li>se non c&#39;è da errore di compilazione</li>
+</ul>
+<p>nb: la parte fondamentale è capire che il compilatore cerca sempre nel tipo statico e se trova virtual decide cosa fare in base al tipo dinamico</p>
+<p>quando si utilizza l&#39;operatore di scoping il binding è sempre statico</p>
+<p>per decidere se usare o meno il virtual bisogna considerare se si utilizzerà o meno la superclasse in un contesto polimorfico</p>
+<p><strong>overriding</strong></p>
+<p>consiste nel ridefinire un metodo virtuale, che soddisfa le seguenti regole:</p>
+<ul>
+<li>firma identica</li>
+<li>tipo di ritorno uguale o covarinate<ul>
+<li>covariante significa che se il tipo di ritorno è un puntatore ad una superclasse, si può sostituire con un puntatore ad una sottoclasse</li>
+</ul>
+</li>
+<li>se il metodo virtuale ha valori di default, questi valori non vanno messo nell&#39;override</li>
+</ul>
+<p>l&#39;override si fa nel seguente modo:</p>
+<pre><code class="language-c++">class A{
+    public:
+        virtual void f() {...}
+}
+
+class B : public A{
+    public:
+        virtual void f() {...}
+}</code></pre>
+<p><strong>virtual method table</strong></p>
+<p>la virtual table è il meccanismo di implementazione del dynamic binding</p>
+<p>quando una classe dichiara un metodo virtuale il compilatore aggiunge nella classe un puntatore nascosto (virtual pointer), questo puntatore punta ad un array di puntatori a indirizzi di funzione (function pointer), che contengnono tutti gli indirizzi di metodi virtuali della classe, che a loro volta puntano al loro codice</p>
+<p>quindi, in una normale superclasse:</p>
+<ul>
+<li>virtual pointer --&gt; virtual table --&gt; codice metodi</li>
+</ul>
+<p>una sottoclasse possiede il proprio virtual pointer ela propria virtual table, al momento della derivazoine però la virtual table della sottoclasse viene riempita con la virtual table della superclasse e per la sottoclasse fare l&#39;override significa far puntare il metodo della sua virtual table ad un&#39;altra sezione di codice</p>
+<p>quindi, nella sottoclasse:</p>
+<ul>
+<li>virtual pointer --&gt; virtual table (almeno grande quanto quella della super classe) --&gt; codice metodi (diversi su quelli con override)</li>
+</ul>
+<p>ogni sottoclasse di una superclasse polimorfa (con metodi virtuali) è polimorfa</p>
+<p><strong>distruttore virtuale</strong></p>
+<p>siccome il binding statico viene fatto anche per i distruttori, quando una un puntatore polimorfo va a distruggere ciò a cui punta, viene distrutto solo il sottoggetto</p>
+<p>per risolvere ciò la superclasse marca il distruttore come virtual, la sottoclasse fa l&#39;override e cos&#39; il puntatore polimorfo utilizza il giusto distruttore</p>
+<p><strong>classe polimorfa</strong></p>
+<p>è una classe che include almeno un metodo virtuale</p>
+<p><strong>classe astratta</strong></p>
+<p>è una classe che contiene almeno un metodo virtuale puro e non è instanziabile</p>
+<p>i campi dati possono tranquillamente esserci</p>
+<p>se si vuole creare una classe astratta senza metodi puri a caso basta segnare il distruttore come distruttore puro</p>
+<p><strong>metodo virtuale puro</strong></p>
+<p>è un metodo virtuale che non ha implementazione</p>
+<p>viene così specificato:</p>
+<pre><code class="language-c++">class A{
+    public:
+        virtual void f() = 0;
+}</code></pre>
+<p>i metodi virtuali puri sono dei contratti, le sottoclassi se vogliono essere istanziabili lo devono implementare, altrimenti rimangono astratte</p>
+<p><strong>classe astratta pura</strong></p>
+<p>è una classe che contiene solo metodi virtuali puri</p>
+<p><strong>interfaccia</strong></p>
+<p>sinonimo di classe astratta pura</p>
+<p><strong>classe concreta</strong></p>
+<p>è una classe che può essere istanziata</p>
+<p><strong>rtti (RunTime Type Information)</strong></p>
+<p>è un meccanismo che consente di ottenere informazioni sul tipo di un oggetto a runtime, i meccanismi sono 2:</p>
+<ul>
+<li>typeid --&gt; determina il tipo di un oggetto a runtime</li>
+<li>dynamic_cast</li>
+</ul>
+<p><strong>typeid</strong></p>
+<p>il typeid funziona sotto le seguenti regole:</p>
+<ul>
+<li>se l&#39;espressione è un riferimento ad una classe polimorfa, ritorna il tipo dinamico</li>
+<li>se l&#39;espressione è un puntatore polimorfo dereferenziato, ritorna </li>
+</ul>
+<p><strong>dynamic cast</strong></p>
+<p>data una superclasse polimorfa e una sottoclasse, la conversione di un puntatore della superclasse ad uno della sottoclasse è detto downcast ed è effetuato dal dynamic_cast</p>
+<p>significato:</p>
+<ul>
+<li>dynamic_cast&lt;A*&gt;(&amp;B) ? true : false;<ul>
+<li>true --&gt; B è una sottoclasse di A</li>
+<li>false --&gt; B NON è una sottoclasse di A</li>
+</ul>
+</li>
+</ul>
+<p><strong>upcasting</strong></p>
+<p>è una conversione da puntatore sottoclasse a puntatore superclasse</p>
+<p><strong>downcast</strong></p>
+<p>è una conversione da puntatore superclasse a punattore sottoclasse, viene fatta con il static_cast</p>
+<p><strong>solid</strong></p>
+<ul>
+<li>le classe devono occuparsi di una cosa sola</li>
+<li>chiuso per modifiche, aperto per esensioni</li>
+<li>sostituire una superclasse con una sottoclasse non deve dare errori</li>
+<li>meglio pià interfacce singole che una complessa</li>
+<li>le astrazioni non devono dipendere dai dettagli</li>
+</ul>
+<p><strong>clonable pattern</strong></p>
+<p>è un design pattern dell&#39;OOP, ogni superclasse definisce il metodo virtuale puro:</p>
+<ul>
+<li>virtual superclasse* clone() const = 0;</li>
+</ul>
+<p>le sottoclassi andranno ad implementare questo metodo cambiandone il tipo di ritorno con la coercion</p>
+<p><strong>esercizio</strong></p>
+<pre><code class="language-c++">#include &lt;string&gt;
+#include &lt;typeinfo&gt; // per typeid
+
+class fileaudio
+{
+    private:
+        std::string titolo;
+        double size;
+    public:
+        virtual fileaudio* clone() const = 0;
+        virtual bool qualita() const = 0;
+        virtual ~fileaudio() {};
+        double Size()
+        {
+            return size;
+        }
+        virtual bool operator==(const fileaudio&amp; f)
+        {
+            // uno dei pochi casi dove si deve usare typeid()
+            return  typeid(*this) == typeid(f) &amp;&amp; titolo == f.titolo &amp;&amp; size == f.size;
+        }
+};
+
+class mp3 : public fileaudio
+{
+    private:
+        unsigned int bitrate;
+    public:
+        static unsigned int sogliaqualita;
+
+        bool qualita() const
+        {
+            return bitrate &gt;= sogliaqualita;
+        }
+
+        mp3* clone() const override
+        {
+            // l&#39;implementazione è sempre questa
+            return new wav(*this);
+        }
+
+        unsigned int Bitrate()
+        {
+            return bitrate;
+        }
+
+        bool operator==(const fileaudio&amp; f) override
+        {
+            return fileaudio::operator==(f) &amp;&amp; bitrate == static_cast&lt;const mp3&amp;&gt;(f).Bitarte();
+        }
+
+};
+
+class wav : public fileaudio
+{
+    private:
+        unsigned int frequenza;
+        bool lossless;
+    public:
+        static unsigned int sogliaqualita;
+        bool qualita() const
+        {
+            return frequenza &gt;= sogliaqualita;
+        }
+        wav* clone() const override
+        {
+            // l&#39;implementazione è sempre questa
+            return new mp3(*this);
+        }
+
+        bool Losseless()
+        {
+            return lossless;
+        }
+
+        bool operator==(const fileaudio&amp; f) override
+        {
+            return fileaudio::operator==(f) &amp;&amp; frequenza == static_cast&lt;const mp3&amp;&gt;(f).Bitarate &amp;&amp; lossless == static_cast&lt;const mp3&amp;&gt;(f).Lossless();
+        }
+};
+
+class izod
+{
+    private:
+        class brano // wrapper
+        {
+            public:
+                fileaudio* ptr;
+
+                brano(fileaudio* p) : ptr(p-&gt;clone()) {}
+                br
+                brano(const brano&amp; b) : ptr(b.ptr-&gt;clone()) {}
+
+                brano&amp; operator=(const brano&amp; b)
+                {
+                    if(this != &amp;b)
+                    {
+                        delete ptr;
+                        ptr = b.ptr-&gt;clone();
+                    }
+                    return *this;
+                }
+
+                ~brano() 
+                {
+                    delete ptr;
+                }
+        };
+        std::vector&lt;brano&gt; brani;
+
+        public:
+            std::vector&lt;mp3&gt; mp3(double dim, int br) const
+            {
+                std::vector&lt;mp3&gt; v;
+                for(auto cit = brani.begin(); cit != brani.end(); ++cit)
+                {
+                    mp3* p = dynamic_cast&lt;mp3*&gt;(cit-&gt;ptr);
+                    if(p &amp;&amp; p-&gt;Size() &gt;= dim &amp;&amp; p-&gt;Bitarate() &gt; br)
+                        v.push_back(*p);
+                }
+                return p;
+            }
+
+            std::vector&lt;fileaudio*&gt; braniqualita() const
+            {
+                syd::vector&lt;fileaudio*&gt; v;
+                for(auto cit = brani.begin(); cit != brani.end(); ++cit)
+                {
+                    if(((cit-&gt;ptr)-&gt;qualita()) &amp;&amp; (fynamic_cast&lt;wav*&gt;(cit-&gt;ptr) == nulptr || static_cast(&lt;wav*&gt;(cit-&gt;ptr)-&gt;Losseless()))
+                            v.push_back(cit-&gt;ptr);
+                }
+                return v;
+            }
+
+            void insert(mp3* p)
+            {
+                bool found;
+                for(auto it = brani.begin(); !found &amp;&amp; it != brani.end(); ++it)
+                     if(*(it-&gt;ptr) == *p)
+                        found = true;
+                if(!found)
+                    brani.push_back(p);
+            }
+};</code></pre>
+
+        </div>
+    </div>
+</body>
+
+</html>
