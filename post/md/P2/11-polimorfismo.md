@@ -28,13 +28,11 @@ base_ptr = deriv_ptr;
 
 è il normale collegamento che il compilatore crea tra l'oggetto e metodo di una classe
 
-in un contesto polimorfico dove si invoca un metodo definito sia nella superclasse che nella sottoclasse, viene comunque invocato quello della superclasse, in quanto il compilatore non conosce il tipo a runtime, quindi collega l'oggetto di tipo dinamico della sottoclasse con il metodo del tipo statico
+in un contesto polimorfico, lo static 
 
 **dynamic binding**
 
 detto anche late binding, è il collegamento creato a runtime tra un puntatore polimorfo e il metodo di una sottoclasse
-
-linkare a runtime il metodo giusto crea un overhead intorno al ~10%, questo è causato dal doppio livello di indirettezza della virtual table
 
 **virtual**
 
@@ -135,24 +133,37 @@ sinonimo di classe astratta pura
 
 **rtti (RunTime Type Information)**
 
-è un meccanismo che consente di ottenere informazioni sul tipo di un oggetto a runtime, i meccanismi sono 2:
-* typeid --> determina il tipo di un oggetto a runtime
+l'rtti consente di avere informazioni sul tipo dinamico, in c++ è implementato tramite:
+* typeid
 * dynamic_cast
 
 **typeid**
 
-il typeid funziona sotto le seguenti regole:
-* se l'espressione è un riferimento ad una classe polimorfa, ritorna il tipo dinamico
-* se l'espressione è un puntatore polimorfo dereferenziato, ritorna 
+di base ritorna il tipo dinamico di un puntatore **dereferenziato ** polimorfo o riferimento polimorfo
+
+funzionamento:
+* typeid(tipo) --> ritorna il tipo del tipo
+* typeid(espressione) --> ritorna il tipo dell'espressione
+* typeid(*ptr_NON_polimorfo) --> ritorna il tipo statico
+* typeid(ref_NON_polimorfo) --> ritorna il tipo statico
+* typeid(*ptr_polimorfo) --> ritorna il tipo dinamico
+* typeid(ref_polimorfo) --> ritorna il tipo dinamico
 
 **dynamic cast**
 
-data una superclasse polimorfa e una sottoclasse, la conversione di un puntatore della superclasse ad uno della sottoclasse è detto downcast ed è effetuato dal dynamic_cast
+di base ritorna il puntatore/riferimento al sottoggetto di un puntatore polimorfo
 
-significato:
-* dynamic_cast<A*>(&B) ? true : false;
-    * true --> B è una sottoclasse di A
-    * false --> B NON è una sottoclasse di A
+funzionamento puntatori:
+* dynamic_cast<A*>(ptr)
+    * ritorna il puntatore A* di ptr se il tipo dinamico di ptr è sottotipo di A
+    * ritorna nullptr altrimenti
+
+funzionamento riferimenti:
+* dynamic_cast<A&>(ref)
+    * ritorna il riferimento A& di ref se il tipo dinamico di ref è un sottotipo di A
+    * lancia una eccezione bad_cast altrimenti
+
+DI BASE PORCODIO SIGNIFICA CHE IL DYNAMIC CAST FUNZIONA SE E SOLO SE IL TIPO SPECIFICATO È UNA SUPERCLASSE DEL TIPO DINAMICO 
 
 **upcasting**
 
@@ -160,7 +171,7 @@ significato:
 
 **downcast**
 
-è una conversione da puntatore superclasse a punattore sottoclasse, viene fatta con il static_cast
+è una conversione da puntatore superclasse a puntatore sottoclasse
 
 **solid**
 

@@ -111,15 +111,21 @@ in assenza di un costruttore di default definito dall'utente, quello standard de
 1. viene invocato il costruttore di default del sottoggetto
 2. vengono costruiti i campi dati con il loro costruttori di default
 
+costruttore di default standard:
+* Classe() : superclasse(), d1(), d2(), ... {}
+
 **costruttore di copia**
 
-la costruzione di copia ridefinita costruisce di **default** i membri della classe, se la lista di inizializzazione è vuota
+la costruzione di copia ridefinita costruisce di **default** i membri della classe non costruiti esplicitamente
 
 **costruttore di copia standard**
 
 la costruzione di copia standard funziona nel seguente modo:
 1. il sottogetto dell'oggetto di invocazione viene creato di copia con il parametro del costruttore di copia
 2. i membri dati dell'oggetto di invocazione vengon creati di copia con i membri dati del parametro del costruttore di copia
+
+costruttore di copia ridefinito:
+* Classe(const Classe& c) : superclasse(c), d1(c.d1), d2(c.d2), ... {}
 
 **assegnazione standard**
 
@@ -353,3 +359,24 @@ class C : virtual public A;
 class D : public B. public C; // prevale la derivazione più aperta
 
 ```
+
+**costruttore di default**
+
+il costruttore di default si deve occupare di costruire nel seguente ordine:
+* basi virtuali nel corretto ordine
+* le basi dirette
+* i campi della classe
+
+costruttore di default standard:
+* Classe() : base_virtuale(), base_diretta(), ... , f1(), f2() ... {}
+
+**costruttore di copia**
+
+il costruttore di copia segue le stesse regole della costruzione di default, ma utilizza il parametro per costruire di copia
+
+costruttore di copia ridefinito:
+* Classe(const Classe& c) : base_virtuale(c), f1(c.f1) ... {}
+    * i campi e sottoggetti non inizializzati vengono rimpiazzati da chiamate ai rispettivi costruttori di DEFAULT
+
+costruttore di copia standard:
+* Classe(const Classe& c) : base_virtuale(c), base_diretta(c), f1(c.f1), f2(c.f2) ... {}

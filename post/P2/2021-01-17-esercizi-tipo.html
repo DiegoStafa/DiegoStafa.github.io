@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info"><li>
+Esercizi tipo
+</li>
+<li>
+Programmazione 2
+</li>
+<li>
+17-01-2021
+</li>
+</ul>
+<div class="post">
+<h1 id="esercizi-esame">Esercizi esame</h1>
+<pre><code class="language-c++">
+//// funzione che identifica input output e IO
+
+int f(ios&amp; ref)
+{
+    istream i* = dynamic_cast&lt;istream*&gt;(&amp;ref)
+    ostream o* = dynamic_cast&lt;ostream*&gt;(&amp;ref)
+
+    if(i &amp;&amp; o) return 0;
+    if(i) return -1;
+    if(o) return 1;
+    return 9;
+}
+
+//// il programma deve causare un eccezione
+
+class A 
+{
+    public:
+    virtual ~A() {};
+};
+
+class B : public A
+{}
+
+class C : public A
+{}
+
+int main()
+{
+    A* pa = new A;
+    B* pb = new B;
+    C* pc = new C;
+
+    *(dynamic_cast&lt;B*&gt;(pc));
+}
+
+//// vero o falso in base a delle condizioni sul main -- stampa pippo e pluto
+
+template&lt;class X&gt;
+A&amp; fun(A&amp; ref)
+{
+    return ref;
+}
+
+int main()
+{
+    B b;
+    C c;
+
+    fun&lt;A&gt;(b); // B sottotipo di A 
+    B* p = new D(); // D sottotipo di B
+
+    try
+    {
+        dynamic_cast&lt;B&amp;&gt;(fun&lt;A&gt;(c)); // C sottotipo di A
+        cout &lt;&lt; &quot;topoplino&quot;;
+    }
+    catch(bad_cast)
+    {
+        cout &lt;&lt; &quot;pippo&quot;;
+    }
+    if(!dynamic_cast&lt;D*&gt;(new B()))
+        cout &lt;&lt; &quot;pluto&quot;;
+}
+
+//// compila o non compila (const e tipi)
+
+C f(C&amp; X) { return x; } // compila
+
+C&amp; g() const { return *this; } // non compila const C&amp; --&gt; C&amp;
+
+C h() const { return *this; } // compila
+
+C* m() { return this; } // compila
+
+C* n() const { return this; } // non compila
+
+void p() {}
+void q() const ( p(); ) // non compila
+
+void p() {}
+static void r(C *const  x) { x-&gt;p(); } // compila
+
+void s(C *const x) const { *this = *x; } // non compila
+
+static C&amp; t() { return C(); } // 
+
+static C *const u(C&amp; x) { return &amp;x: } // compila</code></pre>
+
+        </div>
+    </div>
+</body>
+
+</html>
