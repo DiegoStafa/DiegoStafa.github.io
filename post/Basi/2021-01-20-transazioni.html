@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info"><li>
+Transazioni
+</li>
+<li>
+Basi di Dati
+</li>
+<li>
+20-01-2021
+</li>
+</ul>
+<div class="post">
+<h1 id="transazioni">Transazioni</h1>
+<p>una transazione è una parte di programma formata da 3 componenti:</p>
+<ul>
+<li>fase di begin-transaction</li>
+<li>corpo della transazione</li>
+<li>fase di end transaction<ul>
+<li>commit work --&gt; vengono salvati gli effetti della transazione</li>
+<li>rollback work/abort --&gt; vengono annullati gli effetti della transazione</li>
+</ul>
+</li>
+</ul>
+<p>la fase di end transaction viene di solito implementata nel programma con un if-then-else, nella quale viene decisa la legalità della transazione</p>
+<pre><code class="language-sql">/* esempio di transazione che esegue una transazione monetaria tra 2 persone*/
+
+/*fase di begin transaction*/
+start transaction;
+
+/* corpo da eseguire */
+update ContoCorrente
+    set saldo = saldo + 10
+    where num_conto = 12201;
+update ContoCorrente
+    set saldo = saldo - 10
+    where num_conto = 42177;
+
+/*fase di end transaction*/
+commit work;</code></pre>
+<p>le transazioni in un DBMS non vengono eseguite in ordine di arrivo, ma in ordine tale da rispetare i vincoli ACID</p>
+<p><strong>ACID</strong></p>
+<p>ogni transazione deve egarantire le proprietà ACID:</p>
+<ul>
+<li>Atomicità --&gt; gestione affidabilità</li>
+<li>Consistenza --&gt; gestione concorrenza</li>
+<li>Isolamento --&gt; gestione concorrenza</li>
+<li>Durabilità --&gt; gestione affidabilità</li>
+</ul>
+<p><strong>Atomicità</strong></p>
+<p>ogni transazione è effettuata o completamente o viene annullata</p>
+<p>di base c&#39;è un rollback automatico se si verificano errori nel mezzo della transazione</p>
+<p><strong>Consistenza</strong></p>
+<p>ogni transazione deve rispettare i vincoli della base di dati</p>
+<p>i vincoli devono essere rispettati a fine transazione, nel mentre possono anche essere violati</p>
+<p><strong>Isolamento</strong></p>
+<p>una transazione non deve essere influenzata da un&#39;altra transazione</p>
+<p>quindi una transazione non espone i suoi stati intermedi</p>
+<p><strong>Durabilità</strong></p>
+<p>ogni transazione deve essere registrata permanentemente</p>
+<p>le transazione deve essere in grado di resistere a:</p>
+<ul>
+<li>crash del DBMS --&gt; soft crash<ul>
+<li>si perde la primaria (RAM) ma non la secondaria (HDD)</li>
+</ul>
+</li>
+<li>failures della memoria fisica --&gt; hard crash<ul>
+<li>si perde anche la secondaria ma non la stabile (RAID)</li>
+</ul>
+</li>
+</ul>
+<h2 id="gestione-dellaffidabilità">Gestione dell&#39;affidabilità</h2>
+<p>la gestionde dell&#39;affidabilità garantisce le proprietà di atomicità e durabilità</p>
+<p><strong>log</strong></p>
+<p>il DBMS utilizza un log che registra permanentemente tutte le operazione svolte, il log delle operazioni è salvato su memoria stabile e ridondante (RAID e nastri))</p>
+<p>il log registra:</p>
+<ul>
+<li>transazioni:<ul>
+<li>B(T) --&gt; begin transaction T</li>
+<li>I(T,O,AS) --&gt; T esegue un&#39;insert dell&#39;oggetto O con valore AS</li>
+<li>D(T,O,BS) --&gt; T esegue una delete dell&#39;oggetto O con valore BS</li>
+<li>U(T,O,BS,AS) --&gt; T esegue un update BS-&gt;AS</li>
+<li>C(T) --&gt; commite transaction T</li>
+<li>A(T) --&gt; abort transaction T</li>
+</ul>
+</li>
+<li>record di sistema<ul>
+<li> --&gt; dump</li>
+<li>C(T1,T2,T3...) --&gt; checkpoint</li>
+</ul>
+</li>
+</ul>
+<p>il log può essere scritto in 2 modi:</p>
+<ul>
+<li>write-ahead-log --&gt; prima di ogni operazione</li>
+<li>commite-precedence --&gt; prima di ogni commit</li>
+</ul>
+<p><strong>modalità di esecuzione delle transazioni</strong></p>
+<p>dopo la scrittura sul log, le operazioni possono essere eseguite nel DBMS in 3 modalità:</p>
+<ul>
+<li>immediata --&gt; dopo ia scrittura sul log<ul>
+<li>in caso di abort si deve fare l&#39;undo<ul>
+<li>I(T,O,AS) --&gt; D(T,O,AS)</li>
+<li>U(T,O,BS,AS) --&gt; U(T,O,AS,BS)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>differita --&gt; dopo il commit<ul>
+<li><ul>
+<li>in caso di abort NON si deve fare l&#39;undo</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>mista --&gt; nei momenti idle del DBMS</li>
+</ul>
+<p><strong>checkpoint</strong></p>
+<p>il checkpoint è una transazione che registra quali transazioni sono attive in quel momento</p>
+<p>l&#39;esecuzione di un checkpoint effettua le seguenti operazioni:</p>
+<ol>
+<li>halt del DBSM</li>
+<li>ogni transazione completata prima del checkpoint viene scritta in memoria stabile</li>
+<li>ogni transazione in corso prima del checkpoint viene scritta nel log</li>
+<li>riparte il DBMS</li>
+</ol>
+<p><strong>stato delle transazioni</strong></p>
+<p>una transazione si può trovare in 3 stati:</p>
+<ul>
+<li>completata (hanno fatto il commit) ed eseguita</li>
+<li>completata ma non eseguita completamente (REDO)</li>
+<li>non completata (UNDO)</li>
+</ul>
+<p><strong>warm restart</strong></p>
+<p>sono le operazioni che un DBMS esegue dopo un soft crash:</p>
+<ol>
+<li>legge l&#39;ultimo checkpoint nel log</li>
+<li>crea 2 insiemi<ul>
+<li>REDO --&gt; transazioni non eseguite</li>
+<li>UNDO --&gt; transazioni non completate</li>
+</ul>
+</li>
+<li>legge il log a ritroso fino l&#39;ultima transazione UNDO e REDO<ul>
+<li>nel mentre annulla ogni transazione UNDO che incontra</li>
+</ul>
+</li>
+<li>legg il log fino alla più nuova transazione REDO<ul>
+<li>nel mentro riesegue ogni transazione REDO che incontra</li>
+</ul>
+</li>
+</ol>
+<p>a seconda del tipo di esecuzione delle operazioni del DBMS, varia la ripresa a caldo:</p>
+<ul>
+<li>modalità immediata --&gt; niente REDO</li>
+<li>modalità differita --&gt; niente UNDO</li>
+<li>modalità mista --&gt; sia UNDO che REDO</li>
+</ul>
+<p>il dbms deve implementare le operazioni di redo e undo in modo tale che:</p>
+<ul>
+<li>redo(redo(T)) = redo(T)</li>
+<li>undo(undo(T)) = undo(T)</li>
+</ul>
+<p>di base rieseguire più volte una stessa transazione è come eseguirla una volta sola, annullarla più volte è come annullarla la prima</p>
+<p><strong>Dump</strong></p>
+<p>il dump è una copia totale della base di dati nella memoria stabile</p>
+<p>un dump crea un record nel log delle operazioni che indica quando questo è stato effettuato</p>
+<p><strong>cold restart</strong></p>
+<p>sono le operazioni che un DBMS esegue dopo un hard crash:</p>
+<ol>
+<li>ripristina la base di dati con l&#39;ultimo dump</li>
+<li>si eseguono le operazioni sul log fino al guasto</li>
+<li>si esegue la warm restart</li>
+</ol>
+<p><strong>modello fail-stop</strong></p>
+<p>è il modello di esecuzione di un dbms, è composto tra 3 stati:</p>
+<ul>
+<li>normal --&gt; il DBMS funziona correttamente</li>
+<li>stop --&gt; il DBMS va in halt e necessita un warm/cold restart</li>
+<li>restart --&gt; il DBMS fa un warm/cold restart</li>
+</ul>
+<p>gli stati sono collegati nel seguente modo:</p>
+<ul>
+<li>normal --&gt; crash --&gt; stop</li>
+<li>stop --&gt; boot --&gt; restart</li>
+<li>restart --&gt; crash --&gt; stop</li>
+<li>restart --&gt; success --&gt; normal</li>
+</ul>
+<h2 id="gestione-della-concorrenza">Gestione della concorrenza</h2>
+<p>si indicano con:</p>
+<ul>
+<li>r1(X) --&gt; la transazione 1 legge X</li>
+<li>r2(Y) --&gt; la transazione 2 legge Y</li>
+<li>w1(X) --&gt; la transazione 1 scrive X</li>
+<li>w2(Y) --&gt; la transazione 2 scrive Y</li>
+</ul>
+<p><strong>anomalie</strong></p>
+<p>una situazione di concorrenza tra transizione può generare 5 anomalie</p>
+<ul>
+<li>perdita di aggiornamento<ul>
+<li>r1(x)r2(x)w1(x)w2(x) --&gt; w1(x) è come se non fosse mai stato esguito</li>
+</ul>
+</li>
+<li>lettura sporca --&gt; lettura di un dato che di un&#39;altra transazione abortita</li>
+<li>lettura inconsistente --&gt; una transazione legge lo stesso dato in 2 momemnti distinti, ma nel mezzo una&#39;altra transazione lo modifica</li>
+<li>aggiornamento fantasma --&gt; un dato viene aggiornato improvvisamente</li>
+<li>inserimento fantasma --&gt; un dato viene creato improvvisamente</li>
+</ul>
+<p><strong>flags di isolemento read-only</strong></p>
+<p>sono flags con livello crescente di isolamento:</p>
+<ul>
+<li>read-uncommitted (RU)</li>
+<li>read-committed (Rc)</li>
+<li>repeatable read (RR)</li>
+<li>serializable (S)</li>
+</ul>
+<pre><code class="language-sql">/* sintasi */
+
+begin transaction isolation level,
+read committed</code></pre>
+<p>livello di protezione:</p>
+<ul>
+<li>RU --&gt; perdita aggiornamento</li>
+<li>RC --&gt; RU + lettura sporca</li>
+<li>RR --&gt; RC + lettura inconsistente + aggiornamento fantasma</li>
+<li>S --&gt; RR + inserimento fantasma</li>
+</ul>
+<p><strong>scheduler</strong></p>
+<p>è un sistema che acccetta/rifiuta/riordina le operazioni di una transazione</p>
+<p><strong>ordinamento delle transazioni</strong></p>
+<p>rappresenta l&#39;ordine temporale delle operazione delle transazioni</p>
+<p>definizioni preliminari:</p>
+<ul>
+<li>legge-da --&gt; r1(x) legge da w2(X) se w2(x) precede r1(x) nell&#39;ordinamento e non ci sono scritture di X nel mezzo</li>
+<li>scrittura finale --&gt; w1(x) è la scrittura finale di X se w1(x) è l&#39;ultima scrittura di X nell&#39;ordinamento</li>
+</ul>
+<p><strong>conflitto</strong></p>
+<p>2 transazioni a<sub>i</sub> e a<sub>j</sub> con (i!=j) sono in conflitto se operano in:</p>
+<ul>
+<li>write-read</li>
+<li>read-write</li>
+<li>write-write</li>
+</ul>
+<p><strong>ordinamento seriale</strong></p>
+<p>si indica con:</p>
+<ul>
+<li>S<sub>1</sub> : r1(x)r2(Z)w1(x)w2(z)</li>
+</ul>
+<p>un ordinamento seriale non ha anomalie</p>
+<p><strong>ordinamento serializzabile</strong></p>
+<p>un&#39;ordinamento delle transizioni è serializzabile se comunque eseguito, produce lo stesso risultato di un ordinamento seriale</p>
+<p>l&#39;idea di base è di eseguire le transizioni concorrentemente in un ordinamento serializzabile</p>
+<p><strong>view-equivalenza</strong></p>
+<p>2 ordinamenti sono equivalenti sse:</p>
+<ul>
+<li>hanno gli stessi legge-da</li>
+<li>hanno le stesse scritture finali</li>
+</ul>
+<p><strong>view-serializzabilità</strong></p>
+<p>si indica con VSR</p>
+<p>un ordinamento è view-serializzabile se è view equivalente ad un qualche ordinamento seriale</p>
+<p>la proprietà di view-seriallizzabilità garantisce protezione da:</p>
+<ul>
+<li>perdita di aggiornamento</li>
+<li>letture incosistenti</li>
+<li>aggiornamento fantasma</li>
+</ul>
+<p>per verfiicare la view serializzabilità:</p>
+<ul>
+<li>si deve provare la view equivalenza su tutte le possibili permutazioni dell&#39;ordinamento</li>
+</ul>
+<p>non è eseguito al lato pratico</p>
+<p><strong>conflict-equivalenza</strong></p>
+<p>2 ordinamenti sono conflict-equivalenti se:</p>
+<ul>
+<li>hanno stesse operazioni</li>
+<li>ogni conflitto appare nello stesso ordine</li>
+</ul>
+<p><strong>confilict-serializzabilità</strong></p>
+<p>si indica con CSR</p>
+<p>un ordinamento è conflict-serializzabile se è conflict-equivalente ad un qualche ordinamento seriale, oppure se l&#39;equivalente grafo dei conflitti è aciclico</p>
+<p>proprietà:</p>
+<ul>
+<li>CSR implica VSR</li>
+</ul>
+<p><strong>grafo dei conflitti</strong></p>
+<p>si crea un grafo con:</p>
+<ul>
+<li>un nodo per ogni transazione</li>
+<li>un arco orientato da t<sub>i</sub> -&gt; t<sub>j</sub> per ogni conflitto</li>
+</ul>
+<p>il grafo è aciclico se non esistono cicli all&#39;interno, quindi se partendo da un nodo non si può tornare allo stesso nodo</p>
+<p>traduzione in ordinamento seriale:</p>
+<ol>
+<li>si scrivono tutte le operazioni di un nodo senza archi entranti</li>
+<li>si rimuove il nodo e i suoi archi uscenti</li>
+<li>passo 1</li>
+</ol>
+<p><strong>lock</strong></p>
+<p>di base quando una transazione può effettuare 3 tipi di operazione:</p>
+<ul>
+<li>r_lock --&gt; blocca la risorsa quando legge</li>
+<li>w_lock --&gt; blocca la risors quando scrive</li>
+<li>unlock --&gt; rilascia la risorsa</li>
+</ul>
+<p><strong>tavola dei conflitti</strong></p>
+<p>per ogni risorsa c&#39;è:</p>
+<ul>
+<li>un contatore che indica quanti lettori sulla risorsa</li>
+<li>un bool che indica un w_lock sulla risorsa</li>
+</ul>
+<p>funzionamento:</p>
+<ul>
+<li>r_lock<ul>
+<li>risorsa unlocked --&gt; set r_locked &amp;&amp; contatore++</li>
+<li>risorsa r_locked --&gt; contatore++</li>
+<li>risorsa w_locked --&gt; reject</li>
+</ul>
+</li>
+<li>w_lock<ul>
+<li>risorsa unlocked --&gt; set w_locked</li>
+<li>risorsa r_locked --&gt; reject</li>
+<li>risorsa w_locked --&gt; reject</li>
+</ul>
+</li>
+<li>unlock<ul>
+<li>risorsa unlocked --&gt; reject</li>
+<li>risorsa r_locked --&gt; if --contatore &lt; 0 set unlocked</li>
+<li>risorsa w_locked --&gt; set unlocked</li>
+</ul>
+</li>
+</ul>
+<p><strong>locking a 2 fasi</strong></p>
+<p>le transazioni acquisiscono i lock nella fase iniziale, ma non possono più acquisirne altri in quella finale </p>
+
+        </div>
+    </div>
+</body>
+
+</html>

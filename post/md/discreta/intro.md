@@ -26,9 +26,6 @@ si indica con d(V) il grado di un vertice, ed indica di quanti archi V è un est
 2. la somma dei vertici di grado dispari è sempre un numero pari
 
 
-
-
-
 ---
 
 ### Tipi di grafi

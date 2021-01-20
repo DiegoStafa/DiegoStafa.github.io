@@ -28,38 +28,50 @@ Algebra relazionale
 Basi di Dati
 </li>
 <li>
-14-01-2021
+20-01-2021
 </li>
 </ul>
 <div class="post">
 <h1 id="algebra-relazionale">Algebra relazionale</h1>
 <p>L&#39;algebra relazionale è un linguaggio matematico di query, ha 6 operatori di base e diversi operatori derivati</p>
+<p>nomencaltura:</p>
+<ul>
+<li>R --&gt; relazione</li>
+<li>a --&gt; attributo</li>
+<li>θ --&gt; condizione</li>
+</ul>
 <p>operatori primitivi:</p>
 <ul>
 <li>binari<ul>
-<li>unione</li>
-<li>differenza</li>
-<li>prodotto cartesiano</li>
+<li>unione --&gt; R<sub>1</sub> ∪ R<sub>2</sub></li>
+<li>differenza --&gt; R<sub>1</sub> − R<sub>2</sub></li>
+<li>prodotto cartesiano --&gt; R<sub>1</sub> × R<sub>2</sub></li>
 </ul>
 </li>
 <li>unari<ul>
-<li>selezione</li>
-<li>proiezione</li>
-<li>ridenominazione</li>
+<li>selezione --&gt; σ<sub>θ</sub>(R)</li>
+<li>proiezione --&gt; Π<sub>a<sub>1</sub>,a<sub>2</sub>...</sub>(R)</li>
+<li>ridenominazione --&gt; ρ<sub>a new / a old</sub>(R)</li>
 </ul>
 </li>
 </ul>
 <p>operatori derivati:</p>
 <ul>
-<li>intersezione</li>
-<li>join<ul>
-<li>inner</li>
-<li>left</li>
-<li>right</li>
-<li>full</li>
-<li>semi</li>
-<li>theta</li>
-<li>equi</li>
+<li>intersezione --&gt; R<sub>1</sub> ∩ R<sub>2</sub></li>
+<li>divisione --&gt; R<sub>1</sub> ÷ R<sub>2</sub></li>
+<li>joins<ul>
+<li>inner<ul>
+<li>natural --&gt; R<sub>1</sub> ⋈ R<sub>2</sub> (aka join)</li>
+<li>equi --&gt; R<sub>1</sub> ⋈<sub>a<sub>1</sub>=a<sub>2</sub></sub> R<sub>2</sub></li>
+<li>theta --&gt; R<sub>1</sub> ⋈<sub>θ</sub> R<sub>2</sub></li>
+</ul>
+</li>
+<li>outer    <ul>
+<li>left --&gt; R<sub>1</sub> ⟕ R<sub>2</sub></li>
+<li>right --&gt; R<sub>1</sub> ⟖ R<sub>2</sub></li>
+<li>full --&gt; R<sub>1</sub> ⟗ R<sub>2</sub></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -82,24 +94,26 @@ Basi di Dati
 <h2 id="operatori-derivati">Operatori derivati</h2>
 <p><strong>intersezione</strong></p>
 <p>ritorna una relazione che contiene le tuple in comune ad entrambe le relazione, si ricava come !(A-B)</p>
-<p><strong>inner join</strong></p>
+<h3 id="inner-joins">Inner joins</h3>
+<p><strong>natural join</strong></p>
 <p>fa il prodotto cartesiano e seleziona le tuple che hanno 2 attributi specificati uguali</p>
 <p>numero di tuple finali:</p>
 <ul>
 <li>0 (join vuoto) &lt;= R1 join R2 &lt;= R1 x R2 (join completo)</li>
 </ul>
+<p><strong>equi-join</strong></p>
+<p>è il theta join che usa l&#39;operatore di uguaglianza nella condizione</p>
+<p><strong>theta-join</strong></p>
+<p>fa il prodotto cartesiano e seleziona le tuple che rispettano una condizione theta</p>
+<h3 id="outer-joins">Outer joins</h3>
 <p><strong>left join</strong></p>
 <p>è l&#39;inner join, ma se una tupla della prima relazione non matcha viene inserita comunque</p>
 <p><strong>right join</strong></p>
 <p>è l&#39;inner join, ma se una tupla della seconda relazione non matcha viene inserita comunque</p>
-<p><strong>full outer join</strong></p>
+<p><strong>full join</strong></p>
 <p>è l&#39;unione del left e right join</p>
 <p><strong>semi join</strong></p>
-<p>fa un normale inner join, ma proietta solo gli attributi della prima tabella</p>
-<p><strong>theta-join</strong></p>
-<p>fa il prodotto cartesiano e seleziona le tuple che rispettano una condizione theta</p>
-<p><strong>equi-join</strong></p>
-<p>è il theta join che usa l&#39;operatore di uguaglianza nella condizione</p>
+<p>(fatto in classe) fa un normale inner join, ma proietta solo gli attributi della prima tabella</p>
 <p><strong>gestione dei valori nulli</strong></p>
 <p>per rifersi ai valori nulli in una selezione si utilizzano le condizioni:</p>
 <ul>

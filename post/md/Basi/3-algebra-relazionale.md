@@ -2,26 +2,33 @@
 
 L'algebra relazionale è un linguaggio matematico di query, ha 6 operatori di base e diversi operatori derivati
 
+nomencaltura:
+* R --> relazione
+* a --> attributo
+* θ --> condizione
+
 operatori primitivi:
 * binari
-    * unione
-    * differenza
-    * prodotto cartesiano
+    * unione --> R<sub>1</sub> ∪ R<sub>2</sub>
+    * differenza --> R<sub>1</sub> − R<sub>2</sub>
+    * prodotto cartesiano --> R<sub>1</sub> × R<sub>2</sub>
 * unari
-    * selezione
-    * proiezione
-    * ridenominazione
+    * selezione --> σ<sub>θ</sub>(R)
+    * proiezione --> Π<sub>a<sub>1</sub>,a<sub>2</sub>...</sub>(R)
+    * ridenominazione --> ρ<sub>a new / a old</sub>(R)
 
 operatori derivati:
-* intersezione
-* join
+* intersezione --> R<sub>1</sub> ∩ R<sub>2</sub>
+* divisione --> R<sub>1</sub> ÷ R<sub>2</sub>
+* joins
     * inner
-    * left
-    * right
-    * full
-    * semi
-    * theta
-    * equi
+        * natural --> R<sub>1</sub> ⋈ R<sub>2</sub> (aka join)
+        * equi --> R<sub>1</sub> ⋈<sub>a<sub>1</sub>=a<sub>2</sub></sub> R<sub>2</sub>
+        * theta --> R<sub>1</sub> ⋈<sub>θ</sub> R<sub>2</sub>
+    * outer    
+        * left --> R<sub>1</sub> ⟕ R<sub>2</sub>
+        * right --> R<sub>1</sub> ⟖ R<sub>2</sub>
+        * full --> R<sub>1</sub> ⟗ R<sub>2</sub>
 
 ## Operatori primitivi
 
@@ -61,12 +68,24 @@ ritorna una relazione con attributi di nome diverso
 
 ritorna una relazione che contiene le tuple in comune ad entrambe le relazione, si ricava come !(A-B)
 
-**inner join**
+### Inner joins
+
+**natural join**
 
 fa il prodotto cartesiano e seleziona le tuple che hanno 2 attributi specificati uguali
 
 numero di tuple finali:
 * 0 (join vuoto) <= R1 join R2 <= R1 x R2 (join completo)
+
+**equi-join**
+
+è il theta join che usa l'operatore di uguaglianza nella condizione
+
+**theta-join**
+
+fa il prodotto cartesiano e seleziona le tuple che rispettano una condizione theta
+
+### Outer joins
 
 **left join**
 
@@ -76,21 +95,13 @@ numero di tuple finali:
 
 è l'inner join, ma se una tupla della seconda relazione non matcha viene inserita comunque
 
-**full outer join**
+**full join**
 
 è l'unione del left e right join
 
 **semi join**
 
-fa un normale inner join, ma proietta solo gli attributi della prima tabella
-
-**theta-join**
-
-fa il prodotto cartesiano e seleziona le tuple che rispettano una condizione theta
-
-**equi-join**
-
-è il theta join che usa l'operatore di uguaglianza nella condizione
+(fatto in classe) fa un normale inner join, ma proietta solo gli attributi della prima tabella
 
 **gestione dei valori nulli**
 

@@ -28,7 +28,7 @@ Polimorfismo
 Programmazione 2
 </li>
 <li>
-13-12-2020
+20-01-2021
 </li>
 </ul>
 <div class="post">
@@ -50,10 +50,9 @@ base_ptr = deriv_ptr;
 <p>è il tipo di un oggetto in runtime</p>
 <p><strong>static binding</strong></p>
 <p>è il normale collegamento che il compilatore crea tra l&#39;oggetto e metodo di una classe</p>
-<p>in un contesto polimorfico dove si invoca un metodo definito sia nella superclasse che nella sottoclasse, viene comunque invocato quello della superclasse, in quanto il compilatore non conosce il tipo a runtime, quindi collega l&#39;oggetto di tipo dinamico della sottoclasse con il metodo del tipo statico</p>
+<p>in un contesto polimorfico, lo static </p>
 <p><strong>dynamic binding</strong></p>
 <p>detto anche late binding, è il collegamento creato a runtime tra un puntatore polimorfo e il metodo di una sottoclasse</p>
-<p>linkare a runtime il metodo giusto crea un overhead intorno al ~10%, questo è causato dal doppio livello di indirettezza della virtual table</p>
 <p><strong>virtual</strong></p>
 <p>un metodo marcato come virtual permette alle sottoclassi di farne l&#39;overriding, ciò permette di fare il binding dinamico</p>
 <p>di base il comportamento del compilatore è:</p>
@@ -123,24 +122,45 @@ class B : public A{
 <p><strong>classe concreta</strong></p>
 <p>è una classe che può essere istanziata</p>
 <p><strong>rtti (RunTime Type Information)</strong></p>
-<p>è un meccanismo che consente di ottenere informazioni sul tipo di un oggetto a runtime, i meccanismi sono 2:</p>
+<p>l&#39;rtti consente di avere informazioni sul tipo dinamico, in c++ è implementato tramite:</p>
 <ul>
-<li>typeid --&gt; determina il tipo di un oggetto a runtime</li>
+<li>typeid</li>
 <li>dynamic_cast</li>
 </ul>
 <p><strong>typeid</strong></p>
-<p>il typeid funziona sotto le seguenti regole:</p>
+<p>di base ritorna il tipo dinamico di un puntatore **dereferenziato ** polimorfo o riferimento polimorfo</p>
+<p>funzionamento:</p>
 <ul>
-<li>se l&#39;espressione è un riferimento ad una classe polimorfa, ritorna il tipo dinamico</li>
-<li>se l&#39;espressione è un puntatore polimorfo dereferenziato, ritorna </li>
+<li>typeid(tipo) --&gt; ritorna il tipo del tipo</li>
+<li>typeid(espressione) --&gt; ritorna il tipo dell&#39;espressione</li>
+<li>typeid(*ptr_NON_polimorfo) --&gt; ritorna il tipo statico</li>
+<li>typeid(ref_NON_polimorfo) --&gt; ritorna il tipo statico</li>
+<li>typeid(*ptr_polimorfo) --&gt; ritorna il tipo dinamico</li>
+<li>typeid(ref_polimorfo) --&gt; ritorna il tipo dinamico</li>
 </ul>
 <p><strong>dynamic cast</strong></p>
-<p>data una superclasse polimorfa e una sottoclasse, la conversione di un puntatore della superclasse ad uno della sottoclasse è detto downcast ed è effetuato dal dynamic_cast</p>
-<p>il dynamic_cast ritorna nullptr se i 2 tipi non sono compatibili (cioè se il tipo dinamico è sottoclasse del tipo statico)</p>
+<p>di base ritorna il puntatore/riferimento al sottoggetto di un puntatore polimorfo</p>
+<p>funzionamento puntatori:</p>
+<ul>
+<li>dynamic_cast&lt;A*&gt;(ptr)<ul>
+<li>ritorna il puntatore A* di ptr se il tipo dinamico di ptr è sottotipo di A</li>
+<li>ritorna nullptr altrimenti</li>
+</ul>
+</li>
+</ul>
+<p>funzionamento riferimenti:</p>
+<ul>
+<li>dynamic_cast&lt;A&amp;&gt;(ref)<ul>
+<li>ritorna il riferimento A&amp; di ref se il tipo dinamico di ref è un sottotipo di A</li>
+<li>lancia una eccezione bad_cast altrimenti</li>
+</ul>
+</li>
+</ul>
+<p>il dynamic cast si deve usare solo quando non si conosce il tipo dinamico di un oggetto, ad esempio quando si passa un puntatore ad una base come parametro</p>
 <p><strong>upcasting</strong></p>
 <p>è una conversione da puntatore sottoclasse a puntatore superclasse</p>
 <p><strong>downcast</strong></p>
-<p>è una conversione da puntatore superclasse a punattore sottoclasse, viene fatta con il static_cast</p>
+<p>è una conversione da puntatore superclasse a puntatore sottoclasse</p>
 <p><strong>solid</strong></p>
 <ul>
 <li>le classe devono occuparsi di una cosa sola</li>

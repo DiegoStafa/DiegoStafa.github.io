@@ -163,7 +163,7 @@ funzionamento riferimenti:
     * ritorna il riferimento A& di ref se il tipo dinamico di ref è un sottotipo di A
     * lancia una eccezione bad_cast altrimenti
 
-DI BASE PORCODIO SIGNIFICA CHE IL DYNAMIC CAST FUNZIONA SE E SOLO SE IL TIPO SPECIFICATO È UNA SUPERCLASSE DEL TIPO DINAMICO 
+il dynamic cast si deve usare solo quando non si conosce il tipo dinamico di un oggetto, ad esempio quando si passa un puntatore ad una base come parametro
 
 **upcasting**
 
