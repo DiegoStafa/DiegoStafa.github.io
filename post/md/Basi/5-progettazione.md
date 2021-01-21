@@ -96,6 +96,9 @@ esempio generalizzazione parziale:
     * avvocato
     * dottore
 
+**traduzione testo-ER**
+
+
 #### documentazione diagramma ER
 
 è formata da:
@@ -145,6 +148,30 @@ nel primo caso il padre avrà un attributo aggiuntivo che andrà a specificare d
 **scelta degli identificatori**
 
 consiste nel scegliere le chiavi primarie ed esterne delle entità finali
+
+**traduzione ER-Relazionale**
+
+relazioni:
+* 1 --- relazione --- 1: si toglie la relationship e si mette una chiave esterna in una qualsiasi delle 2 relazioni
+* 1 --- relazione --- N: si toglie la relationship e si mette una chiave esterna nella relazione con 1
+* N --- relazione --- 1: si toglie la relationship e si mette una chiave esterna nella relazione con
+* N --- relazione --- N:  sitoglie la relationship e si mette una relazione al suo posto, le cardinalità diventano 1 --- N --- N ---- 1 
+
+NB: mettere una chiave esterna significa che la relazione oltre ai suoi normali attributi avrà un attributo aggiuntivo che referenza la chiave dell'altra relazione
+
+accorpamento delle generalizzazioni:
+* esempio carta yugioh
+    * padre: carta yugioh
+        * figlio: mostro
+        * figlio: magia
+        * figlio: trappola
+    * in questo caso è meglio creare 3 tabelle per i figli e accorpare il padre su ognuno di essi
+    * creare una tabella solo per il padre ed accorpare su di esso i filgi avrebbe causato una tabella con molti righe parzialmente vuote
+
+riduzione dei valori nulli:
+* accorpamento sui figli
+* rimozione delle cardinalità 01 - 01 --> si
+
 
 ### Progettazione fisica
 

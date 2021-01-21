@@ -28,7 +28,7 @@ Progettazione di una base dati
 Basi di Dati
 </li>
 <li>
-14-01-2021
+21-01-2021
 </li>
 </ul>
 <div class="post">
@@ -139,6 +139,7 @@ Basi di Dati
 </ul>
 </li>
 </ul>
+<p><strong>traduzione testo-ER</strong></p>
 <h4 id="documentazione-diagramma-er">documentazione diagramma ER</h4>
 <p>è formata da:</p>
 <ul>
@@ -182,6 +183,34 @@ Basi di Dati
 <p>nel primo caso il padre avrà un attributo aggiuntivo che andrà a specificare di che tipo è</p>
 <p><strong>scelta degli identificatori</strong></p>
 <p>consiste nel scegliere le chiavi primarie ed esterne delle entità finali</p>
+<p><strong>traduzione ER-Relazionale</strong></p>
+<p>relazioni:</p>
+<ul>
+<li>1 --- relazione --- 1: si toglie la relationship e si mette una chiave esterna in una qualsiasi delle 2 relazioni</li>
+<li>1 --- relazione --- N: si toglie la relationship e si mette una chiave esterna nella relazione con 1</li>
+<li>N --- relazione --- 1: si toglie la relationship e si mette una chiave esterna nella relazione con</li>
+<li>N --- relazione --- N:  sitoglie la relationship e si mette una relazione al suo posto, le cardinalità diventano 1 --- N --- N ---- 1 </li>
+</ul>
+<p>NB: mettere una chiave esterna significa che la relazione oltre ai suoi normali attributi avrà un attributo aggiuntivo che referenza la chiave dell&#39;altra relazione</p>
+<p>accorpamento delle generalizzazioni:</p>
+<ul>
+<li>esempio carta yugioh<ul>
+<li>padre: carta yugioh<ul>
+<li>figlio: mostro</li>
+<li>figlio: magia</li>
+<li>figlio: trappola</li>
+</ul>
+</li>
+<li>in questo caso è meglio creare 3 tabelle per i figli e accorpare il padre su ognuno di essi</li>
+<li>creare una tabella solo per il padre ed accorpare su di esso i filgi avrebbe causato una tabella con molti righe parzialmente vuote</li>
+</ul>
+</li>
+</ul>
+<p>riduzione dei valori nulli:</p>
+<ul>
+<li>accorpamento sui figli</li>
+<li>rimozione delle cardinalità 01 - 01 --&gt; si</li>
+</ul>
 <h3 id="progettazione-fisica">Progettazione fisica</h3>
 <p>si occupa della memorizzazione delle relazioni e della creazione degli indici per velocizzare le operazioni di query</p>
 <p><strong>indici</strong></p>

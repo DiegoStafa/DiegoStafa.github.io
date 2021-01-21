@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info"><li>
+Normalizzazione
+</li>
+<li>
+Basi di Dati
+</li>
+<li>
+21-01-2021
+</li>
+</ul>
+<div class="post">
+<h1 id="normalizzazione">Normalizzazione</h1>
+<h2 id="dipendenze-funzionali">Dipendenze funzionali</h2>
+<p><strong>dipendenza funzionale</strong></p>
+<p>un attributo Y dipende funzionalmente da un gruppo di attributi X se X riesce ad identificare univocamente Y, quindi 2 o più tuple di X con gli stessi valori devono avere anche stesso Y</p>
+<p>si indica con X --&gt; Y</p>
+<p>di base è l&#39;implica logico, una dipendeza funzionale è quando gli attributi X implicano l&#39;atributo Y</p>
+<p>le dipendenze funzionali si dividono in:</p>
+<ul>
+<li>banali</li>
+<li>parziali</li>
+<li>complete</li>
+</ul>
+<p><strong>dipendenza funzionale banale</strong></p>
+<p>si ha quando Y compare anche a sinistra, cioè quando:</p>
+<ul>
+<li>Y,X --&gt; Y (y implica y duh) </li>
+</ul>
+<p>di base è una tautologia</p>
+<p><strong>dipendenza funzionale parziale</strong></p>
+<p>si ha quando una dipendenza funzionale rimane togliendo attributi dall&#39;insieme X</p>
+<p>di base significa che X contiene attributi superflui</p>
+<p><strong>dipendeza funzionale completa</strong></p>
+<p>si ha quando una dipendenza funzionale non rimane togliendo attributi dall&#39;insieme X</p>
+<p>significa che X non ha attributi superflui</p>
+<p><strong>assioma di riflessività</strong></p>
+<p>se Y è e contenuto in X allora X --&gt; Y</p>
+<p><strong>assioma di potenziamento</strong></p>
+<p>se X --&gt; Y allora XZ --&gt; YZ</p>
+<p><strong>assioma di transitività</strong></p>
+<p>se X --&gt; Y e Y --&gt; Z allora X --&gt; Z</p>
+<p><strong>unione</strong></p>
+<p>se X --&gt; Y e X --&gt; Z allora X --&gt; YZ</p>
+<p><strong>decomposizione</strong></p>
+<p>se X --&gt; YZ allora X --&gt; Y e X --&gt; Z</p>
+<p><strong>copertura</strong></p>
+<p>è un insieme di attributi Y=<em>a,b,c,d...</em> tali per cui:</p>
+<ul>
+<li>X --&gt; Y</li>
+</ul>
+<p><strong>insemi equivalenti</strong></p>
+<p>2 insiemi A e B di dipendenze funzionali sono equivalenti se A riesce ad implicare ogni dipendenza di B e viceversa</p>
+<p><strong>insiemi non ridondante</strong></p>
+<p>un insieme non è ridondante se non esiste una dipendenza f tale che l&#39;insieme F - {f} implica f</p>
+<p><strong>insiemi ridotto</strong></p>
+<p>un insieme è ridotto se:</p>
+<ul>
+<li>non è ridondante</li>
+<li>si sono rimossi tutti gli attributi di sinistra superflui nelle implicazioni</li>
+</ul>
+<p><strong>copertura ridotta</strong></p>
+<p>è una copertura con le proprietà di un insieme ridotto</p>
+<h2 id="forme-normali">Forme Normali</h2>
+<p>una base di dati si dice in forma normale quando:</p>
+<ul>
+<li>non c&#39;è ridondanza</li>
+<li>inserimenti, rimozioni e aggiornamenti non creano incosistenze</li>
+</ul>
+<p><strong>1NF</strong></p>
+<p>una relazione è in 1NF quando:</p>
+<ul>
+<li>tutti gli attributi sono atomici hanno un singolo valore</li>
+</ul>
+<p><strong>2NF</strong></p>
+<p>una relazione è in seconda forma+</p>
+<ul>
+<li>è in 1NF</li>
+<li>ha solo dipendenze funzionali complete</li>
+</ul>
+<p><strong>3NF</strong></p>
+<p>una relazione è in terza formale normale quando:</p>
+<ul>
+<li>è in 2NF</li>
+<li>in ogni X --&gt; Y deve valere almeno una delle seguenti condizioni:<ul>
+<li>X è una superchiave della relazione</li>
+<li>Y fa parte della superchiave chiave (attributo primo)</li>
+</ul>
+</li>
+</ul>
+<p><strong>boyce-codd NF</strong></p>
+<p>una relazione è in forma normale di boyce e codd quando:</p>
+<ul>
+<li>è in 2NF</li>
+<li>in ogni X --&gt; Y deve valere la seguente condizione:<ul>
+<li>X è una superchiave della relazione</li>
+</ul>
+</li>
+</ul>
+<p><strong>algoritmo per la 3NF</strong></p>
+<ol>
+<li>si calcola la chiusura ridotta:<ul>
+<li>si trovano tutte le dipendenze funzionali della relazione</li>
+<li>si deconpongono<ul>
+<li>es. AB --&gt; CDE si spezza in: AB --&gt; C, AB --&gt; D, AB --&gt; E</li>
+</ul>
+</li>
+<li>si rimuovono le dipendenze funzionali banali (AB -&gt; A)</li>
+<li>si rimuovono le dipendenze funzionali transitive<ul>
+<li>es. A --&gt; B e B --&gt; C deve rimuovere eventuali A --&gt; C</li>
+</ul>
+</li>
+<li>si semplificano le ipotesi<ul>
+<li>es. ABC --&gt; D e A --&gt; C diventa AB --&gt; D e A --&gt; C</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>si calcola la chiusura di ogni dipendenza funzionale dell&#39;insieme appena trovato:<ul>
+<li>la chiusura è formata da ciò che la dipendenza riesce ad implicare (anche transativamente)</li>
+<li>nb: X --&gt; Y ha chiusura X<sup>+</sup> = {X,Y}, fa parte della chiusura anche ciò che gli elementi all&#39;interno riescono ad implicare</li>
+</ul>
+</li>
+<li>si crea una partizione per le dipendenze funzionali che hanno la stessa chiusura</li>
+<li>si crea una relazione per ogni partizione<ul>
+<li>partizione = { A--&gt;B, A--&gt;C} crea una relazione R(A,B,C) di base si prendono gli attributi distiniti</li>
+</ul>
+</li>
+<li>si eliminano le relazioni appena create il cui insieme di attributi è sottoinsieme di un&#39;altra relazione</li>
+<li>se non esiste una relazione che contiene tutte le chiavi, la si crea</li>
+<li>il risultato è in 3NF</li>
+</ol>
+<p><strong>algoritmo per boyce-codd</strong></p>
+<ol>
+<li>si calcolano le dipendenze funzionali</li>
+<li>se X --&gt; Y vìola la boyce codd NF si crea una relazione R(XY) con X chiave e di elimina Y dalla relazione precedente</li>
+</ol>
+
+        </div>
+    </div>
+</body>
+
+</html>
