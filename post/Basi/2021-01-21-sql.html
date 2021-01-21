@@ -28,7 +28,7 @@ Linguaggio SQL
 Basi di Dati
 </li>
 <li>
-14-01-2021
+21-01-2021
 </li>
 </ul>
 <div class="post">
@@ -239,10 +239,21 @@ GRANT INSERT PRIVILEGES ON tabella TO Tom</code></pre>
 <p><strong>coalesce</strong></p>
 <p>restituisce il primo valore non nullo nei suoi parametri</p>
 <ul>
-<li>coalesce(attr1, 0) --&gt; sostituisce null con 0</li>
+<li>coalesce(null, a1) --&gt; ritorna a1</li>
+</ul>
+<p>è utile nel caso di attributi con valori nulli, in questo caso si utilizza la scrittura:</p>
+<pre><code class="language-sql">select nome, coalesce(età, 0)
+from persona</code></pre>
+<ul>
+<li>coalesce(età, 0) --&gt; restituisce 0 se età è nullo</li>
 </ul>
 <p><strong>nullif</strong></p>
-<p>restituisce null se il suo parametro ètrue</p>
+<p>restituisce null se a1 e a2 sono uguali</p>
+<pre><code class="language-sql">select nome, nullif(età, 0)
+from persona</code></pre>
+<ul>
+<li>nullif(età, 0) --&gt; restituisce null se età è 0</li>
+</ul>
 
         </div>
     </div>

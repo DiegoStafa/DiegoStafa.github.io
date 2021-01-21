@@ -255,8 +255,21 @@ restituisce true se una sottoquery non è vuota
 
 restituisce il primo valore non nullo nei suoi parametri
 
-* coalesce(attr1, 0) --> sostituisce null con 0
+* coalesce(null, a1) --> ritorna a1
+
+è utile nel caso di attributi con valori nulli, in questo caso si utilizza la scrittura:
+```sql
+select nome, coalesce(età, 0)
+from persona
+```
+* coalesce(età, 0) --> restituisce 0 se età è nullo
 
 **nullif**
 
-restituisce null se il suo parametro ètrue
+restituisce null se a1 e a2 sono uguali
+
+```sql
+select nome, nullif(età, 0)
+from persona
+```
+* nullif(età, 0) --> restituisce null se età è 0

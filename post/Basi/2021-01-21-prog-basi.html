@@ -51,7 +51,7 @@ Basi di Dati
 </ol>
 <h3 id="progettazione-concettuale">Progettazione concettuale</h3>
 <p><strong>modello ER</strong></p>
-<p>è il modello concettuale più utilizzato, formato da:</p>
+<p>formato da:</p>
 <ul>
 <li>entità --&gt; rappresentano classi di oggetti</li>
 <li>relazioni --&gt; rappresentano legami logici tra entità</li>
@@ -62,10 +62,6 @@ Basi di Dati
 <li>cardinalità</li>
 <li>identificatore</li>
 <li>generalizzazione</li>
-</ul>
-<p>convenzione:</p>
-<ul>
-<li>entità e relazioni sono sostantivi singolari</li>
 </ul>
 <p>documentazione:</p>
 <ul>
@@ -79,8 +75,13 @@ Basi di Dati
 </ul>
 </li>
 </ul>
-<p><strong>part of</strong></p>
-<p>un entità ha la relazione come attributo</p>
+<p><strong>part-of</strong></p>
+<p>il concetto di part-of indica che un entità non esisterebbe senza l&#39;altra
+es:</p>
+<ul>
+<li>cinema --- composizione --- sala</li>
+</ul>
+<p>in questo caso l&#39;entità sala non esisterebbe senza cinema</p>
 <p><strong>instance of</strong></p>
 <p>è il part of, ma la seconda entità è una particolare istanza della prima </p>
 <p><strong>attributo</strong></p>
@@ -184,14 +185,19 @@ Basi di Dati
 <p><strong>scelta degli identificatori</strong></p>
 <p>consiste nel scegliere le chiavi primarie ed esterne delle entità finali</p>
 <p><strong>traduzione ER-Relazionale</strong></p>
-<p>relazioni:</p>
+<p>relationships:</p>
 <ul>
-<li>1 --- relazione --- 1: si toglie la relationship e si mette una chiave esterna in una qualsiasi delle 2 relazioni</li>
-<li>1 --- relazione --- N: si toglie la relationship e si mette una chiave esterna nella relazione con 1</li>
-<li>N --- relazione --- 1: si toglie la relationship e si mette una chiave esterna nella relazione con</li>
-<li>N --- relazione --- N:  sitoglie la relationship e si mette una relazione al suo posto, le cardinalità diventano 1 --- N --- N ---- 1 </li>
+<li>1 --- relationship --- 1: si toglie la relationship e si mette una chiave esterna in una qualsiasi delle 2 relazioni</li>
+<li>1 --- relationship --- N: si toglie la relationship e si mette una chiave esterna nella relazione con 1</li>
+<li>N --- relationship --- 1: si toglie la relationship e si mette una chiave esterna nella relazione con</li>
+<li>N --- relationship --- N:  sitoglie la relationship e si mette una relazione al suo posto, le cardinalità diventano 1 --- N --- N ---- 1 </li>
 </ul>
 <p>NB: mettere una chiave esterna significa che la relazione oltre ai suoi normali attributi avrà un attributo aggiuntivo che referenza la chiave dell&#39;altra relazione</p>
+<p>cardinalità minima:</p>
+<ul>
+<li>(0,N) --- relationship --- (1,1): la relazione (0,N) avrà una chiave esterna che ammette valori nulli</li>
+<li>(1,N) --- relationship --- (1,1): la relazione (1,N) avrà una chiave esterna che NON ammette valori nulli</li>
+</ul>
 <p>accorpamento delle generalizzazioni:</p>
 <ul>
 <li>esempio carta yugioh<ul>
@@ -205,6 +211,9 @@ Basi di Dati
 <li>creare una tabella solo per il padre ed accorpare su di esso i filgi avrebbe causato una tabella con molti righe parzialmente vuote</li>
 </ul>
 </li>
+<li>accorpare padre su figlio crea più relationships</li>
+<li>accorpare figlio su padre crea valori nulli</li>
+<li>spezzare la generalizzazione con una relationship</li>
 </ul>
 <p>riduzione dei valori nulli:</p>
 <ul>

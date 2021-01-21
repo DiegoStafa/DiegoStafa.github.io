@@ -20,7 +20,7 @@
 
 **modello ER**
 
-è il modello concettuale più utilizzato, formato da:
+formato da:
 * entità --> rappresentano classi di oggetti
 * relazioni --> rappresentano legami logici tra entità
 
@@ -30,9 +30,6 @@ ed altri costrutti:
 * identificatore
 * generalizzazione
 
-convenzione:
-* entità e relazioni sono sostantivi singolari
-
 documentazione:
 * dizionario dei dati
     * entità
@@ -40,9 +37,13 @@ documentazione:
 * vincoli non esprimibili in ER
     * ad esempio i capi hanno stipendi più alti degli impiegati
 
-**part of**
+**part-of**
 
-un entità ha la relazione come attributo
+il concetto di part-of indica che un entità non esisterebbe senza l'altra
+es:
+* cinema --- composizione --- sala
+
+in questo caso l'entità sala non esisterebbe senza cinema
 
 **instance of**
 
@@ -151,13 +152,17 @@ consiste nel scegliere le chiavi primarie ed esterne delle entità finali
 
 **traduzione ER-Relazionale**
 
-relazioni:
-* 1 --- relazione --- 1: si toglie la relationship e si mette una chiave esterna in una qualsiasi delle 2 relazioni
-* 1 --- relazione --- N: si toglie la relationship e si mette una chiave esterna nella relazione con 1
-* N --- relazione --- 1: si toglie la relationship e si mette una chiave esterna nella relazione con
-* N --- relazione --- N:  sitoglie la relationship e si mette una relazione al suo posto, le cardinalità diventano 1 --- N --- N ---- 1 
+relationships:
+* 1 --- relationship --- 1: si toglie la relationship e si mette una chiave esterna in una qualsiasi delle 2 relazioni
+* 1 --- relationship --- N: si toglie la relationship e si mette una chiave esterna nella relazione con 1
+* N --- relationship --- 1: si toglie la relationship e si mette una chiave esterna nella relazione con
+* N --- relationship --- N:  sitoglie la relationship e si mette una relazione al suo posto, le cardinalità diventano 1 --- N --- N ---- 1 
 
 NB: mettere una chiave esterna significa che la relazione oltre ai suoi normali attributi avrà un attributo aggiuntivo che referenza la chiave dell'altra relazione
+
+cardinalità minima:
+* (0,N) --- relationship --- (1,1): la relazione (0,N) avrà una chiave esterna che ammette valori nulli
+* (1,N) --- relationship --- (1,1): la relazione (1,N) avrà una chiave esterna che NON ammette valori nulli
 
 accorpamento delle generalizzazioni:
 * esempio carta yugioh
@@ -167,11 +172,14 @@ accorpamento delle generalizzazioni:
         * figlio: trappola
     * in questo caso è meglio creare 3 tabelle per i figli e accorpare il padre su ognuno di essi
     * creare una tabella solo per il padre ed accorpare su di esso i filgi avrebbe causato una tabella con molti righe parzialmente vuote
+* accorpare padre su figlio crea più relationships
+* accorpare figlio su padre crea valori nulli
+* spezzare la generalizzazione con una relationship
+
 
 riduzione dei valori nulli:
 * accorpamento sui figli
 * rimozione delle cardinalità 01 - 01 --> si
-
 
 ### Progettazione fisica
 
