@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info"><li>
+Transport layer
+</li>
+<li>
+Reti e Sicurezza
+</li>
+<li>
+26-01-2021
+</li>
+</ul>
+<div class="post">
+<h1 id="transport-layer">Transport layer</h1>
+<p>lo strato di trasporto si occupa di fare multiplexing delle singole risorse in rete (macchine con un indirizzo IP)</p>
+<p>di base fornisce il meccanismo di porte per separare processi di rete, quindi il meccanismo dei socket (IP + porta)</p>
+<p><strong>UDP</strong></p>
+<p>è un protocollo dello stato di trasporto, fornisce il minimo necessario, di base è un wrapper IP che fornisce il supporto ai sockets, formato da:</p>
+<ul>
+<li>source port</li>
+<li>dest. port</li>
+<li>udp lenght --&gt; lunghezza header</li>
+<li>udp checksum --&gt; opzionale</li>
+<li>IP frame</li>
+</ul>
+<p>proprietà:</p>
+<ul>
+<li>connectionless --&gt; perchè di base è un frame IP + porte<ul>
+<li>non esiste il concetto di canale, il pacchetto ha mittente e destinatario e basta</li>
+</ul>
+</li>
+</ul>
+<p><strong>DNS (Domain Name System)</strong></p>
+<p>serve a tradurre un indirizzo human readable in indirizzo ip, siccome la traduzione è del tipo domanda e risposta si usa l&#39;UDP</p>
+<p>funzionamento:</p>
+<ul>
+<li>si invia il nome da tradurre al server DNS</li>
+<li>se il DNS contiene l&#39;entry nella sua tabella risponde</li>
+<li>altrimenti inoltra la richiesta ad un DNS di livello gerarchico superiore</li>
+</ul>
+<p><strong>TCP (Transmission Control Protocol)</strong></p>
+<p>è il contrario dell&#39;UDP, formato da:</p>
+<ul>
+<li>header lungheza variabile</li>
+<li>6 flags in piggybackingù<ul>
+<li>ACK</li>
+<li>reset connection</li>
+<li>fine connessione con ACK</li>
+<li>pacchetto ad alta priorità</li>
+<li>pacchetto a bassa priorità</li>
+</ul>
+</li>
+<li>sequence number</li>
+<li>sliding windows con finestra variabile (go back n e selective repeat)</li>
+<li>checksum di somme</li>
+<li>3 way handshake</li>
+</ul>
+<p>proprietà:</p>
+<ul>
+<li>full duplex</li>
+<li>supporta le porte</li>
+<li>flow control</li>
+<li>error control semplice</li>
+</ul>
+<p>3-way handshake:</p>
+<ul>
+<li>invio un pacchetto SYN di richiesta (apri questa connessione X)</li>
+<li>ricevo un pacchetto SYN di conferma (apro questa connessione X?)</li>
+<li>invio un pacchetto SYN per confermare (sì)</li>
+</ul>
+
+        </div>
+    </div>
+</body>
+
+</html>

@@ -131,6 +131,21 @@ una relazione è in forma normale di boyce e codd quando:
 6. se non esiste una relazione che contiene tutte le chiavi, la si crea
 7. il risultato è in 3NF
 
+algoritmo di base:
+1. si calcola la chiusura ridotta:
+    * si trovano tutte le dipendenze funzionali della relazione
+    * si deconpongono
+    * si rimuovono le dipendenze funzionali banali (AB -> A)
+    * si rimuovono le dipendenze funzionali transitive
+    * si semplificano le ipotesi
+2. si calcola la chiusura di ogni dipendenza funzionale dell'insieme appena trovato:
+    * la chiusura è formata da ciò che la dipendenza riesce ad implicare (anche transativamente)
+3. si crea una partizione per le dipendenze funzionali che hanno la stessa chiusura
+4. si crea una relazione per ogni partizione
+5. si eliminano le relazioni appena create il cui insieme di attributi è sottoinsieme di un'altra relazione
+6. se non esiste una relazione che contiene tutte le chiavi, la si crea
+7. il risultato è in 3NF
+
 **algoritmo per boyce-codd**
 
 1. si calcolano le dipendenze funzionali

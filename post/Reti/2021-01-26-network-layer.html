@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info"><li>
+Network layer
+</li>
+<li>
+Reti e Sicurezza
+</li>
+<li>
+26-01-2021
+</li>
+</ul>
+<div class="post">
+<h1 id="network-layer">Network layer</h1>
+<p><strong>IP (Internet Protocol)</strong></p>
+<p>storia:</p>
+<ul>
+<li>arpanet che usava il protocollo di trasmissione NCP (affidabile, error control e flow control)</li>
+<li>evoluzione di NCP in TCP</li>
+<li>TCP si spezza in TCP e IP</li>
+</ul>
+<p>creato per uso militare, formato da:</p>
+<ul>
+<li>versione</li>
+<li>grandezza dell&#39;header</li>
+<li>tipo di servizio (QoS) --&gt; spesso ignorato, indica la qualità di trasmissione voluta</li>
+<li>lunghezza del pacchetto</li>
+<li>identification --&gt; indica se i dati sono stati frammentati</li>
+<li>non frammentare/frammenta</li>
+<li>offset del frammento</li>
+<li>TTL --&gt; time to live, età max del pacchetto</li>
+<li>protocol --&gt; se i dati sono in un certo protocollo</li>
+<li>header checksum --&gt; complemento a 1</li>
+</ul>
+<p>pro:</p>
+<ul>
+<li>connectionless --&gt; robustezza, se cade un pezzo di rete non succede nulla</li>
+<li>leggero</li>
+</ul>
+<p>contro:</p>
+<ul>
+<li>TTL max 255 --&gt; problema solo nelle reti non gerarchiche</li>
+<li>scarsità di indirizzi</li>
+<li>no protezione</li>
+</ul>
+<p><strong>ICMP (Internet Control Message Protocol)</strong></p>
+<p>i pacchetti ICMP sono incapsulati nell&#39;IP, servono a risolvere eventi negativi della rete</p>
+<p><strong>CIDR (Classless InterDomain Routing)</strong></p>
+<p>gli indirizzi IP vengono distribuiti in classi a lunghezza variabile</p>
+<p>i router salvano questi indirizzi in aggregate entries, di base vengono compattati indirizzi che hanno prefissi in comune, le eccezioni vengono gestite con la tecnica del longest matching, il prefisso più lungo ha priorità</p>
+<p><strong>NAT (Network Adress Translation)</strong></p>
+<p>vede la rete come un unico indirizzo IP, si occupa di tradurre gli indirizzi dei pacchetti uscenti/entranti dalla rete</p>
+<p>di base:</p>
+<ul>
+<li>il NAT ha un indirizzo esterno xxx.xxx.xxx.xxx</li>
+<li>ogni host in rete ha un indirizzo associato del tipo 192.168.1.xxx</li>
+<li>il NAT ha una tabella delle connessioni del tipo:<ul>
+<li>host:porta - NAT:porta</li>
+</ul>
+</li>
+</ul>
+<p>A:30 invia un pacchetto:</p>
+<ul>
+<li>il NAT sostituisce l&#39;indirizzo 
+funzionamento:</li>
+<li>la macchina manda un messaggio di discovery al server DHCP</li>
+<li>il DHCP assegna un indirizzo IP alla macchina</li>
+</ul>
+<p>pro:</p>
+<ul>
+<li>risolto problemi degli indirizzi IP</li>
+</ul>
+<p>contro:</p>
+<ul>
+<li>si mescolano i livelli di internet e trasporto</li>
+<li>si perde la proprietà connectionless della connessione</li>
+<li>se cade il NAT si perdono le connessioni</li>
+</ul>
+<p>la trasmissione guadagna uno stato salavato nel NAT, ciò crea un punot di fallimento della rete</p>
+<p><strong>ARP (Address Resolution Protocol)</strong></p>
+<p>traduce gli indirizzi IP in indirizzi MAC in un modello decentralizzato</p>
+<p>funzionamento:</p>
+<ul>
+<li>ogni macchina ha la propria ARP table</li>
+<li>la macchina chiede in broadcast ch ha un certo indirizzo IP</li>
+<li>la macchina interessata risponde</li>
+</ul>
+<p>ottimizzazioni:</p>
+<ul>
+<li>mandando in piggyback il proprio IP</li>
+<li>tutte le macchine che hanno ascoltato in broadcast memorizzano in ogni caso gli ip degli interessati</li>
+</ul>
+<p>pro:</p>
+<ul>
+<li>funziona da controllore di coppie IP-MAC se la macchina manda in broadcast il proprio IP e riceve risposta</li>
+<li>milk style, nuova informazione ha priorità sulla vecchia</li>
+</ul>
+<p><strong>IPv6</strong></p>
+<p>caratteristiche:</p>
+<ul>
+<li>ha 16 byte di indirizzi</li>
+<li>non ha il checksum</li>
+</ul>
+
+        </div>
+    </div>
+</body>
+
+</html>

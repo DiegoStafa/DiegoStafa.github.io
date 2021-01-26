@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info"><li>
+Data link layer
+</li>
+<li>
+Reti e Sicurezza
+</li>
+<li>
+26-01-2021
+</li>
+</ul>
+<div class="post">
+<h2 id="data-link">Data Link</h2>
+<p>è la prima astrazione di rete, di base si occupa di:</p>
+<ul>
+<li>codifica e decodifica di frequenze in simboli --&gt; framing</li>
+<li>gestione degli errori di trasmissioe --&gt; error control</li>
+<li>regolazione del flusso dati --&gt; flow control</li>
+</ul>
+<p>il datalink può configurare il canale secondo 2 parametri:</p>
+<ul>
+<li>acknowledgment</li>
+<li>connection</li>
+</ul>
+<p><strong>Acknowledgment</strong></p>
+<p>si sceglie se aspettare o meno un segnale di avvenuta ricezione dei paccheti</p>
+<p><strong>Connection</strong></p>
+<p>si sceglie se creare o meno una connessione dedicata</p>
+<h3 id="framing">Framing</h3>
+<p>definisce la creazione de frame da inviare nel canale, quindi di base consiste nel creare una sequenza di bit</p>
+<p>solitamente è così formato:</p>
+<ul>
+<li>header</li>
+<li>payload</li>
+<li>trailer</li>
+</ul>
+<p>ogni frame deve essere ben distinguibile, per capire quando inizia e finisce un frame ci sono diversi modi:</p>
+<ul>
+<li>slot temporali<ul>
+<li>non applicabile</li>
+</ul>
+</li>
+<li>numero di caratteri del payload nell&#39;header<ul>
+<li>errori nell&#39;header rovinano tutto</li>
+</ul>
+</li>
+<li>flag bytes<ul>
+<li>analogo delle &quot;&quot; in una stringa</li>
+</ul>
+</li>
+</ul>
+<p><strong>Flag bytes</strong></p>
+<p>si prefissa e postfissa una speciale sequenza di bit (flag) per indicare dove inzia e termina un frame di dati</p>
+<p><strong>Byte stuffing</strong></p>
+<p>se il payload contiene una sequenza di bit uguale al flag allora si prefissa al flag interno un byte detto di stuffing che serve a fare l&#39;escaping del flag</p>
+<p>pro:</p>
+<ul>
+<li>semplice</li>
+</ul>
+<p>contro:</p>
+<ul>
+<li>spreca molta banda se bisogna fare l&#39;escaping molte volte</li>
+</ul>
+<p><strong>Bit stuffing</strong></p>
+<p>è come il byte stuffing, ma non si prefissa un byte, ma si aggiunge un bit ogni qual volta incontra un particolare pattern, il ricevente conoscendo i pattern sa rimuovere il bit</p>
+<p>pro:</p>
+<ul>
+<li>utilizza un solo bit</li>
+</ul>
+<p>contro:</p>
+<ul>
+<li>il pattern può ripetersi più volte</li>
+</ul>
+<h3 id="error-control">Error Control</h3>
+<p>utile quando il canale ha pochi errori non critici, in queste condizioni si riesce anche a fare l&#39;error correction</p>
+<p>le tecniche di error control si dicono più o meno potenti in base alla distanza di hamming che supportano</p>
+<p><strong>Distanza di Hamming</strong></p>
+<p>è una misura he indica quanti bit diversi hanno 2 messaggi della stessa lunghezza</p>
+<p><strong>Grafo di Hamming</strong></p>
+<p>funzionamento:</p>
+<ul>
+<li>si fissa M</li>
+<li>si disegna un grafo</li>
+<li>ogni nodo è una porzione di bit lunga M</li>
+<li>ogni nodo adiacente differisce di un unico bit</li>
+</ul>
+<p>analisi di una tecnica di error control:</p>
+<ul>
+<li>si disegna il grafo di hamming</li>
+<li>si colorano di verde i nodi che rispettano la tecnica</li>
+<li>si colorano di rosso i nodi che non la rispettano</li>
+</ul>
+<p>potenza di una tecnica:</p>
+<ul>
+<li>distanza minima tra 2 nodi verdi</li>
+</ul>
+<p>correzione dell&#39;errore:</p>
+<ul>
+<li>un nodo rosso si può correggere al più vicino nodo verde</li>
+</ul>
+<p><strong>Parity bit M</strong></p>
+<p>è una tecnica che consente di rilevare errori di trasmissione, rileva delle distanze di hamming massime di 1 bit (potenza)</p>
+<p>funzionamento:</p>
+<ul>
+<li>divide il payload in porzioni di M bit</li>
+<li>somma i bit delle porzioni<ul>
+<li>se pari aggiunge 0 alla fine della porzione</li>
+<li>se dispari aggiunge 1 alla fine della porzione</li>
+</ul>
+</li>
+</ul>
+<p>il suo error rate è di:</p>
+<ul>
+<li>Err = 1 / (M + 1)</li>
+</ul>
+<p>M = 1 è il caso ottimale, con un error rate del 50%</p>
+<p>il data rate è:</p>
+<ul>
+<li><p>data rate = M / (M + 1)</p>
+<p>pro:</p>
+</li>
+<li><p>semplice</p>
+</li>
+</ul>
+<p>contro:</p>
+<ul>
+<li>per ogni M scelto ha sempre potenza 1</li>
+<li>non ha error correction</li>
+</ul>
+<p><strong>Repetition codes</strong></p>
+<p>è una tecnica di error control che ripete ogni bit del payload N volte</p>
+<p>esempio N = 3:</p>
+<ul>
+<li>1011 --&gt; 111000111111</li>
+</ul>
+<p>nella scacchiera di hamming, siccome ripete sempre lo stesso bit, diventa un nodo rosso se ci sono bit diversi ed è un nodo verde se tutti i bit sono uguali, quindiha potenza N-1</p>
+<p>se i bit flippati sono meno della metà si riesce anche a correggere l&#39;errore</p>
+<p>pro:</p>
+<ul>
+<li>potenza N-1</li>
+<li>error correction</li>
+</ul>
+<p>contro:</p>
+<ul>
+<li>data rate = 1 / N</li>
+</ul>
+<p><strong>Codice di Luhn</strong></p>
+<p>è l&#39;analogo del parity bit, ma in base 10, ha potenza 1, ma rileva anche cifre invertite (tranne 09 - 90)</p>
+<p>funzionamento:</p>
+<ul>
+<li>si raddoppiano le cifre in posizione dispari</li>
+<li>si fa la somma S tutte le cifre</li>
+<li>il codice di Luhn è quanto manca per arrivare al multiplo di 10</li>
+<li>si aggiunge il codice alla fine del dato</li>
+</ul>
+<p>questo codice viene utilizzato nelle carte di credito*</p>
+<p><strong>Codici lineari</strong></p>
+<p>sono tecniche di error control che utilizzano solo operazioni lineari, il parity bit fa parte di questa famiglia</p>
+<p><strong>Codice di Hamming (X, Y)</strong></p>
+<p>questa tecnica crea un codice lungo X da dei dati lunghi Y:</p>
+<ul>
+<li>X --&gt; output dati</li>
+<li>Y --&gt; input dati</li>
+</ul>
+<p>funzionamento:</p>
+<ul>
+<li>si crea una matrice I<sub>Y,Y</sub></li>
+<li>si crea una matrice A<sub>Y,X-Y</sub></li>
+<li>si affiancano le matrici</li>
+<li>codice = matrice x vettore dati</li>
+</ul>
+<p>distanza minima:</p>
+<ul>
+<li>si le righe della matrice</li>
+<li>la distanza minima è il valore più basso</li>
+</ul>
+<p>migliore del repetition codes per quanto riguarda il data rate</p>
+<p><strong>Hamming ibrido</strong></p>
+<p>come l&#39;hamming precedente, ma la matrice ha un&#39;ulteriore colonna finale di tutti 1</p>
+<p><strong>Parity bit versione Hamming</strong></p>
+<p>essendo un codice lineare si può creare una matrice generatrice che rappresenta il parity bit</p>
+<p>versione M=3:</p>
+<pre><code>{ 1 0 0 | 1
+  0 1 0 | 1
+  0 0 1 | 1 }
+</code></pre>
+<p>quindi è un codice (4,3,2), potenza 1</p>
+<p><strong>Repetition codes versione Hamming</strong></p>
+<p>matrice generatrice:</p>
+<pre><code>{ 1 1 ... 1 }
+</code></pre>
+<p>quindi è un codice (N,1,N), potenza N-1</p>
+<p><strong>Burst error</strong></p>
+<p>è il tipo di errore più comune, in uno stream di dati gli errori si concentrano in una piccola porzione di dati</p>
+<p>per risolvere questo errore si usa l&#39;interleaving</p>
+<p><strong>Interleaving</strong></p>
+<p>ogni pacchetto di bit non viene inviata sequenzialmente, ma si forma una matrice dei pacchetti e si inviano le colonne</p>
+<p>ciò consente di spalmare la potenza di un errore su più pacchetti</p>
+<p><strong>RAM</strong></p>
+<p>è sufficente una potenza di 1</p>
+<p><strong>ECC RAM (error correction code)</strong></p>
+<p>utilizzano hamming(72,64)</p>
+<p><strong>SECDED (single error correction, double error correction)</strong></p>
+<p>è uno standard che le schede madri devono implementare per utilizzare le ECC RAM</p>
+<p><strong>RAID</strong></p>
+<ul>
+<li>raid 0 --&gt; nessuna protezione</li>
+<li>raid 1 --&gt; repetition 2</li>
+<li>raid 2 --&gt; hamming</li>
+<li>raid 3 --&gt; parity</li>
+<li>raid 4 --&gt; parity distribuito</li>
+</ul>
+<p><strong>Erasures</strong></p>
+<p>è un tipo di errore che elimina porzioni di dati (es. cd graffiato)</p>
+<p>è meno grave di un flip in quanto si sa dove è avvenuto l&#39;errore</p>
+<p><strong>Codice Reed-Salomon RS(X,Y)</strong></p>
+<p>è un codice lineare basato sull&#39;aritmetica polinomiale, l&#39;idea di base consiste creare dei bit extra con il resto di una divisione polinomiale, può correggere contemporaneamente:</p>
+<ul>
+<li>(X-Y)/2 errori flip</li>
+<li>X-Y erasures</li>
+</ul>
+<p>si usa nei:</p>
+<ul>
+<li>dvd</li>
+<li>sonde spaziali</li>
+<li>blu ray</li>
+<li>WiMax</li>
+<li>tv digitale</li>
+</ul>
+<p><strong>Codice di Hadamard</strong></p>
+<p>è utilizzato nel CDMA, tratta le interferenze come vere e proprie comunicazioni</p>
+<p><strong>Teorema di Shannon</strong></p>
+<p>dato un certo tasso di errore X, esistono dei codici che possono arrivare ad un data rate massimo pari all&#39;entropia del canale di comunicazione</p>
+<p>il teorema quindi dichiara l&#39;esistenza di questi codici, ma non li specifica</p>
+<p>pro:</p>
+<ul>
+<li>data rate e protezione alta</li>
+</ul>
+<p>contro:</p>
+<ul>
+<li>in media le risorse utilizzate per la decodifica sono alte</li>
+</ul>
+<p><strong>CRC (Cycle Redundancy Check)</strong></p>
+<p>è un codice Reed-Salomon, basato sull&#39;aritmetica polinomiale in base 2</p>
+<p>encoding:</p>
+<ul>
+<li>si considera un pacchetto come un polinomio P(x)<ul>
+<li>i bit sono i coefficenti</li>
+<li>la posizione è il grado dell&#39;incognita</li>
+<li>la somma è una XOR</li>
+<li>la differenza è uguale alla somma</li>
+</ul>
+</li>
+<li>si sceglie un polinomio generatore G(x)</li>
+<li>P(x) = P(x) * x<sup>grado di G(x)</sup><ul>
+<li>assicura che T(x) abbia grado maggiore di G(x)</li>
+</ul>
+</li>
+<li>r(x) = P(x) % G(x)</li>
+<li>T(x) = P(x) + r(x)</li>
+<li>si trasmette T(x)</li>
+</ul>
+<p>decoding:</p>
+<ul>
+<li>T(x) è il pacchetto che arriva</li>
+<li>T(x) % G(x)<ul>
+<li>se == 0 --&gt; non c&#39;è errore</li>
+<li>se != 0 --&gt; c&#39;è errore</li>
+<li>nb: affinchè non ci sia un errore il resto deve fare 0 in quanto T(x) + r(x) è divisibile per G(x)</li>
+</ul>
+</li>
+</ul>
+<p>analisi dell&#39;errore:</p>
+<ul>
+<li>si definisce un errore di trasmissione come un polinomio E(x)</li>
+<li>il polinomio trasmesso + quindi T(x) + E(x)</li>
+<li>il check da fare è (T(x) + E(x)) % G(x) == 0</li>
+<li>per definizione T(x) % G(x) == 0</li>
+<li>E(x) % G(x)<ul>
+<li>se == 0 --&gt; non ci accorgiamo dell&#39;errore</li>
+<li>se == 1 --&gt; ci accorgiamo dell&#39;errore</li>
+</ul>
+</li>
+<li>bisogna quindi scegliere G(x) in modo tale che E(x) % G(x) == 1, cioè trovare G(x) che non sia fattore di E(x)</li>
+<li>E(x) ha una determinata forma in base al tipo di errore:<ul>
+<li>potenza 1:<ul>
+<li>E(x) = x<sup>i</sup></li>
+<li>G(x) = basta che abbia 2 termini</li>
+</ul>
+</li>
+<li>potenza 2:<ul>
+<li>E(x) = x<sup>i</sup> + x<sup>j</sup></li>
+<li>G(x) = basta che non sia potenza di X e che non divida x<sup>k+1</sup> con k in [i,j]</li>
+</ul>
+</li>
+<li>potenza dispari:<ul>
+<li>E(x) = x<sup>n</sup> + ... x<sup>i</sup> (dispari volte)</li>
+<li>G(x) = (x+1)<ul>
+<li>spiegazione: G(x) non può essere un fattore di E(x) quando ha (x+1), basta sostituire 1 per verificare</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>burst error:<ul>
+<li>E(x) = x<sup>i</sup>(x<sup>j</sup> + ... + 1)<ul>
+<li>flippa i bit da una certa posizione in poi</li>
+</ul>
+</li>
+<li>G(x) = x<sup>K</sup> + 1 con k &gt; j<ul>
+<li>aumentare il grado di G aumenta esponenzialmente la protezione ai burst</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>tipi di polinomi generatori:</p>
+<ul>
+<li>CRC-1 --&gt; x+1</li>
+<li>CRC-5 --&gt; x<sup>5</sup> + x<sup>2</sup> + 1</li>
+<li>CRC-16 --&gt; x<sup>16</sup> + x<sup>15&lt;/suè&gt; + x<sup>2</sup> + 1<ul>
+<li>si usa nell&#39;USB</li>
+</ul>
+</li>
+<li>CRC-16CCITT --&gt; x<sup>16</sup> + x<sup>12&lt;/suè&gt; + x<sup>2</sup> + 1<ul>
+<li>si usa nel bluetooth</li>
+</ul>
+</li>
+<li>CRC-32 --&gt; --&gt; x<sup>32</sup> ...<ul>
+<li>si usa in:<ul>
+<li>modem</li>
+<li>zip</li>
+<li>fibra</li>
+<li>cd-rom</li>
+<li>ethernet</li>
+<li>png</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>QR codes</strong></p>
+<p>è un GF(255) con quattro livelli di error correction:</p>
+<ul>
+<li>low --&gt; 7%</li>
+<li>medium --&gt; 15%</li>
+<li>quartile --&gt; 25%</li>
+<li>high --&gt; 30%</li>
+</ul>
+<p>si può fare pixel art nei QR codes perchà i qr codes sanno auto risolversi gli errori</p>
+<h3 id="flow-control">Flow Control</h3>
+<p>si occupa della gestione del flusso dei dati (congestione, arrivo dei dati...)</p>
+<p>definizioni:</p>
+<ul>
+<li>RTP (Round Trip Delay) --&gt; è il tempo che un messaggio impiega per andare e tornare</li>
+</ul>
+<h4 id="protocolli-di-trasmissione">Protocolli di trasmissione</h4>
+<p><strong>stop-and-wait</strong></p>
+<p>è un protocollo di trasmissione sequenziale, il mittente aspetta sempre un ack di conferma prima di inviare il pacchetto successivo</p>
+<p>data la capacità C del canale, la grandezza S del frame ed il round trip delay R, allora l&#39;utilizzo della linea è:</p>
+<ul>
+<li>S / (S + C*R)<ul>
+<li>se S &lt; C*R allora abbiamo un efficenza minore del 50%</li>
+</ul>
+</li>
+</ul>
+<p>pro:</p>
+<ul>
+<li>basta un canale half-duplex</li>
+</ul>
+<p>contro:</p>
+<ul>
+<li>lento --&gt; no parallelismo</li>
+<li>attesa infinita del mittente --&gt; pacchetto sparisce, ack non viene mai inviato</li>
+</ul>
+<p><strong>PAR (Positive Acknowledgment with Retransmission)</strong></p>
+<p>è un protocollo stop and wait che aggiunge:</p>
+<ul>
+<li>timer di ritrasmissione nel mittente --&gt; risolve attesa infinita del mittente</li>
+<li>numerazione dei pacchetti --&gt; risolve pacchetti duplicati da ritrasmissione<ul>
+<li>es. trasmettere diego --&gt; qualche ack non arriva --&gt; ddiegggo (pacchetti duplicati nel ricevente)</li>
+</ul>
+</li>
+</ul>
+<p>la numerazione può avvenire in 2 modi:</p>
+<ul>
+<li>completa --&gt; si numerano tutti i pacchetti, ma si perde di banda</li>
+<li>posizionale --&gt; si distinguono pacchetti pari e dispari</li>
+</ul>
+<p><strong>stop and wait full duplex</strong></p>
+<p>stop-and-wait può essere usatio in full duplex, utilizzando il protocollo su 2 canali simplex</p>
+<p>i questo caso il destinatario non invia l&#39;ACK subito, ma lo invia quando ha un frame da inviare (piggybacking), funziona bene quando c&#39;è equilibrio di comunicazione, altrimenti il timer del mittente può scadere e continuare a inviare lo stesso frame</p>
+<p><strong>Sliding windows</strong></p>
+<p>invece di aspettare un ACK per ogni pacchetto si inviano 2<sup>n</sup> pacchetti e si aspetta</p>
+<p>funzionamento:</p>
+<ul>
+<li>il mittente ed il ricevente implementano una finestra di trasmissione</li>
+<li>ogni finestra ha:<ul>
+<li>una taglia massima (numero di finestre)</li>
+<li>una taglia attuale (finestre aperte)</li>
+</ul>
+</li>
+<li>il ricevente lascia sempre una finestra aperta</li>
+<li>il mittente la apre quando deve inviare un pacchetto</li>
+<li>quando il mittente invia lascia aperta la finestra per l&#39;ACK</li>
+<li>quando riceve l&#39;ACK chiude la finestra e apre la successiva</li>
+<li>il destinatario dopo aver ricevuto il pacchetto, chiude la finestra e apre la successiva</li>
+</ul>
+<p>caratteristiche:</p>
+<ul>
+<li>la taglia attuale può essere al massimo metà della taglia massima</li>
+<li>il ricevente ha un timer di ack, dopo la quale invia l&#39;ack senza piggybacking (il timer del ricevente deve essere minore del mittente)</li>
+</ul>
+<p>pro:</p>
+<ul>
+<li>parallelismo di trasmissione</li>
+</ul>
+<p>contro:</p>
+<ul>
+<li>risorse utilizzate</li>
+</ul>
+<p><strong>Go Back N</strong></p>
+<p>è un protcollo sliding windows dove il mittente ha n finestre aperte ed il ricevente ne ha 1 aperta, si chiama go back n perchè in caso di errori di trasmissione si devono ritrasmettere n pacchetti</p>
+<p>viene usato per avere sequenzialità obbligatoria di pacchetti, ma parallelismo di trasmissione</p>
+<p>pro:</p>
+<ul>
+<li>funziona bene quando il canale ha pochi errori e il round trip delay è alto</li>
+</ul>
+<p>contro:</p>
+<ul>
+<li>il mittente deve avere N timer</li>
+<li>il mittente deve avere un buffer largo N per la ritrasmissione</li>
+</ul>
+<p><strong>Selective repeat</strong></p>
+<p>sia il mittente che il ricevente hanno N finestre aperte</p>
+<p>contro:</p>
+<ul>
+<li>anche il ricevente necessita di un buffer largo N</li>
+</ul>
+<p><strong>NAK (Not ACK)</strong></p>
+<p>è il contrario dell&#39;ack, invia un messaggio che indica errori di transmissione, il mittente reinvierà il pacchetto</p>
+<p>il nak può essere attivato in diversi modi:</p>
+<ul>
+<li>quando un pacchetto arriva nella finestra sbagliata della sliding window</li>
+<li>i pacchetti non arrivano in ordine</li>
+</ul>
+<p>di base:</p>
+<ul>
+<li>prima --&gt; il mittente invia i pacchetti e se non riceve l&#39;ACK allo scadere del timer, li reinvia</li>
+<li>dopo --&gt; il mittente invia i pacchetti e se solo se riceve il NACK li reinvia</li>
+</ul>
+<p>il nack viene inviato subito, senza piggybacking</p>
+
+        </div>
+    </div>
+</body>
+
+</html>

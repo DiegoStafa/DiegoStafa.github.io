@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info"><li>
+Protocolli di trasmissione Data link
+</li>
+<li>
+Reti e Sicurezza
+</li>
+<li>
+26-01-2021
+</li>
+</ul>
+<div class="post">
+<h1 id="data-link">Data link</h1>
+<h2 id="hdlc-high-level-data-link-control">HDLC (High-level Data Link Control)</h2>
+<p>è stato il primo protocollo creato data-link, fatto da ibm, ancora usato nella rete dei bancomat e trasmissione satellitare</p>
+<p>formato da:</p>
+<ul>
+<li>flag byte (header)</li>
+<li>paylod --&gt; bit stuffed </li>
+<li>checksum (2 byte) --&gt; CRC-16</li>
+<li>address (1 byte) --&gt; serve per indirizzamento in un end-point con terminali multiplic</li>
+<li>control (1 byte) --&gt; consente di inviare 3 comandi</li>
+<li>flag byte (trailer)</li>
+</ul>
+<p>la parte di control serve a mandare frame di controllo, 3 tipi:</p>
+<ul>
+<li>information</li>
+<li>supervisory</li>
+<li>unnumbered</li>
+</ul>
+<p>sliding window a 3 bit (8 finestre):</p>
+<ul>
+<li>4 pacchetti in paralllelo</li>
+</ul>
+<p><strong>information</strong></p>
+<p>usato per informare la sliding window aperta, composto da:</p>
+<ul>
+<li>1 bit --&gt; indica che è un comando di information</li>
+<li>seq (3 bit) --&gt; numero della sliding window</li>
+<li>P/F (1 bit) --&gt; poll/final, chiede di iniziare o terminare la trasmissione</li>
+<li>next (3 bit) --&gt; contiene eventuale ack (piggybacking)</li>
+</ul>
+<p><strong>supervision</strong></p>
+<p>è usato per comunicare lo statp della trasmissione, composto da:</p>
+<ul>
+<li>10 (2 bit) --&gt; indcia che è un comando di supervision</li>
+<li>type (2 bit) --&gt; 4 segnali/comandi di supervisione</li>
+<li>p/F (1 bit)</li>
+<li>next (3 bit)</li>
+</ul>
+<p>tipi di segnali/comandi supervision:</p>
+<ul>
+<li>RECEIVE READY --&gt; il flusso è sbilanciato, viene utilizzato quando non si può fare piggybacking, il messaggio inviato è solo l&#39;ack (camion vuoto con solo ricevuta di rit.)</li>
+<li>REJECT --&gt; è un NAK generico, segnala che vanno ritrasmessi tutti i frame a partire da quello indicato nella sliding window del campo next</li>
+<li>RECEIVE NOT READY --&gt; segnala che ci sono problemi di congestione, il mittente smette di trasmettere fino al prossimo segnale di RECEIVE READY</li>
+<li>SELECTIVE REJECT --&gt; è un NAK preciso, segnala di ritrasmettere solo il frame del campo next</li>
+</ul>
+<p><strong>unnumbered</strong></p>
+<p>usato per comandi di controllo generici, composta da:</p>
+<ul>
+<li>11 (2 bit) --&gt; indica che è un comando unnumbered</li>
+<li>type --&gt; segnali/comandi unnumbered</li>
+<li>P/F</li>
+<li>modifier</li>
+</ul>
+<p>tipi di segnali/comandi unnumbered:</p>
+<ul>
+<li>DISC --&gt; si sta per essere disconnessi dalla rete (diverso da F di P/F)</li>
+<li>SNRM (Set Normal Response Mode) --&gt; indica un canale assimmetrico dove il nuovo entrato è meno importante (è meno importante per motivi storici)</li>
+<li>SABM (Set Asynchronous Balanced Mode) --&gt; come SNRM, ma chi entra ha gli stessi diritti degli altri</li>
+<li>FRMR (FRaMe Reject) --&gt; indica l&#39;arrivo di un frame con una sequenza di controllo non riconosciuta</li>
+</ul>
+<p><strong>UA</strong></p>
+<p>siccome i segnali/comandi di controllo possono essere oggetto di interferenze come altri frame, si introduce il UA (Unnumbered ACK)</p>
+<p>i segnali unnumbered vengono emessi in modo sequenziale, mai parallelo, perciò utilizza un protoccolo stop and wait, quindi il UA non ha bisogno di essere numerato</p>
+<h2 id="ppp-point-to-point-protocol">PPP (Point to Point Protocol)</h2>
+<p>è il protocollo utilizzato nella rete internet, si apre una connesione PPP ogni qual volta un pacchetto attravarsa un pezzo diverso di rete</p>
+<p>si compone di 2 sottoprotocolli:</p>
+<ul>
+<li>LCP (Link Control Protocol) --&gt; per controllo del flusso, apertura/chiusura di canali e connessioni (data-link)</li>
+<li>NCP (Network Control Protocol) --&gt; comunicazione con il network layer</li>
+</ul>
+<p>frame PPP:</p>
+<ul>
+<li>flag byte (header) --&gt; byte stuffing</li>
+<li>address (1 Byte) --&gt; non si usa, lasciato costante a 1111111</li>
+<li>control (1 Byte) --&gt; non si usa, lasciato costante a 0000011</li>
+<li>protocol (1/2 byte) --&gt; indica se si sta usando LCP (bit = 0) o NCP (bit = 1)</li>
+<li>payload (var byte) --&gt; il contenuto dipende dal protocol</li>
+<li>checksum (2/4 byte) --&gt; CRC, definito a configurazione</li>
+<li>flag byte (trailer)</li>
+</ul>
+<p><strong>LCP</strong></p>
+<p>comandi LCP:</p>
+<ul>
+<li>configurazione<ul>
+<li>configure-request</li>
+<li>configure-ack</li>
+<li>configure-nak</li>
+<li>configure-reject</li>
+</ul>
+</li>
+<li>terminazione<ul>
+<li>terminate-request </li>
+<li>terminate-ack</li>
+</ul>
+</li>
+<li>rifiuto<ul>
+<li>code-reject</li>
+<li>protocol-reject</li>
+</ul>
+</li>
+<li>echo<ul>
+<li>echo-request --&gt; testa la qualità di trasmissione</li>
+</ul>
+</li>
+<li>test<ul>
+<li>discard-request --&gt; testa la linea e rileva i loops nella rete</li>
+</ul>
+</li>
+</ul>
+<p>comandi di configurazione:</p>
+<ul>
+<li>configure-request (sender to receiver) --&gt; propone opzioni di configurazione della linea</li>
+<li>configure-ack (receiver to sender) --&gt; accetta le condizioni di configure-request</li>
+<li>configure-nak (receiver to sender) --&gt; rifiuta alcune condizioni di cofigure-request</li>
+<li>configure-reject (receiver to sender) --&gt; rifiura tutte le condizioni di configure-request</li>
+</ul>
+<p>parametri di configurazione:</p>
+<ul>
+<li>CRC-16 o CRC-32 (risparmia 1 byte)</li>
+<li>la lunghezza di protocol (risparmia 1 byte)</li>
+<li>lunghezza payload (MTU)<ul>
+<li>payloads grandi --&gt; più rischio di ritrasmissione</li>
+<li>payloads piccoli --&gt; banda sprecata</li>
+</ul>
+</li>
+<li>rimozione campo address</li>
+<li>rimozione campo control</li>
+</ul>
+<p>comandi di terminazione:</p>
+<ul>
+<li>terminate-request --&gt; richiede di terminare la comunicazione</li>
+<li>terminate-ack --&gt; accetta</li>
+</ul>
+<p>comandi di rifiuto:</p>
+<ul>
+<li>code-reject (receiver to sender) --&gt; riconosce il protocollo, ma non riconosce il comando</li>
+<li>protocol-reject (receiver to sender) --&gt; non ricoosce il protocollo</li>
+</ul>
+<p>comandi di echo:</p>
+<ul>
+<li>echo-request (sender to receiver) --&gt; chiede al receiver di rimandare questo pacchetto</li>
+<li>echo-reply (receiver to sender) --&gt; lo rimanda</li>
+</ul>
+<p>comando di test:</p>
+<ul>
+<li>discard-request (sender to receiver) --&gt; chiede di ignorare il pacchetto</li>
+</ul>
+<p><strong>PPPoE (PPP Over Ethernet)</strong></p>
+<p>PPP è un frame per le reti internet, ma non tutte le reti sono internet, le reti ethernet, utilizzano il protocollo ethernet non PPP, quindi per arrivare a comunicare con il PPP si deve prima passare per l&#39;ethernet (o un&#39;altra rete locale) e poi si arriva alla rete internet</p>
+<p>per far ciò il frame PPP che si vuole inviare viene inglobato nel payload etherent</p>
+<p>questo piggybacking di frames avviene ogni qual volta si voglia inviare un frame PPP in una rete non internet</p>
+<p><strong>ATM (Asynchronous Transfer Mode)</strong></p>
+<p>è un derivato dell&#39;HDLC, nato per telefonia e bancomat, gestisce il flusso di controllo con sliding windows di 16 finestre, CRC-8</p>
+<p>ha un sistema di indirizzamento gerarchico, formato da:</p>
+<ul>
+<li>path (VPI Virtual Path Id)</li>
+<li>channel (VCI Virtual Channel Id)</li>
+</ul>
+<p>virtual sta a significare che viene creata una connessione/sessione di trasmissione tra 2 end point</p>
+<p>siccome le centraline ATM possono ricevere frame con protocolli diversi si utilizzano 2 protocolli per mandare i frame in uscita dalla centralina:</p>
+<ul>
+<li>frame LLC (Logical Link Control) --&gt; può contenere frame di diverso protocollo</li>
+<li>fram VC-MUX (Virtual Connection Multiplexing) --&gt; può contenere solo frame dello stesso protollo</li>
+</ul>
+<h2 id="sistemi-a-contesa">sistemi a contesa</h2>
+<p>sono sistemi di comunicazione multipla, in cui c&#39;è un canale condiviso da molti in cui si crea contesa per ottenere il canale per comunicare</p>
+<p>concetti base:</p>
+<ul>
+<li>station model --&gt; le entità ottengono il canale per tutta la durata della trasmissione</li>
+<li>single channel --&gt; c&#39;è un canale singolo per la trasmissione</li>
+<li>collision --&gt; se 2 pacchetti vengono trasmessi allo stesso tempo, vengono distrutti</li>
+<li>il tempo può essere:<ul>
+<li>continuo</li>
+<li>slotted</li>
+</ul>
+</li>
+<li>carrier sense --&gt; ascolto del canale</li>
+</ul>
+<p><strong>pure aloha</strong></p>
+<p>è un protocollo a contesa</p>
+<p>idea di base:</p>
+<ul>
+<li>se vuoi trasmettere, trasmetti</li>
+<li>se c&#39;è collision, lancia un dado e aspetta prima di ritrasmettere</li>
+</ul>
+<p>funzionamento:</p>
+<ul>
+<li>N utenti nel sistema</li>
+<li>tutti i frame hanno lunghezza T</li>
+<li></li>
+</ul>
+<p>proprietà:</p>
+<ul>
+<li>entità multiple utilizzano lo stesso canale di comunicazione</li>
+<li>la banda si assesta al 18.4% indipendentemente dal numero di entità</li>
+</ul>
+<p><strong>slotted aloha</strong></p>
+<p>si può trasmettere solo in un certo clock di tempo</p>
+<p><strong>CSMA 1-persistente (Carrier Sense Multiple Access)</strong></p>
+<p>idea di base:</p>
+<ul>
+<li>se vuoi trasmettere ascolti il canale</li>
+<li>se è occupato non trasmetti e ti tieni in ascolto</li>
+<li>se è libero trasmetti con probabilità 1</li>
+</ul>
+<p>pro:</p>
+<ul>
+<li>banda utilizzata &gt; 50%</li>
+</ul>
+<p>contro:</p>
+<ul>
+<li>tutte le stazioni che aspettano di trasmettere quando il canale si libera trasmettono insieme e accade quasi sempre una collisione</li>
+</ul>
+<p>la persistenza</p>
+<p><strong>CSMA P-persistente</strong></p>
+<p>è il CSMA, ma se il canale è liberotrasmette con probabilità P</p>
+<p>pro:</p>
+<ul>
+<li>banda utilizzata quasi al 100%</li>
+</ul>
+<p>contro:</p>
+<ul>
+<li>se il canale è libero si trasmette comunque con probabilità p</li>
+</ul>
+<p><strong>CSMA non-persistente</strong></p>
+<p>idea di base:</p>
+<ul>
+<li>se vuoi trasmettere ascolti il canale</li>
+<li>se è occupato, lancia un dado e aspetti</li>
+</ul>
+<p>pro:</p>
+<ul>
+<li>scala meglio</li>
+<li>non ha parametri</li>
+<li>non ha bisogno di nessun tipo di sincronizzazione</li>
+</ul>
+<p>contro:</p>
+<ul>
+<li>banda utilizzata &quot;solo&quot; al 90%</li>
+<li>se il canale è libero si trasmette direttamente</li>
+</ul>
+<p><strong>CSMA/CD (Collision Detection)</strong></p>
+<p>è il CDMA con aloha, se c&#39;è una collisione la stazione lancia un dado e aspetta prima di riprovare</p>
+<p>in cdma/cd la rete può assumere 3 diversi stati:</p>
+<ul>
+<li>trasmissione --&gt; qualcuno sta trasmettendo</li>
+<li>contesa --&gt; c&#39;è contesa per trasmissione</li>
+<li>idle --&gt; non succede nulla</li>
+</ul>
+<p>fase di contesa:</p>
+<ul>
+<li>una stazione invia dei bit di contesa</li>
+<li>se riesce a fare il ping con la stazione più lontana, trasmette</li>
+<li>se non riesce (collisione) lancia un dado e aspetta (aloha)</li>
+</ul>
+<p>il tempo minimo per verificare il vincitore della fase di contesa è il round trip delay della stazione più lontana</p>
+<p><strong>sistemi a contesa wireless</strong></p>
+<p>il problema maggiore è il cambio della topologia, ogni stazione ha la sua area di comunicazione, che spostandosi può cioccare con quella di altre stazioni</p>
+<p>problema della stazione nascosta  (trasmetto quando non dovrei trasmettere):</p>
+<ul>
+<li>la stazione A trasmette a B</li>
+<li>la stazione C non vede A ma vede B</li>
+<li>la stazione C quindi conclude di poter trasmettere a B</li>
+<li>A e C cioccano i pacchetti</li>
+</ul>
+<p>problema della stazione esposta (non trasmetto quando dovrei trasmettere):</p>
+<ul>
+<li>la stazione B trasmette ad A</li>
+<li>la stazione C sente che sta trasmettendo</li>
+<li>la stazione C non trasmette a D perchè pensa potrebbe interferire con B (eccesso di cautela)</li>
+</ul>
+<p><strong>MACA (Multiple Access Collision Avoidèance)</strong></p>
+<p>risolve i porblemi di stazione nascosta/esposta, è un protocollo che aggiunge 2 comandi alle stazioni wireless per scambiarsi informazioni:</p>
+<ul>
+<li>RTS (Request to Send) --&gt; chiede di comunicare</li>
+<li>CTS (Clear to Send) --&gt; dà il via libera</li>
+</ul>
+<p><strong>ethernet (IEEE 802.3)</strong></p>
+<p>Xbase Y dove:</p>
+<ul>
+<li>X è la banda in Mbps</li>
+<li>base --&gt; indica una connessione <em>baseband</em> (frequenza unica, quindi è un protocollo a contesa)</li>
+<li>Y --&gt; tipo di cavo/lunghezza</li>
+</ul>
+<p>prima dell&#39;ethernet non c&#39;erano molte reti locali, ethernet ha avuto successo grazie al numero di stazioni collegabili su un cavo (10baseT gestisce 1024 stazioni ogni 100m)</p>
+<p>per codificare le frequenza non usa picchi alti e bassi (problema di sincronizzazione), ma la codifica di machester</p>
+<p>contro:</p>
+<ul>
+<li>efficenza inveramente proporzionale a banda*lunghezza (+ banda o cavo rende la rete meno effiecente)</li>
+</ul>
+<p><strong>binary exponential truncated backoff</strong></p>
+<p>ethernet usa un CDMA non persistente con una modifica, se 2 acchetti collidono si aumenta esponenzialmente il tempo di attesa</p>
+<p>es:</p>
+<ul>
+<li>mando 1 pacchetto</li>
+<li>collisione</li>
+<li>asepetto 1s --&gt; 2s --&gt; 4s ... max 1024</li>
+</ul>
+<p><strong>frame ethernet</strong></p>
+<p>un frame ethernet è composto da:</p>
+<ul>
+<li>preamble (8 byte) --&gt; 101010...101010, per sincronizzazione ad alte velocità</li>
+<li>dest. address (6 byte) --&gt; per indirizzi locali  e globali (MAC)</li>
+<li>source address (6 byte)</li>
+<li>type (2 byte) --&gt; tipo di protocollo e come usare il frame</li>
+<li>data (0-1500 byte)</li>
+<li>pad (0-46 byte) --&gt; assicura che la lunghezza del frame sia almeno il tempo di round trip</li>
+<li>checksum (4 byte) --&gt; CRC-4</li>
+</ul>
+<p><strong>MAC address</strong></p>
+<p>è un protocollo di indirizzi a 48 bit, dove:</p>
+<ul>
+<li>3 byte identificano il produttore (OUI)</li>
+<li>i restanti 3 byte identificano lo spazio di indirizzi</li>
+</ul>
+<p>permette di identificare uiversalmente un dispositivo, permettendogli di passare da rete locale a rete locale</p>
+
+        </div>
+    </div>
+</body>
+
+</html>

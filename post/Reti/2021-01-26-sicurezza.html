@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info"><li>
+Sicurezza
+</li>
+<li>
+Reti e Sicurezza
+</li>
+<li>
+26-01-2021
+</li>
+</ul>
+<div class="post">
+<h1 id="sicurezza">Sicurezza</h1>
+<p>basi:</p>
+<ul>
+<li>informazioni da trasmettere --&gt; P</li>
+<li>il mittente cripta il messaggio, il destinatario lo decripta</li>
+<li>funzione di criptaggio E</li>
+<li>funzione di deriptaggio D</li>
+</ul>
+<p><strong>principio di kerckhoff</strong></p>
+<p>un algoritmo di crittografia deve essere pubblico, le chiavi devono essere private</p>
+<p>quindi E e D sono funzioni parametrizzate dalla chivi segrete</p>
+<p>security by obscurity --&gt; fallimentare, bisogna proteggere anche l&#39;algoritmo</p>
+<p><strong>cypher e codes</strong></p>
+<p>indica il livello di granularità di crittaggio:</p>
+<ul>
+<li>cypher --&gt; sostituzione per carattere (es. cifrario di cesare, sposta lettere di 3)</li>
+<li>code --&gt; sostituzione per parola (es. parlare in lingua straniera)</li>
+</ul>
+<p><strong>monoalphabetic substitution</strong></p>
+<p>è la generalizzazione del cifraio di cesare, troppo semplice da decriptare</p>
+<p><strong>one-time pad</strong></p>
+<ul>
+<li>si prende il plain text</li>
+<li>si prende una chiave causale di lunghezza plain text</li>
+<li>si fa lo XOR tra chiave e plain text</li>
+<li>il destinatario da lo XOR con la stessa chiave</li>
+<li>sicuro 100%</li>
+</ul>
+<p>contro:</p>
+<ul>
+<li>chiave lunga quanto il messaggio</li>
+<li>chiave completamente casuale</li>
+<li>la chiave si può usare una volta sola</li>
+</ul>
+<p><strong>block cipher</strong></p>
+<p>sono una famiglia di cifrari detti a blocchi:</p>
+<ul>
+<li>si crea una chiave limitata</li>
+<li>si spezza il messaggio in blocchi</li>
+<li>si cripta ogni blocco con la chiave</li>
+</ul>
+<p>il criptaggo è fatto con:</p>
+<ul>
+<li>p-box --&gt; fanno una permutazione del blocco</li>
+<li>s-box --&gt; si sostituiscono certi bit del blocco</li>
+</ul>
+<p>queste operazioni vengono fatte casualmente con la chiave</p>
+<p><strong>DES</strong></p>
+<p>è un cifrario a blocchi:</p>
+<ul>
+<li>64 bit di blocchi</li>
+<li>56 bit di chiave --&gt; così riescono a decifrarlo</li>
+</ul>
+<p>proprietà:</p>
+<ul>
+<li>la funzione di decritaggio è opposta a quella di crittaggio:<ul>
+<li>E(D(P)) == D(E(P))</li>
+</ul>
+</li>
+</ul>
+<p><strong>triple DES</strong></p>
+<p>evoluzione del DES:</p>
+<ul>
+<li>64 bit blocchi</li>
+<li>2 chiavi da 56 bit</li>
+<li>si applica 3 volte --&gt; E<sub>k1</sub> - D<sub>k2</sub> - E<sub>k1</sub></li>
+</ul>
+<p>proprietà:</p>
+<ul>
+<li>2 chiavi danno retrocompatibilità con il DES usando una stessa chiave</li>
+</ul>
+<p><strong>AES</strong></p>
+<p>è un cifrario a blocchi:</p>
+<ul>
+<li>chiavi a 128 e 256 bit</li>
+</ul>
+<p><strong>RSA</strong></p>
+<p>è un cifrario a blocchi con chiave asimmetrica, </p>
+<p><strong>attacco ECB</strong></p>
+<p>è un attacco ai ciphrer blocks che scambia dei blocchi, rende impossibile il decrittaggio, si risolve con lo stream cipher</p>
+<p><strong>stream cipher</strong></p>
+<p>si un numero casuale e si critta N volte, si fa il one time pad del messaggio crittato finale con questo stream cipher</p>
+<p>pro:</p>
+<ul>
+<li>risolve ECB</li>
+</ul>
+<p>contro:</p>
+<ul>
+<li>IV dev&#39;essere sempre diverso</li>
+</ul>
+<p><strong>attacco DoS</strong></p>
+<p>chi attacca supera le risorse di chi riceve</p>
+<p><strong>attacco SYN</strong></p>
+<p>si fa un flood di richieste SYN senza poi rispondere, il server tiene aperta la connessione finchè non riceve risosta</p>
+<p><strong>IP spoofing</strong></p>
+<p>siccome l&#39;IP non ha nessun controllo, si sostituisce l&#39;ip di mittente con un altro ip</p>
+<p><strong>WEP</strong></p>
+<p>utilizza un cifrario a blocchi con chiave simmetrica a 40 bit, usa lo stream cipher lungo 24 bit</p>
+<p>problemi:</p>
+<ul>
+<li>iv 24 bit implica che dopo 2^24 stream cipher non si può più creare IV nuovi</li>
+</ul>
+<p><strong>WPA</strong></p>
+<p>utilizza codifica RC4, la chiave inserita come passphrase è facile da decrittare</p>
+<p><strong>WPA2</strong></p>
+<p>usa AES con lo stream cipher</p>
+
+        </div>
+    </div>
+</body>
+
+</html>

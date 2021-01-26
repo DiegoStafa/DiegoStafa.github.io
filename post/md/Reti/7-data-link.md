@@ -333,13 +333,16 @@ si può fare pixel art nei QR codes perchà i qr codes sanno auto risolversi gli
 
 ### Flow Control
 
-si occupa della gestione del flusso dei dati (ad esempio quando passano troppi dati, ingorghi...)
+si occupa della gestione del flusso dei dati (congestione, arrivo dei dati...)
 
-**Protocolli stop-and-wait**
+definizioni:
+* RTP (Round Trip Delay) --> è il tempo che un messaggio impiega per andare e tornare
 
-sono una famiglia di protocolli che introduce l'idea di comunicazione tra mittente e ricevente su canale simplex
+#### Protocolli di trasmissione
 
-di base il mittente aspetta un messaggio di ACK dal ricevente prima di inviare il successivo frame dati
+**stop-and-wait**
+
+è un protocollo di trasmissione sequenziale, il mittente aspetta sempre un ack di conferma prima di inviare il pacchetto successivo
 
 data la capacità C del canale, la grandezza S del frame ed il round trip delay R, allora l'utilizzo della linea è:
 * S / (S + C*R)
@@ -348,63 +351,83 @@ data la capacità C del canale, la grandezza S del frame ed il round trip delay 
 pro:
 * basta un canale half-duplex
 
-svantaggi:
-* lento, c'è attesa
-* se il ricevente ignora un pacchetto corrotto non invia mai un ACK
-* il messaggio di ACK può essere corrotto e il ricevente ha un flusso doppio dello stesso pacchetto
+contro:
+* lento --> no parallelismo
+* attesa infinita del mittente --> pacchetto sparisce, ack non viene mai inviato
 
-**PAR (Positive Acknowledgment with Retransmission) e ARQ (Automatic Repeat reQuest)**
+**PAR (Positive Acknowledgment with Retransmission)**
 
-sono 2 protocolli stop and wait che risolvono:
-* ciclo infinito di attesa
-* flusso doppio
+è un protocollo stop and wait che aggiunge:
+* timer di ritrasmissione nel mittente --> risolve attesa infinita del mittente
+* numerazione dei pacchetti --> risolve pacchetti duplicati da ritrasmissione
+    * es. trasmettere diego --> qualche ack non arriva --> ddiegggo (pacchetti duplicati nel ricevente)
 
-l'attesa infinita la risolve con un timer nel mittente, i flussi doppi li risolve numerando i pacchetti, la numerazione può avvenire in 2 modi:
-* completa
-    * si numerano tutti i pacchetti, ma si perde di banda
-* posizionale
-    * si distinguono pacchetti pari e dispari
+la numerazione può avvenire in 2 modi:
+* completa --> si numerano tutti i pacchetti, ma si perde di banda
+* posizionale --> si distinguono pacchetti pari e dispari
 
 **stop and wait full duplex**
 
-gli stop-and-wait possono essere usati in full duplex, utilizzando il protocollo su 2 canali simplex
+stop-and-wait può essere usatio in full duplex, utilizzando il protocollo su 2 canali simplex
 
 i questo caso il destinatario non invia l'ACK subito, ma lo invia quando ha un frame da inviare (piggybacking), funziona bene quando c'è equilibrio di comunicazione, altrimenti il timer del mittente può scadere e continuare a inviare lo stesso frame
-
-**Round-Trip-Delay**
-
-è il tempo che un messaggio impiega per andare e tornare
 
 **Sliding windows**
 
 invece di aspettare un ACK per ogni pacchetto si inviano 2<sup>n</sup> pacchetti e si aspetta
 
 funzionamento:
-* il mittente ed il destinatario implementano una finestra di trasmissione
+* il mittente ed il ricevente implementano una finestra di trasmissione
 * ogni finestra ha:
-    * una capacità massima (numero di finestre)
+    * una taglia massima (numero di finestre)
     * una taglia attuale (finestre aperte)
-* il destinatario lascia sempre una finestra aperta
+* il ricevente lascia sempre una finestra aperta
 * il mittente la apre quando deve inviare un pacchetto
 * quando il mittente invia lascia aperta la finestra per l'ACK
 * quando riceve l'ACK chiude la finestra e apre la successiva
 * il destinatario dopo aver ricevuto il pacchetto, chiude la finestra e apre la successiva
 
-il numero di finestre aperte deve essere al massimo metà delle finestre totali, ciò evita sovrapposizione di finestre
+caratteristiche:
+* la taglia attuale può essere al massimo metà della taglia massima
+* il ricevente ha un timer di ack, dopo la quale invia l'ack senza piggybacking (il timer del ricevente deve essere minore del mittente)
 
-problemi:
-* traffico non equilibrato non è buono con il puggybacking
-    * sol. si da un timer al ricevente, dopo la quale il ricevente manda l'ack senza piggybacking
+pro:
+* parallelismo di trasmissione
 
-**Protocolli Go Back N**
+contro:
+* risorse utilizzate
 
-sono famiglie di protocolli sliding windows dove il numero di finestre aperte del destinatario è sempre 1, mentre il mittente ha N finestre aperte
+**Go Back N**
+
+è un protcollo sliding windows dove il mittente ha n finestre aperte ed il ricevente ne ha 1 aperta, si chiama go back n perchè in caso di errori di trasmissione si devono ritrasmettere n pacchetti
+
+viene usato per avere sequenzialità obbligatoria di pacchetti, ma parallelismo di trasmissione
 
 pro:
 * funziona bene quando il canale ha pochi errori e il round trip delay è alto
 
 contro:
 * il mittente deve avere N timer
-* il mittente deve avere un buffer largo N
+* il mittente deve avere un buffer largo N per la ritrasmissione
 
-**Protocolli selective repeat**
+**Selective repeat**
+
+sia il mittente che il ricevente hanno N finestre aperte
+
+contro:
+* anche il ricevente necessita di un buffer largo N
+
+
+**NAK (Not ACK)**
+
+è il contrario dell'ack, invia un messaggio che indica errori di transmissione, il mittente reinvierà il pacchetto
+
+il nak può essere attivato in diversi modi:
+* quando un pacchetto arriva nella finestra sbagliata della sliding window
+* i pacchetti non arrivano in ordine
+
+di base:
+* prima --> il mittente invia i pacchetti e se non riceve l'ACK allo scadere del timer, li reinvia
+* dopo --> il mittente invia i pacchetti e se solo se riceve il NACK li reinvia
+
+il nack viene inviato subito, senza piggybacking

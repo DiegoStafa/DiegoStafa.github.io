@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info"><li>
+Dispositivi di rete
+</li>
+<li>
+Reti e Sicurezza
+</li>
+<li>
+26-01-2021
+</li>
+</ul>
+<div class="post">
+<h1 id="dispositivi-di-rete">Dispositivi di rete</h1>
+<p>siccome le reti ethernet servono solo per il locale (efficenza cala con la grandezza della rete), per creare una rete su scala globale si utilizzano le reti di reti, e la connessione di reti avviene su più livelli:</p>
+<ul>
+<li>fisico --&gt; hubs e ripetitori</li>
+<li>data link --&gt; switch</li>
+<li>network --&gt; routers</li>
+</ul>
+<h2 id="data-link-layer">Data link layer</h2>
+<p><strong>ripetitori e hubs</strong></p>
+<p>il ripetitore serve a ripetere e amplificare il segnale, l&#39;hub propaga un segnale in tutte le sue porte</p>
+<p><strong>switch</strong></p>
+<p>servono a collegare logicamente reti locali ed inoltrare i pacchetti da una rete all&#39;altra</p>
+<p>fase di apprendimento dello switch:</p>
+<ul>
+<li>prende un pacchetto dela stazione A della rete 1</li>
+<li>sa che la stazione A è nella rete 1 e mette questa informazione in una teballa</li>
+<li>lo inoltra a tutti</li>
+<li>man mano che si scambiano pacchetti si popola la switch table</li>
+</ul>
+<p>dopo un tot di tempo lo switch resetta la tabella (per rinfrescare le informazioni della rete)</p>
+<h2 id="network-layer">Network layer</h2>
+<p><strong>router</strong></p>
+<p>mentre lo switch instrada pacchetti in reti locali collegate, il router lo deve fare su reti di scala globale, dove il router non conosce in che rete si trova il destinatario</p>
+<p><strong>flooding</strong></p>
+<p>il router ritrasmette il pacchetto in tutte le altre reti</p>
+<p>pro:</p>
+<ul>
+<li>sceglie sempre la via migliore</li>
+<li>è robusto a modifiche di rete</li>
+</ul>
+<p>contro:</p>
+<ul>
+<li><p>non è scalabile</p>
+</li>
+<li><p>hopcounting --&gt; si da un tempo di vita al pacchetto in flooding per non saturare la rete</p>
+</li>
+<li><p>tracking --&gt; si numerano i pacchetti arrivati</p>
+</li>
+</ul>
+<p><strong>distance vector routing</strong></p>
+<p>usato nell&#39;arpanet, funzionamento:</p>
+<ul>
+<li>ogni router chiede ai router adiacenti</li>
+<li>da queste tabelle costruire la sua tabella </li>
+</ul>
+<p>pro:</p>
+<ul>
+<li>modifiche buone della rete aggiornano le tabelle</li>
+</ul>
+<p>contro:</p>
+<ul>
+<li>si comporta male quando la rete si guasta</li>
+</ul>
+<p>problema count-to-infinity --&gt; se un router cambia distanza il distance vector non si aggiorna subito</p>
+<p><strong>link state routing</strong></p>
+<p>funzionamento:</p>
+<ul>
+<li>calcola le distanze come il distance vector</li>
+<li>le inoltra a tutti i router con il flooding</li>
+</ul>
+<p>di base usa il flooding per risolvere count-to-infinity</p>
+<p><strong>quality of service</strong></p>
+<p>indica la qualità del servizio offerto, nelle reti è identificato da 4 parametri:</p>
+<ul>
+<li>affidabilità</li>
+<li>bandawidth</li>
+<li>delay di trasmissione</li>
+<li>jitter --&gt; indica se il delay di trasmissione varia tanto o poco</li>
+</ul>
+<p>questi parametri variano in base al servizio interessato:</p>
+<ul>
+<li>email --&gt; interessa solo affidabilità</li>
+<li>ftp --&gt; interessa affidabilità e banda</li>
+<li>video --&gt; interessa jitter e banda</li>
+</ul>
+<p>soluzioni per il QoS:</p>
+<ul>
+<li>affidabilità --&gt; error control e detection</li>
+<li>bandwidth --&gt; congestion control</li>
+</ul>
+<p><strong>choke packet</strong></p>
+<p>si usa per limitare la congestione, se un router si accorge che c&#39;è congestione, invia un pacchetto speciale a chi sta creando congestione per indicarlgi di rallentare, solitamente dopo un choke packet l&#39;host dimezza il suo data rate esponenzialmente (50%, 25%, 12%...)</p>
+<p>contro:</p>
+<ul>
+<li>un host può ricevere diversi chokes da diversi routers --&gt; sol. si filtrano temporalmente</li>
+<li>il choke può metterci molto tempo per arrivare --&gt; si risolve parzilmente con il choke by hop, si manda il pacchetto di choke che agisce subito sul router in cui arriva e viene passato fino al destinatario</li>
+</ul>
+<p><strong>leaky bucket</strong></p>
+<p>si usa per limitare la congestione, di base il router salva i pacchetti in memoria, e li manda in uscita con un data rate costante</p>
+<p>pro:</p>
+<ul>
+<li>semplice ma efficace</li>
+</ul>
+<p>contro:</p>
+<ul>
+<li>il data rate è costante</li>
+</ul>
+<p><strong>token bucket</strong></p>
+<p>di base il router ogni tot di tempo incrementa un contatore e un pacchetto per uscire deve decrementarlo, non esce se il contatore è 0, consente di limitare il data rate in base alla frequenza con cui si incrementa il contatore</p>
+
+        </div>
+    </div>
+</body>
+
+</html>
