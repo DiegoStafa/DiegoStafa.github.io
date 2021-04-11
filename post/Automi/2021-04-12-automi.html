@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info"><li>
+Automi
+</li>
+<li>
+Automi
+</li>
+<li>
+12-04-2021
+</li>
+</ul>
+<div class="post">
+<p><strong>automa</strong></p>
+<p>sono dispositivi matematici astratti che possono:</p>
+<ul>
+<li>determinare se una string appartiene ad un linguaggio</li>
+<li>trasformare una stringa in un&#39;altra stringa</li>
+</ul>
+<p>proprietà:</p>
+<ul>
+<li>accettano input e output</li>
+<li>memoria</li>
+<li>capacità decisionale su input e memoria</li>
+<li>trasformare input e output</li>
+</ul>
+<p>tipi di automi:</p>
+<ul>
+<li>memoria finita<ul>
+<li>automi a stati finiti --&gt; compilatori/protocolli di comunicazione...</li>
+</ul>
+</li>
+<li>memoria infinita<ul>
+<li>ad accesso limitato</li>
+<li>ad accesso illimitato</li>
+</ul>
+</li>
+</ul>
+<p>concetti:</p>
+<ul>
+<li>alfabeto --&gt; insieme di simboli</li>
+<li>stringa/parola --&gt; sequenza finita di simboli<ul>
+<li>stringa vuota --&gt; epsilon</li>
+<li>lunghezza stringa --&gt; |s|</li>
+</ul>
+</li>
+<li>linguaggio --&gt; sottoinsieme di tutte possibili parole di un alfabeto<ul>
+<li>linguaggio regolare --&gt; un qualsiasi linguaggio riconosciuto da un&#39;automa, si indica con L(A)</li>
+</ul>
+</li>
+<li>computazione --&gt; esecuzione dell&#39;automa su una parola</li>
+</ul>
+<p><strong>DFA (automa a stati finiti deterministico)</strong></p>
+<p>è una quintupla nella forma </p>
+<ul>
+<li>A = (Q, sigma, delta, q0, F)</li>
+</ul>
+<p>dove:</p>
+<ul>
+<li>A --&gt; automa</li>
+<li>sigma --&gt; alfabeto dell&#39;automa</li>
+<li>delta --&gt; funzione di transizione<ul>
+<li>input --&gt; simbolo alfabeto</li>
+<li>output --&gt; stato</li>
+</ul>
+</li>
+<li>q0 --&gt; stato iniziale</li>
+<li>F --&gt; insieme di stati finali</li>
+</ul>
+<p><strong>rappresentazione DFA</strong></p>
+<p>un DFA si può rappresentare con:</p>
+<ul>
+<li>grafo<ul>
+<li>nodi --&gt; stati dell&#39;automa</li>
+<li>archi direzionali --&gt; funzione di transizione applicata sul nodo con un simbolo</li>
+</ul>
+</li>
+<li>tabella di transizione<ul>
+<li>righe --&gt; stati</li>
+<li>colonne --&gt; simboli</li>
+<li>celle --&gt; risultato della funzione di transizione</li>
+</ul>
+</li>
+</ul>
+<p><strong>accettazione DFA</strong></p>
+<p>un DFA accetta una parola w se la sua computazione termina in uno stato finale</p>
+<p>un DFA accetta un linguaggio seogni parola del linguaggio è accettata</p>
+<p><strong>NFA (automa a stati finiti NON deterministico)</strong></p>
+<p>è una quintupla nella forma </p>
+<ul>
+<li>A = (Q, sigma, delta, q0, F)</li>
+</ul>
+<p>di base è un DFA in cui cambia la funzione di transizione:</p>
+<ul>
+<li>delta --&gt; funzione di transizione<ul>
+<li>input --&gt; parola</li>
+<li>output --&gt; sottoinsieme Q di stati</li>
+</ul>
+</li>
+</ul>
+<p><strong>rappresentazione NFA</strong></p>
+<p>un NFA si può rappresentare con:</p>
+<ul>
+<li>grafo di transizione</li>
+<li>tabella di transizione<ul>
+<li>celle --&gt; che ora rappresentano sottoninsieme di stati (anche di un solo elemento)</li>
+</ul>
+</li>
+<li>albero n-ario<ul>
+<li>radice --&gt; stato iniziale</li>
+<li>rami --&gt; possibili stati per un input</li>
+</ul>
+</li>
+</ul>
+<p><strong>computazione NFA</strong></p>
+<p>di base un NFA accetta una parola se esiste almeno una computazione di essa che termina in uno stato finale, la rifiuta altrimeni</p>
+<p><strong>conversione tra NFA e DFA</strong></p>
+<p>l&#39;obiettivo è costruire un DFA D=(Q&#39;, sigma, delta&#39;, q0, F&#39;) da un NFA N==(Q, sigma, delta, q0, F), dove:</p>
+<ul>
+<li>D e N hanno lo stesso alfabeto (sigma)</li>
+<li>D e N hanno lo stesso stato iniziale q0</li>
+</ul>
+<p>tale per cui:</p>
+<ul>
+<li>L(D) = L(N)</li>
+</ul>
+<p>Q&#39;, delta&#39; ed F&#39; si ottengono da N tramite l&#39;algoritmo di costruzione per sottoinsiemi:</p>
+<ul>
+<li>Q&#39; è l&#39;insieme potenza di Q: se Q ha n stati Q&#39; ne ha 2<sup>n</sup></li>
+<li>F&#39; è formato dall&#39;insieme di stati di N che includono almeno uno stato accettante</li>
+<li>delta&#39;</li>
+</ul>
+<p>algoritmo:</p>
+<ol>
+<li>da q0 dell&#39;NFA trova gli insiemi di stati raggiungibili con i possibili input</li>
+</ol>
+<p>allora per convertirlo procedo come ho visto a lezione:
+parto dagli stati dell&#39;ecloce di q0;</p>
+<p>Eclose(q0)={q0,q1} che chiamo p1;</p>
+<p>p1={q0,q1} con input A,B vado in {q1,q2} ora facciao l&#39;Eclose di questi stati Eclose(q1,q2)={q1,q2,q3,q4}*, che è un nuovo stato che chiamo p2
+da p1 con input 0..9 non vado in nessuono stato</p>
+<p>p2={q1,q2,q3,q4}* con A,B vado in {q2} la cui funzione eclose genera {q2,q3,q4}* che chiamo p3
+da p2 con 0..9 vado in {q3,q4} che ha eclose {q3,q4}* che chiamo p4</p>
+<p>p3={q2,q3,q4}* con A,B è vuoto
+con 0..9 vado in q4 la cui eclose è {q4}* che chiamo p5</p>
+<p>p4={q3,q4}*
+con 0..9 vado in q4 che ha per eclose q4 cioè lo stato p5
+quindi ho:
+p1 raggiungo p2 con etichetta A o B
+p2 raggingo p3 con A o B, da p2 raggingo p4 con 0..9
+p3 raggiungo con 0..9 p5
+p4 raggiungo con 0..9 p5</p>
+<p><strong>epsilon transizioni</strong></p>
+<p>le epsilon transizioni consentono ad un automa di cambiare stato senza consumare lettere della parola</p>
+<p><strong>epsilon-NFA</strong></p>
+<p>di base è un NFA il cui alfabeto contiene il simbolo epsilon, l&#39;epsilon è il simbolo vuoto, una epsilon transizione (transizione con input == epsilon) non consuma lettere della stringa</p>
+<p><strong>epsilon chiusura</strong></p>
+<p>di base lo si guarda come un grafo, l&#39;epsilon chiusura di un nodo corrisponde all&#39;insieme di nodi del grafo che arrivano al nodo scelto solo tramite epsilon transizioni</p>
+<p>algoritmo</p>
+<ul>
+<li>si sceglie un nodo</li>
+<li>si aggiungono i nodi adiacenti che si collegano con epsilon chiusure</li>
+<li>si ripete per ogni nodo aggiunto</li>
+</ul>
+<p>il risultato è l&#39;insieme di nodi ricavati</p>
+<h2 id="linguaggi-regolari">Linguaggi regolari</h2>
+<p>i linguaggi regolari sono degli insiemi di stringhe, possono essere rappresentati da:</p>
+<ul>
+<li>automi a stati finiti</li>
+<li>espressioni</li>
+</ul>
+<p><strong>espressione regolare (regular expressione</strong></p>
+<p>un espressione regolare è una funzione che prende in input una stringa e restituisce vero falso</p>
+<p>di base un espressione regolare la si può vedere come un DFA accettatore che computa una stringa e ne verifica l&#39;accettazione</p>
+<p>costanti:</p>
+<ul>
+<li>epsilon</li>
+<li>insieme vuoto</li>
+<li>singolo simbolo</li>
+</ul>
+<p><strong>linguaggio regolare</strong></p>
+<p>un linguaggio regolare è l&#39;insieme di stringhe accettate da un espressione regolare, si indica con L(E) (notare la somiglianza con gli automi)</p>
+<p>operazioni chiuse sui linguaggi regolari:</p>
+<ul>
+<li>insiemistiche<ul>
+<li>complemento</li>
+<li>unione</li>
+<li>intersezione</li>
+<li>differenza</li>
+</ul>
+</li>
+<li>speciali<ul>
+<li>stella di kleene --&gt; è l&#39;asterisco delle regular expression, indicano 0 o più occorrenze del simbolo precedente<ul>
+<li>applicato ad un linguaggio L, L* indica l&#39;insieme infinito di stringhe formato da concatenazioni delle stringhe di L 0 o più volte</li>
+</ul>
+</li>
+<li>concatenazione</li>
+</ul>
+</li>
+</ul>
+<p>livelli di precedenza
+0. parentesicategorie</p>
+<ol>
+<li>stella di kleene</li>
+<li>concatenazione</li>
+<li>il resto</li>
+</ol>
+<p>esempio:</p>
+<ul>
+<li>01* + 1 --&gt; (0(1*)) + 1</li>
+</ul>
+<p><strong>conversione da DFA ad espressioni regolari</strong></p>
+<p>per ogni automa si può costruire un espressione regolare equivalente</p>
+<p>costruzione:</p>
+<ul>
+<li>i nodi intermediari si sostituiscono con la concatenazione</li>
+<li>i nodi rientranti si sostituiscono con la stella di kleene</li>
+</ul>
+<p><strong>conversione da espressioni regolari a epsilon-NFA</strong></p>
+<p>per ogni espressione regolare si può costruire un epsilon-NFA tale per cui l&#39;NFA ha:</p>
+<ul>
+<li>un solo stato finale</li>
+<li>nessuna transizione entrante dallo stato inziale</li>
+<li>nessuna transizione uscente dallo stato finale</li>
+</ul>
+<p>la costruzione è data dalla composizione delle operazioni elementari di unione, concatenazione e star di kleene</p>
+<p><strong>linguaggi NON regolari</strong></p>
+<p>sono tutti i linguaggi che non soddisfano il teorema di plumming</p>
+<p><strong>teorema di plumming</strong></p>
+<p>ipotesi</p>
+<ul>
+<li>L è un linguaggio regolare</li>
+<li>K è un numero maggiore di 0</li>
+<li>w è una parola più lunga di K</li>
+</ul>
+<p>tesi:</p>
+<ul>
+<li>w la si può spezzare in xyz</li>
+<li>xy è al massimo lungo quanto K</li>
+<li>(xy)*z appartiene sempre ad L</li>
+</ul>
+<h2 id="linguaggi-context-free-cfl">linguaggi context-free (CFL)</h2>
+<p><strong>grammatica context-free</strong></p>
+<p>una grammatica context-free è una notazione formale per la descrizione di linguaggi context-free</p>
+<p>una CFG è una quadrupla G=(V, T, P, S), dove:</p>
+<ul>
+<li>V è un insieme di variabili non terminali che rappresentano linguaggi</li>
+<li>T è un insieme di simboli terminali che costituiscono la base del linguaggio da definire</li>
+<li>P è un insieme di regole di produzione nella forma A -&gt; a, dove:<ul>
+<li>A è una variabile non terminale</li>
+<li>a è una variabile non terminale, un simbolo terminale oppure epsilon</li>
+</ul>
+</li>
+<li>S è la variabile simbolo iniziale che rappresenta il linguaggio da definire</li>
+</ul>
+<p><strong>derivazione</strong></p>
+<p>la generazione del linguaggio data una grammatica è chiamata derivazione</p>
+<p>generazione del linguaggio:</p>
+<ol>
+<li>scrivi variabile iniziale</li>
+<li>trova una variabile scritta e una regola che inizia con quella variabile</li>
+<li>sostituisci la variabile con il lato destro della regola</li>
+<li>ripeti 2</li>
+</ol>
+<p><strong>albero sintattico (parse tree)</strong></p>
+<p>ogni derivazione definisce un albero sintattico, dove:</p>
+<ul>
+<li>la radice è la variabile iniziale</li>
+<li>i nodi sono non terminali</li>
+<li>le foglie sono terminali</li>
+</ul>
+<p><strong>stringa ambigua</strong></p>
+<p>una stringa è ambigua se esistono 2 o più alberi che la generano</p>
+<p><strong>grammatica ambigua</strong></p>
+<p>una grammatica è ambigua se genera stringhe ambigue</p>
+<p><strong>conversione DFA in CFG</strong></p>
+<p>algoritmo:</p>
+<ul>
+<li>una variabile per ogni stato in Q</li>
+<li>una regola per ogni transizione</li>
+<li>una regola che manda ad epsilo per lo stato finale</li>
+<li>q0 è il simbolo iniziale</li>
+</ul>
+<p><strong>forma normale di chomsky</strong></p>
+<p>una CFG è in forma normale di chomsky se ogni regola è nella forma:</p>
+<ul>
+<li>A -&gt; BC</li>
+<li>A -&gt; a</li>
+</ul>
+<p>dove:</p>
+<ul>
+<li>a è un terminale</li>
+<li>B e C non sono variabili iniziali</li>
+</ul>
+<p>algoritmo di trasformazione:</p>
+<ul>
+<li>si crea una nuova variabile iniziale</li>
+<li>si eliminano le epsilon regole<ul>
+<li>A -&gt; epsilon</li>
+</ul>
+</li>
+<li>si eliminano le regole unitarie<ul>
+<li>A -&gt; B</li>
+</ul>
+</li>
+<li>si trasformano le regole rimaste nella forma corretta</li>
+</ul>
+<p><strong>automi a pila (PDA)</strong></p>
+<p>è una sestupla nella forma </p>
+<ul>
+<li>P = (Q, sigma, T , delta, q0, F)</li>
+</ul>
+<p>dove:</p>
+<ul>
+<li>Q --&gt; insieme di stati</li>
+<li>sigma --&gt; alfabeto</li>
+<li>T --&gt; alfabeto della pila</li>
+<li>delta --&gt; funzione di transizione<ul>
+<li></li>
+<li></li>
+</ul>
+</li>
+<li>q0 --&gt; stato iniziale</li>
+<li>F --&gt; insieme di stati finali</li>
+</ul>
+<p><strong>rappresentazione PDA</strong></p>
+<p>un DFA si può rappresentare con una tabella delle transizioni modificata:</p>
+<ul>
+<li>righe --&gt; stati</li>
+<li>colonne --&gt; alfabeto</li>
+<li>colonne interne --&gt; alfabeto automa</li>
+<li>celle --&gt; funzione di transizione applicata</li>
+</ul>
+<p><strong>computazione PDA</strong></p>
+<p>un PDA accetta una stringa w se:</p>
+<ul>
+<li>si può scrivere w come concatenazione di </li>
+</ul>
+<p><strong>accettazione PDA</strong></p>
+<p>un DFA accetta una parola w se la sua computazione termina in uno stato finale</p>
+<p>un DFA accetta un linguaggio seogni parola del linguaggio è accettata</p>
+
+        </div>
+    </div>
+</body>
+
+</html>
