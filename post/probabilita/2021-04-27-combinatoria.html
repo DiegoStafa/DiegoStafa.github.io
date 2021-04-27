@@ -21,43 +21,39 @@
 
 <body>
     <div class="post-wrapper">
-        <ul class="post-info">            <li>
-                Combinatoria
-            </li>
-            <li>
-                Probabilità e Statistica
-            </li>
-            <li>
-                24-06-2020
-            </li>
-        </ul>
-        <div class="post">
+        <ul class="post-info"><li>
+Combinatoria
+</li>
+<li>
+Probabilità
+</li>
+<li>
+27-04-2021
+</li>
+</ul>
+<div class="post">
 <h3 id="principio-fondamentale-del-conteggio">Principio fondamentale del conteggio</h3>
-<p>se in un insieme ogni elemento è individuabile univocamente da ka scelte di n esiti possibili, allora la cardinalità dell&#39;insieme è:</p>
+<p>di base è il prodotto cartesiano su insieme senza elementi duplicati,</p>
 <ul>
-<li>|E| = n<sub>1</sub>n<sub>2</sub>...n<sub>k</sub></li>
+<li>A ha 10 elementi</li>
+<li>B ha 20 elementi</li>
+<li>C ha 5 elementi</li>
+<li>allora 10*20*5 conta il numero di possibili combinazione di elementi di A, B e C</li>
 </ul>
-<p>mazzo di carte:</p>
+<p>funziona se e solo se sequenze distinte di scelte individ uano combinazione diverse</p>
+<p><strong>numero di sottoinsiemi</strong></p>
+<p>dato un insieme di N elementi, il numero di possibili sottoinsiemi è:</p>
 <ul>
-<li>4 semi</li>
-<li>13 valori</li>
+<li>2<sup>N</sup></li>
 </ul>
-<p>il numero di carte del mazzo è 4x13</p>
-<p>il principio di conteggio vale <strong>SSE</strong> ogni elemento è individuabile univocamente</p>
-<p>quindi se 2 distinte sequenze di scelte danno risultati uguali non vale il PFC</p>
+<p>si crea una stringa di N bit associano ad ogni elemento 0 o 1, quindi il numero di possibili combinazioni e 2<sup>N</sup></p>
 <h3 id="disposizioni">Disposizioni</h3>
-<p>indica un vettore (quindi ordinato) di k elementi, con o senza elementi ripetuti</p>
+<p>dato un insieme di N elementi, una disposizione indica un insieme ordinato posizionalmente di k elementi, con o senza elementi ripetuti</p>
 <p><strong>Disposizioni con ripetizioni</strong></p>
-<p>siccome le ripetizioni sono ammesse si sceglie tra n elementi, k volte</p>
+<p>scelgo tra n elementi, k volte</p>
 <ul>
 <li>n<sup>k</sup></li>
 </ul>
-<p>da cui</p>
-<ul>
-<li>il numero di possibili sottoinsiemi di un insieme di k elementi è:</li>
-<li>2<sup>k</sup></li>
-</ul>
-<p>si nota facilemente associando ad ogni elemento 0 o 1 se presente nel sottoinsieme --&gt; 2<sup>k</sup></p>
 <p><strong>Disposizioni senza ripetizioni</strong></p>
 <p>le ripetizioni non sono ammesse, quindi ad ogni scelta si rimuove un elemento dalla scelta, questo procedimento si fa k volte, quindi:</p>
 <ul>
@@ -65,13 +61,15 @@
 </ul>
 <p>se k = n la disposizione prende il nome di permutazione</p>
 <h3 id="combinazioni">Combinazioni</h3>
-<p>indica sottoinsieme (quindi NON ordinato) di k elementi, con o senza elementi ripetuti</p>
+<p>dato un insieme di N elementi, una combinazione indica un insieme NON ordinato posizionalmente di k elementi, con o senza elementi ripetuti</p>
 <p><strong>Combinazioni con ripetizioni</strong></p>
-<p>di base si contano le disposizioni e si tologono quelle che senza ordinamento risultano uguali</p>
+<p>non consideriamo questo caso</p>
+<p><strong>combinazioni senza ripetizioni</strong></p>
+<p>si fa una disposizione senza ripetizioni, e si eliminano le permutazioni che tengono conto dell&#39;ordinamento, quindi</p>
 <ul>
-<li>n!/k!(n-k)! (coeff. binomiale n su k)</li>
+<li> n(n-1)(n-2)...(n-k+1) / k! --&gt; coeff. binomiale N su K</li>
 </ul>
-<p><strong>relazione tra disposizione e  z combinazione</strong></p>
+<p><strong>relazione tra disposizione e combinazione</strong></p>
 <p>siccome manca la condizione di ordine, il numero di combinazioni è SEMPRE minore di quello delle disposizioni</p>
 <p>nelle disposizioni è come se ad ogni elemento del vettore venga assegnata una posizione quindi (nel caso di un alfabeto) se si scelgono 5 lettere, u2 possibili disposizioni sono:</p>
 <ul>

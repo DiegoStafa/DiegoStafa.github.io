@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info"><li>
+Spazio di probabilitò
+</li>
+<li>
+Probabilità
+</li>
+<li>
+27-04-2021
+</li>
+</ul>
+<div class="post">
+<h2 id="spazio-di-probabilità">Spazio di probabilità</h2>
+<p>si indica con S = (omega, F, P), dove:</p>
+<ul>
+<li>omega indica lo spazio campionario</li>
+<li>F è sottoninsieme di omega, con struttura sigma algebra</li>
+<li>P indica la misura di probabilità</li>
+</ul>
+<p><strong>spazio campionario</strong></p>
+<p>si indica con omega ed è l&#39;insieme di tutti gli esiti di un esperimento aleatorio</p>
+<p>omega = { o1, o2, o3 ... on }</p>
+<p>notazioni:</p>
+<ul>
+<li>esiti (omega piccolo) sono elementi dell&#39;insieme omega<ul>
+<li>{ o1, o2, o3 ... }</li>
+</ul>
+</li>
+<li>eventi (E) sono insiemi di esiti<ul>
+<li>{ o1, o3 }, { o3, o4, o5 }</li>
+</ul>
+</li>
+</ul>
+<p>nb:</p>
+<ul>
+<li>se |omega| &lt;= |N|, allora si dice spazio campionario discreto</li>
+<li>se |omega| &lt;= |R|, allora si dice spazio campionario continuo</li>
+</ul>
+<p><strong>sigma algebra</strong></p>
+<p>si indica con F corsivo</p>
+<p>è un insieme di eventi, tale per cui:</p>
+<ul>
+<li>F non è vuoto</li>
+<li>se un evento appartiene a F, anche il suo complementare appartiene ad F</li>
+<li>l&#39;unione tra eventi di F appartiene ad F</li>
+</ul>
+<p>proprietà:</p>
+<ul>
+<li>l&#39;insieme vuoto appartiene sempre a sigma algebra</li>
+<li>omega appertiene sempre a sigma algebra</li>
+<li>l&#39;intersezione tra elementi di F appertiene ad F</li>
+</ul>
+<p>tipi di sigma algebra:</p>
+<ul>
+<li>omega e insieme vuoto (banale)</li>
+<li>omega, E, E<sup>c</sup>, insieme vuoto</li>
+<li>sigma massima --&gt; l&#39;insieme delle parti di omega (tutti i possibili sottinsiemi)</li>
+</ul>
+<p>su spazi campionari discreti si scegli sempre la sigma massima (sigma algebra delle parti)</p>
+<p><strong>misura di probabilità</strong></p>
+<p>è una funzione P che va da sigma algebra in [0-1], tale per cui:</p>
+<ul>
+<li>normalizzazione --&gt; P(omega) == 1</li>
+<li>la sommatoria di P su eventi disgiunti == P della loro unione</li>
+</ul>
+<p>di base associa ad ogni elemento della sigma un numero tra 0 e 1, che corrisponde alla probabilità dell&#39;evento di accedere</p>
+<p><strong>probabilità di eventi complementari</strong></p>
+<p>P(E) == 1 - P(not E)</p>
+<p><strong>probabilità di eventi compatibili</strong></p>
+<p>P(E or F) == P(E) + P(F) - P(E and F) (teorema della probabilità totale)</p>
+<p><strong>probabilità di eventi incompatibili</strong></p>
+<p>P(E or F) == P(E) + P(F)  (teorema della probabilità totale)</p>
+<p>assiomi:</p>
+<ul>
+<li>P(ins. vuoto) == 0</li>
+<li>P(sottoinsieme) &lt;  P(insieme)</li>
+</ul>
+<p><strong>probabilità di un evento</strong></p>
+<p>di base diocane, gli eventi compatibili/incompatibili hanno importanza se c&#39;è l&#39;or, indipendenza e dipendenza se c&#39;è un and</p>
+<p>per calcolare la probabilità di un evento si calcolano tutte le probailità dei suoi esiti e si sommano</p>
+<ul>
+<li>P(E) = P(w1) + P(w2) + ...</li>
+</ul>
+<p><strong>probabilità di un evento in uno spazio di prob. uniforme</strong></p>
+<p>tutti gli esiti sono equiprobabili, quindi la loro singola probabilità è 1/|omega|</p>
+<p>la probilità dell&#39;evento è quindi |E| / |Omega|</p>
+<p>per calcolare la cardinalità degli insiemi si utilizza la combinatoria (conteggi)</p>
+<h2 id="insiemistica">Insiemistica</h2>
+<p><strong>operazioni sugli eventi</strong></p>
+<p>dati due eventi E ed F, valgono ke normali operazioni insiemistiche</p>
+<ul>
+<li>complementare/negazione --&gt; not E</li>
+<li>unione --&gt; E or F</li>
+<li>intersezione --&gt; E and F<ul>
+<li>i 2 eventi si dicono disgiunti se l&#39;interesezione è vuota</li>
+</ul>
+</li>
+<li>differenza asimmetrica --&gt; E and ( not F )<ul>
+<li>normale differenza insiemistica</li>
+</ul>
+</li>
+<li>differenza simmetrica --&gt; E xor F</li>
+</ul>
+<p>come in logica, vale la </p>
+<p>proprietà:</p>
+<ul>
+<li>unione e intersezioni sono commutative, associative e distributive</li>
+<li>legge di de morgan:<ul>
+<li>not (E and F) == not E or not F</li>
+</ul>
+</li>
+</ul>
+<p><strong>incompatibilità tra 2 eventi</strong></p>
+<p>E e F sono incompatibili se la loro intersezione è vuota:</p>
+<ul>
+<li>E and F = 0</li>
+</ul>
+<p>proprietà:</p>
+<ul>
+<li>P(E or F) = P(E) or P(F)</li>
+</ul>
+<p>2 eventi sono incompatibili se il verificarsi di uno esculde il verfificarsi del&#39;altro</p>
+<p><strong>decomposizione di un evento rispetto l&#39;intersezione</strong></p>
+<p>dato un evento F ed una partizione P formata da E1, E2, E3..En, allora: </p>
+<ul>
+<li>F = F and E<sub>1</sub> + F and E<sub>2</sub> + ... F and E<sub>n</sub>  </li>
+</ul>
+<p><strong>decomposizione dell&#39;unione di 2 eventi rispetto la differenza</strong></p>
+<p>dato due eventi E ed F:</p>
+<ul>
+<li>E or F =  E\F or E and F or F\E</li>
+<li>F or E = F or E-F</li>
+</ul>
+<p><strong>partizione di un insieme</strong></p>
+<p>dato un insieme A, una partizione è un gruppo di sottoinsiemi con le seguenti proprietà:</p>
+<ul>
+<li>ogni sottoinsieme è disgiunto tra loro (intersezione == 0)</li>
+<li>l&#39;unione di tutti da A</li>
+</ul>
+<p>esempi:</p>
+<ul>
+<li>{ E, not E }</li>
+</ul>
+
+        </div>
+    </div>
+</body>
+
+</html>

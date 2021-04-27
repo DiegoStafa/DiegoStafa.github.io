@@ -21,25 +21,26 @@
 
 <body>
     <div class="post-wrapper">
-        <ul class="post-info">            <li>
-                Pobabilità condizionata e Formula di bayes
-            </li>
-            <li>
-                Probabilità e Statistica
-            </li>
-            <li>
-                25-06-2020
-            </li>
-        </ul>
-        <div class="post">
+        <ul class="post-info"><li>
+Probabilità condizionata
+</li>
+<li>
+Probabilità
+</li>
+<li>
+27-04-2021
+</li>
+</ul>
+<div class="post">
 <h3 id="probabilità-condizionata">Probabilità condizionata</h3>
 <p>dato uno spazio di probabilità, e due eventi E(evento) ed F(evento condizionante), allora la probabilità condizionata di E dato F è:</p>
 <ul>
-<li>P(E | F) = P(E&amp;F)/P(F)</li>
+<li>P(E | F) = P(E and F) / P(F)</li>
 </ul>
-<p>P(evento | condizione) = P(evento &amp; condizione) / P(condizione)</p>
-<p>di base indica la probabilità di un evento quando prima se ne è verificato un altro</p>
-<p>ha la forma di P(evento, evento_condizione)</p>
+<p>si indica con:</p>
+<ul>
+<li>P(evento, evento_condizionante)</li>
+</ul>
 <p><strong>formula delle probabilità totali</strong></p>
 <p>dato uno spazio di probabilità, un evento E ed una partizione di k eventi F<sub>k</sub>, allora:</p>
 <ul>
@@ -54,28 +55,58 @@
 <ul>
 <li>P(F|E)P(E) = P(E|F)P(F)</li>
 </ul>
-<p><strong>incompatibilità tra 2 eventi</strong></p>
-<p>2 eventi E ed F sono incompatibile se non possono accadere contemporaneamente, quindi:</p>
+<p>permette di rovesciare il condizionamento</p>
+<p><strong>probabilitaà di eventi dipendenti</strong></p>
 <ul>
-<li>P(E &amp; F) = 0</li>
+<li>P(E and F) = P(E)P(F|E)</li>
 </ul>
 <p><strong>indipendenza tra 2 eventi</strong></p>
-<p>2 eventi E ed F sono indipendenti se:</p>
+<p>2 eventi sono indipendenti se pur essendo compatibili, il verficarsi di uno non influenza il verficarsi dell&#39;altro</p>
+<p>E ed F sono indipendenti sse:</p>
 <ul>
-<li>P(E&amp;F) = P(E)P(F)</li>
+<li>P(E and F) = P(E)P(F)</li>
 </ul>
-<p>che equivale a:</p>
+<p>l&#39;indipendenza la indico con E || F</p>
+<p>proprietà:</p>
 <ul>
 <li>P(E|F) = P(E)</li>
 <li>P(F|E) = P(F)</li>
 </ul>
-<p>indipendenza != incompatibilità</p>
-<p><strong>indipendenza generale</strong></p>
-<p>di base un insieme di n eventi è indipendente se ogni possibile sottoinsieme è indipendente</p>
+<p>scritture equivalenti:</p>
+<ul>
+<li>E || F</li>
+<li>not E || F</li>
+<li>E || not F</li>
+<li>not E || not F</li>
+</ul>
+<p>eventi incompatibili non possono essere indipendenti</p>
+<p><strong>indipendenza di N eventi</strong></p>
+<p>N eventi sono indipendenti tra loro se tutte le combinazioni di eventi sono indipendenti, cioè sse:</p>
+<ul>
+<li>E1 || E2 || ... || EN</li>
+<li>P(E1 and E2 and ... and EN) = P(E1)P(E2)...P(EN)</li>
+</ul>
 <p>proprietà:</p>
 <ul>
 <li>l&#39;indipenza rimane se sostituendo uno o più eventi con i loro complementari</li>
 </ul>
+<p><strong>risoluzione problemi</strong></p>
+<ol>
+<li>calcolare la probabilità di un solo evento</li>
+<li>calcolare la probabilità del suo complementare</li>
+<li>calcolare la probabilita della composizione di 2 eventi (and/or)<ul>
+<li>or --&gt; formula delle probabilità totali<ul>
+<li>se incompatibli il risultato è la somma delle probabilità</li>
+</ul>
+</li>
+<li>and --&gt; formula della probabilità composta<ul>
+<li>se indipendenti il risultato è il prodotto delle probabilitò</li>
+<li>se sono incompatibili è 0</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
 
         </div>
     </div>

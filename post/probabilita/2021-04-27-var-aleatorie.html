@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info"><li>
+Variabili aleatorie
+</li>
+<li>
+Probabilità
+</li>
+<li>
+27-04-2021
+</li>
+</ul>
+<div class="post">
+<p><strong>variabile aleatoria</strong></p>
+<p>notazione:</p>
+<ul>
+<li>X : omega -&gt; R è la VA</li>
+<li>o piccolo è l&#39;input</li>
+<li>x piccolo è l&#39;output</li>
+<li>l&#39;insieme degli output/immagine della VA è detto alfabeto</li>
+</ul>
+<p><strong>funzione di massa probabilità</strong></p>
+<p>Px(k) indica la probabilità X(o) = k</p>
+<p>è una funzione che mappa ogni output ad una probabilità, per calcolare la probabilità che un certo output si verifichi è sufficente sommare le probabilità degli input che la verficano</p>
+<p>la funzione di massa probabilità è una funzione di probabilità e ne rispetta le condizioni</p>
+<p><strong>valor atteso di una VA</strong></p>
+<p>si indica con:</p>
+<ul>
+<li>E(X) = +++ x<sub>n</sub>Px(x<sub>n</sub>) </li>
+<li>E(x) = +++ X(w)P(w)</li>
+</ul>
+<p>è quindi la sommatoria degli output della VA per la probabilità di vedere xk </p>
+<p>proprietà dedotte:</p>
+<ul>
+<li>linearità<ul>
+<li>E(aX) = aE(X)</li>
+<li>E(X + Y) == E(X) + E(Y)</li>
+</ul>
+</li>
+<li>positività<ul>
+<li>se X &gt;= 0 allora E(X) &gt;= 0</li>
+</ul>
+</li>
+<li>monotonia<ul>
+<li>se E(X) &gt;= E(Y) allora X &gt;= Y</li>
+</ul>
+</li>
+<li>limitatezza<ul>
+<li>inf X &lt;= E(X) &lt;= max X</li>
+</ul>
+</li>
+<li>composizione<ul>
+<li>E(f(X)) = f(x1)P(x1) + f(2)P(x2) + .. + f(xn)P(xn) </li>
+</ul>
+</li>
+</ul>
+<p><strong>varianza</strong></p>
+<p>è un numero positivo che indica quanto l&#39;alfabeto sia distribuito attorno al valor medio</p>
+<p>si indica con:</p>
+<ul>
+<li>Var(X) = (a1 - E(X))<sup>2</sup>P(a1)</li>
+<li>Var(X) = E((X - E(X))<sup>2</sup>)</li>
+</ul>
+<p>proprietà:</p>
+<ul>
+<li>Var(X) sempre &gt;= 0<ul>
+<li>vale 0 sse X è una VA costante</li>
+</ul>
+</li>
+<li>Var(aX) = a<sup>2</sup>Var(X)</li>
+<li>Var(X + a) = Var(X)</li>
+<li>Var(X) = E(X<sup>2</sup>) - E(X)<sup>2</sup></li>
+<li>Var(X + Y) = Var(X) + Var(Y) + 2Cov(X,Y)</li>
+</ul>
+<p><strong>covarianza</strong></p>
+<p>si indica con:</p>
+<ul>
+<li>Cov(X,Y) = E(X-E(X)(Y-E(Y)))</li>
+</ul>
+<p>proprietà:</p>
+<ul>
+<li>Cov(X,X) = Var(X)</li>
+</ul>
+<p><strong>famiglie di VA</strong></p>
+<p>sono VA la stessa funzione di massa probabilità</p>
+<p><strong>VA indicatrice</strong></p>
+<p>I : omega -&gt; [0, 1], dove:</p>
+<ul>
+<li>I(o) = 1 se o appartiene ad omega</li>
+<li>I(o) = 0 altrimenti</li>
+</ul>
+<p>funzione di massa probabilità:</p>
+<ul>
+<li>Px(1) = p</li>
+<li>Px(0) = 1-p</li>
+</ul>
+<p><strong>VA di bernoulli</strong></p>
+<p>data la probabilità di successo p di un evento in una prova di bernoulli:</p>
+<p>X ~ Be(p) se:</p>
+<p>alfabeto:</p>
+<ul>
+<li>X(o) = 1 se l&#39;esito ha successo</li>
+<li>X(o) = 0 altrimenti</li>
+</ul>
+<p>funzione di massa probabilità:</p>
+<ul>
+<li>Px(1) = p</li>
+<li>Px(0) = 1 -p</li>
+</ul>
+<p>proprietà:</p>
+<ul>
+<li>E(X) = p</li>
+<li>Var(X) = p(1-p) </li>
+</ul>
+<p>risponde alla domanda: qual è la probabilità che un evento si verfichi?</p>
+<p><strong>VA binomiale</strong></p>
+<p>data la probabilità di successo p di un evento in una prova di bernoulli, ripetuta n volte:</p>
+<p>X ~ Bin(n,p) se: </p>
+<p>alfabeto:</p>
+<ul>
+<li>X(o) = numeri di successi ottenuti</li>
+<li>[0,1,2 ... n]</li>
+</ul>
+<p>funzione di massa probabilità: </p>
+<ul>
+<li>Px(k) = (n su k)p<sup>k</sup>(1-p)<sup>k</sup></li>
+</ul>
+<p>proprietà:</p>
+<ul>
+<li>E(X) = np</li>
+<li>Var(X) = np(1-p) </li>
+</ul>
+<p><strong>VA geometrica</strong></p>
+<p>data la probabilità di successo p di un evento in una prova di bernoulli:</p>
+<p>X ~ Ge(p), dove: </p>
+<ul>
+<li>p nell&#39;intervallo [0,1]</li>
+</ul>
+<p>alfabeto:</p>
+<ul>
+<li>X(o) = numero di insuccessi prima di un successo</li>
+<li>[0,1,2 ... n]</li>
+</ul>
+<p>funzione di massa probabilità: </p>
+<ul>
+<li>P(k) = (1-p)p<sup>k-1</sup>p</li>
+</ul>
+<p>proprietà:</p>
+<ul>
+<li>E(X) = 1/p</li>
+<li>Var(X) = (1-p)/p<sup>2</sup></li>
+</ul>
+<p><strong>VA di Poisson</strong></p>
+<p>data una variabile reale r:</p>
+<p>X ~ Po(r) se: </p>
+<p>alfabeto:</p>
+<ul>
+<li>X(o) = quante volte l&#39;esito ha probabilmente successo</li>
+<li>[0,1,2 ...]</li>
+</ul>
+<p>funzione di massa probabilità: </p>
+<ul>
+<li>P(k) = e<sup>-r</sup>r<sup>k</sup>/k!</li>
+</ul>
+<p>proprietà:</p>
+<ul>
+<li>E(X) = r</li>
+<li>Var(X) = r</li>
+</ul>
+<p><strong>teorema limite di poisson</strong></p>
+<p>una VA binomiale con n &gt;&gt; 1 e p &lt;&lt; 1 (quindi tantissime prove dove ogni prova ha una bassa probabilità di successo) può essere approssimata con una VA di poisson con r=n-p</p>
+<p><strong>vettori aleatori discreti</strong></p>
+<p>è un vettore formato da n VA su uno stesso input</p>
+<p>alfabeto:</p>
+<ul>
+<li>X x Y</li>
+</ul>
+<p>funzione di massa probabilità congiunta:</p>
+<ul>
+<li>Pxy(xi,yj)</li>
+</ul>
+<p>proprietà:</p>
+<ul>
+<li>Px(xi) = i+++ Pxy(x,yi)</li>
+<li>Py(yi) = i+++ Pxy(xi,y)</li>
+</ul>
+<p>valor medio:</p>
+<ul>
+<li>E(g(X,Y)) = i+++ g(xi,yi)Pxy(xi,yi)</li>
+<li>E(XY) = i+++ j+++ xiyjPxy(xi.xj)</li>
+</ul>
+
+        </div>
+    </div>
+</body>
+
+</html>

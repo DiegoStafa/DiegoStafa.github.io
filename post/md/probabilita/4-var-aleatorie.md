@@ -1,141 +1,168 @@
-### Variabili aleatorie
+**variabile aleatoria**
 
-di base sono funzioni che vanno da omega in R e si indicano con lettere maiuscole (es. X, Y, Z...)
+notazione:
+* X : omega -> R è la VA
+* o piccolo è l'input
+* x piccolo è l'output
+* l'insieme degli output/immagine della VA è detto alfabeto
 
-quindi è del tipo:
-* X : omega --> R
+**funzione di massa probabilità**
 
-una variabile aleatoria è caratterizzata da 2 cose:
-* alfabeto
-* densita discreta
+Px(k) indica la probabilità X(o) = k
 
-caratterizzare una VA significa trovarne alfabeto e densita
+è una funzione che mappa ogni output ad una probabilità, per calcolare la probabilità che un certo output si verifichi è sufficente sommare le probabilità degli input che la verficano
 
-**alfabeto**
+la funzione di massa probabilità è una funzione di probabilità e ne rispetta le condizioni
 
-è l'immagine della VA e si indica con X corsivo
-
-**probabilità indotta sull'alfabeto**
-
-si indica con:
-* P<sup>X</sup>(x) = P(X<sup>-1</sup>(x))
-
-indica la probabilità che la VA assuma un certo valore della sua immagine
-
-questa probabilità è ovvimanete uguale alla probabilità che l'esito che la mappa si verfichi
-
-**densita discreta**
-
-si indica con P<sub>x</sub>(.)
-
-è l'insieme di tutte le probabilità indotte dell'alfabeto
-
-nb: la somma di tutte le probabilità deve essere == 1 essendo una misura di probabilità
-
-**variabili aleatorie composte**
-
-una funzione reale, applicata all'alfabeto di una VA, è una VA
-
-di base è una normale composiione di funzioni
-
-**variabilie aleatoria indicatrice**
-
-detto anche 1 ciccione
-
-si indica con 1<sub>E</sub>(omega), è una funzione particolare uguale a:
-* 1 se omega piccolo appartiene ad E
-* 0 altrimenti
-
----
-
-### Informazioni Statistiche
-
-**Valor medio**
+**valor atteso di una VA**
 
 si indica con:
-* E(X) = x1P(x1) + x2P(x2) .. + xnP(xn) 
+* E(X) = +++ x<sub>n</sub>Px(x<sub>n</sub>) 
+* E(x) = +++ X(w)P(w)
 
-oppure:
-* E(X) = X(o1)P(o1) --> teorema fondamentale inutile
+è quindi la sommatoria degli output della VA per la probabilità di vedere xk 
 
-
-proprietà:
-* E(kX) == kE(X)
-* E(X + Y) == E(X) + E(Y)
-* se X(omega) >= 0 allora E(X) >= 0
-* se E(X) >= E(Y) allora X >= Y
-* inf X <= E(X) <= E(x)
-
-
-**valor medio di funzioni composte**
-
-dato una VA X e una funzione f, allora:
-* E(f(X)) = f(x1)P(x1) + f(2)P(x2) .. + f(xn)P(xn) 
-
-nb: è utile in quanto non bisogna calcolare la densità di f(X)
+proprietà dedotte:
+* linearità
+    * E(aX) = aE(X)
+    * E(X + Y) == E(X) + E(Y)
+* positività
+    * se X >= 0 allora E(X) >= 0
+* monotonia
+    * se E(X) >= E(Y) allora X >= Y
+* limitatezza
+    * inf X <= E(X) <= max X
+* composizione
+    * E(f(X)) = f(x1)P(x1) + f(2)P(x2) + .. + f(xn)P(xn) 
 
 **varianza**
 
+è un numero positivo che indica quanto l'alfabeto sia distribuito attorno al valor medio
+
 si indica con:
-* Var(X)= (a1 - E(X))<sup>2</sup>P(a1)
-
-oppure:
-* var = E((X - E(X))<sup>2</sup>)
-
-è un indice di dispersione che da informazioni su quanto l'alfabeto sia distribuito attorno al valor medio
+* Var(X) = (a1 - E(X))<sup>2</sup>P(a1)
+* Var(X) = E((X - E(X))<sup>2</sup>)
 
 proprietà:
 * Var(X) sempre >= 0
     * vale 0 sse X è una VA costante
-* Var(kX) = k<sup>2</sup>Var(X)
-* Var(X + k) = Var(X)
+* Var(aX) = a<sup>2</sup>Var(X)
+* Var(X + a) = Var(X)
 * Var(X) = E(X<sup>2</sup>) - E(X)<sup>2</sup>
+* Var(X + Y) = Var(X) + Var(Y) + 2Cov(X,Y)
 
-nb: non è una funzione lineare
+**covarianza**
 
+si indica con:
+* Cov(X,Y) = E(X-E(X)(Y-E(Y)))
 
-**prove di bernoulli**
+proprietà:
+* Cov(X,X) = Var(X)
 
-è un esperimento dove:
-* ci sono n prove identiche di fila
-* ogni prova ha solo 2 esiti, 0 e 1
-* le prove sono indipendenti
+**famiglie di VA**
+
+sono VA la stessa funzione di massa probabilità
+
+**VA indicatrice**
+
+I : omega -> \[0, 1\], dove:
+* I(o) = 1 se o appartiene ad omega
+* I(o) = 0 altrimenti
+
+funzione di massa probabilità:
+* Px(1) = p
+* Px(0) = 1-p
 
 **VA di bernoulli**
 
-X ~ Be(p) con
-* p nell'intervallo \[0,1\]
+data la probabilità di successo p di un evento in una prova di bernoulli:
 
-caratterizzazione:
-* alfabeto {0, 1}
-* densita:
-    * P(1) = p
-    * P(0) = 1 -p
+X ~ Be(p) se:
 
-info:
+alfabeto:
+* X(o) = 1 se l'esito ha successo
+* X(o) = 0 altrimenti
+
+funzione di massa probabilità:
+* Px(1) = p
+* Px(0) = 1 -p
+
+proprietà:
 * E(X) = p
 * Var(X) = p(1-p) 
 
-~ si legge: è distribuito come
+risponde alla domanda: qual è la probabilità che un evento si verfichi?
 
-di base è una variabile aleatoria che associa 1 se l'esito ha successo, 0 altrimenti
+**VA binomiale**
 
-il parametro p indica la probabilità di successo dell'evento
+data la probabilità di successo p di un evento in una prova di bernoulli, ripetuta n volte:
 
+X ~ Bin(n,p) se: 
 
-**distribuzione binomiale**
+alfabeto:
+* X(o) = numeri di successi ottenuti
+* [0,1,2 ... n]
 
-X ~ Bin(n,p) con 
-* n appartenente ai naturali
-* p nell'intervallo \[0,1\]
+funzione di massa probabilità: 
+* Px(k) = (n su k)p<sup>k</sup>(1-p)<sup>k</sup>
 
-caratterizzazione:
-* alfabeto: {0, 1, ... n}
-* densita: 
-    * P(k) = (n su k)p<sup>k</sup>(1-p)<sup>k</sup>
-
-info:
+proprietà:
 * E(X) = np
 * Var(X) = np(1-p) 
 
-è un estensione della VA di bernoulli, di base applica n volte bernoulli e conta quanti esiti hanno avuto successo
+**VA geometrica**
+
+data la probabilità di successo p di un evento in una prova di bernoulli:
+
+X ~ Ge(p), dove: 
+* p nell'intervallo \[0,1\]
+
+alfabeto:
+* X(o) = numero di insuccessi prima di un successo
+* [0,1,2 ... n]
+
+funzione di massa probabilità: 
+* P(k) = (1-p)p<sup>k-1</sup>p
+
+proprietà:
+* E(X) = 1/p
+* Var(X) = (1-p)/p<sup>2</sup>
+
+**VA di Poisson**
+
+data una variabile reale r:
+
+X ~ Po(r) se: 
+
+alfabeto:
+* X(o) = quante volte l'esito ha probabilmente successo
+* [0,1,2 ...]
+
+funzione di massa probabilità: 
+* P(k) = e<sup>-r</sup>r<sup>k</sup>/k!
+
+proprietà:
+* E(X) = r
+* Var(X) = r
+
+**teorema limite di poisson**
+
+una VA binomiale con n >> 1 e p << 1 (quindi tantissime prove dove ogni prova ha una bassa probabilità di successo) può essere approssimata con una VA di poisson con r=n-p
+
+**vettori aleatori discreti**
+
+è un vettore formato da n VA su uno stesso input
+
+alfabeto:
+* X x Y
+
+funzione di massa probabilità congiunta:
+* Pxy(xi,yj)
+
+proprietà:
+* Px(xi) = i+++ Pxy(x,yi)
+* Py(yi) = i+++ Pxy(xi,y)
+
+valor medio:
+* E(g(X,Y)) = i+++ g(xi,yi)Pxy(xi,yi)
+* E(XY) = i+++ j+++ xiyjPxy(xi.xj)
