@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info"><li>
+Variabili aleatorie
+</li>
+<li>
+Probabilità
+</li>
+<li>
+23-05-2021
+</li>
+</ul>
+<div class="post">
+<p><strong>variabile aleatoria</strong></p>
+<p>notazione:</p>
+<ul>
+<li>X : omega -&gt; R è la VA</li>
+<li>o piccolo è l&#39;input</li>
+<li>x piccolo è l&#39;output</li>
+<li>l&#39;insieme degli output/immagine della VA è detto alfabeto</li>
+</ul>
+<p><strong>densità discreta</strong></p>
+<p>è la probabilitò che P(X=k), cioà la probabilità che la VA assuma il valore k</p>
+<p>per calcolarla è sufficente sommare le probabilità degli input che la verficano</p>
+<p><strong>valor atteso di una VA discreta</strong></p>
+<p>si indica con:</p>
+<ul>
+<li>E(X) = +++ x<sub>n</sub>Px(x<sub>n</sub>) </li>
+<li>E(x) = +++ X(w)P(w)</li>
+</ul>
+<p>è quindi la sommatoria degli output della VA per la probabilità di vedere xk </p>
+<p>proprietà dedotte:</p>
+<ul>
+<li>E(aX) = aE(X)</li>
+<li>E(X + Y) == E(X) + E(Y)</li>
+<li>se X &gt;= 0 allora E(X) &gt;= 0</li>
+<li>se E(X) &gt;= E(Y) allora X &gt;= Y</li>
+<li>inf X &lt;= E(X) &lt;= max X</li>
+<li>E(f(X)) = f(x1)P(x1) + f(2)P(x2) + .. + f(xn)P(xn) </li>
+</ul>
+<p><strong>varianza</strong></p>
+<p>è un numero positivo che indica quanto l&#39;alfabeto sia distribuito attorno al valor medio</p>
+<p>si indica con:</p>
+<ul>
+<li>Var(X) = (a1 - E(X))<sup>2</sup>P(a1)</li>
+<li>Var(X) = E((X - E(X))<sup>2</sup>)</li>
+</ul>
+<p>proprietà:</p>
+<ul>
+<li>Var(X) sempre &gt;= 0<ul>
+<li>vale 0 sse X è una VA costante</li>
+</ul>
+</li>
+<li>Var(aX) = a<sup>2</sup>Var(X)</li>
+<li>Var(X + a) = Var(X)</li>
+<li>Var(X) = E(X<sup>2</sup>) - E(X)<sup>2</sup></li>
+<li>Var(X + Y) = Var(X) + Var(Y) + 2Cov(X,Y)</li>
+</ul>
+<p><strong>covarianza</strong></p>
+<p>si indica con:</p>
+<ul>
+<li>Cov(X,Y) = E(X-E(X)(Y-E(Y)))</li>
+</ul>
+<p>proprietà:</p>
+<ul>
+<li>Cov(X,X) = Var(X)</li>
+</ul>
+<p><strong>famiglie di VA</strong></p>
+<p>sono VA la stessa funzione di massa probabilità</p>
+<p><strong>VA indicatrice</strong></p>
+<p>I : omega -&gt; [0, 1], dove:</p>
+<ul>
+<li>I(o) = 1 se o appartiene ad omega</li>
+<li>I(o) = 0 altrimenti</li>
+</ul>
+<p>funzione di massa probabilità:</p>
+<ul>
+<li>P(X=1) = p</li>
+<li>P(X=0) = 1-p</li>
+</ul>
+<p><strong>VA di bernoulli</strong></p>
+<p>data la probabilità di successo p di un evento in una prova di bernoulli:</p>
+<p>X ~ Be(p) se:</p>
+<p>alfabeto:</p>
+<ul>
+<li>X(o) = 1 se l&#39;esito ha successo</li>
+<li>X(o) = 0 altrimenti</li>
+</ul>
+<p>densità discreta:</p>
+<ul>
+<li>P(X=1) = p</li>
+<li>P(X=0) = 1 -p</li>
+</ul>
+<p>caratteristiche:</p>
+<ul>
+<li>E(X) = p</li>
+<li>Var(X) = p(1-p) </li>
+</ul>
+<p>modella il verficarsi di un evento</p>
+<p><strong>VA binomiale</strong></p>
+<p>data la probabilità di successo p di un evento in una prova di bernoulli, ripetuta n volte:</p>
+<p>X ~ Bin(n,p) se: </p>
+<p>alfabeto:</p>
+<ul>
+<li>X(o) = numeri di successi ottenuti</li>
+<li>[0,1,2 ... n]</li>
+</ul>
+<p>densità discreta:</p>
+<ul>
+<li>P(X=k) = (n su k)p<sup>k</sup>(1-p)<sup>k</sup></li>
+</ul>
+<p>caratteristiche:</p>
+<ul>
+<li>E(X) = np</li>
+<li>Var(X) = np(1-p) </li>
+</ul>
+<p>modella il risultato della prova di bernoulli ripetuta n volte</p>
+<p><strong>VA geometrica</strong></p>
+<p>data la probabilità di successo p di un evento in una prova di bernoulli:</p>
+<p>X ~ Ge(p), dove: </p>
+<ul>
+<li>p nell&#39;intervallo [0,1]</li>
+</ul>
+<p>alfabeto:</p>
+<ul>
+<li>X(o) = numero di insuccessi prima di un successo</li>
+<li>[0,1,2 ... n]</li>
+</ul>
+<p>densità discreta:</p>
+<ul>
+<li>P(X=k) = (1-p)p<sup>k-1</sup>p</li>
+</ul>
+<p>caratteristiche:</p>
+<ul>
+<li>E(X) = 1/p</li>
+<li>Var(X) = (1-p)/p<sup>2</sup></li>
+</ul>
+<p>modella il primo successo dopo una serie di insucessi</p>
+<p><strong>VA di Poisson</strong></p>
+<p>data una variabile reale r:</p>
+<p>X ~ Po(r) se: </p>
+<p>alfabeto:</p>
+<ul>
+<li>X(o) = quante volte l&#39;esito ha probabilmente successo</li>
+<li>[0,1,2 ...]</li>
+</ul>
+<p>densità discreta:</p>
+<ul>
+<li>P(X=k) = e<sup>-r</sup>r<sup>k</sup>/k!</li>
+</ul>
+<p>caratteristiche:</p>
+<ul>
+<li>E(X) = r</li>
+<li>Var(X) = r</li>
+</ul>
+<p>modella il numero di eventi per unità di tempo</p>
+<p><strong>teorema limite di poisson</strong></p>
+<p>una VA binomiale con n &gt;&gt; 1 e p &lt;&lt; 1 (quindi tantissime prove dove ogni prova ha una bassa probabilità di successo) può essere approssimata con una VA di poisson con r=n-p</p>
+<p><strong>vettori aleatori discreti</strong></p>
+<p>è un vettore formato da n VA su uno stesso input</p>
+<p>alfabeto:</p>
+<ul>
+<li>X x Y</li>
+</ul>
+<p>densità discreta congiunta:</p>
+<ul>
+<li>P(X=xi,Y=yj)</li>
+</ul>
+<p>proprietà:</p>
+<ul>
+<li>P(X=xi) = i+++ P(X=x,Y=yi)</li>
+<li>P(Y=yi) = i+++ P(X=xi,Y=y)</li>
+</ul>
+<p>valor medio:</p>
+<ul>
+<li>E(g(X,Y)) = i+++ g(xi,yi)P(X=xi,Y=yi)</li>
+<li>E(XY) = i+++ j+++ xiyjP(X=xi.Y=yj)</li>
+</ul>
+<p><strong>indipendenza di VA</strong></p>
+<p>2 VA X ed Y sono indipendenti se:</p>
+<ul>
+<li>P(X=xi,Y=yj) = P(X=xi)P(Y=yj)</li>
+</ul>
+<p>proprietà:</p>
+<ul>
+<li>X e Y indipendenti -&gt; f(x) e g(y) indipendenti</li>
+<li>E(XY) = E(X)E(Y)</li>
+<li>Cov(X,Y) = 0 (proprietà di scorrelazione)</li>
+<li>Var(X + Y) = Var(X) + Var(Y)<ul>
+<li>Var(aX + bY + c) = a^2Var(X) + b^2Var(Y)</li>
+</ul>
+</li>
+<li>indipendenza --&gt; scorrelazione</li>
+<li>scorrelazione -/&gt; indipendenza</li>
+</ul>
+<p><strong>VA assolutamente continue</strong></p>
+<p>è una VA che può assumere valori in tutto R</p>
+<p><strong>densità continua</strong></p>
+<p>è la probabilità che la VA assuma un valore in un intervallo a-b:</p>
+<ul>
+<li>P(a &lt;= X &lt;= B) = a $$$ b f(x)dx</li>
+</ul>
+<p>proprietà:    </p>
+<ul>
+<li>f(x) sempre maggiore di 0</li>
+<li>f(x) può non essere continua</li>
+<li>-inf $$$ +inf f(x)dx == 1</li>
+<li>P(X=a) è sempre = 0</li>
+<li>f(a) indica uanta densità si concentra in un intorno di x=a </li>
+</ul>
+<p><strong>funzione di distribuzione</strong></p>
+<ul>
+<li>Fx(x) = P(X &lt; x) = -inf $$$ x f(y)dy</li>
+</ul>
+<p>si indica con Fx, indica la probabilità che P(X&lt;=a), uindi si racava che:</p>
+<ul>
+<li>P(a &lt;= X &lt;= B) = P(X&lt;=b) - P(X&lt;=a)</li>
+<li>P(a &lt;= X &lt;= B) = Fx(b) - Fx(a)</li>
+</ul>
+<p>proprietà:</p>
+<ul>
+<li>lim -&gt; -inf Fx(x) = 0</li>
+<li>lim -&gt; +inf Fx(x) = 1</li>
+<li>x &lt;= y --&gt; Fx(x) &lt;= Fx(y)</li>
+<li>Fx(x) è continua</li>
+<li>F&#39;x(x) = f(x)</li>
+</ul>
+<p><strong>teorema</strong></p>
+<p>data una VA X avente una funzione di distribuzione Fx ed una VA Y=g(X) con g(X) invertibile, allora è possibile trovare Fy e f(y):</p>
+<ul>
+<li>Fy(y) <ul>
+<li>= P(Y &lt; y)</li>
+<li>= P(g(X) &lt; y)</li>
+<li>= P(X &lt; g<sup>-1</sup>(y))</li>
+<li>= Fx(g<sup>-1</sup>(y))</li>
+</ul>
+</li>
+<li>f(y) 
+  = F&#39;y(y)
+  = F&#39;x(g<sup>-1</sup>(y))*g<sup>-1</sup>(y)</li>
+</ul>
+<p><strong>valor medio di VA continue</strong></p>
+<p>E(X) = -inf $$$ +inf xf(x)dx</p>
+<p>proprietà:</p>
+<ul>
+<li>può non esistere</li>
+<li>ha le stesse proprietà della discreta</li>
+<li>E(g(x)) = -inf $$$ +inf g(x)F(x)dx 
+  in particolare se g(x) = (x - E(x))<sup>2</sup> si ha la definizione di varianza</li>
+</ul>
+<p><strong>varianza di VA continue</strong></p>
+<p>Var(X) = E(X<sup>2</sup>) - E<sup>2</sup>(X)</p>
+<p>tutte le proprietà sulla varianza sono uguali </p>
+<p><strong>VA continue uniformi</strong></p>
+<p>data un intervallo a-b</p>
+<p>X ~ U(a,b) se ha: </p>
+<p>densità continua:</p>
+<ul>
+<li>fx(x) =<ul>
+<li>1/(b-a) se a &lt;= x &lt;= b</li>
+<li>0 altrimenti</li>
+</ul>
+</li>
+</ul>
+<p>funzione di distribuzione:</p>
+<ul>
+<li>Fx(x) =<ul>
+<li>0 se x &lt; a</li>
+<li>(x-a)/(b-a) se a &lt;= x &lt;= b</li>
+<li>1 se x &gt; b</li>
+</ul>
+</li>
+</ul>
+<p>caratteristiche:</p>
+<ul>
+<li>E(X) = (b+a)/2</li>
+<li>Var(X) = (b-a)<sup>2</sup>/12 </li>
+</ul>
+<p><strong>VA continue esponenziali</strong></p>
+<p>data un numero lambda l positivo</p>
+<p>X ~ Exp(l) se ha: </p>
+<p>alfabeto:</p>
+<ul>
+<li>X(o) = sta nell&#39;intervallo a-b</li>
+</ul>
+<p>densità continua:</p>
+<ul>
+<li>fx(x) =<ul>
+<li>le<sup>-lx</sup> se  x &gt;= 0</li>
+<li>0 altrimenti</li>
+</ul>
+</li>
+</ul>
+<p>funzione di distribuzione:</p>
+<ul>
+<li>Fx(x) =<ul>
+<li>1-e<sup>-lx</sup> se x &gt;= 0</li>
+<li>0  altrimenti</li>
+</ul>
+</li>
+</ul>
+<p>caratteristiche:</p>
+<ul>
+<li>E(X) = 1/l</li>
+<li>Var(X) = 1/l<sup>2</sup></li>
+</ul>
+<p>modella il tempo di attesa tra 2 eventi</p>
+<p><strong>assenza di memoria</strong></p>
+<p>è una proprieta unica della VA esponenziale:</p>
+<ul>
+<li>P(X &gt; T+t | X &gt; T) = P(X &gt; T)</li>
+</ul>
+<p><strong>VA gaussiana</strong></p>
+<p>dati la media mi e la deviazione standard s, con s != 0, allora:</p>
+<p>X ~ N(mi, s<sup>2</sup>)</p>
+<p>densità continua:</p>
+<ul>
+<li>fx(x) = 1/rad(1*pi*r<sup>2</sup>) * e<sup>(x-mi)<sup>2</sup>/2s<sup>2</sup></sup></li>
+</ul>
+<p>funzione di distribuzione:</p>
+<ul>
+<li>non calcolabile analiticamente</li>
+</ul>
+<p>caratteristiche:</p>
+<ul>
+<li>E(X) = mi</li>
+<li>Var(X) = s<sup>2</sup></li>
+</ul>
+<p>modella </p>
+<p><strong>VA gaussiana affine (combinazione lineare)</strong></p>
+<p>due VA gaussiane X e Y si possono sempre combinare in particolare:</p>
+<p>se Y = aX + b, allora:</p>
+<p>Y ~ N(a*mi + b, a<sup>2</sup>s</sup>2</sup>)</p>
+<p>densità continua:</p>
+<ul>
+<li>fy(y) = 1/a * fx(y-b/a)</li>
+</ul>
+<p>funzione di distribuzione:</p>
+<ul>
+<li>Fy(y) = Fx(y-b/a)</li>
+</ul>
+<p>caratteristiche:</p>
+<ul>
+<li>E(Y) = a*mi + b</li>
+<li>Var(Y) = a<sup>2</sup>s<sup>2</sup></li>
+</ul>
+<p>in particolare la distribuzione di una combinazione lineare gaussiana è gaussiana</p>
+<p><strong>VA gaussiana centrata standard</strong></p>
+<p>si indica con Z la VA centrata gaussiana quando:</p>
+<ul>
+<li>Z = (X - mi) / s</li>
+</ul>
+<p>funzione di distribuzione (che si indica sempre con fi)</p>
+<ul>
+<li>-inf $$$ z 1/rad(2*pi) * e<sup>-x<sup>2</sup>/2</sup>dx</li>
+</ul>
+<p>caratteristiche:</p>
+<ul>
+<li>E(Z) = 0</li>
+<li>Var(Z) = 1</li>
+</ul>
+<p>NB: ogni VA gaussiana si può trasformare in gaussiana centrata standard attraverso la formula</p>
+<p>es.</p>
+<p>una scatola con una capsula da ~250 g di media</p>
+<ul>
+<li>calcolare dev standard sapendo che il 5% delle capsule pesa più di 252g</li>
+<li>calcolare P che una capsula pesi meno di 245g</li>
+</ul>
+<p>X ~ N(250, s^2)</p>
+<p>1)</p>
+<p>P(X &gt; 252) = 0.05</p>
+<p>--&gt; P((X - 250)/s &gt; (252-250)/s)</p>
+<p>--&gt; P(Z &gt; 2/s)</p>
+<p>--&gt; 2/s = valore tabulato di Z (se ci sono più valori tabulati si fa la media)</p>
+<p>2)</p>
+<p>P(X &lt; 245) e si rifa la stessa cosa, ma adesso si ha s</p>
+<h2 id="teoremi-limite">Teoremi limite</h2>
+<p><strong>legge dei grandi numeri</strong></p>
+<ul>
+<li>X<sub>i</sub> è una VA che rappresenta l&#39;esito dell&#39;iesima prova</li>
+<li>la successione (X<sub>i</sub>)<sub>i</sub> rappresenta una successione di VA indipendenti</li>
+<li>E(X<sub>i</sub>) = mi</li>
+</ul>
+<p>per ogni epilon &gt; 0 si ha che:</p>
+<ul>
+<li>lim P(|Xn - mi| &lt;= epsilon) = 1</li>
+</ul>
+<p>corollario:</p>
+<ul>
+<li>data una una funzione g(x) tale per cui:<ul>
+<li>E(g(xi)) &lt; +inf</li>
+</ul>
+</li>
+<li>allora:<ul>
+<li>lim P(|Xn - mi| &lt;= epsilon) = 1</li>
+</ul>
+</li>
+</ul>
+<p><strong>teorema del limite centrale</strong></p>
+<p>funziona solo con VA gaussiane,</p>
+
+        </div>
+    </div>
+</body>
+
+</html>
