@@ -28,7 +28,7 @@ Variabili aleatorie discrete
 Probabilità
 </li>
 <li>
-25-05-2021
+26-05-2021
 </li>
 </ul>
 <div class="post">
@@ -40,6 +40,10 @@ Probabilità
 <p><strong>alfabeto</strong></p>
 <p>sono i possibili valori che la VA può assumere</p>
 <p><strong>densità discreta</strong></p>
+<p>è definita come:</p>
+<ul>
+<li>P : X -&gt; [0,1]</li>
+</ul>
 <p>è la probabilitò che P(X=k), cioà la probabilità che la VA assuma il valore k, è uguale alla somma degli esiti che la verificano</p>
 <p><strong>VA indicatrice</strong></p>
 <p>I : omega -&gt; [0, 1], dove:</p>
@@ -105,7 +109,7 @@ Probabilità
 <p>densità discreta:</p>
 <ul>
 <li>P(X=1) = p</li>
-<li>P(X=0) = 1 -p</li>
+<li>P(X=0) = 1 - p</li>
 </ul>
 <p>caratteristiche:</p>
 <ul>
@@ -178,7 +182,7 @@ Probabilità
 <ul>
 <li>V(esito) = (X(esito), Y(esito))</li>
 </ul>
-<p>l&#39;alfabeto di V è un sottoinsieme del prodotto cartesiano di X e Y</p>
+<p>l&#39;alfabeto di V è un sottoinsieme del prodotto cartesiano di X e Y, ci possono essere dei vincoli sulle coppie</p>
 <p><strong>densità discreta congiunta</strong></p>
 <p>indica la probabilità che le 2 VA assumano determinati valori:</p>
 <ul>
@@ -186,13 +190,18 @@ Probabilità
 </ul>
 <p>proprietà:</p>
 <ul>
-<li>P(X=xi) = i+++ P(X=x,Y=yi)</li>
-<li>P(Y=yi) = i+++ P(X=xi,Y=y)</li>
+<li>P(X=xi,Y=yj) = 0 se (xi,yj) non appartiene all&#39;alfabeto</li>
 </ul>
-<p>valor medio:</p>
+<p><strong>densità marginale</strong></p>
+<p>sono le singole densità delle VA congiunte</p>
+<ul>
+<li>P(X=xi) = j+++ P(X=xi,Y=yj)</li>
+<li>P(Y=yi) = j+++ P(X=xj,Y=yi)</li>
+</ul>
+<p><strong>valor medio:</strong></p>
 <ul>
 <li>E(g(X,Y)) = i+++ g(xi,yi)P(X=xi,Y=yi)</li>
-<li>E(XY) = i+++ j+++ xiyjP(X=xi.Y=yj)</li>
+<li>E(XY) = i+++ j+++ xiyjP(X=xi,Y=yj)</li>
 </ul>
 <p><strong>indipendenza di VA</strong></p>
 <p>2 VA X ed Y sono indipendenti se:</p>

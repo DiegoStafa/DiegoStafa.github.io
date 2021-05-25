@@ -9,6 +9,9 @@ sono i possibili valori che la VA può assumere
 
 **densità discreta**
 
+è definita come:
+* P : X -> \[0,1\]
+
 è la probabilitò che P(X=k), cioà la probabilità che la VA assuma il valore k, è uguale alla somma degli esiti che la verificano
 
 **VA indicatrice**
@@ -74,7 +77,7 @@ alfabeto:
 
 densità discreta:
 * P(X=1) = p
-* P(X=0) = 1 -p
+* P(X=0) = 1 - p
 
 caratteristiche:
 * E(X) = p
@@ -149,7 +152,7 @@ date 2 VA X e Y, un vettore aleatorio discreto V è una funzione che mappa gli e
 quindi:
 * V(esito) = (X(esito), Y(esito))
 
-l'alfabeto di V è un sottoinsieme del prodotto cartesiano di X e Y
+l'alfabeto di V è un sottoinsieme del prodotto cartesiano di X e Y, ci possono essere dei vincoli sulle coppie
 
 **densità discreta congiunta**
 
@@ -157,12 +160,19 @@ indica la probabilità che le 2 VA assumano determinati valori:
 * P(X=xi,Y=yj)
 
 proprietà:
-* P(X=xi) = i+++ P(X=x,Y=yi)
-* P(Y=yi) = i+++ P(X=xi,Y=y)
+* P(X=xi,Y=yj) = 0 se (xi,yj) non appartiene all'alfabeto
 
-valor medio:
+**densità marginale**
+
+sono le singole densità delle VA congiunte
+
+* P(X=xi) = j+++ P(X=xi,Y=yj)
+* P(Y=yi) = j+++ P(X=xj,Y=yi)
+
+**valor medio:**
+
 * E(g(X,Y)) = i+++ g(xi,yi)P(X=xi,Y=yi)
-* E(XY) = i+++ j+++ xiyjP(X=xi.Y=yj)
+* E(XY) = i+++ j+++ xiyjP(X=xi,Y=yj)
 
 **indipendenza di VA**
 

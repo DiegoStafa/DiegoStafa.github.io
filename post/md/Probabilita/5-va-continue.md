@@ -17,7 +17,7 @@ proprietà:
 
 **funzione di distribuzione**
 
-* Fx(x) = P(X < x) = -inf $$$ x f(y)dy
+* P(X < x) = Fx(x) = -inf $$$ x f(y)dy
 
 si indica con Fx, indica la probabilità che P(X<=a), uindi si racava che:
 * P(a <= X <= B) = P(X<=b) - P(X<=a)
@@ -92,9 +92,6 @@ data un numero lambda l positivo
 
 X ~ Exp(l) se ha: 
 
-alfabeto:
-* X(o) = sta nell'intervallo a-b
-
 densità continua:
 * fx(x) =
     * le<sup>-lx</sup> se  x >= 0
@@ -108,13 +105,10 @@ funzione di distribuzione:
 caratteristiche:
 * E(X) = 1/l
 * Var(X) = 1/l<sup>2</sup>
+* P(X > T+t | X > T) = P(X > T) --> ASSENZA DI MEMORIA
+
  
 modella il tempo di attesa tra 2 eventi
-
-**assenza di memoria**
-
-è una proprieta unica della VA esponenziale:
-* P(X > T+t | X > T) = P(X > T)
 
 **VA gaussiana**
 
@@ -159,6 +153,8 @@ si indica con Z la VA centrata gaussiana quando:
 
 funzione di distribuzione (che si indica sempre con fi)
 * -inf $$$ z 1/rad(2\*pi) \* e<sup>-x<sup>2</sup>/2</sup>dx
+
+la funzione di distribuzione è completamente mappata
 
 caratteristiche:
 * E(Z) = 0
