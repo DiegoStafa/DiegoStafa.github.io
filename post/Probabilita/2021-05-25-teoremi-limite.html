@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info"><li>
+Teoremi limite
+</li>
+<li>
+Probabilità
+</li>
+<li>
+25-05-2021
+</li>
+</ul>
+<div class="post">
+<h2 id="teoremi-limite">Teoremi limite</h2>
+<p><strong>legge dei grandi numeri</strong></p>
+<p>ipotesi:</p>
+<ul>
+<li>X1, X2 ... XN sono VA uguali, indipendenti ed iid</li>
+<li>per ogni VA, E(X) = mi</li>
+<li>Xm = (X1 + X2 + ... XN)/N</li>
+</ul>
+<p>tesi:</p>
+<ul>
+<li>per ogni epsilon &gt; 0 si ha che:</li>
+<li>lim P(|Xm - mi| &lt;= epsilon) = 1</li>
+</ul>
+<p>di base la media aritmetica dei risultati delle VA converge al valore atteso delle VA a +inf</p>
+<p><strong>legge dei grandi numeri (corollario)</strong></p>
+<p>ipotesi:</p>
+<ul>
+<li>X1, X2 ... XN sono VA uguali, indipendenti ed iid</li>
+<li>per ogni VA, E(g(X)) = mi</li>
+<li>Xm = (g(X1) + g(X2) + ... g(XN))/N</li>
+</ul>
+<p>tesi:</p>
+<ul>
+<li>per ogni epsilon &gt; 0 si ha che:</li>
+<li>lim P(|Xm - mi| &lt;= e) = 1</li>
+</ul>
+<p>di base applicare una funzione alle VA ed al valore atteso mantiene l&#39;uguaglianza</p>
+<p><strong>teorema del limite centrale</strong></p>
+<p>ipotesi:</p>
+<ul>
+<li>X1, X2 ... XN sono VA uguali, indipendenti ed iid</li>
+<li>per ogni VA, E(X) = mi</li>
+<li>per ogni VA, Var(X) = s<sup>2</sup></li>
+<li>Xm = (X1 + X2 + ... XN)/N</li>
+<li>Ym = (Xm - mi) / (s / rad(n))</li>
+</ul>
+<p>tesi:</p>
+<ul>
+<li>Ym ~ N(0,1)</li>
+</ul>
+
+        </div>
+    </div>
+</body>
+
+</html>

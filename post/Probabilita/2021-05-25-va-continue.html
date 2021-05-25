@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info"><li>
+Variabili aleatorie assolutamente continue
+</li>
+<li>
+Probabilità
+</li>
+<li>
+25-05-2021
+</li>
+</ul>
+<div class="post">
+<h2 id="variabili-aleatorie-assolutamente-continue">Variabili aleatorie assolutamente continue</h2>
+<p>è una VA che può assumere valori in tutto R</p>
+<p><strong>densità continua</strong></p>
+<p>è la probabilità che la VA assuma un valore in un intervallo a-b:</p>
+<ul>
+<li>P(a &lt;= X &lt;= B) = a $$$ b f(x)dx</li>
+</ul>
+<p>proprietà:    </p>
+<ul>
+<li>f(x) sempre maggiore di 0</li>
+<li>f(x) può non essere continua</li>
+<li>-inf $$$ +inf f(x)dx == 1</li>
+<li>P(X=a) è sempre = 0</li>
+<li>f(a) indica uanta densità si concentra in un intorno di x=a </li>
+</ul>
+<p><strong>funzione di distribuzione</strong></p>
+<ul>
+<li>Fx(x) = P(X &lt; x) = -inf $$$ x f(y)dy</li>
+</ul>
+<p>si indica con Fx, indica la probabilità che P(X&lt;=a), uindi si racava che:</p>
+<ul>
+<li>P(a &lt;= X &lt;= B) = P(X&lt;=b) - P(X&lt;=a)</li>
+<li>P(a &lt;= X &lt;= B) = Fx(b) - Fx(a)</li>
+</ul>
+<p>proprietà:</p>
+<ul>
+<li>lim -&gt; -inf Fx(x) = 0</li>
+<li>lim -&gt; +inf Fx(x) = 1</li>
+<li>x &lt;= y --&gt; Fx(x) &lt;= Fx(y)</li>
+<li>Fx(x) è continua</li>
+<li>F&#39;x(x) = f(x)</li>
+</ul>
+<p><strong>teorema di caratterizzazione di VA continue</strong></p>
+<p>data una VA X di cui conosciamo funzione di distribuzione e densità, se Y è una VA funzione di X, allora riusciamo a caratterizzarla:</p>
+<p>dimostrazione:</p>
+<ul>
+<li>Fy(y) <ul>
+<li>= P(Y &lt; y)</li>
+<li>= P(g(X) &lt; y)</li>
+<li>= P(X &lt; g<sup>-1</sup>(y))</li>
+<li>= Fx(g<sup>-1</sup>(y))</li>
+</ul>
+</li>
+<li>f(y) 
+  = F&#39;y(y)
+  = F&#39;x(g<sup>-1</sup>(y))*g<sup>-1</sup>(y)</li>
+</ul>
+<p>quindi:</p>
+<ul>
+<li>Fy(y) = Fx(g<sup>-1</sup>(y))</li>
+<li>fy(y) = F&#39;x(g<sup>-1</sup>(y))*g<sup>-1</sup>(y)</li>
+</ul>
+<p><strong>valor medio</strong></p>
+<p>si indica con:</p>
+<ul>
+<li>E(X) = -inf $$$ +inf xf(x)dx</li>
+</ul>
+<p>proprietà:</p>
+<ul>
+<li>stesse proprietà della discreta</li>
+<li>può non esistere</li>
+<li>E(g(x)) = -inf $$$ +inf g(x)F(x)dx <ul>
+<li>in particolare se g(x) = (x - E(x))<sup>2</sup> si ha la definizione di varianza</li>
+</ul>
+</li>
+</ul>
+<p><strong>varianza</strong></p>
+<p>uguale tra VA discrete e continue</p>
+<h2 id="va-fondamentali">VA fondamentali</h2>
+<p><strong>VA continue uniformi</strong></p>
+<p>data un intervallo a-b</p>
+<p>X ~ U(a,b) se ha: </p>
+<p>densità continua:</p>
+<ul>
+<li>fx(x) =<ul>
+<li>1/(b-a) se a &lt;= x &lt;= b</li>
+<li>0 altrimenti</li>
+</ul>
+</li>
+</ul>
+<p>funzione di distribuzione:</p>
+<ul>
+<li>Fx(x) =<ul>
+<li>0 se x &lt; a</li>
+<li>(x-a)/(b-a) se a &lt;= x &lt;= b</li>
+<li>1 se x &gt; b</li>
+</ul>
+</li>
+</ul>
+<p>caratteristiche:</p>
+<ul>
+<li>E(X) = (b+a)/2</li>
+<li>Var(X) = (b-a)<sup>2</sup>/12 </li>
+</ul>
+<p><strong>VA continue esponenziali</strong></p>
+<p>data un numero lambda l positivo</p>
+<p>X ~ Exp(l) se ha: </p>
+<p>alfabeto:</p>
+<ul>
+<li>X(o) = sta nell&#39;intervallo a-b</li>
+</ul>
+<p>densità continua:</p>
+<ul>
+<li>fx(x) =<ul>
+<li>le<sup>-lx</sup> se  x &gt;= 0</li>
+<li>0 altrimenti</li>
+</ul>
+</li>
+</ul>
+<p>funzione di distribuzione:</p>
+<ul>
+<li>Fx(x) =<ul>
+<li>1-e<sup>-lx</sup> se x &gt;= 0</li>
+<li>0  altrimenti</li>
+</ul>
+</li>
+</ul>
+<p>caratteristiche:</p>
+<ul>
+<li>E(X) = 1/l</li>
+<li>Var(X) = 1/l<sup>2</sup></li>
+</ul>
+<p>modella il tempo di attesa tra 2 eventi</p>
+<p><strong>assenza di memoria</strong></p>
+<p>è una proprieta unica della VA esponenziale:</p>
+<ul>
+<li>P(X &gt; T+t | X &gt; T) = P(X &gt; T)</li>
+</ul>
+<p><strong>VA gaussiana</strong></p>
+<p>dati la media mi e la deviazione standard s, con s != 0, allora:</p>
+<p>X ~ N(mi, s<sup>2</sup>)</p>
+<p>densità continua:</p>
+<ul>
+<li>fx(x) = 1/rad(1*pi*r<sup>2</sup>) * e<sup>(x-mi)<sup>2</sup>/2s<sup>2</sup></sup></li>
+</ul>
+<p>funzione di distribuzione:</p>
+<ul>
+<li>non calcolabile analiticamente</li>
+</ul>
+<p>caratteristiche:</p>
+<ul>
+<li>E(X) = mi</li>
+<li>Var(X) = s<sup>2</sup></li>
+</ul>
+<p><strong>VA gaussiana affine (combinazione lineare)</strong></p>
+<p>due VA gaussiane X e Y si possono sempre combinare in particolare:</p>
+<p>se Y = aX + b, allora:</p>
+<p>Y ~ N(a*mi + b, a<sup>2</sup>s</sup>2</sup>)</p>
+<p>densità continua:</p>
+<ul>
+<li>fy(y) = 1/a * fx(y-b/a)</li>
+</ul>
+<p>funzione di distribuzione:</p>
+<ul>
+<li>Fy(y) = Fx(y-b/a)</li>
+</ul>
+<p>caratteristiche:</p>
+<ul>
+<li>E(Y) = a*mi + b</li>
+<li>Var(Y) = a<sup>2</sup>s<sup>2</sup></li>
+</ul>
+<p>in particolare la distribuzione di una combinazione lineare gaussiana è gaussiana</p>
+<p><strong>VA gaussiana centrata standard</strong></p>
+<p>si indica con Z la VA centrata gaussiana quando:</p>
+<ul>
+<li>Z = (X - mi) / s</li>
+</ul>
+<p>funzione di distribuzione (che si indica sempre con fi)</p>
+<ul>
+<li>-inf $$$ z 1/rad(2*pi) * e<sup>-x<sup>2</sup>/2</sup>dx</li>
+</ul>
+<p>caratteristiche:</p>
+<ul>
+<li>E(Z) = 0</li>
+<li>Var(Z) = 1</li>
+</ul>
+<p>NB: ogni VA gaussiana si può trasformare in gaussiana centrata standard attraverso la formula</p>
+
+        </div>
+    </div>
+</body>
+
+</html>

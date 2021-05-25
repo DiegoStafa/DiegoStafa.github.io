@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Diego++</title>
+
+    <!-- meta data-->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+    <!-- fonts & icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="post-wrapper">
+        <ul class="post-info"><li>
+Variabili aleatorie discrete
+</li>
+<li>
+Probabilità
+</li>
+<li>
+25-05-2021
+</li>
+</ul>
+<div class="post">
+<h1 id="variabili-aleatorie-discrete">Variabili aleatorie discrete</h1>
+<p>una VA è una funzione che mappa gli esiti di uno spazio campionario a dei reali:</p>
+<ul>
+<li>X : omega -&gt; R</li>
+</ul>
+<p><strong>alfabeto</strong></p>
+<p>sono i possibili valori che la VA può assumere</p>
+<p><strong>densità discreta</strong></p>
+<p>è la probabilitò che P(X=k), cioà la probabilità che la VA assuma il valore k, è uguale alla somma degli esiti che la verificano</p>
+<p><strong>VA indicatrice</strong></p>
+<p>I : omega -&gt; [0, 1], dove:</p>
+<ul>
+<li>I = 1 se o appartiene ad omega</li>
+<li>I = 0 altrimenti</li>
+</ul>
+<p>denità dicreta:</p>
+<ul>
+<li>P(I=1) = p</li>
+<li>P(I=0) = 1-p</li>
+</ul>
+<p><strong>valor medio</strong></p>
+<p>definito x<sub>i</sub> come esito della VA, il valor medio si indica con:</p>
+<ul>
+<li>E(X) = 1 +++ n x<sub>n</sub>*P(X=x<sub>i</sub>) </li>
+</ul>
+<p>proprietà:</p>
+<ul>
+<li>E(aX + b) = aE(X) + b</li>
+<li>E(X + Y) == E(X) + E(Y)</li>
+<li>E(f(X)) = 1 +++ n f(x<sub>i</sub>)P(x<sub>i</sub>)</li>
+</ul>
+<p>conseguenze:</p>
+<ul>
+<li>X &gt;= 0 implica E(X) &gt;= 0</li>
+<li>E(X) &gt;= E(Y) implica X &gt;= Y</li>
+<li>inf X &lt;= E(X) &lt;= max X</li>
+</ul>
+<p><strong>varianza</strong></p>
+<p>è un numero positivo che indica quanto l&#39;alfabeto sia distribuito attorno al valor medio</p>
+<p>si indica con:</p>
+<ul>
+<li>Var(X) = E(X<sup>2</sup>) - E(X)<sup>2</sup></li>
+<li>Var(X) = E((X - E(X))<sup>2</sup>)</li>
+<li>Var(X) = 1 +++ n (x<sub>i</suB> - E(X))<sup>2</sup>P(x<sub>i</sub>)</li>
+</ul>
+<p>proprietà:</p>
+<ul>
+<li>Var(X) sempre &gt;= 0</li>
+<li>Var(aX + b) = a<sup>2</sup>Var(X)</li>
+<li>Var(X + Y) = Var(X) + Var(Y) + 2Cov(X,Y)</li>
+</ul>
+<p><strong>covarianza</strong></p>
+<p>si indica con:</p>
+<ul>
+<li>Cov(X,Y) = E[(X-E(X))(Y-E(Y))]</li>
+</ul>
+<p>proprietà:</p>
+<ul>
+<li>Cov(X,X) = Var(X)</li>
+<li>Cov(X,Y) = E(XY) - E(X)E(Y)</li>
+</ul>
+<h2 id="variabili-aleatorie-discrete-fondamentali">Variabili aleatorie discrete fondamentali</h2>
+<p><strong>VA di bernoulli</strong></p>
+<p>data la probabilità di successo p di un evento in una prova di bernoulli:</p>
+<p>X ~ Be(p) se:</p>
+<p>alfabeto:</p>
+<ul>
+<li>X = 1 se l&#39;esito ha successo</li>
+<li>X = 0 altrimenti</li>
+</ul>
+<p>densità discreta:</p>
+<ul>
+<li>P(X=1) = p</li>
+<li>P(X=0) = 1 -p</li>
+</ul>
+<p>caratteristiche:</p>
+<ul>
+<li>E(X) = p</li>
+<li>Var(X) = p(1-p) </li>
+</ul>
+<p>modella il verficarsi di un evento</p>
+<p><strong>VA binomiale</strong></p>
+<p>data la probabilità di successo p di un evento in una prova di bernoulli, ripetuta n volte:</p>
+<p>X ~ Bin(n,p) se: </p>
+<p>alfabeto:</p>
+<ul>
+<li>X = numeri di successi ottenuti</li>
+</ul>
+<p>densità discreta:</p>
+<ul>
+<li>P(X=k) = (n su k)p<sup>k</sup>(1-p)<sup>k</sup></li>
+</ul>
+<p>caratteristiche:</p>
+<ul>
+<li>E(X) = np</li>
+<li>Var(X) = np(1-p) </li>
+</ul>
+<p>modella il la prova di bernoulli ripetuta n volte</p>
+<p><strong>VA geometrica</strong></p>
+<p>data la probabilità di successo p di un evento in una prova di bernoulli:</p>
+<p>X ~ Ge(p), dove: </p>
+<ul>
+<li>p nell&#39;intervallo [0,1]</li>
+</ul>
+<p>alfabeto:</p>
+<ul>
+<li>X = numero di insuccessi prima di un successo</li>
+</ul>
+<p>densità discreta:</p>
+<ul>
+<li>P(X=k) = (1-p)p<sup>k-1</sup>p</li>
+</ul>
+<p>caratteristiche:</p>
+<ul>
+<li>E(X) = 1/p</li>
+<li>Var(X) = (1-p)/p<sup>2</sup></li>
+</ul>
+<p>modella il primo successo dopo una serie di insuccessi</p>
+<p><strong>VA di Poisson</strong></p>
+<p>data una variabile reale r:</p>
+<p>X ~ Po(r) se: </p>
+<p>alfabeto:</p>
+<ul>
+<li>X = quante volte l&#39;esito ha probabilmente successo</li>
+</ul>
+<p>densità discreta:</p>
+<ul>
+<li>P(X=k) = e<sup>-r</sup>r<sup>k</sup>/k!</li>
+</ul>
+<p>caratteristiche:</p>
+<ul>
+<li>E(X) = r</li>
+<li>Var(X) = r</li>
+</ul>
+<p>modella il numero di eventi per unità di tempo</p>
+<p><strong>teorema limite di poisson</strong></p>
+<p>una VA binomiale con n &gt;&gt; 1 e p &lt;&lt; 1 (quindi tantissime prove dove ogni prova ha una bassa probabilità di successo) può essere approssimata con una VA di poisson con r=n*p</p>
+<h2 id="vettori-aleatori-discreti">vettori aleatori discreti</h2>
+<p>date 2 VA X e Y, un vettore aleatorio discreto V è una funzione che mappa gli esiti di uno spazio campionario ad una coppia di reali:</p>
+<ul>
+<li>V : omega -&gt; R<sup>2</sup></li>
+</ul>
+<p>quindi:</p>
+<ul>
+<li>V(esito) = (X(esito), Y(esito))</li>
+</ul>
+<p>l&#39;alfabeto di V è un sottoinsieme del prodotto cartesiano di X e Y</p>
+<p><strong>densità discreta congiunta</strong></p>
+<p>indica la probabilità che le 2 VA assumano determinati valori:</p>
+<ul>
+<li>P(X=xi,Y=yj)</li>
+</ul>
+<p>proprietà:</p>
+<ul>
+<li>P(X=xi) = i+++ P(X=x,Y=yi)</li>
+<li>P(Y=yi) = i+++ P(X=xi,Y=y)</li>
+</ul>
+<p>valor medio:</p>
+<ul>
+<li>E(g(X,Y)) = i+++ g(xi,yi)P(X=xi,Y=yi)</li>
+<li>E(XY) = i+++ j+++ xiyjP(X=xi.Y=yj)</li>
+</ul>
+<p><strong>indipendenza di VA</strong></p>
+<p>2 VA X ed Y sono indipendenti se:</p>
+<ul>
+<li>P(X=xi,Y=yj) = P(X=xi)P(Y=yj)</li>
+</ul>
+<p>proprietà:</p>
+<ul>
+<li>X e Y indipendenti -&gt; f(x) e g(y) indipendenti</li>
+<li>E(XY) = E(X)E(Y)</li>
+<li>Cov(X,Y) = 0 (proprietà di scorrelazione)</li>
+<li>Var(X + Y) = Var(X) + Var(Y)<ul>
+<li>Var(aX + bY + c) = a^2Var(X) + b^2Var(Y)</li>
+</ul>
+</li>
+<li>indipendenza --&gt; scorrelazione</li>
+<li>scorrelazione -/&gt; indipendenza</li>
+</ul>
+
+        </div>
+    </div>
+</body>
+
+</html>
