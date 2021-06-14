@@ -48,8 +48,6 @@ nb: la parte fondamentale è capire che il compilatore cerca sempre nel tipo sta
 
 quando si utilizza l'operatore di scoping il binding è sempre statico
 
-per decidere se usare o meno il virtual bisogna considerare se si utilizzerà o meno la superclasse in un contesto polimorfico
-
 **overriding**
 
 consiste nel ridefinire un metodo virtuale, che soddisfa le seguenti regole:
@@ -139,7 +137,7 @@ l'rtti consente di avere informazioni sul tipo dinamico, in c++ è implementato 
 
 **typeid**
 
-di base ritorna il tipo dinamico di un puntatore **dereferenziato ** polimorfo o riferimento polimorfo
+di base ritorna il tipo dinamico di un puntatore dereferenziato polimorfo o riferimento polimorfo
 
 funzionamento:
 * typeid(tipo) --> ritorna il tipo del tipo
@@ -187,152 +185,3 @@ il dynamic cast si deve usare solo quando non si conosce il tipo dinamico di un 
 * virtual superclasse* clone() const = 0;
 
 le sottoclassi andranno ad implementare questo metodo cambiandone il tipo di ritorno con la coercion
-
-**esercizio**
-
-```c++
-#include <string>
-#include <typeinfo> // per typeid
-
-class fileaudio
-{
-    private:
-        std::string titolo;
-        double size;
-    public:
-        virtual fileaudio* clone() const = 0;
-        virtual bool qualita() const = 0;
-        virtual ~fileaudio() {};
-        double Size()
-        {
-            return size;
-        }
-        virtual bool operator==(const fileaudio& f)
-        {
-            // uno dei pochi casi dove si deve usare typeid()
-            return  typeid(*this) == typeid(f) && titolo == f.titolo && size == f.size;
-        }
-};
-
-class mp3 : public fileaudio
-{
-    private:
-        unsigned int bitrate;
-    public:
-        static unsigned int sogliaqualita;
-
-        bool qualita() const
-        {
-            return bitrate >= sogliaqualita;
-        }
-        
-        mp3* clone() const override
-        {
-            // l'implementazione è sempre questa
-            return new wav(*this);
-        }
-
-        unsigned int Bitrate()
-        {
-            return bitrate;
-        }
-
-        bool operator==(const fileaudio& f) override
-        {
-            return fileaudio::operator==(f) && bitrate == static_cast<const mp3&>(f).Bitarte();
-        }
-
-};
-
-class wav : public fileaudio
-{
-    private:
-        unsigned int frequenza;
-        bool lossless;
-    public:
-        static unsigned int sogliaqualita;
-        bool qualita() const
-        {
-            return frequenza >= sogliaqualita;
-        }
-        wav* clone() const override
-        {
-            // l'implementazione è sempre questa
-            return new mp3(*this);
-        }
-
-        bool Losseless()
-        {
-            return lossless;
-        }
-
-        bool operator==(const fileaudio& f) override
-        {
-            return fileaudio::operator==(f) && frequenza == static_cast<const mp3&>(f).Bitarate && lossless == static_cast<const mp3&>(f).Lossless();
-        }
-};
-
-class izod
-{
-    private:
-        class brano // wrapper
-        {
-            public:
-                fileaudio* ptr;
-
-                brano(fileaudio* p) : ptr(p->clone()) {}
-                br
-                brano(const brano& b) : ptr(b.ptr->clone()) {}
-
-                brano& operator=(const brano& b)
-                {
-                    if(this != &b)
-                    {
-                        delete ptr;
-                        ptr = b.ptr->clone();
-                    }
-                    return *this;
-                }
-
-                ~brano() 
-                {
-                    delete ptr;
-                }
-        };
-        std::vector<brano> brani;
-
-        public:
-            std::vector<mp3> mp3(double dim, int br) const
-            {
-                std::vector<mp3> v;
-                for(auto cit = brani.begin(); cit != brani.end(); ++cit)
-                {
-                    mp3* p = dynamic_cast<mp3*>(cit->ptr);
-                    if(p && p->Size() >= dim && p->Bitarate() > br)
-                        v.push_back(*p);
-                }
-                return p;
-            }
-
-            std::vector<fileaudio*> braniqualita() const
-            {
-                syd::vector<fileaudio*> v;
-                for(auto cit = brani.begin(); cit != brani.end(); ++cit)
-                {
-                    if(((cit->ptr)->qualita()) && (fynamic_cast<wav*>(cit->ptr) == nulptr || static_cast(<wav*>(cit->ptr)->Losseless()))
-                            v.push_back(cit->ptr);
-                }
-                return v;
-            }
-
-            void insert(mp3* p)
-            {
-                bool found;
-                for(auto it = brani.begin(); !found && it != brani.end(); ++it)
-                     if(*(it->ptr) == *p)
-                        found = true;
-                if(!found)
-                    brani.push_back(p);
-            }
-};
-```

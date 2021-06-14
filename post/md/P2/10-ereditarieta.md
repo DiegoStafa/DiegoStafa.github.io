@@ -27,9 +27,7 @@ un sottotipo/sottoclasse di dice diretto se deriva direttamente da una classe, i
 **subtyping di tipo**
 
 vale solo per l'ereditarietà pubblica
-
 è una forma di polimorfismo sui tipi, nella quale il sottotipo è un tipo di dato è in relazione ad un altro tipo di dato, mediante il concetto di sustituibiità
-
 di base quindi funzioni che operano su una superclasse devono operare normalmente anche sulle sue sottoclassi
 
 **subtyping su puntatori**
@@ -43,7 +41,6 @@ come per i puntatori
 **protected**
 
 protected significa accessibile mediante sottoggetti
-
 di base è la stessa cosa con il private, fuori dalla classe nemmeno un oggetto della classe stessa può accedere ai membri privati, nello stesso modo, la classe stessa non può accedere nemmeno alla parte protetta
 
 **tipi di ereditarietà**
@@ -139,98 +136,6 @@ si comporta nel seguente modo:
 1. invoca il distruttore sui membri dati
 2. invoca il distruttore sul sottoggetto
 
-**esercizio**
-
-```c++
-/*
-definire una superclasse contobancario e 2 sottoclassi, contocorrente e contorisparmio, dove:
-1. ogni contobancario ha un saldo e rende disponibili 2 funzionalità: deposito e prelievo
-2. ogni contocorrente ha una spesa fissa che verrà detratta dal saldo ad ogni operazione di deposito e prelievo
-3. ogni contorisparmio deve avere un saldo non negativo e le operazioni di deposito e prelievo non comportano costi aggiuntivi e restituiscono il saldo
-
-definire inoltre una classe contoarancio sottoclasse di contorisparmio, che contiene un contocorrente, quando si deposita sul contoarancio, la somma viene prelevata dal contocorrente di appoggio e quando si preleva la somma viene depositata
-*/
-
-class contobancario
-{
-    private:
-        double saldo;
-    public:
-        contobancario(double s = 0.0) : saldo(s) {}
-
-        double deposita(double x) {
-            return saldo+=x;
-        }
-        
-        double preleva(double x) {
-            return saldo-=x;
-        }
-
-        double Saldo() {
-            return saldo;
-        }
-};
-
-class contocorrente : public contobancario
-{
-    private:
-        static double spesa_fissa;
-    public:
-        double deposita(double x) {
-            return contobancario::deposita(x - spesa_fissa);
-        }
-        
-        double preleva(double x) {
-            return contobancario::preleva(x + spesa_fissa);
-        }
-};
-
-class contorisparmio : public contobancario
-{
-    private:
-    public:
-        contorisparmio(double s = 0.0) : contobancario(s) {}
-
-        double deposita(double x) {
-            return contobancario::deposita(x);
-        }
-        
-        double preleva(double x) {
-            return (x <= Saldo()) ? contobancario::preleva(x): Saldo();
-        }
-};
-
-class contoarancio : contorisparmio
-{
-    private:
-        contocorrente& appoggio;
-    public:
-        contoarancio(contocorrente& cc, double s = 0.0) :
-        contorisparmio(s),
-        appoggio(cc)
-        {}
-
-        double deposita(double x) {
-            if(x >= 0)
-            {
-                appoggio.preleva(x);
-                contorisparmio::deposita(x);
-            }
-            return Saldo();
-
-        }
-        
-        double preleva(double x) {
-            if(x <= Saldo() && x >= 0)
-            {
-                appoggio.deposita(x);
-                return contorisparmio::preleva(x);
-            }
-            return Saldo();
-        }
-};
-```
-
 **ereditarietà multipla**
 
 definisce una relazione tra un entità figlia e più entità padri
@@ -273,11 +178,11 @@ class A;
 class B : public A;
 class C : public A;
 
-class D : public B. public C;
+class D : public B, public C;
 
 /* 
 
-situazione in memoria
+situazione in memoria di un oggetto D
 
 D               
     B
@@ -356,7 +261,7 @@ class A;
 class B : virtual private A;
 class C : virtual public A;
 
-class D : public B. public C; // prevale la derivazione più aperta
+class D : public B, public C; // prevale la derivazione più aperta
 
 ```
 

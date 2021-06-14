@@ -59,13 +59,11 @@ private:
   }
 
 public:
-  dList(const dList &l)
-  {
+  dList(const dList &l) {
     deep_copy(l.first, first, last);
   }
 
-  dList &operator=(const dList &l)
-  {
+  dList &operator=(const dList &l) {
     if (this != &l)
     {
       destroy(first);
@@ -74,13 +72,11 @@ public:
     return *this;
   }
 
-  ~dList()
-  {
+  ~dList() {
     destroy(first);
   }
 
-  void insertFront(const T &t)
-  {
+  void insertFront(const T &t) {
     first = new nodo(t, nullptr, first);
     if (first->next == nullptr)
     { // lista di invocazione era vuota
@@ -92,8 +88,7 @@ public:
     }
   }
 
-  void insertBack(const T &t)
-  {
+  void insertBack(const T &t) {
     if (last)
     { // lista non vuota
       last = new nodo(t, last, nullptr);
@@ -103,35 +98,32 @@ public:
       first = last = new nodo(t);
   }
 
-  dList(unsigned int k, const T &t) : first(nullptr), last(nullptr)
-  {
+  dList(unsigned int k, const T &t) : first(nullptr), last(nullptr) {
     for (unsigned int j = 0; j < k; ++j)
       insertFront(t);
   }
 
-  bool operator<(const dList &l) const
-  {
+  bool operator<(const dList &l) const {
     if (this == &l)
       return false; // optimization: l < l e' sempre false
     return isLess(first, l.first);
   }
 
-  class const_iterator
-  {
+  class const_iterator {
+
     friend class dList<T>;
 
-  private: // const_iterator indefinito IFF ptr==nullptr & past_the_end==false
-    const nodo *ptr;
-    bool past_the_end;
+    private: // const_iterator indefinito IFF ptr==nullptr & past_the_end==false
+      const nodo *ptr;
+      bool past_the_end;
 
     // convertitore "privato" nodo* => const_iterator
     const_iterator(nodo *p, bool pte = false) : ptr(p), past_the_end(pte) {}
 
-  public:
+    public:
     const_iterator() : ptr(nullptr), past_the_end(false) {}
 
-    const_iterator &operator++()
-    {
+    const_iterator &operator++() {
       if (ptr != nullptr)
       {
         if (!past_the_end)
@@ -150,8 +142,7 @@ public:
       return *this;
     }
 
-    const_iterator operator++(int)
-    {
+    const_iterator operator++(int) {
       const_iterator aux(*this);
       if (ptr != nullptr)
       {
@@ -169,8 +160,7 @@ public:
       return aux;
     }
 
-    const_iterator &operator--()
-    {
+    const_iterator &operator--() {
       if (ptr != nullptr)
       {
         if (ptr->prev == nullptr)
@@ -186,8 +176,7 @@ public:
       return *this;
     }
 
-    const_iterator operator--(int)
-    {
+    const_iterator operator--(int) {
       const_iterator aux(*this);
       if (ptr != nullptr)
       {
@@ -204,34 +193,28 @@ public:
       return aux;
     }
 
-    bool operator==(const const_iterator &cit) const
-    {
+    bool operator==(const const_iterator &cit) const {
       return ptr == cit.ptr;
     }
 
-    bool operator!=(const const_iterator &cit) const
-    {
+    bool operator!=(const const_iterator &cit) const {
       return ptr != cit.ptr;
     }
 
-    const T &operator*() const
-    {
+    const T &operator*() const {
       return ptr->info;
     }
 
-    const T *operator->() const
-    {
+    const T *operator->() const {
       return &(ptr->info);
     }
   };
 
-  const_iterator begin() const
-  {
+  const_iterator begin() const {
     return const_iterator(first);
   }
 
-  const_iterator end() const
-  {
+  const_iterator end() const {
     if (!last)
       return const_iterator();
     return const_iterator(last + 1, true); // attenzione: NON e' past the end
