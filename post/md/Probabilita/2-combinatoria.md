@@ -1,4 +1,4 @@
-### Principio fondamentale del conteggio
+**principio fondamentale del conteggio**
 
 di base è il prodotto cartesiano su insieme senza elementi duplicati,
 * A ha 10 elementi

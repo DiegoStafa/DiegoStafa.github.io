@@ -1,10 +1,10 @@
 ### Probabilità condizionata
 
-dato uno spazio di probabilità, e due eventi E(evento) ed F(evento condizionante), allora la probabilità condizionata di E dato F è:
-* P(E \| F) = P(E and F) / P(F)
+la probabilità condizionata di un evento E indica la probabilità che E si verfichi sapendo che l'evento F si è verficato, ed è così definita:
+* P(E | F) = P(E and F) / P(F)
 
-si indica con:
-* P(evento, evento_condizionante)
+da cui:
+*  P(E and F) = P(E | F)P(F) = P(F | E)P(E)
 
 **formula delle probabilità totali**
 
@@ -17,11 +17,11 @@ si legge come:
 **formula di bayes**
 
 dalla formula della probabilità condizionata, si ricava che:
-* P(F|E)P(E) = P(E|F)P(F)
+* P(F | E)P(E) = P(E | F)P(F)
 
 permette di rovesciare il condizionamento
 
-**probabilitaà di eventi dipendenti**
+**probabilità di eventi dipendenti**
 
 * P(E and F) = P(E)P(F|E)
 

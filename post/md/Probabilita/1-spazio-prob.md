@@ -69,8 +69,7 @@ assiomi:
 
 **probabilità di un evento**
 
-
-di base diocane, gli eventi compatibili/incompatibili hanno importanza se c'è l'or, indipendenza e dipendenza se c'è un and
+di base gli eventi compatibili/incompatibili hanno importanza se c'è l'or, indipendenza e dipendenza se c'è un and
 
 per calcolare la probabilità di un evento si calcolano tutte le probailità dei suoi esiti e si sommano
 * P(E) = P(w1) + P(w2) + ...
@@ -82,26 +81,6 @@ tutti gli esiti sono equiprobabili, quindi la loro singola probabilità è 1/\|o
 la probilità dell'evento è quindi \|E\| / \|Omega\|
 
 per calcolare la cardinalità degli insiemi si utilizza la combinatoria (conteggi)
-
-## Insiemistica
-
-**operazioni sugli eventi**
-
-dati due eventi E ed F, valgono ke normali operazioni insiemistiche
-* complementare/negazione --> not E
-* unione --> E or F
-* intersezione --> E and F
-    * i 2 eventi si dicono disgiunti se l'interesezione è vuota
-* differenza asimmetrica --> E and ( not F )
-    * normale differenza insiemistica
-* differenza simmetrica --> E xor F
-
-come in logica, vale la 
-
-proprietà:
-* unione e intersezioni sono commutative, associative e distributive
-* legge di de morgan:
-    * not (E and F) == not E or not F
 
 **incompatibilità tra 2 eventi**
 
