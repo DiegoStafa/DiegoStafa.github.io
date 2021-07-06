@@ -50,19 +50,15 @@ di base è la notazione scientifica, ogni reale scritto in forma convenzionale, 
 
 dove:
 * mantissa --> parte intera e parte frazionaria
-* p --> di uanto si è spostata la virgola
+* p --> numero di cifre prima della
 
 **reali macchina**
 
-sono i numeri reali rappresentati in virgola mobile con una mantissa di lunghezza limitata definita dalla macchina
-
-l'errore di questi arrotondamenti è influenzato dalla lunghezza della  mantissa
+sono i numeri reali rappresentati in virgola mobile con una mantissa di lunghezza limitata definita dalla macchina, l'errore di questi arrotondamenti è influenzato dalla lunghezza della  mantissa
 
 **precisione di macchina**
 
-si indica con epsilon<sub>M</sub> ed è l'errore relativo più grande di arrotondamento della macchina
-
-ogni reale approssimato ha un errore relativo non superiore alla precisione macchina
+si indica con epsilon<sub>M</sub> ed è l'errore relativo più grande di arrotondamento della macchina, ogni reale approssimato ha un errore relativo non superiore alla precisione macchina
 
 **aritmetica macchina**
 

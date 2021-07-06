@@ -50,7 +50,7 @@ la stima del residuo non è un buon indicatore:
 
 **residuo pesato**
 
-di base il residuo trova il residuo dell'asse delle y (quanto manca per arrivare a 0) il residuo pesato trova il residuo sull'asse delle x (quanto manca per arrivare ad x)
+è la successione che indica quanto si è vicini al punto di intersezione
 
 è il residuo diviso la derivata tra xn,x
 * en = |xn - x| =  |f(xn)|/|f'(zn)| 
@@ -62,11 +62,11 @@ si dice stima empirica se si considera:
 
 **stima a priori**
 
-consiste nello stimare l'ordine di convergenza dell'errore assoluto
+consiste nello stimare il residuo
 
 **stima a posteriori**
 
-consiste nel determinare quando il residuo pesato diventa minore di una certa tolleranza epsilon
+consiste nello stimare il residuo pesato
 * en < epsilon
 
 si dice a posteriori in quanto la stima viene calcolata dopo aver ottenuto la successione xn

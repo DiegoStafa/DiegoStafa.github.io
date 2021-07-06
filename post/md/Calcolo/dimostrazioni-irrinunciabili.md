@@ -1,4 +1,4 @@
-**1 - precisione macchina max errore dei floating point**
+## 1 - precisione macchina max errore dei floating point
 
 ipotesi:
 * x è un reale
@@ -29,7 +29,7 @@ dimostrazione:
 * verifico le disuguaglianze
     * (b^p-t)/2 *  b^1-p = (b^1-t) / 2 --> precisione macchina
 
-**2 - stabilità aritmetica macchina**
+## 2 - stabilità aritmetica macchina
 
 moltiplicazione:
 * exy = |xy - x'y'| / |xy|
@@ -54,21 +54,31 @@ somma algebrica:
 * = |x|/|x+y| * |x-x'|/|x| + |y|/|x+y| * |y-y'|/|y| --> moltiplico e divido per |x| e spezzo
 * =   |x|/|x+y| * ex + |y|/|x+y| * ey --> stabile solo se x,y concordi
 
-**3 - convergenza bisezione**
+## 3 - convergenza bisezione
+
+ipotesi:
+* f in a,b
+* f(a) e f(b) discordi
+* f(c) = 0 in a,b
 
 tesi:
 * l'errore del bisezione converge a 0
 
 dimostrazione:
-* dal metodo di bisezione si ha che:
-    * xn = (bn - an) / 2
-    * an+1 = xn se f(xn)f(b) < 0
-    * bn+1 = xn se f(xn)f(a) < 0
-* an < bn sempre
-* l'errore di an e bn è sempre inferiore a (b-a)/2^n
-* per il teorema dei carabinieri anche l'errore di xn converge a 0
+* xn = (an + bn) / 2
+* |c - an| e |c - bn| < bn - an = (b - a) / 2^n --> tende a 0
+* |c - xn| < (bn - an) / 2 = (b - a) / 2^n+1 --> tende a 0
 
-**4 - stima del residuo pesato**
+## 4 - stima del residuo pesato
+
+stima a priori di bisezione:
+* |c - xn| < (b - a) / 2^n+1 <= epsilon
+* (b - a) / 2^n+1 <= epsilon
+* (b - a) / epsilon <= 2^n+1
+* log((b-a)/epsilon) - 1 <= n
+* n >= log(b-a) + log(1/epsilon)  --> sovrastima, non funziona sempre
+
+si introduce il residuo pesato
 
 ipotesi:
 * xn converge a c
@@ -84,7 +94,7 @@ dimostrazione:
     * f(xn) = f'(zn)(xn - c) --> in quanto f(c) = 0
     * f(xn)/f'(zn) = xn - c
 
-**5 - convergenza globale newton**
+## 5 - convergenza globale newton
 
 ipotesi di convergenza globale:
 * f(x) derivabile 2 volte in a,b
@@ -97,18 +107,50 @@ tesi:
 * lim xn -> c
 
 dimostrazione:
-* f convessa --> T(x) < f(x) sempre --> esiste xi : T(xi) = 0 in c,b
-* xn+1 < xn
+* dimostro che  la successione xn sta in x,b
+    * f convessa --> T(x) < f(x) sempre --> se xi è in c,b, allora T(xi) cade in c,b
+* dimostro che xn decresce, cioè xn+1 < xn
     * xn+1 = xn - f(xn)/f'(xn)
     * essendo il rapporto una quantità positiva la successione è decrescente
-* esiste lim xn = c
+* dimostro che esiste lim xn = c
     * lim xn+1 = lim xn - limf(xn)/limf'(xn) =  lim xn - f(lim xn)/f'(lim xn) = c - f(c)/f'(c) --> siccome f(x) = 0 si ha che lim --> c 
 
-**6 - ordine convergenza newton**
+## 6 - ordine convergenza newton
 
-**7 - ordine convergenza punto fisso**
+ipotesi:
+* f(x) derivabile 2 volte
+* f(c) = 0
+* a < x < xn < y < b
 
-**8 - esistenza ed unicità del polinomio interpolatore**
+tesi:
+* e<sub>n+1</sub> <= ce<sub>n</sub>^2
+
+dimostrazione:
+* approssimo f(x) con taylor
+    * f(x) = +++ f<sup>k</sup>(x0)(x - x0)<sup>k</sup>/ k! + R
+* calcolo f(x) taylor al secondo grado con x=c e x0=xn
+    * f(c) = f(xn) + f'(xn)(c-xn) + f''(zn)(c-xn)^2 /2
+    * -f(xn)/f'(xn) = c - xn + f''(zn)/2f'(xn) (c-xn)^2 // semplifico, porto f(xn) a sx e divido tutto per f'(xn)
+    * xn+1  = c +  f''(zn)/2f'(xn) (c-xn)^2
+    * | xn+1 - c | = f''(zn)/2f'(xn) (c-xn)^2
+    * e<sub>n+1</sub> <= ce<sub>n</sub>^2
+
+## 7 - ordine convergenza punto fisso
+
+ipotesi:
+* fi derivabile p volte
+* I un intervalo chiuso
+* xn+1 = fi(xn) converge a c
+
+tesi:
+1. xn ha ordine p=1 sse fi'(c) sta in 0,1
+2. xn ha ordine p>1 sse fi<sup>p</sup>(c) != 0  e per ogni 1 < j < p-1  f<sup>j</sup>(c) = 0
+
+dimostrazione 1:
+* en+1 = fi(zn)en
+* lim en+1/en = 
+ 
+## 8 - esistenza ed unicità del polinomio interpolatore
 
 unicità:
 
@@ -129,25 +171,57 @@ per dimostrare l'esistenza è sufficente dimostrare che da n+1 nodi diversi è s
 * verifico che interpola:
     *  L(xk) = +++ yiKi(xk) --> ki(xk) è sempre 0 tranne quando i = k  quindi la sommatoria è = yi
 
-**9 - convergenza uniforme dell'interopolatore lineare a tratti**
+## 9 - convergenza uniforme dell'interopolatore lineare a tratti
 
 la convergenza uniforme di base dice che la funzione interpolatrice a tratti rientra in un tubicino attorno alla funzione
 
 ipotesi:
-* s = 1
 * f derivabile s+1 volte in a,b
 * xi in a,b
 * n+1 nodi distinti con n multiplo di s
 
 tesi:
-* esiste k > 0 tale per cui dist(f, P) < k*s^2
+* esiste k > 0 tale per cui dist(f, P) < k*h^s+1
 
 dimostrazione:
-* il max su tutto a,b è il max dei singoli intervalli:
+* il max errore su tutto a,b è il max dei singoli intervalli:
     * dist(f, P) = max|f(x) - P(x)| in \[a,b\] = max(max(|f(x) - P(x)|) in \[i-1,i\])
 * stimiamo l'errore
     * max(|f(x) - P(x)|) in \[i-1,i\] <= max(|f^s+1(x)|)\*h^s+1/4(s+1)  in \[i-1,i\] con h = estremi dell'intervallo / s
-    * sostituisco con s = 1, h = (i - 1 - i)/2
+    * uso s=1
     * max(|f(x) - P(x)|) in \[i-1,i\] <= max(|f''(x)|)\*h^2/8  in \[i-1,i\]  <= f''(x)\*h^2/8
 * pongo f''(x) = M
 * risulta che dist(f,P) <= M/8* h^2
+
+## 10 - sistema di equazioni normali per l'approssimazione ai minimi quadrati
+
+ipotesi:
+* f(x) è un polinomio interpolatore sugli n nodi xi,yi
+* a è un vettore lungo m con m < n
+* fi(a) = +++n yi - +++m ajxi 
+
+tesi:
+* fi(a) = +++n yi - +++m ajxi sse il vettore a risolve V<sup>t</sup>Va = V<sup>t</sup>y
+
+## 11 - stime di condizionamento di un sistema lineare
+
+ipotesi:
+* A è una matrice non singolare
+* x è un vettore soluzione di Ax=b
+* x' = xV<sup>t</sup>
+
+## 12 - perchè newton ha ordine di convergenza almeno 2, e quando ha esattamente 2
+
+dalla definizione di ordine di convergenza possiamo dire che l’ordine è almeno p = 2 per zeri semplici perché:
+* en+1 ≤ ce<sub>n</sub>^2 per ogni n
+
+ha convergenza esattamente 2 quando:
+* f''(c) != 0
+
+## 13 - instabilità sottrazione stima ed esempio
+
+la sottrazione è più instabile quando i 2 numeri sono relativamente vicini, cioè quando:
+* x,y > max(1/ex, 1/ey)
+
+esempio:
+* f(x) = ((1+x) - 1)/x  con x =  10^-15 il risultato è 1,111... 11% di errore

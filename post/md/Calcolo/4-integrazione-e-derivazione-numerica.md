@@ -22,7 +22,7 @@ ogni formula algebrica è esatta se la funzione da integrare è il polinomio int
 
 si dividono in:
 * formule dei trapezi --> ogni polinomio è una retta
-* formule delle parabole o di simpson -->  ogni polinomio è di grado 2
+* formule delle parabole -->  ogni polinomio è di grado 2
 
 **derivazione numerica**
 
